@@ -1,0 +1,96 @@
+\documentclass[11pt, a4paper, german]{article}
+
+\input{header}
+\input{textheader}
+\usepackage{Titelseite}
+
+
+%Namen des Verfassers der Arbeit
+\author{Alexander Zorn}
+%Geburtsdatum des Verfassers
+\geburtsdatum{26. Mai 1996}
+%Gebortsort des Verfassers
+\geburtsort{Bonn}
+%Datum der Abgabe der Arbeit
+\date{\today}
+
+%Name des Betreuers
+% z.B.: Prof. Dr. Peter Koepke
+\betreuer{Betreuer: Prof. Dr. Stephan Held}
+%Name des Instituts an dem der Betreuer der Arbeit tätig ist.
+\zweitgutachter{Zweitgutachter: YYYY YYYY}
+%z.B.: Mathematisches Institut
+\institut{Forschungsinstitut f\"ur Diskrete Mathematik}
+%Titel der Bachelorarbeit
+\title{Heuristiken f\"ur das TechnologyMapping}
+%Do not change!
+\ausarbeitungstyp{Bachelorarbeit Mathematik}
+
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+
+\section{Terminologie \& grundlegender Algorithmus}
+
+
+Das Technology Mapping ist ein Problem, einen gegebenen Circuit (Subjectgraph) unter gegebener Library (Patterngraphs) logisch \"aquivalent umzubauen, sodass er eine gewisse Zielfunktion (z.B. Arrivaltime oder Area) optimiert. Um dies zu pr\"azisieren und eine grundlegende Terminologie für die sp\"ateren Algorithmen zu haben, folgen einige Definitionen.
+
+\begin{definition}{Library: }Eine Library ist eine Menge $L$ von Gates (boolsche Funktionen) mit zwei Abbildungen $d, \area: L \to \mathcal{R}_{\geq 0}$, die jedem Gate sowohl eine Verzögerung $d_l$, als auch eine Fl\"ache $\area_l$ zuordnen.
+\end{definition}
+
+\begin{figure}
+ 
+\end{figure}
+
+
+\begin{definition}{Circuit: }Ein Circuit $C$ auf der Library $L$ ist ein zusammenhängender gerichteter azyklischer Graph (DAG), bei dem jeder Knoten einer dieser 3 Arten entspricht:
+ \begin{itemize}
+  \item einem Inputknoten ohne eingehende Kanten
+  \item einem Gate aus L mit $\geq$ 1 eingehenden und $\geq$ 1 ausgehenden Kanten
+  \item einem Outputknoten ohne ausgehende Kanten
+ \end{itemize}
+ Jeder Gateknoten kann an jeder seiner eingehenden Kanten einen Inverter vorschalten.
+ Für einen Knoten $v$ sei fanin($v$) die Zahl seiner eingehenden, fanout($v$) die Zahl seiner ausgehenden Kanten. Knoten mit fanout($v$) $>$ 1 heißen Highfanoutknoten. Wir betrachten vorerst nur Circuits mit exakt einem Outputknoten.
+\end{definition}
+
+\begin{definition}{cone: }Für einen Knoten g aus einem DAG S bezeichne \[cone\left(g\right) := S\left[V\cup\lbrace g\rbrace\right], V = \lbrace v \in V(S) : \exists \text{$v$-$g$-Weg in } S\rbrace\]
+Sowie für eine Knotenmenge G sei $cone(G) := S\left[\cup_{g \in G}{V(cone(g))}\right]$
+ 
+\end{definition}
+
+
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{TechnologyMapping auf einer Arboreszens}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit C kreisfrei mit finalem Output o, Library L verfügbarer Gates}
+
+ bester\_kandidat[] $\gets \emptyset$\;
+ bester\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $n \in V(G)$ in topologischer Ordnung}
+ {
+   berechne alle (invertierte) Matches auf n\;
+   \ForEach{ Match $m$ auf $n$ }
+   {
+      Berechne besten Kandidaten mit $m$ auf $n$\;
+      Update best\_(inv)\_kandidaten\;
+   }
+ }
+ $best\_final \gets$ bester\_kandidat[o] \;
+ Implementiere C entsprechend $best\_final$\;
+\end{algorithm}\ \\
+
+
+
+
+%\clearpage
+
+\end{document}
