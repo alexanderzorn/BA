@@ -3,7 +3,7 @@
 \input{header}
 \input{textheader}
 \usepackage{Titelseite}
-
+\newcommand{\TM}{TehnologyMapping }
 
 %Namen des Verfassers der Arbeit
 \author{Alexander Zorn}
@@ -37,10 +37,30 @@
 
 \section{Einleitung}
 
+
+Das Chipdesign ist ein Forschungsgebiet, welches in den letzten Jahrzehnten eine immer bedeutendere Rolle eingenommen hat. Es ist ein zu einem Projekt imenser Wichtigkeit und Beteiligung verschiedenster wissenschaftlicher Zweige (Mathematik, Physik, Informatik, Chemie etc.) geworden. 
+Professor Korte/Vygen sagte einmal HIER ZITAT EINFUEGEN. \\
+Die schwierige Aufgabe hierbei besteht darin einen booleschen Schaltplan von atemberaubender Größe auf einem wenige Quadratzentimeter großen Chip unterzubringen.  \\
+Ein Schaltplan (später als Circuit definiert) beschreibt hierbei eine implementierung einer Booleschen Funktion mithilfe kleiner Bauteile (später Gates). Eine solche lässt sich mit mehreren unterschiedlichen Bauplänen (Kandidaten) von Gates realisieren wobei jede Realisation Eigenschaften an Größe und Schnelligkeit (Delay) besitzt. \\
+Die Aufgabe des \TM  ist es nun den Bauplan zu finden, welcher eine Kostenfunktion ( bestehen aus Größe und Delay) optimiert. \\
+In der Vorliegenden Arbeit wird ein PTAS (polynomial time approximation algorithm) für kleine Circuits vorgestellt und aus diesem eine Heuristik für die Anwendung auf dem gesamten Netz des Chips entwickelt.
+
+WAS NOCH FEHLT : KLEINES BEISPIEL DER IMPLEMENTIERUNG GEBEN 
+TERMINOLOGIE VERBESSERN 
+AUF BENUTZTE ARBEITEN VERWEISEN
+
 \section{Terminologie \& grundlegender Algorithmus}
 
+\begin{definition}{Boolesche Variable und Funktion: } \\
+Eine boolsche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $. \\
+Sei $ n, m \in \mathbb{N}$. Eine boolsche Funktion ist eine Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $ mit n inputs und m output. 
+\end{definition}
 
-Das Technology Mapping ist ein Problem, einen gegebenen Circuit (Subjectgraph) unter gegebener Library (Patterngraphs) logisch \"aquivalent umzubauen, sodass er eine gewisse Zielfunktion (z.B. Arrivaltime oder Area) optimiert. Um dies zu pr\"azisieren und eine grundlegende Terminologie für die sp\"ateren Algorithmen zu haben, folgen einige Definitionen.
+
+
+
+
+AB HIER LUCAS VORLAGE
 
 \begin{definition}{Library: }Eine Library ist eine Menge $L$ von Gates (boolsche Funktionen) mit zwei Abbildungen $d, \area: L \to \mathcal{R}_{\geq 0}$, die jedem Gate sowohl eine Verzögerung $d_l$, als auch eine Fl\"ache $\area_l$ zuordnen.
 \end{definition}
