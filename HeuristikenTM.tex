@@ -3,6 +3,7 @@
 \input{header}
 \input{textheader}
 \usepackage{Titelseite}
+\usepackage{bbold}
 \newcommand{\TM}{TehnologyMapping }
 
 %Namen des Verfassers der Arbeit
@@ -35,6 +36,13 @@
 \tableofcontents
 \newpage
 
+TODO: \\
+ZEILENUMBRÜCHE SCHÖNER WIRKEN LASSEN\\
+EINLEITUNG AUF EINE SEITE STRECKEN UND SCHÖNER MACHEN!!\\
+ICH ARBEITE VIEL MIT INVERTERN SOLLEN DIESE ALS EIGENSTÄNDIGE GATES DEFINIERT WERDEN ODER WEITERHIN ALS INPUTINVERTIERUNGEN? GENAUSO MIT DEN OUTPUTINVERTIERUNGEN\\
+BILDER EINFÜGEN
+
+
 \section{Einleitung}
 
 
@@ -51,18 +59,71 @@ AUF BENUTZTE ARBEITEN VERWEISEN
 
 \section{Terminologie \& grundlegender Algorithmus}
 
+Es folgen ein paar grundlegende Definitionen zur Beschreibung des Problems.
+
 \begin{definition}{Boolesche Variable und Funktion: } \\
-Eine boolsche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $. \\
-Sei $ n, m \in \mathbb{N}$. Eine boolsche Funktion ist eine Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $ mit n inputs und m output. 
+Eine boolesche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $. \\
+Sei $ n, m \in \mathbb{N}$. Eine boolesche Funktion ist eine Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $ mit n inputs und m outputs. 
 \end{definition}
 
+\begin{definition}{Gate und Library:}\\
+Ein Gate $g$ mit Eingangsgrad $ n \in \mathbb{N}$ ist ein Tripel $(f_g, d_g, area_g)$. Hierbei sind $d_g, area_g \in \mathbb{R}_{\geq 0}$. Des Weiteren gilt $f_g$ ist eine boolesche Funktion mit $ f_g : \{0,1\}^n \rightarrow \{0, 1\} $. \\
+Eine Library L ist eine Menge von Gates und sei $fanin_{max} := max\{ arity(g) | g \in L \}$.
+\end{definition}
+$area_g$ gibt die Größe des physikalischen Bauteils an und $d_g$ beschreibt die Zeit die ein Signal braucht um von den inputs des Gates zu seinem Output zu gelangen. Dieser Wert lässt sich noch weiter differenzieren indem man $d_g \in \mathbb{R}^n$ wählt und somit Zeiten für jeden der Inputs angeben werden kann. 
 
+\begin{definition}{Circuit:}\\
+Ein Circuit ist ein gerichteter kreisfeier Graph (directed acyclic graph DAG) mit folgenden Eigenschaften. Jeder Knoten gehört zu einer der aufgelisteten Kategorien: 
+\begin{itemize}
+\item{\bf Input} Knoten mit Eingangsgrad Null.
+\item{\bf Gates} mit mindestens einer eingehenden Kante und ausgehenden Kante. Diese korrespondieren zu der Definition oben mit dem Zusatz dass an jedem der Inputs optional ein Inverter liegen kann.
+\item{\bf Outputs} mit genau einer eingehenden Kante und keiner ausgehenden.
+\end{itemize}
+Ein Gate mit mehr als einer ausgehenden Kante wird auch Highfanoutgate genannt.\\
+Ein Circuit realisiert durch Verschachtelung der booleschen Funktionen seiner Gates ebenfalls eine boolesche Funktion. \\
+Zwei Circuits heißen äquivalent, wenn sie die gleiche boolesche Funktion realisieren.
+\end{definition}
+
+In einem Circuit lassen sich Teilgraphen durch ein Gate der Library austauschen. Voraussetzung für einen solchen Tausch ist, dass der veränderte Circuit äquivalent zu dem originalen ist. Dies sicher die folgenden Definitionen. 
+
+\begin{definition}{Match und Kandidat:}\\
+Sei g ein Gate in einem Circuit $C$. Ein (invertiertes) Match m ist ein Tupel $(p_m, I_m, f_m, inv_m)$ welches folgendes enthält:
+\begin{itemize}
+\item Ein Gate p der Library
+\item Eine Menge X von Knoten aus der Circuit und eine Bijektion $ f: X \rightarrow inputs(p)$
+\item Ein Funktion $ inv : inputs(p) \rightarrow \{not\_inv , inv \}$
+\end{itemize}
+So dass der Circuit $C'$, welcher durch den Austausch des Sub-Circuits von X bis g durch das Match (mit den durch inv definierten Invertern an den Inputs) entsteht, äquivalent zu C ist.
+Ein invertiertes Match auf g ist ein Match auf g mit einem Inverter an jedem seiner Outputs.\\
+Ein (invertierter) Kandidat auf g besteht aus einem (invertierten) Match auf g und einem Kandidaten für jeden Input Knoten von g (welcher kein Input von C ist).
+\end{definition}
+
+\begin{definition}{Circuit-Kandidat:}
+Sei C ein Circuit mit Outputknoten Menge O. Eine Circuit-Kandidat K von C ist eine Menge von Kandidaten, sodass $\forall o \in O \, \exists!  h  \in K : h$ ist Kandidat von $ o$ und an jedem Knoten von C an dem sich mehrere Kandidaten überschneiden ist dasselbe Match gewählt.
+\end{definition}
+Folgendes Beispiel visualisiert die vorherigen Definitionen.\\
+BILD EINSETZEN
+
+Ein Circuit-Kandidat C ist eine Möglichkeit den Circuit physikalisch zu realisieren. Wie bereits in der Einleitung bemerkt gilt es nun den besten Kandidaten auf C auszuwählen. Dafür ist ein Maß für Implementierungen von Circuits notwendig. Es folgen zwei geläufige Beispiele. In der Praxis (und im späteren Verlauf dieser Arbeit) wird in der Regel eine convex-Kombination aus beiden verwendet.
+
+\begin{definition}{Area und Delay eines Kandidaten:}\\
+Sei C ein Circuit und K ein Circuit-Kandidat auf C. Dann gilt: \\
+\begin{itemize}
+\item $area(K) = \sum_{g \in gates(C)} (a_g + \sum_{i \in inputs(g)} \mathbb{1}_{\{inv_g(i)==inv\}} area_{inv})$ \\
+wobei $area_{inv}$ die Größe eines Inverters ist.
+\item $AT(K) = $\\$  \max\limits_{k \in can(K)} \{\max\limits_{i \in inputs(k)} \{   d_{gate(k)} + \mathbb{1}_{\{inv_g(i)==inv\}} d_{i} + AT(inp\_can(k,i)) + d_{w(k,i)} \} \}$ 
+\end{itemize}
+Wobei $can(K)$ die Menge der Kandidaten von $K$ sind und $inputs(k)$ sind die Inputknoten des Outputknoten des Kandidaten k. Des Weiteren ist $d_i$ das Delay eines Inverters und $d_{w(k,i)} $ das Delay der Kante zwischen den Knoten $k$ und $i$. $inp\_can(k,i)$ gibt den Kandidaten des $i$'ten Inputs von k zurück. 
+
+\end{definition}
+
+Das Delay (AT) gibt an wann das letzte Signal aus einem der Outputs des Circuit kommt.
 
 
 
 AB HIER LUCAS VORLAGE
 
-\begin{definition}{Library: }Eine Library ist eine Menge $L$ von Gates (boolsche Funktionen) mit zwei Abbildungen $d, \area: L \to \mathcal{R}_{\geq 0}$, die jedem Gate sowohl eine Verzögerung $d_l$, als auch eine Fl\"ache $\area_l$ zuordnen.
+\begin{definition}{Library: }Eine Library ist eine Menge $L$ von Gates (boolesche Funktionen) mit zwei Abbildungen $d, \area: L \to \mathcal{R}_{\geq 0}$, die jedem Gate sowohl eine Verzögerung $d_l$, als auch eine Fl\"ache $\area_l$ zuordnen.
 \end{definition}
 
 \begin{figure}
