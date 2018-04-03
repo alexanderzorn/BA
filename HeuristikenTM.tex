@@ -57,8 +57,14 @@ WAS NOCH FEHLT : KLEINES BEISPIEL DER IMPLEMENTIERUNG GEBEN
 TERMINOLOGIE VERBESSERN 
 AUF BENUTZTE ARBEITEN VERWEISEN
 
-\section{Terminologie \& grundlegender Algorithmus}
+\begin{pproblem}[framed]{Technology Mapping mit Arrivaltimeschranke (Approx.)}
+ Instanz: &  l Circuit $C$ mit $\leq k$ Highfanoutknoten, Library L mit $fanin_{max}, |L|$ , Parameter $\overline{A}$, $\epsilon > 0$.\\
+ \small Aufgabe: & Finde ein Technology Mapping T, welches $\area(T)$, unter der Bedingung $\AT(T) \leq \overline{A}$, bis auf den Faktor $(1+\epsilon)$ optimiert.
+\end{pproblem}
 
+
+\section{Terminologie \& grundlegender Algorithmus}
+\subsection{grundlegende Definitionen}
 Es folgen ein paar grundlegende Definitionen zur Beschreibung des Problems.
 
 \begin{definition}{Boolesche Variable und Funktion: } \\
@@ -118,6 +124,43 @@ Wobei $can(K)$ die Menge der Kandidaten von $K$ sind und $inputs(k)$ sind die In
 \end{definition}
 
 Das Delay (AT) gibt an wann das letzte Signal aus einem der Outputs des Circuit kommt.
+
+\subsection{Kern Algorithmus}
+
+Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits arbeitet, jedoch im weiteren Verlauf dieser Arbeit zu einer Heuristik für allgemeine sehr große Circuits erweitert wird.
+
+
+\begin{problem}[framed]{Separationsorakel}
+ Instanz: & Circuit $C$ mit h\"ochstens $k$ Highfanoutknoten, Library L, sowie Parameter $X$, $\overline{A}, \epsilon$\\
+ Aufgabe: & Berechne ein Technology Mapping $T$, mit $\AT(T) \leq \overline{A}$ und $\area(T) \leq X\cdot(1+\epsilon)$, oder entscheide, dass f\"ur jedes Technology Mapping T, mit $\AT(T) \leq \overline{A}$ bereits $\area(T) > X$ gilt.
+\end{problem}
+
+\begin{problem}[framed]{(einfaches) Technology Mapping}
+  Instanz:  & Circuit $C$ ohne Highfanoutknoten, mit eindeutigem Output $o$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
+  Aufgabe: &  Finde einen Kandidaten $K$ auf $o$, welcher die Arrivaltime/Area minimiert.
+\end{problem}
+
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{(einfaches) Technology Mapping}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit $C$ kreisfrei mit finalem Output $o$, Library $L$}
+
+ bester\_kandidat[] $\gets \emptyset$\;
+ bester\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne alle (invertierten) Matches auf $v$\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      Berechne besten Kandidaten mit $m$ auf $v$\;
+      Update best\_(inv)\_kandidaten\;
+   }
+ }
+ Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
+\end{algorithm}\ \\
+
 
 
 

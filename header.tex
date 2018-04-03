@@ -147,6 +147,47 @@
 \newcommand{\vare}{\varepsilon}
 
 
+%Pietros Problem definition
+% 
+\makeatletter
+\newenvironment{pproblem}[2][]{%
+  \def\pproblem@arg{#1}%
+  \def\pproblem@framed{framed}%
+  \def\pproblem@lined{lined}%
+  \def\pproblem@doublelined{doublelined}%
+  \ifx\pproblem@arg\@empty%
+    \def\pproblem@hline{}%
+  \else%
+    \ifx\pproblem@arg\pproblem@doublelined%
+      \def\pproblem@hline{\hline\hline}%
+    \else%
+      \def\pproblem@hline{\hline}%
+    \fi%
+  \fi%
+  \ifx\pproblem@arg\pproblem@framed%
+    \def\pproblem@table{\tabularx{\textwidth}{|>{\bfseries}lX|c}}%
+    \def\pproblem@title{\multicolumn{2}{|l|}{%
+        \raisebox{-\fboxsep}{\textsc{#2}}%
+      }}%
+  \else
+    \def\pproblem@table{\tabularx{\textwidth}{>{\bfseries}lXc}}%
+    \def\pproblem@title{\multicolumn{2}{l}{%
+        \raisebox{-\fboxsep}{\textsc{#2}}%
+      }}%
+  \fi%
+  \bigskip\par\noindent%
+  \renewcommand{\arraystretch}{1.2}%
+    \pproblem@table%
+      \pproblem@hline%
+      \pproblem@title\\[2\fboxsep]%
+}{%
+      \\\pproblem@hline
+    \endtabularx%
+  \medskip\par%
+}
+\makeatother
+
+
 % IMAGES
 
 \newcommand{\tikzs}[2]{
