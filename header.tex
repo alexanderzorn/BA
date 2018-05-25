@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
+\usepackage{hyperref}
 
 \usepackage{array}
 \usepackage[ngerman]{babel}
@@ -15,7 +16,9 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{latexsym}
+\usepackage{lscape}
 \usepackage{pdflscape}
+\usepackage{wrapfig}
 \usepackage{makecell}
 \usepackage{makeidx}
 \usepackage{multirow}
@@ -28,12 +31,19 @@
 \usepackage{standalone}
 \usepackage{slantsc}
 \usepackage{lmodern}
-\usepackage[labelformat=empty, font={scriptsize}]{subcaption}
-\usepackage[labelformat=empty, font={scriptsize}]{caption}
+\usepackage[font=scriptsize]{subcaption}
+\usepackage[font=scriptsize]{caption}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \usepackage{circuitikz}
 \usepackage{changepage}
+\usepackage{dcolumn}
+
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{environ}
+
+\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
 
 \usetikzlibrary{shapes}
 \usetikzlibrary{matrix, arrows,fit,shapes.gates.logic.US,shapes.gates.logic.IEC,calc,backgrounds,decorations.pathmorphing}
@@ -51,6 +61,7 @@
 \makeatother
 
 \newcommand{\area}{\text{area}}
+\newcommand{\AT}{\text{AT}}
 \newcommand{\uniquecone}{\text{unique\_cone}}
 \newcommand{\uniquearea}{\text{unique\_area}}
 
@@ -82,6 +93,7 @@
 \definecolor{green}{rgb}{0, 0.8, 0.3}
 \definecolor{blue}{RGB}{10, 0, 128}
 \definecolor{yellow}{rgb}{1,1,0}
+\definecolor{middle}{rgb}{.875,.875,.5}
 \definecolor{orange}{rgb}{1,0.6,0}
 \definecolor{cyan}{rgb}{0,0.7,1}
 \definecolor{purple}{rgb}{0.5,0,0.8}
@@ -91,7 +103,7 @@
 \SetArgSty{textup}
 \renewcommand\thempfootnote{\arabic{mpfootnote}}
 \renewcommand{\thealgocf}{}
-
+\renewcommand{\epsilon}{\varepsilon}
 % \SetKwComment{Comment}{}{}
 
 %
@@ -101,6 +113,7 @@
 \newcommand{\Restr}{\textsc{And-Or}-Path Restructuring}
 \newcommand{\AOP}{\textsc{And-Or}-Path}
 \newcommand{\aop}{\textsc{And-Or}-path}
+
 
 % \pgfpagesuselayout{resize to}[a4paper,landscape,border shrink=5mm]
 
@@ -150,43 +163,42 @@
 %Pietros Problem definition
 % 
 \makeatletter
-\newenvironment{pproblem}[2][]{%
-  \def\pproblem@arg{#1}%
-  \def\pproblem@framed{framed}%
-  \def\pproblem@lined{lined}%
-  \def\pproblem@doublelined{doublelined}%
-  \ifx\pproblem@arg\@empty%
-    \def\pproblem@hline{}%
+\newenvironment{problem}[2][]{%
+  \def\problem@arg{#1}%
+  \def\problem@framed{framed}%
+  \def\problem@lined{lined}%
+  \def\problem@doublelined{doublelined}%
+  \ifx\problem@arg\@empty%
+    \def\problem@hline{}%
   \else%
-    \ifx\pproblem@arg\pproblem@doublelined%
-      \def\pproblem@hline{\hline\hline}%
+    \ifx\problem@arg\problem@doublelined%
+      \def\problem@hline{\hline\hline}%
     \else%
-      \def\pproblem@hline{\hline}%
+      \def\problem@hline{\hline}%
     \fi%
   \fi%
-  \ifx\pproblem@arg\pproblem@framed%
-    \def\pproblem@table{\tabularx{\textwidth}{|>{\bfseries}lX|c}}%
-    \def\pproblem@title{\multicolumn{2}{|l|}{%
-        \raisebox{-\fboxsep}{\textsc{#2}}%
+  \ifx\problem@arg\problem@framed%
+    \def\problem@table{\tabularx{\textwidth}{|>{\bfseries}lX|c}}%
+    \def\problem@title{\multicolumn{2}{|l|}{%
+        \raisebox{-\fboxsep}{\textsc{\large #2}}%
       }}%
   \else
-    \def\pproblem@table{\tabularx{\textwidth}{>{\bfseries}lXc}}%
-    \def\pproblem@title{\multicolumn{2}{l}{%
+    \def\problem@table{\tabularx{\textwidth}{>{\bfseries}lXc}}%
+    \def\problem@title{\multicolumn{2}{l}{%
         \raisebox{-\fboxsep}{\textsc{#2}}%
       }}%
   \fi%
   \bigskip\par\noindent%
   \renewcommand{\arraystretch}{1.2}%
-    \pproblem@table%
-      \pproblem@hline%
-      \pproblem@title\\[2\fboxsep]%
+    \problem@table%
+      \problem@hline%
+      \problem@title\\[2\fboxsep]%
 }{%
-      \\\pproblem@hline
+      \\\problem@hline
     \endtabularx%
   \medskip\par%
 }
 \makeatother
-
 
 % IMAGES
 

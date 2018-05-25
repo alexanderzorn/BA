@@ -34,34 +34,17 @@
 \maketitle
 
 \tableofcontents
-\newpage
-
-TODO: \\
-ZEILENUMBRÜCHE SCHÖNER WIRKEN LASSEN\\
-EINLEITUNG AUF EINE SEITE STRECKEN UND SCHÖNER MACHEN!!\\
-ICH ARBEITE VIEL MIT INVERTERN SOLLEN DIESE ALS EIGENSTÄNDIGE GATES DEFINIERT WERDEN ODER WEITERHIN ALS INPUTINVERTIERUNGEN? GENAUSO MIT DEN OUTPUTINVERTIERUNGEN\\
-BILDER EINFÜGEN
-
-
+\newpage 
 \section{Einleitung}
-
-
-Das Chipdesign ist ein Forschungsgebiet, welches in den letzten Jahrzehnten eine immer bedeutendere Rolle eingenommen hat. Es ist ein zu einem Projekt imenser Wichtigkeit und Beteiligung verschiedenster wissenschaftlicher Zweige (Mathematik, Physik, Informatik, Chemie etc.) geworden. 
-Professor Korte/Vygen sagte einmal HIER ZITAT EINFUEGEN. \\
-Die schwierige Aufgabe hierbei besteht darin einen booleschen Schaltplan von atemberaubender Größe auf einem wenige Quadratzentimeter großen Chip unterzubringen.  \\
-Ein Schaltplan (später als Circuit definiert) beschreibt hierbei eine implementierung einer Booleschen Funktion mithilfe kleiner Bauteile (später Gates). Eine solche lässt sich mit mehreren unterschiedlichen Bauplänen (Kandidaten) von Gates realisieren wobei jede Realisation Eigenschaften an Größe und Schnelligkeit (Delay) besitzt. \\
-Die Aufgabe des \TM  ist es nun den Bauplan zu finden, welcher eine Kostenfunktion ( bestehen aus Größe und Delay) optimiert. \\
-In der Vorliegenden Arbeit wird ein PTAS (polynomial time approximation algorithm) für kleine Circuits vorgestellt und aus diesem eine Heuristik für die Anwendung auf dem gesamten Netz des Chips entwickelt.
-
-WAS NOCH FEHLT : KLEINES BEISPIEL DER IMPLEMENTIERUNG GEBEN 
-TERMINOLOGIE VERBESSERN 
-AUF BENUTZTE ARBEITEN VERWEISEN
-
-\begin{pproblem}[framed]{Technology Mapping mit Arrivaltimeschranke (Approx.)}
- Instanz: &  l Circuit $C$ mit $\leq k$ Highfanoutknoten, Library L mit $fanin_{max}, |L|$ , Parameter $\overline{A}$, $\epsilon > 0$.\\
- \small Aufgabe: & Finde ein Technology Mapping T, welches $\area(T)$, unter der Bedingung $\AT(T) \leq \overline{A}$, bis auf den Faktor $(1+\epsilon)$ optimiert.
-\end{pproblem}
-
+TODO BILD ERSTELLEN/EINSETZEN\\
+AUF BENUTZTE ARBEITEN VERWEISEN ?\\
+Der zunehmende Gebrauch elektronischer Geräte verlangt nach immer leistungsfähigeren Computerchips. Ein solcher wenige Quadratzentimeter große Chip beherbergt bis zu mehreren Milliarden Transistoren, welche, durch Drähte verbunden, gemeinsam eine Logische Funktion errechnen. Das Chipdesign beschreibt die Aufgabe aus einer gegeben Logischen Funktion einen herstellbaren Chip zu entwerfen, welcher diese Funktion realisiert. \\ 
+Mithilfe von, aus wenigen Transistoren konstruierten, Bauteilen (genannt Gates, z.B.: AND, OR, INV) lässt sich eine Logische Funktion nachbilden. Abbildung 1 zeigt dies an einem kleinen Beispiel.  Die Realisierung einer solchen Funktion ist jedoch nicht eindeutig, wie die in Abbildung 2 gezeigte Nachbildung, beweist. \\
+Die Größe der Menge aller möglicher Baupläne (später Circuit) für eine Logische Funktion hängt maßgeblich von der Anzahl der zur Verfügung stehenden Bauteile, sowie von dem Aufbau der Funktion, ab.
+Es stellt sich heraus, dass im Allgemeinen eine Vielzahl möglicher Realisierungen einer Logischen Funktion existieren. Jedes Bauteil besitzt physikalische Eigenschaften an Größe, Geschwindigkeit (Delay) etc.. Somit besitzt auch jede Realisation solche Eigenschaften. \\
+Ziel des \TM ist es für eine Logische Funktion eine Realisierung zu finden, welche eine Kostenfunktion (bestehend aus den physikalischen Eigenschaften) optimiert. Die Wahl der Implementierung hat direkte Auswirkungen auf die  Schnelligkeit, Größe und den Stromverbrauch des fertigen Chips. Hierbei geht das \TM von einer bereits realisierten Logischen Funktion aus und baut diese um zu einer möglichst kostengünstigen Alternative um. \\
+Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in akzeptabler Zeit finden. Die Lösung dieses Problem für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in akzeptabler Zeit einen möglichst kostengünstigen Umbau ermöglicht.
+\newpage
 
 \section{Terminologie \& grundlegender Algorithmus}
 \subsection{grundlegende Definitionen}
@@ -129,12 +112,6 @@ Das Delay (AT) gibt an wann das letzte Signal aus einem der Outputs des Circuit 
 
 Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits arbeitet, jedoch im weiteren Verlauf dieser Arbeit zu einer Heuristik für allgemeine sehr große Circuits erweitert wird.
 
-
-\begin{problem}[framed]{Separationsorakel}
- Instanz: & Circuit $C$ mit h\"ochstens $k$ Highfanoutknoten, Library L, sowie Parameter $X$, $\overline{A}, \epsilon$\\
- Aufgabe: & Berechne ein Technology Mapping $T$, mit $\AT(T) \leq \overline{A}$ und $\area(T) \leq X\cdot(1+\epsilon)$, oder entscheide, dass f\"ur jedes Technology Mapping T, mit $\AT(T) \leq \overline{A}$ bereits $\area(T) > X$ gilt.
-\end{problem}
-
 \begin{problem}[framed]{(einfaches) Technology Mapping}
   Instanz:  & Circuit $C$ ohne Highfanoutknoten, mit eindeutigem Output $o$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
   Aufgabe: &  Finde einen Kandidaten $K$ auf $o$, welcher die Arrivaltime/Area minimiert.
@@ -161,8 +138,25 @@ Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits ar
  Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
 \end{algorithm}\ \\
 
+Dieser geht in topologischer Reihenfolge durch die Knoten v des Graphen und berechnet alle Matche auf v. Diese Matche werden dann zu einem Kandidaten ergänzt. Dieser Schritt (6) lässt sich sehr schnell implementieren, da für jedes Match m die besten Kandidaten der Inputs von m bereits bekannt sind.\\
+ Ohne Highfanout-Knoten überschneiden sich diese nicht, und der beste Kandidat (inklusive der invertierten Verisonen) für jedes Match ist schnell gefunden. Von diesen wird der beste (in Bezug auf Area oder Arrivaltime) in Schritt 7 zu zur Liste der besten Kandidaten hinzugefügt.\\
+ 
+\begin{cor}{Das (einfache) \TM besitzt \\ $\mathcal{O}(  |V(C)||L| fanin_{max})$-Laufzeit}\\
+ 	  Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich in \textcolor{red}{ wielange braucht es ein zu checken ob ein gate der Library ein Match eines Knoten sein kann ? ? plus Begründung! Laufzeit anpassen}. Schritt 6 ist wie bereits erwähnt schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs der beste Kandidat verlinkt werden muss. Die Invertierten Matche werden nur gebarucht wenn der Input invertiert war. Somit braucht $\mathcal{O}(fanin_{max})$. Schritt 3 und 5 sind zwei verschachtelten Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
+Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)||L| fanin_{max})$. \hfill $\Box$
+\end{cor}
 
 
+\newpage
+\section{Allgemeiner Algorithmus und Heuristik}
+\subsection{Tradeoffprobleme}
+
+
+
+\newpage
+
+ a
+\newpage
 
 AB HIER LUCAS VORLAGE
 
