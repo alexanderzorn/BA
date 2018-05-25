@@ -5,7 +5,7 @@
 \usepackage{Titelseite}
 \usepackage{bbold}
 \usepackage{graphicx}
-\newcommand{\TM}{TehnologyMapping }
+\newcommand{\TM}{TechnologyMapping }
 
 %Namen des Verfassers der Arbeit
 \author{Alexander Zorn}
@@ -57,7 +57,7 @@ Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegeb
 Es folgen ein paar grundlegende Definitionen zur Beschreibung des Problems.
 
 \begin{definition}{Boolesche Variable und Funktion: } \\
-Eine boolesche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $. \\
+Eine boolesche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $.
 Sei $ n, m \in \mathbb{N}$. Eine boolesche Funktion ist eine Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $ mit n inputs und m outputs. 
 \end{definition}
 
@@ -163,65 +163,73 @@ Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)||L| fanin_{max})$. \hfill $\
 \newpage
 \section{Allgemeiner Algorithmus und Heuristik}
 \subsection{Tradeoffprobleme}
+Der oben vorgestellte Algorithmus ist in der Lage den bestmöglichen Umbau eines eingeschränkten Circuits zu bezüglich Area oder Delay zu errechnen. \\
+Es existiert  ein Tradeoff zwischen beiden Area und Delay. Dies hat zur Folge, dass ein möglichst kleiner Circuit im Allgemeinen sehr langsam ist und man bei einer sehr schnellen Lösung mit einem großen Platzverbrauch rechnen muss. In der Anwendung des \TM ist jedoch weder ein sehr langsamer noch ein besonders grosser Circuit akzeptabel. Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist bezüglich einer Konvexkombination oder einer Schranke zu optimieren. Daraus ergeben sich die beiden folgenden Optimierungs-Probleme: \\
+\textcolor{red}{Hier beide Probleme einfügen}\\
+
+
+Diese \textcolor{red}{diese Probleme sind äquvalent Beweis? oder verweis aus quelle}
+
+Dadurch ergibt sich folgende Problemstellung für den Algorithmus: An jedem Knoten v lässt sich jetzt nicht mehr nur der Kandidat speichern, welche die Kostenfunktion an v optimiert. Angenommen v liegt in einem sehr Delay kritischen Gebiet des Graphen, dann kann es sehr gut sein dass es für einen Nachfolger von v sehr günstig ist v vollständig auf Delay hin zu optimieren und seine Kosten zu verbessern, was jedoch nicht möglich ist wenn der einzige an v gespeicherte Kandidat dieser ist der die Kosten ( Konvexkombination) an optimiert. \textcolor{red}{diesen satz verbessern!}\\
+Die Kosten eines Kandidaten k sind somit nicht $\lambda AT(k) +(1-\lambda )area(k)$,  sondern das Tupel $(AT(k), area(k))$.
+Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss. Dazu folgende Definition\\
+
+\begin{definition}{(dominierte Kandidaten)}\\
+	Seien $k_1, k_2$ Kandidaten desselben Knotens. Dann wird $k_1$ von $k_2$ dominiert, wenn gilt:\\
+	$AT(k_1) < AT(k_2) und area(k_1) \leq area(k_2)$\\
+	$	AT(k_1) \leq AT(k_2) und area(k_1) < area(k_2)$\\	
+\end{definition}
+
+Eine optimale Lösung des \TM verwendet offenbar (\textcolor{red}{in einem Korollar beweisen ?}) nur nicht-dominierte Kandidaten, woraus folgt, dass nur diese während der Ausführung des Algorithmus gespeichert werden müssen.\\
+Die Menge der noch bleibenden Kandidaten lassen sich in sogenannten Tradeoff-Kurven speichern (siehe Abbildung ?? \textcolor{red}{Abbildung hinzufügen.. kann ich Lucas verwenden ?}). Welche jeden Kandidaten zweidimensional anhand seiner Kosten erfasst.
+
+
+\textcolor{red}{Next things todo: Algorithmus erweitern und dann auf die Filterung mit Buckets eingehen inclusive der funktionierenden epsilon betrachtung -> ohne beweis mit erklärung}
+
+ZSFG:
+
+1. Vorstellung der Probleme: die da wären :
+
+	-Tradeoffprobleme -> mehrere Kandidaten müssen gespeichert werden. Einführung der Tradeoff Kurven und Bucket Filterungen (wir sind noch in Bäumen dies lässt sich also noch in den Alg einbauen und beweisen) 
+	
+	-Highfanoutgates -> Einführung von Klassen widerrum erweitern des TM algos 
+	
+	=> bei konstantem k gibt es zu diesem Punkt noch einen FPTAS -> besonder hilfreich auf schlechteste Wege pfade kann auch erst später erwähnung finden
+	
+	-required ATs einführen und sagen dass sie aktuell noch äquivalent sind 
+	
+	-multiple outputs -> sagen, dass optimieren auf AT nicht mehr Funktioniert da es nicht nur eine AT gibt. man könnten die latest AT verbessern, das ist jedoch nicht das was man möchte. neue Kosten optimierung mit RAts definieren. Des weiteren nicht vergessen, dass über outputs nicht gemacht werden darf 
+	
+	-reduandant gates -> soll das hier hin ? 
+	
+	=> Algorithmus verallgemeiner und erste Heuristik bauen, welche auf Area  und RATs hin optimiert
+
+\section{Präprozessing  zusätliche Addons}
+	-auseinanderbauen von gates : Beispiele und einegehen auf vor und nachteile genauerer bezug in der Laufzeitanalyse
+	
+	-errechnen kleiner optimal gelöster häufig vorkommender Instanzen -> unabh. von dem auseinanderbauen.  -> lässt sich beweisen dass eine auseinandergebaute instanz sich in das bestmögliche Machting matchen lässt ? 
+	
+
+\section{Weitere Optimierungskriterien}
+	-Vt Optimierung -> Optimierung bezüglich Power
+	
+	-Layer assignment -> sehr kurz und grobe übersicht kommt später noch auf die TODOs 
+	
+	
+\section{Version der Heuristik, welche obige Kriterien beherzigt}
+
+\section{Laufzeitanalyse}
+
+\section{Fazit und Ausblick}
+	
+
+
+
+
 
 
 
 \newpage
-
- a
-\newpage
-
-AB HIER LUCAS VORLAGE
-
-\begin{definition}{Library: }Eine Library ist eine Menge $L$ von Gates (boolesche Funktionen) mit zwei Abbildungen $d, \area: L \to \mathcal{R}_{\geq 0}$, die jedem Gate sowohl eine Verzögerung $d_l$, als auch eine Fl\"ache $\area_l$ zuordnen.
-\end{definition}
-
-\begin{figure}
- 
-\end{figure}
-
-
-\begin{definition}{Circuit: }Ein Circuit $C$ auf der Library $L$ ist ein zusammenhängender gerichteter azyklischer Graph (DAG), bei dem jeder Knoten einer dieser 3 Arten entspricht:
- \begin{itemize}
-  \item einem Inputknoten ohne eingehende Kanten
-  \item einem Gate aus L mit $\geq$ 1 eingehenden und $\geq$ 1 ausgehenden Kanten
-  \item einem Outputknoten ohne ausgehende Kanten
- \end{itemize}
- Jeder Gateknoten kann an jeder seiner eingehenden Kanten einen Inverter vorschalten.
- Für einen Knoten $v$ sei fanin($v$) die Zahl seiner eingehenden, fanout($v$) die Zahl seiner ausgehenden Kanten. Knoten mit fanout($v$) $>$ 1 heißen Highfanoutknoten. Wir betrachten vorerst nur Circuits mit exakt einem Outputknoten.
-\end{definition}
-
-\begin{definition}{cone: }Für einen Knoten g aus einem DAG S bezeichne \[cone\left(g\right) := S\left[V\cup\lbrace g\rbrace\right], V = \lbrace v \in V(S) : \exists \text{$v$-$g$-Weg in } S\rbrace\]
-Sowie für eine Knotenmenge G sei $cone(G) := S\left[\cup_{g \in G}{V(cone(g))}\right]$
- 
-\end{definition}
-
-
-\begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{TechnologyMapping auf einer Arboreszens}
- \SetKwInOut{Task}{Task}
- \KwIn{Circuit C kreisfrei mit finalem Output o, Library L verfügbarer Gates}
-
- bester\_kandidat[] $\gets \emptyset$\;
- bester\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $n \in V(G)$ in topologischer Ordnung}
- {
-   berechne alle (invertierte) Matches auf n\;
-   \ForEach{ Match $m$ auf $n$ }
-   {
-      Berechne besten Kandidaten mit $m$ auf $n$\;
-      Update best\_(inv)\_kandidaten\;
-   }
- }
- $best\_final \gets$ bester\_kandidat[o] \;
- Implementiere C entsprechend $best\_final$\;
-\end{algorithm}\ \\
-
-
-
-
 %\clearpage
 
 \end{document}

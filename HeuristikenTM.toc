@@ -6,3 +6,8 @@
 \contentsline {subsection}{\numberline {2.2}Kern Algorithmus}{5}{subsection.2.2}
 \contentsline {section}{\numberline {3}Allgemeiner Algorithmus und Heuristik}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{7}{subsection.3.1}
+\contentsline {section}{\numberline {4}Pr\IeC {\"a}prozessing zus\IeC {\"a}tliche Addons}{8}{section.4}
+\contentsline {section}{\numberline {5}Weitere Optimierungskriterien}{8}{section.5}
+\contentsline {section}{\numberline {6}Version der Heuristik, welche obige Kriterien beherzigt}{9}{section.6}
+\contentsline {section}{\numberline {7}Laufzeitanalyse}{9}{section.7}
+\contentsline {section}{\numberline {8}Fazit und Ausblick}{9}{section.8}
