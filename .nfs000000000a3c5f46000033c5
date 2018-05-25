@@ -44,6 +44,7 @@ Der zunehmende Gebrauch elektronischer Geräte verlangt nach immer leistungsfäh
 		\includegraphics[]{pictures/compiled/einfBsp}
 	}
 		\caption{Zwei Realisierungen der Logischen Funktion $\neg((w\lor x) \land (y \lor z))$}
+ \label{fig:bsplib}
 \end{wrapfigure}
 Mithilfe von, aus wenigen Transistoren konstruierten, Bauteilen (genannt Gates, z.B.: AND, OR, INV, OAI) lässt sich eine Logische Funktion nachbilden. Abbildung 1 (links) zeigt dies an einem kleinen Beispiel.  Die Realisierung einer solchen Funktion ist jedoch nicht eindeutig, wie die in Abbildung 1 (links und rechts) gezeigte Nachbildung, beweist. \\
 Die Größe der Menge aller möglicher Baupläne (später Circuit) für eine Logische Funktion hängt maßgeblich von der Anzahl der zur Verfügung stehenden Bauteile, sowie von dem Aufbau der Funktion, ab.
@@ -65,14 +66,9 @@ Sei $ n, m \in \mathbb{N}$. Eine boolesche Funktion ist eine Funktion $ f : \{ 0
 Ein Gate $g$ mit Eingangsgrad $ n \in \mathbb{N}$ ist ein Tripel $(f_g, d_g, area_g)$. Hierbei sind $d_g, area_g \in \mathbb{R}_{\geq 0}$. Des Weiteren gilt $f_g$ ist eine boolesche Funktion mit $ f_g : \{0,1\}^n \rightarrow \{0, 1\} $. \\
 Eine Library L ist eine Menge von Gates und sei $fanin_{max} := max\{ arity(g) | g \in L \}$.
 \end{definition}
-\begin{figure}[h]
-\begin{center}
- \includegraphics[height = 80pt]{./pictures/compiled/new_library.pdf}
- \caption{Beispiel einer Library}
- \label{fig:bsplib}
-\end{center}
-\end{figure}
 $area_g$ gibt die Größe des physikalischen Bauteils an und $d_g$ beschreibt die Zeit die ein Signal braucht um von den inputs des Gates zu seinem Output zu gelangen. Dieser Wert lässt sich noch weiter differenzieren indem man $d_g \in \mathbb{R}^n$ wählt und somit Zeiten für jeden der Inputs angeben werden kann.\\
+	\includegraphics[]{pictures/compiled/new_library}
+	\caption{Beispiel einer Library}
 
 \begin{definition}{Circuit:}\\
 Ein Circuit ist ein gerichteter kreisfeier Graph (directed acyclic graph DAG) mit folgenden Eigenschaften. Jeder Knoten gehört zu einer der aufgelisteten Kategorien: 

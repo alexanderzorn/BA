@@ -1,0 +1,109 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{gate_header}
+\usepackage{rotating}
+\begin{document}
+\begin{tikzpicture}
+
+
+\begin{scope}[yscale=-1,xscale=1]
+ 
+
+% 
+% \node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (1,0) (j0){};
+% \node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (2,2) (j1){};
+% \node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (0,2) (j2){};
+
+% \node (i1) at (-0.1,3){};
+% \node (i2) at (0.1,3){};
+% \node (i3) at (1.9,3){};
+% \node (i4) at (2.1,3){};
+% \node (o1) at (1,-1){};
+% 
+% \draw[-, thick] (j1.output) -- (j0.input 1);
+% \draw[-, thick] (j2.output) -- (j0.input 2);
+% 
+% \draw[-, thick] (i1) -- (j2.input 2);
+% \draw[-, thick] (i2) -- (j2.input 1);
+% 
+% \draw[-, thick] (i3) -- (j1.input 2);
+% \draw[-, thick] (i4) -- (j1.input 1);
+% \draw[-, thick] (j0.output) -- (o1);
+% 
+% 
+% 
+% \draw[->, thick] (3,1) -- (4,1);
+% 
+% 
+% \node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nnnn, rotate=90, thick] at (5,1) (j4){};
+% 
+% \node (i5) at (4.7,3){};
+% \node (i6) at (5.3,3){};
+% \node (i7) at (4.9,3){};
+% \node (i8) at (5.1,3){};
+% 
+% \node (o2) at (5,-1){}; 
+% 
+% \draw[-, thick] (i5) -- (j4.input 4);
+% \draw[-, thick] (i7) -- (j4.input 3);
+% \draw[-, thick] (i8) -- (j4.input 2);
+% \draw[-, thick] (i6) -- (j4.input 1);
+% 
+% \draw[-, thick] (o2) -- (j4.output);
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%OAI%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\node[fill=red, outer sep=0pt, nand gate US, draw, logic gate inputs=nn, rotate=90, thick] at (1,0-4.5) (j5){};
+\node[fill=green, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=90, thick] at (2,2-4.5) (j6){};
+\node[fill=green, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=90, thick] at (0,2-4.5) (j7){};
+
+
+
+\node (i9) at (-0.1,3-4.5){};
+\node (i10) at (0.1,3-4.5){};
+\node (i11) at (1.9,3-4.5){};
+\node (i12) at (2.1,3-4.5){};
+\node (o3) at (1,-1-4.5){};
+
+\draw[-, thick] (j6.output) -- (j5.input 1);
+\draw[-, thick] (j7.output) -- (j5.input 2);
+
+\draw[-, thick] (i9) -- (j7.input 2);
+\draw[-, thick] (i10) -- (j7.input 1);
+
+\draw[-, thick] (i11) -- (j6.input 2);
+\draw[-, thick] (i12) -- (j6.input 1);
+\draw[-, thick] (j5.output) -- (o3);
+
+
+
+\draw[->, thick] (3,1-4.5) -- (4,1-4.5);
+
+
+%\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nnnn, rotate=90, thick] at (5,1-4.5) (j8){};
+\oaigatef{OA}{5}{1-4.5}{1}
+
+\node (i13) at (4.6,3-4.5){};
+\node (i14) at (5.4,3-4.5){};
+\node (i15) at (4.8,3-4.5){};
+\node (i16) at (5.2,3-4.5){};
+
+\node (o4) at (5,-1-4.5){}; 
+
+\draw[-, thick] (i13) -- (OAo1.input 2);
+\draw[-, thick] (i15) -- (OAo1.input 1);
+\draw[-, thick] (i16) -- (OAo2.input 2);
+\draw[-, thick] (i14) -- (OAo2.input 1);
+
+\draw[-, thick] (o4) -- (OAa.output);
+
+
+
+
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

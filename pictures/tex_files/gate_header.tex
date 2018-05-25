@@ -1,0 +1,81 @@
+% HYBRID GATES FOR CIRCUITIKZ
+%
+% Commands for drawing hybrid gates with TikZ.
+% Each command has the four arguments name, x, y, scale (in this order).
+% We name the subgates by appending the following to name:
+%
+%   AO & AOI       OA & OAI
+%  ----  ----     ----  ----
+% |    ||    |   |    ||    |
+% | a1 || a2 |   | o1 || o2 |
+% |    ||    |   |    ||    |
+%  ----  ----     ----  ----
+%     ----           ----
+%    |    |         |    |
+%    | o  |         | a  |
+%    |    |         |    |
+%     ----           ----
+%
+% And a2/o2 doesn't exist if we draw a hybrid gate with only 3 inputs.
+%
+% Example: \oaigatet{gate}{1}{3}{2} draws an OAI3 gate at (1,3) with scale 2 
+%          and its subgates are named gatea and gateo1
+%
+% Warning: Be careful that your macro names don't conflict with the names used here.
+%          All macro names in the implementation are prefixed by calc.
+%
+% \aogatet -> AO3 Gate
+% \aogatef -> AO4 Gate
+% \oagatet -> OA3 Gate
+% \oagatef -> OA4 Gate
+% \aoigatet -> AOI3 Gate
+% \aoigatef -> AOI4 Gate
+% \oaigatet -> OAI3 Gate
+% \oaigatef -> OAI4 Gate
+\newcommand{\aogatef}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			 \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			 \pgfmathsetmacro{\calcxtwo}{(#2) + (#4) * 0.3125}
+			 \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1a1){};
+			 \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxtwo, \calcy) (#1a2){};
+			 \node[fill=yellow, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1o){};}
+			  
+\newcommand{\aogatet}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			 \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			 \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1a1){};
+			 \node[fill=yellow, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1o){};}
+			 
+\newcommand{\oagatef}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			 \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			 \pgfmathsetmacro{\calcxtwo}{(#2) + (#4) * 0.3125}
+			 \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1o1){};
+			 \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxtwo, \calcy) (#1o2){};
+			 \node[fill=orange, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1a){};}
+			  
+\newcommand{\oagatet}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			 \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			 \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1o1){};
+			 \node[fill=orange, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1a){};}
+			 
+\newcommand{\aoigatef}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			  \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			  \pgfmathsetmacro{\calcxtwo}{(#2) + (#4) * 0.3125}
+			  \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1a1){};
+			  \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxtwo, \calcy) (#1a2){};
+			  \node[fill=yellow, outer sep=0pt, nor gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1o){};}
+			  
+\newcommand{\aoigatet}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			  \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			  \node[fill=yellow, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1a1){};
+			  \node[fill=yellow, outer sep=0pt, nor gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1o){};}
+			 
+\newcommand{\oaigatef}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			  \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.8)}
+			  \pgfmathsetmacro{\calcxtwo}{(#2) + (#4) * 0.3125}
+			  \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1o1){};
+			  \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxtwo, \calcy) (#1o2){};
+			  \node[fill=orange, outer sep=0pt, nand gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1a){};}
+			  
+\newcommand{\oaigatet}[4]{\pgfmathsetmacro{\calcxone}{(#2) - (#4) * 0.3125}
+			  \pgfmathsetmacro{\calcy}{(#3) + (#4) * 0.75)}
+			  \node[fill=orange, outer sep=0pt, or gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (\calcxone, \calcy) (#1o1){};
+			  \node[fill=orange, outer sep=0pt, nand gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=#4] at (#2, #3) (#1a){};}
