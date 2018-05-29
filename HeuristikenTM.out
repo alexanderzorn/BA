@@ -4,8 +4,14 @@
 \BOOKMARK [2][-]{subsection.2.2}{Kern Algorithmus}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Allgemeiner Algorithmus und Heuristik}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Pr\344prozessing zus\344tliche Addons}{}% 7
-\BOOKMARK [1][-]{section.5}{Weitere Optimierungskriterien}{}% 8
-\BOOKMARK [1][-]{section.6}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 9
-\BOOKMARK [1][-]{section.7}{Laufzeitanalyse}{}% 10
-\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{required Arrivaltimes}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{zu lange Kanten}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.5}{Mehrere Outputs}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.6}{Teilweise redundante Subcircuits}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.7}{Allgemeiner Algorithmus und erste Heuristik}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Pr\344prozessing zus\344tzliche Addons}{}% 13
+\BOOKMARK [1][-]{section.5}{Weitere Optimierungskriterien}{}% 14
+\BOOKMARK [1][-]{section.6}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 15
+\BOOKMARK [1][-]{section.7}{Laufzeitanalyse}{}% 16
+\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 17
