@@ -49,7 +49,9 @@ Mithilfe von, aus wenigen Transistoren konstruierten, Bauteilen (genannt Gates, 
 Die Größe der Menge aller möglicher Baupläne (später Circuit) für eine Logische Funktion hängt maßgeblich von der Anzahl der zur Verfügung stehenden Bauteile, sowie von dem Aufbau der Funktion, ab.
 Es stellt sich heraus, dass im Allgemeinen eine Vielzahl möglicher Realisierungen einer Logischen Funktion existieren. Jedes Bauteil besitzt physikalische Eigenschaften an Größe, Geschwindigkeit (Delay) etc.. Somit besitzt auch jede Realisation solche Eigenschaften. \\
 Ziel des \TM ist es für eine Logische Funktion eine Realisierung zu finden, welche eine Kostenfunktion (bestehend aus den physikalischen Eigenschaften) optimiert. Die Wahl der Implementierung hat direkte Auswirkungen auf die  Schnelligkeit, Größe und den Stromverbrauch des fertigen Chips. Hierbei geht das \TM von einer bereits realisierten Logischen Funktion aus und baut diese um zu einer möglichst kostengünstigen Alternative um. \\
-Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in akzeptabler Zeit finden. Die Lösung dieses Problem für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in akzeptabler Zeit einen möglichst kostengünstigen Umbau ermöglicht.
+Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in akzeptabler Zeit finden. Die Lösung dieses Problem für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in akzeptabler Zeit einen möglichst kostengünstigen Umbau ermöglicht.\\
+\textcolor{red}{am ende hier noch eine kurze Quellenübersicht geben an lukas orientiert}
+
 \newpage
 
 \section{Terminologie \& grundlegender Algorithmus}
@@ -101,11 +103,11 @@ Ein invertiertes Match auf g ist ein Match auf g mit einem Inverter an jedem sei
 Ein (invertierter) Kandidat auf g besteht aus einem (invertierten) Match auf g und einem Kandidaten für jeden Input Knoten von g (welcher kein Input von C ist).
 \end{definition}
 
-\begin{definition}{Circuit-Kandidat:}
+\begin{definition}{Circuit-Kandidat:}\\
 Sei C ein Circuit mit Outputknoten Menge O. Eine Circuit-Kandidat K von C ist eine Menge von Kandidaten, sodass $\forall o \in O \, \exists!  h  \in K : h$ ist Kandidat von $ o$ und an jedem Knoten von C an dem sich mehrere Kandidaten überschneiden ist dasselbe Match gewählt.
 \end{definition}
 Folgendes Beispiel visualisiert die vorherigen Definitionen.\\
-BILD EINSETZEN
+\textcolor{red}{BILD EINSETZEN}
 
 Ein Circuit-Kandidat C ist eine Möglichkeit den Circuit physikalisch zu realisieren. Wie bereits in der Einleitung bemerkt gilt es nun den besten Kandidaten auf C auszuwählen. Dafür ist ein Maß für Implementierungen von Circuits notwendig. Es folgen zwei geläufige Beispiele. In der Praxis (und im späteren Verlauf dieser Arbeit) wird in der Regel eine convex-Kombination aus beiden verwendet.
 
@@ -114,13 +116,14 @@ Sei C ein Circuit und K ein Circuit-Kandidat auf C. Dann gilt: \\
 \begin{itemize}
 \item $area(K) = \sum_{g \in gates(C)} (a_g + \sum_{i \in inputs(g)} \mathbb{1}_{\{inv_g(i)==inv\}} area_{inv})$ \\
 wobei $area_{inv}$ die Größe eines Inverters ist.
-\item $AT(K) = $\\$  \max\limits_{k \in can(K)} \{\max\limits_{i \in inputs(k)} \{   d_{gate(k)} + \mathbb{1}_{\{inv_g(i)==inv\}} d_{i} + AT(inp\_can(k,i)) + d_{w(k,i)} \} \}$ 
+\item $AT(K) = $\\$  \max\limits_{k \in can(K)} \{\max\limits_{i \in inputs(k)} \{   d_{gate(k)} + \mathbb{1}_{\{inv_g(i) \}} d_{i} + AT(inp\_can(k,i)) + d_{w(k,i)} \} \}$ 
 \end{itemize}
 Wobei $can(K)$ die Menge der Kandidaten von $K$ sind und $inputs(k)$ sind die Inputknoten des Outputknoten des Kandidaten k. Des Weiteren ist $d_i$ das Delay eines Inverters und $d_{w(k,i)} $ das Delay der Kante zwischen den Knoten $k$ und $i$. $inp\_can(k,i)$ gibt den Kandidaten des $i$'ten Inputs von k zurück. 
 
 \end{definition}
 
-Das Delay (AT) gibt an wann das letzte Signal aus einem der Outputs des Circuit kommt.
+Das Delay (AT) gibt an, wann das letzte Signal aus einem der Outputs des Circuit kommt.
+\textcolor{red}{was ist mit pinabhängigem delay? -> an Lukas halten}
 
 \subsection{Kern Algorithmus}
 
@@ -152,27 +155,58 @@ Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits ar
  Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
 \end{algorithm}\ \\
 
-Dieser geht in topologischer Reihenfolge durch die Knoten v des Graphen und berechnet alle Matche auf v. Diese Matche werden dann zu einem Kandidaten ergänzt. Dieser Schritt (6) lässt sich sehr schnell implementieren, da für jedes Match m die besten Kandidaten der Inputs von m bereits bekannt sind.\\
- Ohne Highfanout-Knoten überschneiden sich diese nicht, und der beste Kandidat (inklusive der invertierten Verisonen) für jedes Match ist schnell gefunden. Von diesen wird der beste (in Bezug auf Area oder Arrivaltime) in Schritt 7 zu zur Liste der besten Kandidaten hinzugefügt.\\
- 
-\begin{cor}{Das (einfache) \TM besitzt \\ $\mathcal{O}(  |V(C)||L| fanin_{max})$-Laufzeit}\\
- 	  Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich in \textcolor{red}{ wielange braucht es ein zu checken ob ein gate der Library ein Match eines Knoten sein kann ? ? plus Begründung! Laufzeit anpassen}. Schritt 6 ist wie bereits erwähnt schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs der beste Kandidat verlinkt werden muss. Die Invertierten Matche werden nur gebarucht wenn der Input invertiert war. Somit braucht $\mathcal{O}(fanin_{max})$. Schritt 3 und 5 sind zwei verschachtelten Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
-Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)||L| fanin_{max})$. \hfill $\Box$
+\begin{definition}{optimaler \TM Algorithmus:}\\
+	Ein Algorithmus für das \TM auf einem Circuit $C$ heißt optimal, wenn er den (bzgl. der Kostenfunktion) besten äquvalenten Circuit $C'$ liefert, welcher durch das Anwenden der erlaubten Operationen auf $C$ konstruiert werden kann. 
+\end{definition}
+Daraus folgt, dass der Zusatz optimal abhängig davon ist, was die erlaubten Operationen sind.
+Im Weiteren Verlauf der Arbeit werden weitere Operationen hinzugefügt und der Circuit verallgemeinert. Das Attribut optimal bezieht dann, wenn dies nicht dabei steht,  auf alle bisher vorgestellten Operationen. Zu diesem Punkt umfasst die Menge der erlaubte Operationen das logische äquvalente matchen von Subcircuits mit Elementen der Library.\\
+
+Ein optimaler \TM Algorithmus liefert in der Regel nicht die bestmögliche Implementierung der $C$ zugrunde liegenden logischen Funktion.\textcolor{red}{dies lässt sich super anhand der redundant matche zeigen -> Bild!!} \\
+
+\begin{cor}
+	Das einfache \TM ist optimal. 
 \end{cor}
+\begin{proof}
+	Der Algorithmus geht in topologischer Reihenfolge durch die Knoten $v$ des Graphen und berechnet alle Matche auf $v$. Diese werden dann zu einem Kandidaten ergänzt. 
+ Ohne Highfanout-Knoten überschneiden sich diese nicht. Für jeden Knoten und jedes Match gibt es nur einen Kandidaten zur Auswahl, da für die Inputs des Matche jeweils nur ein Kandidat gespeichert wurde. An jedem Knoten wird nur das Match (mit dem dazugehörigen Kandidaten) gespeichert, welches die Kosten optimiert. \\
+ Es bleibt zu zeigen, dass angenommen für alle Knoten mit kleinerem topologischen Rang als $rand(v)$ ist der bestmögliche Kandidat gespeichert, so wird, nach gerade beschriebenem Vorgehen, auch für $v$ der schnellste (bzw. kleinste) Kandidat $k$ gespeichert. \\
+ Angenommen es gibt einen besseren Kandidaten $k'$, als $k$, welcher von dem Algorithmus gespeichert wurde. Sei $k''$ der Kandidate, welcher dasselbe Match wie $k'$ benutzt und die besten Input Kandidaten. Da $k''$ die besten Input Kandidaten benutzt ist er mindestens so schnell (bzw. klein) wie $k'$. $k$ ist jedoch ebenfalls mindestens so kostengünstig wie $k''$ (andernfalls hätte der Algorithmus $k''$, $k$ vorgezogen). Dies ist ein Widerspruch zur Annahme. 
+\end{proof}
+ 
+\begin{cor}{Der Algorithmus für das (einfache) \TM  \\ besitzt $\mathcal{O}(  |V(C)||L| fanin_{max})$-Laufzeit}
+\end{cor}
+\begin{proof}
+Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich in \textcolor{red}{ wielange braucht es ein zu checken ob ein gate der Library ein Match eines Knoten sein kann ? ? plus Begründung! Laufzeit anpassen}. Schritt 6 ist wie bereits erwähnt schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs der beste Kandidat verlinkt werden muss. Die Invertierten Matche werden nur gebarucht wenn der Input invertiert war. Somit braucht $\mathcal{O}(fanin_{max})$. Schritt 3 und 5 sind zwei verschachtelten Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
+Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)||L| fanin_{max})$.
+\end{proof}
+
 
 
 \newpage
 \section{Allgemeiner Algorithmus und Heuristik}
 \subsection{Tradeoffprobleme}
 Der oben vorgestellte Algorithmus ist in der Lage den bestmöglichen Umbau eines eingeschränkten Circuits zu bezüglich Area oder Delay zu errechnen. \\
-Es existiert  ein Tradeoff zwischen beiden Area und Delay. Dies hat zur Folge, dass ein möglichst kleiner Circuit im Allgemeinen sehr langsam ist und man bei einer sehr schnellen Lösung mit einem großen Platzverbrauch rechnen muss. In der Anwendung des \TM ist jedoch weder ein sehr langsamer noch ein besonders grosser Circuit akzeptabel. Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist bezüglich einer Konvexkombination oder einer Schranke zu optimieren. Daraus ergeben sich die beiden folgenden Optimierungs-Probleme: \\
-\textcolor{red}{Hier beide Probleme einfügen}\\
+Es existiert  ein Tradeoff zwischen Area und Delay. Dies hat zur Folge, dass ein möglichst kleiner Circuit im Allgemeinen sehr langsam ist und man bei einer sehr schnellen Lösung mit einem großen Platzverbrauch rechnen muss. In der Anwendung des \TM ist jedoch weder ein sehr langsamer noch ein besonders grosser Circuit akzeptabel.\\
+Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist bezüglich einer Konvexkombination oder einer Schranke zu optimieren. Daraus ergeben sich die beiden folgenden Optimierungs-Probleme: \\
 
+ \begin{problem}[framed]{\TM mit Konvexkombination}
+  Instanz:  & Circuit $C$,mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$,
+  $|L|$ beschränkt und  Tradeoff-Parameter $\lambda \in [0,1]$ \\
+  Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, welcher $\lambda AT(K) +(1-\lambda )area(K) $ minimiert.
+\end{problem}
+ \begin{problem}[framed]{\TM mit Arrivaltimeschranke}
+  Instanz:  &  Circuit $C$,mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$,
+  $|L|$ beschränkt und Arrivaltimeschranke $A_{max}$ \\
+  Aufgabe: &  Finde den kleinsten Circuit-Kandidaten $K$ auf $C$, für den $AT(K) \leq A_{max}$ gilt, oder entscheide, dass für jeden Circuit-Kandidaten $K$ bereits $AT(K) > A_{max}$ gilt.
+\end{problem}
+Im weiteren Verlauf dieses Kapitels, werden diese Problemstellungen auf Circuits mit mehreren Outputs erweitert. \\
 
 Diese \textcolor{red}{diese Probleme sind äquvalent Beweis? oder verweis aus quelle}
 \textcolor{red}{erwähnen dass da die äquivalent sind von nun an nur noch die Konvexkombination verwendet wird}
 
-Dadurch ergibt sich folgende Problemstellung für den Algorithmus: An jedem Knoten v lässt sich jetzt nicht mehr nur der Kandidat speichern, welche die Kostenfunktion an v optimiert. Angenommen v liegt in einem sehr Delay kritischen Gebiet des Graphen, dann kann es sehr gut sein dass es für einen Nachfolger von v sehr günstig ist v vollständig auf Delay hin zu optimieren und seine Kosten zu verbessern, was jedoch nicht möglich ist wenn der einzige an v gespeicherte Kandidat dieser ist der die Kosten ( Konvexkombination) an optimiert. \textcolor{red}{diesen satz verbessern!}\\
+Dadurch ergibt sich folgende Problemstellung für den Algorithmus: \\
+Angenommen an jedem Knoten $v$ würde, wie im Kern-Algorithmus, nur derjenige Kandidat gespeichert werden, welcher die Kostenfunktion an $v$ optimiert. Dadurch kann nicht mehr garantiert werden, dass beim errechnen der Kandidaten für den Output, der für ihn optimale Kandidat noch vorhanden ist. Dies beweist das Beispiel in Abbildung \textcolor{red}{hier abb einfügen}. Beide Inputs getrennt nach der Kostenfunktion zu optimieren, garantiert offenbar nicht das optimale Ergebnis.\\
+
 Die Kosten eines Kandidaten k sind somit nicht $\lambda AT(k) +(1-\lambda )area(k)$,  sondern das Tupel $(AT(k), area(k))$.
 Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss. Dazu folgende Definition\\
 
@@ -183,57 +217,54 @@ Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss. Dazu f
 \end{definition}
 
 Eine optimale Lösung des \TM verwendet offenbar (\textcolor{red}{in einem Korollar beweisen ?}) nur nicht-dominierte Kandidaten, woraus folgt, dass nur diese während der Ausführung des Algorithmus gespeichert werden müssen.\\
-Die Menge der noch bleibenden Kandidaten lassen sich in sogenannten Tradeoff-Kurven speichern (siehe Abbildung ?? \textcolor{red}{Abbildung hinzufügen.. kann ich Lucas verwenden ?}). Welche jeden Kandidaten zweidimensional anhand seiner Kosten erfasst.
+Die Menge der noch bleibenden Kandidaten lassen sich in sogenannten Tradeoff-Kurven speichern (siehe Abbildung ?? \textcolor{red}{Abbildung hinzufügen.. kann ich Lucas verwenden ?}). Welche jeden Kandidaten zweidimensional anhand seiner Kosten erfasst.\\
 
-
-\textcolor{red}{Next things todo: Algorithmus erweitern und dann auf die Filterung mit Buckets eingehen inclusive der funktionierenden epsilon betrachtung -> ohne beweis mit erklärung\\ 
-angenommen ich lasse den algo hier weg und mache highfanout sowie RAts vorher vorher und dann am ende des Kapitel kommt der zusammenfassende Algorithmus und daraus dann mit buckets filterung erklärung etc die heuristik???}
-
+Die beiden vorgestellten Probleme sind NP-vollständig. Daraus folgt, dass sich ab diesem Punkt wahrscheinlich  kein polynomieller optimaler Algorithmus für das \TM finden lässt. Dadurch dass sich zwei Kandidaten in den meisten Fällen nicht mehr vergleichen lassen, wird eine Vielzahl von Kandidaten an jedem Knoten gespeichert. Dies zeigt sich in einem exponentiell großen Speicheraufwand.  \textcolor{red}{hier könnte lukas FPTAS auch hin}\\
+Einen Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den verweis zu einem Beweis einfügen}.
 
 \subsection{Highfanoutknoten}
-Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(\textcolor{red}{prozent Zahl herausfinden und einsetzen (verlinkung auf Analysen und Test Kapitel)}). Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche HIghfanoutknoten nicht besitzen. Die Subcircuits werden daraufhin einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquvalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper suchen plus einfügen} wieder. Die folgende Abbildung verbildlicht diesen Ansatz einer Heuristik. \textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}. Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine vielzahl sehr kleiner Subcircuits mit einer somit sehr kleinen Anzahl an Kandidaten, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen. \textcolor{red}{kann man das so schreiben ?}\\
+Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(\textcolor{red}{prozent Zahl herausfinden und einsetzen (verlinkung auf Analysen und Test Kapitel)}).\\
+ Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden daraufhin einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquvalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper suchen plus einfügen} wieder. Die folgende Abbildung verbildlicht diesen Ansatz einer Heuristik. \textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}.\\
+  Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine vielzahl sehr kleiner Subcircuits mit einer somit kleinen Anzahl an Kandidaten entstehen, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen.\textcolor{red}{zu anna gibt es sonst noch einen grund dies nicht doch einmal auszuprobieren?}\\
 
-\textcolor{red}{Klonen erwähnen? (aktuell wird sie nicht erwähnt}\\
-Das Kern-Problem der Highfanoutknoten ist, dass bei der Konstruktion des äquvalenten Circuits die Kandidaten aller Nachfolger eines Highfanoutknoten v an v übereinstimmen müssen. Daraus folgt, das bei der Wahl eines Kandidaten für einen Knoten w die Wahl der Kandidaten der Input-Kandidaten von w nicht unabhängig von einander sein muss. \\
+\textcolor{red}{Klonen erwähnen? (aktuell wird sie nicht erwähnt (mit beispiel bild ? machen! in der definition des Circuit Kandidaten wurde das extra weggelassen}\\
+
+Das Kern-Problem der Highfanoutknoten ist, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen. Daraus folgt, das bei der Wahl eines Kandidaten für einen Knoten w die Wahl der Kandidaten der Input-Kandidaten von w nicht unabhängig von einander sein muss. \\
 Zur Lösung des Problems helfen die folgenden Definitionen:\\
 
-\begin{definition}{cone}\\
-	Sei C ein Circuit und v ein Knoten von C. Dann sei die cone von v: 
+\begin{definition}{Cone eines Knoten:}\\
+	Sei C ein Circuit und v ein Knoten von C. Dann sei die Cone von v: 
 	\[ cone(v) := C[V \cup \{ v \}], V = \{ w \in V(C) : \exists \text{ w-v-Weg in }  C \} \] 
 \end{definition}
 \textcolor{red}{Bild ? }
 
-\begin{definition}
+\begin{definition}\  \\
 	Sei C ein Circuit und  $v \in V(C)$. Dann wird die durch $cone(v)$ berechnete Funktion. Die 			{\bf bis v berechnete Funktion} genannt.
 \end{definition}
 
-\textcolor{red}{einheitlich mit Absätzen in definitionen mach es einfach wie lukas !}
-
-\begin{definition}{offene Knoten}\\
+\begin{definition}{Offene Knoten:}\\
 	Sei $C$ ein Circuit und $v,w \in V(C)$. Dann heißt $w$ offener Knoten von $v$, wenn folgendes gilt: 
-	\[ w \in cone(v)\backslash \{ v \} \text{ und } | \delta ^{+}(w)| \geq 2 \text{ und } \exists o \in V(C) \backslash cone(v) : \exists \text{ w-o-Weg in } C \] 	
+	\[ w \in cone(v)\backslash \{ v \}, \, | \delta ^{+}(w)| \geq 2 \text{ und } \exists o \in V(C) \backslash cone(v) : \exists \text{ w-o-Weg in } C \] 	
 \end{definition}
-Mit anderen Worten ist die Menge der Offenen Knoten eines Circuit Knoten v, die Menge aller Highfanoutknoten w, von welchen aus man sowohl v als auch einen Knoten außerhalb der Cone von v erreichen kann. Von dieser Menge ist v selber ausgenommen. Dies sind gerade die Highfanout-Knoten, welche durch die Kandidaten eines Knoten außerhalb von $cone(v)$ verändert werden können. Alle Kandidaten von  Knoten mit Ausgangsgrad 1 und dieser Eigenschaft, sind durch den Nachfolger-Kandidaten (welcher auch zu einem offene Knoten gehören muss), bereits eindeutig definiert. \textcolor{red}{Formulierung?} \\
+Mit anderen Worten ist die Menge der Offenen Knoten eines Circuit Knoten $v$, die Menge aller Highfanoutknoten $w$, von welchen aus man sowohl $v$ als auch einen Knoten außerhalb der Cone von $v$ erreichen kann. Von dieser Menge ist $v$ selber ausgenommen. Dies sind gerade die Highfanout-Knoten, welche durch die Kandidaten eines Knoten außerhalb von $cone(v)$ verändert werden können. Alle Kandidaten von  Knoten mit Ausgangsgrad 1 und dieser Eigenschaft, sind durch den Nachfolger-Kandidaten (welcher auch zu einem offene Knoten gehören muss), bereits eindeutig definiert. \\
 
-\begin{definition}{Klasse eines Kandidaten}\\
+\begin{definition}{Klasse eines Kandidaten:}\\
 	Sei $k$ ein Kandidat auf einem Knoten $v$ und $O$ die Menge der offenen Knoten von $v$. Die Klasse $class(k)$ ist eine Abbildung, welche jedem Element $w \in O$ den durch $k$ festgelegten Kandidaten auf $w$ zuordnet.\\
 \end{definition}
 Nach der einführenden Erläuterung lassen sich zwei Kandidaten $k_1,k_2$ eines Knoten $v$ mit $class(k_1) \neq class(k_2)$ nicht miteinander vergleichen. Dies gilt auch für den Fall, wenn $k_2$ von  $k_1$ dominiert wird, denn es ist möglich, dass dies zwar an der Stelle $v$ gilt, jedoch nicht an allen offenen Knoten von $v$. Daraus folgt würde man $k_2$ löschen, so löscht man evtl den besten Kandidaten des Outputs von C. \\
-Um somit mit Highfanoutknoten arbeiten zu können, werden für jeden Knoten $v$ und jede Klasse von $v$ ,in dem exakten Algorithmus, alle nicht dominierten Kandidaten gespeichert. Daraufhin wird ist der noch verbleibende beste Kandidat des Outputs die beste Lösung.
-\textcolor{red}{im diesem unterkapitel fehlt noch ein kommentar zur guten Findung aller Kandidaten an einem Knoten !!!}
-\textcolor{red}{was ist mit dem rest für dieses unterkapitel siehe unten ?}
-\textcolor{red}{speichern von kandidaten updaten ( tradeoff kurven für jede klasse erstellen!!}
+Um somit mit Highfanoutknoten arbeiten zu können, werden für jeden Knoten $v$ und jede Klasse von $v$ ,in dem optimalen Algorithmus, alle nicht dominierten Kandidaten gespeichert. Daraufhin ist der noch verbleibende beste Kandidat des Outputs die beste Lösung.\\
+Dabei wird, zur Speicherung der Kandidaten, für jede Klasse eines Knotens eine Tradeoff-Kurve angelegt.
+\textcolor{red}{im diesem kapitel fehlt noch ein kommentar zur guten Findung aller Kandidaten an einem Knoten !!! oder kommt der zum Algorithmus weil das eher implemetierungssache ist ?}
 
 \subsection{required Arrivaltimes}
 Oben wurde bereits der Begriff der Arrivaltime eines Knoten eingeführt. Dies ist die Zeit, zu welcher das letzte Signal bei einem Knoten ankommt. Diese Werte sind für die Inputknoten eines Circuits $C$ gegeben und werden von dort aus (unter Hinzunahme von Wire-, Gate- und Inverter-Delay) für jeden Knoten von $C$ (in topologischer Reihenfolge) errechnet.\\
 Im Design Prozess eines Chips, gibt es neben der tatsächlichen Arrivaltime auch eine  gewünscht Arrivaltime RAT (required AT), welche an den Outputs eines Graphen gegeben ist und ähnlich zur AT durch C propagiert wird. Somit ist sowohl AT und RAT eine Funktion auf $V(C)$. \\
 Der Vollständigkeit wegen folgt hier nocheinmal die genaue Definition der RAT.\\
 
-\begin{definition}{RAT}\\
+\begin{definition}{RAT:}\\
 	Sei $C$ ein Circuit und $v \in V(C)$. Dann ist rat RAT (required arrivaltime) an v definiert durch:
 	\[   RAT(v) :=  \] \textcolor{red}{formel aus siads Masterarbeit einfügen nochmal erwähenen dass es an den outputs bereits definiert ist}
 \end{definition}
-\textcolor{red}{hab ich pinabhöngiges delay eingeführt ?}
 
 In der Praxis kommen Signal oft später an als gewünscht. Der Betrag des Slack $slack(v) := RAT(v) - AT(v)$ gibt, wenn $slack(v) \leq 0 $, an um wie viel Zeit sich das letzte Signal an $v$ verspätet. Somit ist es viel Interessanter einen gegebenen Circuit hinsichtlich des negativen Slacks zu verbessern. \\
 Hieraus ergeben für einen Circuit die beiden folgenden Werte: 
@@ -241,14 +272,14 @@ Hieraus ergeben für einen Circuit die beiden folgenden Werte:
 	\item Worst-Slack (WS): Wert des kleinsten Slacks für einen Knoten auf dem Circuit.
 	\item Sum-of-Negative-Slacks (SNS): Summe aller negativer Slacks der Outputs eines Circuits.
 \end{itemize}
+Letzteres ist in der Praxis gefragter, da eine sehr gute Verbesserung der SNS eine Verbesserung des WS in der Regel mit einschließt. \\
 
 \textcolor{red}{hier passt sehr gut rein Lukas FPTAS zu erwähnen da er auf den schlechtesten Pfad angewendet wird, war die anzahl der Highfanout gates vorhersebar? -> in den nächsten absatz mit einbauen}\\
 
-Angenommen man betrachtet einen gesamten Chip, dann lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird. Sei $C$ der Circuit, welcher aus dem Gate $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einem Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
-Hieraus entsteht ein Circuit $C$ welcher einen Output hat und aus einer hintereinangeschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquvalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Auf diesen lässt sich dann mit  \TM nach Delay optimierten (in polynomieller Laufzeit\textcolor{red}{zeigen ?}) und wieder in den Chip einbauen. Der Große Vorteil von dieser Praxis sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Zeit. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten realisieren und man somit den Chip nur inkrementell beschleunigt. \textcolor{red}{nicht sicher ob das so bleiben kann}\\
+Angenommen man betrachtet einen Chip, dann lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird. Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einem Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
+Hieraus entsteht ein Circuit $C$ welcher einen Output hat und aus einer hintereinangeschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquvalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Dieser lässt sich dann mit  Delay optimierenden \TM (in polynomieller Laufzeit\textcolor{red}{zeigen ?}) umbauen und wieder in den Chip einbauen. Der Große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Zeit. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
 
 Eine weitere Herangehensweise für das \TM ist es einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach AT, da nur Instanzen mit einem Output betrachtet wurden und RAT für diesen eine Konstante ist.
-\textcolor{red}{ist das ein Grund die subsection RATS hinter multiple outputs zu schieben? dann kann der obige abschnitt weg und es fehlt noch die art der implementierung für multiple outputs plus überhaupt die übertragung einer kostenfunktion dorthin aber dann muss die mult outputs wieder mit in die RAts nehmen}
 
 
 \subsection{zu lange Kanten}
@@ -260,8 +291,17 @@ Durch die Hinzunahme er zu langen Kanten zu den nicht matchbaren Kanten, kann ke
 Dieser Schritt ist im Hintergrund implementiert und wird somit nicht mehr erwähnt.
 \textcolor{red}{oder soll ich ihn doch mit reinnehmen ? damit der allgemeine fall detaillierter wird ? und der vollständigkeit wegen! machdas  }
 
+\subsection{pinabhängiges Delay}
+Bis zu diesem Punkt war das Delay eine Gates als eine nicht negative Reelle Zahl definiert. Die meisten Gates besitzen mehr als einen Input. Die Signale der Inputs brauchen nicht alle dieselbe Zeit um zum Output zu gelangen. Physikalisch werden die Signale der Inputs zwar alle miteinander verrechnet, jedoch geschieht dies nicht gleichzeitig und somit müssen nicht alle Signale zur selben Zeit an den Inputs anliegen.\\
+Die spätere Ankunftsmöglichkeit lässt sich durch einen kleineren Delaywert, spezifisch für diesen Input, realisieren. Denn wenn das Signal schneller durch das Gate gelangen kann, so brauchst es auch nicht so früh vorhanden zu sein, wie die anderen. \\
+Von nun an ist das Delay eines Gates $g$: $d_g \in \mathbb{R}_{\geq 0}^{arity(g)}$. Für das \TM ist dies eine weitere Möglichkeit der Verbesserung, denn viele Gates der Library besitzen mindestens eine Teilmenge von Inputs welche logisch symmetrisch aufgebaut sind. Diese lassen sich beliebig permutieren. Durch die unterschiedlichen Delay-Eigenschaften der Inputs kann eine solche Permutierung das Dealy des Outputs verbessern. Aus diesem Grund ändert sich die AT eines Knotens wiefolgt: 
+\begin{definition}{AT mit pinabhängigen Delay:}\\
+	Sei $C$ ein Circuit und $v \in V(C)$. Die AT von $v$ mit pinabhängigen Delay ist wiefolgt definiert: \[ AT_p(v) :=  \max\limits_{i \in inputs(v)} \{   d_{gate(v),i} + \mathbb{1}_{\{inv_g(i) \}} d_{i} + AT_p(i) + d_{w(k,i)} \}   \}\]
+\end{definition}
+Im Folgenden sei mit AT immer das pinabhängige Delay gemeint.
 
-\textcolor{red}{kurzer Abschnitt dass es zu lange Kanten in einem Graphen gibt über welche man nicht Matchen möchte (dies muss nicht im algorithmus auftauchen und ist im schritt finde alle Matche versteckt aber kann im nächsten Kapitel benutzt werden)}
+In einem Match ist diese Information bereits abgespeichert, da die Inputs eines Matches mit einer Bijektion an Knoten des Circuits geknüpft werden. Um die Optimilität des, noch vorzustellenden, allgemeinen Algorithmus zu wahren, wird ein Kandidat für jede mögliche Permutation der Inputs gespeichert, falls dieser nicht dominiert ist.\\
+Nach aktuellen Stand gilt $fanin_{max} \leq 4$. Das ist klein genug um auch bei der Heuristik die max $fanin_{max}$ Permutation bei der Wahl eines Matches in Betracht zu ziehen. 
 
 \subsection{Mehrere Outputs}
 Wie in der Einleitung beschrieben, ist es das Ziel dieser Arbeit eine Heuristik für das \TM zu entwickeln, welche auf großen Teilen eines Chips lauffähig (bezüglich Laufzeit) ist. Da ein solcher Chip mehr als nur einen Output-Pin besitzt, lässt er sich in zusammenhängende Circuits unterteilen, welche mehr als einen Output-Knoten besitzen. Folgende Umbauten sind notwendig um mit den Kern-Algorithmus auch diese Instanzen verbessern zu können.\\
@@ -270,9 +310,8 @@ Als erstes fällt auf, dass sich, wenn der Algorithmus für jeden Knoten die Kan
 Jedoch ist bereits bekannt wie man mehrere Kandidaten auswählt, sodass diese sich an den sich überschneidenden Knoten gleichen. Somit lässt sich ein Circuit mit den bekannten Mitteln ein Circuit konstruieren, welcher eine Kostenfunktion hinsichtlich Größe und WS optimiert. \\
 
 Die zweite Änderung hat sich dadurch bereits angekündigt. Bisher wurde das Delay eines Circuits C optimiert, indem das Signal des einen Outputs nach dem Umbau früher ankommt. Dies lässt sich auf einen Circuit mit mehreren Outputs übertragen. Da es mehrere Signale gibt wählt man den Kandidaten des Outputs mit dem größten negativen Slack zuerst und die anderen folgen sortiert der Größe ihres Slacks nach (absteigend). Dies garantiert jedoch nicht, dass der WS des Circuits nach dem Umbau besser ist als vorher, da evtl der Knoten der vorher den WS bildete besser wird, jedoch ein anderer Output könnte durch diesen Umbau schlechter werden. \\
-Um dieses Problem zu umgehen, verändert man C vor dem \TM durch das verbinden aller Outputs mit einem virtuellen Gate (für welches nur das Identitätsmatch existiert \textcolor{red}{Identitätsmatch definieren ?}). Der veränderten Circuit lässt sich nun wie im Kern-Algorithmus optimieren und es wird automatisch das gerade beschriebene Problem gelöst.\\ 
-\textcolor{red}{ist das so gut formuliert?? } 
-Wie bereits in 3.3 \textcolor{red}{vernünftiger Verweis}  erwähnt ist es in der Praxis profitabler die SNS des Circuits zu verbessern, anstatt den WS.\\
+Um dieses Problem zu umgehen, verändert man C vor dem \TM durch das verbinden aller Outputs mit einem virtuellen Gate, mit nur einem möglichen Match (dem Gate an sich). Der veränderte Circuit lässt sich nun wie im Kern-Algorithmus optimieren und es wird automatisch das gerade beschriebene Problem gelöst.\\ 
+Wie bereits in Kapitel 3.3  erwähnt ist es in der Praxis profitabler die SNS des Circuits zu verbessern, anstatt den WS.\\
 Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut werden, welcher die SNS minimiert.\\
  Dieses Kriterium ersetzt, von diesem Punkt an,  das der Delay-Optimierung in der Kostenfunktion.\\
  
@@ -282,11 +321,25 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
  \textcolor{red}{ indem unterkapitel noch mehr bilder bzw schönerer aufbau ist nämlich aktuell viel text!!}
  
  \subsection{Teilweise redundante Subcircuits}
- \textcolor{red}{hier kommt eine beschreibung der redundant subcircuits hinein welche (evtl wie die zu langen kanten keine erwähnung mehr im algorithmus findet  hier sollte aber dabei sein dass compltely redundant gates nur selten vorkommen dazu zwei besipiel (compl und partly) und dass die Anzahl der inputs bzw ganze teilbereiche eines circuits irrelvant werden können!}
+ In der Abbildung \textcolor{red}{hier nummer für die abb der red ands einfügen} lässt sich erahnen, dass es möglich ist, dass nicht alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition.\\
  
- \subsection{Allgemeiner Algorithmus und erste Heuristik}
- Es folgt ein optimaler \textcolor{red}{bereits erwähnt was optimal bedeutet also optimal in bezug auf die möglichkeiten des umbaus} Algorithmus welcher auf allgemeinen Circuits arbeitet. 
- \textcolor{red}{TODO NPvvst schon erwähnt ? TODO erst der algo dann Laufzeit ? und Korrektheitsbeweis? was ist mit dem faninmax ? vielleicht nett zur laufzeit berechnung aber eig hier noch nicht relevant  hab ich Circuit kandidaten vernünftig definiert? erwähnen woraus die kostenfunktion besteht bzw nur tradeoffparameter nehmen!!!!}\\
+ \begin{definition}{vollständig überflüssiger und teilweise überflüssiger Circuit }
+ 	Sei $C$ ein Circuit mit Logischer Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $. $C$ wird vollständig überflüssig genannt, wenn gilt:
+ 	\[  \exists y \in \{0,1 \}^m \forall x \in \{ 0, 1\}^n : f(x) = y  \]
+ 	$C$ wird teilweise überflüssig genannt, wenn es eine Teilmenge der Inputs gibt, von denen die Signale der Outputs nicht abhängen.
+ \end{definition}
+ \textcolor{red}{hier noch mein liebingsbild einfügen zu einem vollst. überflüssigen Circuit? oder handel beiden fälle mit ich das mit einem Bild oben ab und gehe nur noch kurz darauf ein ?}
+ Die Berücksichtigung von vollständig überflüssigen Subcircuits bedeuted, dass Teile des Circuits entfernt werden und die Outputs der Inputs der Nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden.Dies lässt sich jedoch weiter verbessern, da die Information an den Nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch birgt es ebenfalls einen großen Aufwand zur Implementierung in der aktuellen Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssige Circuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits nicht mehr behandelt und kommen auch in den Folgenden Algorithmen nicht vor sowie und zählen auch nicht zu den Kriterien des optimalen \TM. \textcolor{red}{formulierung?} \\
+ 
+Im Gegensatz dazu kommen die teilweise überflüssigen Circuits sehr wohl vor. Bei der Konstruktion eines Chips passiert dies durch das Zusammensetzen unterschiedlicher Circuits.\\
+In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch mit den Suchen nach Matchen erledigt, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. \\
+Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library vorhanden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Inputs des Buffers zu seinen Outputs gebaut. Die vermeidet den Einbau eines nicht nötigen Gates. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\textcolor{red}{was ist mit dem Laufzeit statistiken?}
+ \textcolor{red}{bei klarem verstand nochmal durchlesen}
+ 
+ \subsection{Allgemeiner Algorithmus}
+ Es folgt ein optimaler  \TM Algorithmus welcher auf allgemeinen Circuits arbeitet. 
+ \textcolor{red}{TODO Laufzeit  und Korrektheitsbeweis? was ist mit dem faninmax ? vielleicht nett zur laufzeit berechnung aber eig hier noch nicht relevant   erwähnen woraus die kostenfunktion besteht bzw nur tradeoffparameter nehmen!!!!}\\
+ \textcolor{red}{hab ich schon erwähnt wie man Kandidaten auswählt ?}
  
  \begin{problem}[framed]{(allgemeines) Technology Mapping}
   Instanz:  & Circuit $C$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
@@ -296,26 +349,57 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
 \begin{algorithm}[H]
  \LinesNumbered
  \DontPrintSemicolon
- \caption{(allgemeines) Technology Mapping}
+ \caption{(allgemeines) \TM}
  \SetKwInOut{Task}{Task}
-
- bester\_kandidat[] $\gets \emptyset$\;
- bester\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+  \KwIn{Circuit $C$,  Library $L$, $fanin_{max}$}
+ \ForEach{Knoten $v \in V(C)$ in topologischer Reihenfolge}
  {
-   berechne alle (invertierten) Matches auf $v$\;
-   \ForEach{ Match $m$ auf $v$ }
-   {
-      Berechne besten Kandidaten mit $m$ auf $v$\;
-      Update best\_(inv)\_kandidaten\;
-   }
+ 	$tradeoff\_curves[v][] \gets \emptyset$ \;
+ 	berechne die offenen Knoten $O$ von $v$\; 
+ 	$classes[v] \gets get\_all\_classes(v,C,  O, tradeoff\_curves)$\;
+ 	berechne alle (invertierten) Matche auf $v$\;
+	\ForEach{ Match $m$ auf $v$ }
+  	 {
+   		\ForEach {$A \in classes[v]$}
+   		{
+   				\ForEach {Kandidat $k$ von $v$ mit $m$, der A respektiert}
+   				{
+   					$ dom \gets k.is\_dominated(tradeoff\_curves[v][A])$\;
+					\If {$!dom$}
+						{$tradeoff\_curves[v][A].push\_back(k)$}
+   				}
+   		}
+   	}
  }
- Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
+ $K \gets best\_circuit\_candidate(tradeoff\_curves, C.outputs, c)$\;
+\Return K
 \end{algorithm}\ \\
  
+{\bf Korrektheit:} \\
+Es gilt zu zeigen, dass dies ein optimaler Algorithmus ist. \\
+Der Algorithmus speichert für jeden Knoten alle, bis auf die dominierten, möglichen Kandidaten. Daraus folgt, dass in Schritt 12 zur Auswahl des besten Circuit-Kandidaten, jeder mögliche nicht dominierte Umbau zur Verfügung steht und dort nur der kostengünstigste, bezüglich c, ausgewählt wird. 
  
  
- \textcolor{red}{ TODO vergleich mit Lukas und geeignete Quellen einfügen!! besonders für den Hautalgorithmus wie bei Lukas nach welchem Vorbeild der entstanden ist}
+ \textcolor{red}{ TODO vergleich mit Lukas und geeignete Quellen einfügen!! besonders für den Hautalgorithmus wie bei Lukas nach welchem Vorbeild der entstanden ist}\\
+ 
+ {\bf Laufzeit:} \\
+Da, wie bereits oben erwähnt, das \TM auf allgemeinen Circuits ein NP-vollständiges Problem ist, folgt, dass es unwahrscheinlich ist mit diesem Algorithmus größere Instanzen, in aktzeptabler Zeit, lösen zu können. \\
+Die Anzahl der Durchläufe der ersten Schleife sind $|V(C)|$. Die Schritte 2,3 und 5 sind ebenfalls in $\mathcal{O}(|V(C)|)$ errechenbar. \textcolor{red}{genaue werte und begründung angeben angeben!} \\ 
+Des Weiteren gilt, dass die Schleife aus Zeile 6 für jeden Knoten maximal $2|L|$ mal aufgerufen wird. \\
+Die Anzahl der Kandidaten steigt, dank der beliebigen Anzahl an Highfanoutknoten exponentiell, weshalb die Größe von $classes$ und die somit auch die Schleifendurchläufe in Zeile 7 nur polynomiell begrenzt sind. Daraus folgt sowohl eine nicht polynomielle Laufzeit als auch eine nur exponentiell beschränkte Größe des verbrauchte Speichers. \textcolor{red}{genauer?}.\\
+
+Folgende Abbildung veranschaulicht das exponentielle Wachstum der Kandidatenmenge, indem für jeden Knoten die Anzahl der Kandidaten in Verbindung mit seinem topologischen Index angibt. \textcolor{red}{hier Beispielbild mit beschriebenen eigenschaften} \\
+
+ \section{erste Heuristik}
+ \textcolor{red}{ich muss noch erwähnen dass das finden von matchen in der praxis nur eingeschränkt funktioniert weil der allgemeine fall |V(C)|! laufzeit hat aber der implementierte algorithmus die meisten fälle abwickelt!! dies gilt natürlich auch für die teilweise redundanten subcircuits die in der parxis zusammen mit den matchen gesucht werden da kommt heraus dass dann unnötig gewordenen inputs nicht mehr gebaut werden}
+ \textcolor{red}{eigenes Kapitel ? die Laufzeit muss sichtlich von den Highfanoutknoten abhängen den teil genauer erklären anhand der laufzeit zeigen (vielleicht den Beweis von Lukas umschreiben}\\
+ 
+ Der exponentielle Anstieg der Kandidatenmenge wird, wie oben gezeigt, durch die Highfanout-Knoten verursacht. Daraus folgt, dass ein sehr großes Potenzial in der Reduzierung der Kandidaten für diese Knoten liegt. 
+ 
+ \textcolor{red}{TODO hier: 
+ 	filterung mit Buckets (wurde bisher nicht erähnt auch die epsilon diskussion einfügen)wodurch die Anzahl der kandidaten radikal reduziert wird und der Algorithmus nur eine güte von epsilon einbüßt ? das genauer herausarbeiten!\\
+ 	zweitens: speicherung von nur einem Kandidaten pro Highfanoutknoten inklusive Präprozessing der schranken welcher der bestmögliche zu speichernde kandidat ist\\
+ 	daraufhin Lukas Algorithmus übernehmen / umschreiben auf die RAts}
 
 
 \newpage

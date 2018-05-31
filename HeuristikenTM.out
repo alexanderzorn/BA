@@ -7,11 +7,13 @@
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{required Arrivaltimes}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.4}{zu lange Kanten}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.5}{Mehrere Outputs}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.6}{Teilweise redundante Subcircuits}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.7}{Allgemeiner Algorithmus und erste Heuristik}{section.3}% 12
-\BOOKMARK [1][-]{section.4}{Pr\344prozessing zus\344tzliche Addons}{}% 13
-\BOOKMARK [1][-]{section.5}{Weitere Optimierungskriterien}{}% 14
-\BOOKMARK [1][-]{section.6}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 15
-\BOOKMARK [1][-]{section.7}{Laufzeitanalyse}{}% 16
-\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 17
+\BOOKMARK [2][-]{subsection.3.5}{pinabh\344ngiges Delay}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.6}{Mehrere Outputs}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.7}{Teilweise redundante Subcircuits}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.8}{Allgemeiner Algorithmus}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{erste Heuristik}{}% 14
+\BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 15
+\BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 16
+\BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 17
+\BOOKMARK [1][-]{section.8}{Laufzeitanalyse}{}% 18
+\BOOKMARK [1][-]{section.9}{Fazit und Ausblick}{}% 19
