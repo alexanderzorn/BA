@@ -1,0 +1,114 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{gate_header}
+\usepackage{rotating}
+\begin{document}
+\begin{tikzpicture}
+
+
+\begin{scope}[yscale=-1,xscale=1]
+
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (7,0.5) (j7){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8,2) (j8){};
+
+\node (i9) at (7.9,3){};
+\node (i10) at (8.1,3){};
+\node (i14) at (6.9,3){};
+
+\draw[-, thick] (i14) -- (j7.input 1);
+\draw[-, thick, dotted] (j8.output) -- (j7.input 2);
+\draw[-, thick] (i9) -- (j8.input 1);
+\draw[-, thick] (i10) -- (j8.input 2);
+
+\def\x{2};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (7 +\x,0.5) (j9){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8 +\x,2) (j10){};
+
+\node (i1) at (7.9+ \x,3){};
+\node (i2) at (8.1 + \x,3){};
+\node (i3) at (6.9 +\x,3){};
+
+\draw[-, thick] (i3) -- (j9.input 1);
+\draw[-, thick, dotted] (j10.output) -- (j9.input 2);
+\draw[-, thick] (i1) -- (j10.input 1);
+\draw[-, thick] (i2) -- (j10.input 2);
+
+
+
+\def\x{4};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (7 +\x,0.5) (j11){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8 +\x,2) (j12){};
+
+\node (i4) at (7.9+ \x,3){};
+\node (i5) at (8.1 + \x,3){};
+\node (i6) at (6.9 +\x,3){};
+
+\draw[-, thick] (i6) -- (j11.input 1);
+\draw[-, thick, dotted] (j12.output) -- (j11.input 2);
+\draw[-, thick] (i4) -- (j12.input 1);
+\draw[-, thick] (i5) -- (j12.input 2);
+
+
+%zweite reihe
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8,-1) (j13){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8 +2,-1) (j14){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8 +4,-1) (j15){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8 -2,-1) (j16){};
+
+\draw[-, thick] (j7.output) -- (j16.input 2);
+\node (i15) at (5.9,3){};
+\draw[-, thick] (i15) -- (j16.input 1);
+
+\draw[-, thick] (j7.output) -- (j13.input 1);
+\draw[-, thick] (j9.output) -- (j13.input 2);
+
+\draw[-, thick] (j9.output) -- (j14.input 1);
+\draw[-, thick] (j11.output) -- (j14.input 2);
+
+\draw[-, thick] (j11.output) -- (j15.input 1);
+
+%Stern markierung
+\draw[dashed] (11.5,1.5) ellipse (1.2cm and 1.8cm);
+\node (i16) at (13.3,1.5){. . .};
+
+\node (i16) at (11,-1.5){. . .};
+
+\node (i16) at (9,-1.5){. . .};
+
+\node (i16) at (7,-1.5){. . .};
+
+
+%letzte reihe
+\def\x{-1};
+\def\y{-.5};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (11 +\x,-2 +\y) (j17){};
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (9 +\x,-2 +\y) (j18){};
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (10 +\x,-3.5 +\y) (j19){};
+
+\draw[-, thick] (j17.output) -- (j19.input 2);
+\draw[-, thick] (j18.output) -- (j19.input 1);
+
+
+%zu lange kanten Schild
+\node[text width=3cm] at (12.5,-3.2) {\tiny  Bis auf die gepunkteten Kanten, sind alle Kanten als zu lang markiert Library $L = \{ AND2 , AND3\}$ };
+
+%Anzahl kandidaten
+\node (i16) at (7.5,3){1};
+\node (i16) at (9.5,3){2};
+\node (i16) at (11.5,3){3};
+\node (i16) at (13.5,3){n};
+
+\node (i16) at (7.5,.5){2};
+\node (i16) at (9.5,.5){2};
+\node (i16) at (11.5,.5){2};
+
+\node (i16) at (10 +.5 +\x,-3.5 +\y){$2^n$};
+
+%Library
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

@@ -160,6 +160,11 @@ Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits ar
 Daraus folgt, dass der Zusatz optimal abhängig davon ist, was die erlaubten Operationen sind.
 Im Weiteren Verlauf der Arbeit werden weitere Operationen hinzugefügt und der Circuit verallgemeinert. Das Attribut optimal bezieht dann, wenn dies nicht dabei steht,  auf alle bisher vorgestellten Operationen. Zu diesem Punkt umfasst die Menge der erlaubte Operationen das logische äquvalente matchen von Subcircuits mit Elementen der Library.\\
 
+\begin{wrapfigure}{r}{3cm}
+		\includegraphics[width = 3cm]{pictures/compiled/compl_redundant}
+		\caption{Ein Circuit desen boolesche Funktion $f = 0 $ ist}
+\end{wrapfigure}
+
 Ein optimaler \TM Algorithmus liefert in der Regel nicht die bestmögliche Implementierung der $C$ zugrunde liegenden logischen Funktion.\textcolor{red}{dies lässt sich super anhand der redundant matche zeigen -> Bild!!} \\
 
 \begin{cor}
@@ -223,20 +228,31 @@ Einen Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den ver
 
 \subsection{Highfanoutknoten}
 Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(ca. 25\% der gesamten Knoten sind Highfanoutknoten für einen genaueren Zusammenhang von der Anzahl der Highfanoutknoten und der Laufzeit siehe das Kapitel 8).\\
- Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden daraufhin einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquvalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper suchen plus einfügen} wieder. Die folgende Abbildung verbildlicht diesen Ansatz einer Heuristik. \textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}.\\
+\textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}.\\
+\newpage
+ \begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/compiled/ohne_highfanout_heu}
+		\caption{Unterteilen eines Circuit in Highfanoutfreie Subcircuits}
+\end{wrapfigure}
+ Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden daraufhin einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquvalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper suchen plus einfügen} wieder. Die folgende Abbildung verbildlicht diesen Ansatz einer Heuristik. 
   Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine vielzahl sehr kleiner Subcircuits mit einer somit kleinen Anzahl an Kandidaten entstehen, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen.\textcolor{red}{zu anna gibt es sonst noch einen grund dies nicht doch einmal auszuprobieren?}\\
 
 \textcolor{red}{Klonen erwähnen? (aktuell wird sie nicht erwähnt (mit beispiel bild ? machen! in der definition des Circuit Kandidaten wurde das extra weggelassen}\\
 
+\begin{wrapfigure}{r}{7cm}%[htb]
+%\centering
+\includegraphics[width= 7cm]{pictures/compiled/expo_kand}
+\caption{Visualisierung eines Matches über eine lange Kante}
+\end{wrapfigure}
+
 Das Kern-Problem der Highfanoutknoten ist, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen. Daraus folgt, das bei der Wahl eines Kandidaten für einen Knoten w die Wahl der Kandidaten der Input-Kandidaten von w nicht unabhängig von einander sein muss. \\
 Zur Lösung des Problems helfen die folgenden Definitionen:\\
 
+\textcolor{red}{Bild ? }
 \begin{definition}{Cone eines Knoten:}\\
 	Sei C ein Circuit und v ein Knoten von C. Dann sei die Cone von v: 
-	\[ cone(v) := C[V \cup \{ v \}], V = \{ w \in V(C) : \exists \text{ w-v-Weg in }  C \} \] 
-\end{definition}
-\textcolor{red}{Bild ? }
-
+	\[ cone(v) := C[V \cup \{ v \}], V = \{ w \in V(C) : \exists \text{ w-v-Weg in }  C \} \] \end{definition}
+\textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}.\\
 \begin{definition}\  \\
 	Sei C ein Circuit und  $v \in V(C)$. Dann wird die durch $cone(v)$ berechnete Funktion. Die 			{\bf bis v berechnete Funktion} genannt.
 \end{definition}
@@ -247,9 +263,12 @@ Zur Lösung des Problems helfen die folgenden Definitionen:\\
 		\item $ w \in cone(v)\backslash \{ v \} $
 		\item $| \delta ^{+}(w)| \geq 2$
 		\item $ \exists o \in V(C) \backslash cone(v) : \exists \text{ w-o-Weg in } C \text{ ohne v} $
-	\end{itemize}
-	 	
+	\end{itemize}	
 \end{definition}
+ \begin{wrapfigure}{r}{5.5cm}
+		\includegraphics[height = 7cm]{pictures/compiled/cone}
+		\caption{Zwei Realisierungen der Logischen Funktion $\neg((w\lor x) \land (y \lor z))$}
+\end{wrapfigure}
 Mit anderen Worten ist die Menge der Offenen Knoten eines Circuit Knoten $v$, die Menge aller Highfanoutknoten $w$, von welchen aus man sowohl $v$ als auch einen Knoten außerhalb der Cone von $v$ erreichen kann. Von dieser Menge ist $v$ selber ausgenommen. Dies sind gerade die Highfanout-Knoten, welche durch die Kandidaten eines Knoten außerhalb von $cone(v)$ verändert werden können. Alle Kandidaten von  Knoten mit Ausgangsgrad 1 und dieser Eigenschaft, sind durch den Nachfolger-Kandidaten (welcher auch zu einem offene Knoten gehören muss), bereits eindeutig definiert. \\
 
 \begin{definition}{Klasse eines Kandidaten:}\\
@@ -284,9 +303,13 @@ Angenommen man betrachtet einen Chip, dann lässt sich auf diesem ein Knoten $v$
 Hieraus entsteht ein Circuit $C$ welcher einen Output hat und aus einer hintereinangeschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquvalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Dieser lässt sich dann mit  Delay optimierenden \TM (in polynomieller Laufzeit\textcolor{red}{zeigen ?}) umbauen und wieder in den Chip einbauen. Der Große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Zeit. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
 
 Eine weitere Herangehensweise für das \TM ist es einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach AT, da nur Instanzen mit einem Output betrachtet wurden und RAT für diesen eine Konstante ist.
-
+\newpage
 
 \subsection{zu lange Kanten}
+ \begin{wrapfigure}{r}{6cm}
+		\includegraphics[height = 8cm]{pictures/compiled/zu_lange_kante}
+		\caption{Visualisierung eines Matches über eine lange Kante}
+\end{wrapfigure}
 Die Abbildung \textcolor{red}{Abbildung hinzufügen} veranschaulicht eine häufig auftretende Situation. Es handelt sich das Matchen über eine (auf dem Chip) sehr lange Kante. Dadurch verbessert sich evtl der die Größe des Circuits, jedoch sind nach dem Match nun zwei sehr lange Kanten auf dem Chip vorhanden, was somit, da dies einen großen Routing Aufwand und weitere Kosten mit sich bringt, eine zu vermeidende Situation ist. \\
 Weiter unten wird eine zusätzliche Klasse von Kanten eingeführt über welche man nicht matchen darf.
 Diese Kanten bezeichet man als nicht matchbar. \textcolor{red}{besserer name !!!}
@@ -332,6 +355,10 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
  	\[  \exists y \in \{0,1 \}^m \forall x \in \{ 0, 1\}^n : f(x) = y  \]
  	$C$ wird teilweise überflüssig genannt, wenn es eine Teilmenge der Inputs gibt, von denen die Signale der Outputs nicht abhängen.
  \end{definition}
+ \begin{wrapfigure}{r}{6cm}
+		\includegraphics[height = 6cm]{pictures/compiled/partly_redundant}
+		\caption{Nur Input 1 und 2 sind die relevanten Inputs}
+\end{wrapfigure}
  \textcolor{red}{hier noch mein liebingsbild einfügen zu einem vollst. überflüssigen Circuit? oder handel beiden fälle mit ich das mit einem Bild oben ab und gehe nur noch kurz darauf ein ?}
  Die Berücksichtigung von vollständig überflüssigen Subcircuits bedeuted, dass Teile des Circuits entfernt werden und die Outputs der Inputs der Nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden.Dies lässt sich jedoch weiter verbessern, da die Information an den Nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch birgt es ebenfalls einen großen Aufwand zur Implementierung in der aktuellen Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssige Circuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits nicht mehr behandelt und kommen auch in den Folgenden Algorithmen nicht vor sowie und zählen auch nicht zu den Kriterien des optimalen \TM. \textcolor{red}{formulierung?} \\
  
