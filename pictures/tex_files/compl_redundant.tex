@@ -1,0 +1,28 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{gate_header}
+\usepackage{rotating}
+\begin{document}
+\begin{tikzpicture}
+
+
+\begin{scope}[yscale=-1,xscale=1]
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=in, rotate=90, thick] at (7,1) (j7){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick] at (8,2) (j8){};
+
+\node (i9) at (7.9,3){};
+\node (i10) at (8.1,3){};
+
+\draw[-, thick] (i9) -- (j7.input 1);
+\draw[-, thick] (j8.output) -- (j7.input 2);
+
+\draw[-, thick] (i9) -- (j8.input 1);
+\draw[-, thick] (i10) -- (j8.input 2);
+
+
+
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

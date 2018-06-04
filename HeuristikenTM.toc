@@ -8,10 +8,10 @@
 \contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{7}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{8}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}required Arrivaltimes}{10}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}zu lange Kanten}{11}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}zu lange Kanten}{12}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}pinabh\IeC {\"a}ngiges Delay}{12}{subsection.3.5}
 \contentsline {subsection}{\numberline {3.6}Mehrere Outputs}{13}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Teilweise redundante Subcircuits}{14}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.7}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{14}{subsection.3.7}
 \contentsline {subsection}{\numberline {3.8}Allgemeiner Algorithmus}{15}{subsection.3.8}
 \contentsline {section}{\numberline {4}erste Heuristik}{17}{section.4}
 \contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{18}{section.5}

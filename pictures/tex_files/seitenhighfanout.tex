@@ -1,0 +1,48 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{gate_header}
+\usepackage{rotating}
+\begin{document}
+\begin{tikzpicture}
+
+
+\begin{scope}[yscale=-1,xscale=1]
+
+
+\draw[->, thick] (8,1) -- (9,1);
+
+
+
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=ni, rotate=90, thick] at (7,0) (j7){};
+\node[fill=green, outer sep=0pt, or gate US, draw, logic gate inputs=ii, rotate=90, thick] at (8,2) (j8){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nnn, rotate=90, thick] at (9.5,1) (j9){};
+
+\node (i7) at (9.3,3){};
+\node (i8) at (9.5,3){};
+\node (i9) at (7.9,3){};
+\node (i10) at (8.1,3){};
+\node (i11) at (9.7,3){};
+\node (i14) at (6.9,3){};
+
+\node (o1) at (8.5,1) {};
+\node (o2) at (10.3, -.2) {};
+
+\draw[-, thick] (i14) -- (j7.input 1);
+\draw[-, thick] (j8.output) -- (j7.input 2);
+
+\draw[-, thick] (i7) -- (j9.input 1);
+\draw[-, thick] (i8) -- (j9.input 2);
+
+\draw[-, thick] (i9) -- (j8.input 1);
+\draw[-, thick] (i10) -- (j8.input 2);
+\draw[-, thick] (i11) -- (j9.input 3);
+
+\draw[dashed] (o1) -- (j8.output);
+\draw[dashed] (o2) -- (9.7, .6);
+
+
+
+\end{scope}
+\end{tikzpicture}
+\end{document}

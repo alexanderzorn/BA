@@ -123,7 +123,6 @@ Wobei $can(K)$ die Menge der Kandidaten von $K$ sind und $inputs(k)$ sind die In
 \end{definition}
 
 Das Delay (AT) gibt an, wann das letzte Signal aus einem der Outputs des Circuit kommt.
-\textcolor{red}{was ist mit pinabhängigem delay? -> an Lukas halten}
 
 \subsection{Kern Algorithmus}
 
@@ -223,7 +222,7 @@ Die beiden vorgestellten Probleme sind NP-vollständig. Daraus folgt, dass sich 
 Einen Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den verweis zu einem Beweis einfügen}.
 
 \subsection{Highfanoutknoten}
-Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(\textcolor{red}{prozent Zahl herausfinden und einsetzen (verlinkung auf Analysen und Test Kapitel)}).\\
+Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(ca. 25\% der gesamten Knoten sind Highfanoutknoten für einen genaueren Zusammenhang von der Anzahl der Highfanoutknoten und der Laufzeit siehe das Kapitel 8).\\
  Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden daraufhin einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquvalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper suchen plus einfügen} wieder. Die folgende Abbildung verbildlicht diesen Ansatz einer Heuristik. \textcolor{red}{Bild erstellen, welches sich an dem des Papers orientiert}.\\
   Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine vielzahl sehr kleiner Subcircuits mit einer somit kleinen Anzahl an Kandidaten entstehen, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen.\textcolor{red}{zu anna gibt es sonst noch einen grund dies nicht doch einmal auszuprobieren?}\\
 
@@ -244,7 +243,12 @@ Zur Lösung des Problems helfen die folgenden Definitionen:\\
 
 \begin{definition}{Offene Knoten:}\\
 	Sei $C$ ein Circuit und $v,w \in V(C)$. Dann heißt $w$ offener Knoten von $v$, wenn folgendes gilt: 
-	\[ w \in cone(v)\backslash \{ v \}, \, | \delta ^{+}(w)| \geq 2 \text{ und } \exists o \in V(C) \backslash cone(v) : \exists \text{ w-o-Weg in } C \] 	
+	\begin{itemize}
+		\item $ w \in cone(v)\backslash \{ v \} $
+		\item $| \delta ^{+}(w)| \geq 2$
+		\item $ \exists o \in V(C) \backslash cone(v) : \exists \text{ w-o-Weg in } C \text{ ohne v} $
+	\end{itemize}
+	 	
 \end{definition}
 Mit anderen Worten ist die Menge der Offenen Knoten eines Circuit Knoten $v$, die Menge aller Highfanoutknoten $w$, von welchen aus man sowohl $v$ als auch einen Knoten außerhalb der Cone von $v$ erreichen kann. Von dieser Menge ist $v$ selber ausgenommen. Dies sind gerade die Highfanout-Knoten, welche durch die Kandidaten eines Knoten außerhalb von $cone(v)$ verändert werden können. Alle Kandidaten von  Knoten mit Ausgangsgrad 1 und dieser Eigenschaft, sind durch den Nachfolger-Kandidaten (welcher auch zu einem offene Knoten gehören muss), bereits eindeutig definiert. \\
 
@@ -320,7 +324,7 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
 
  \textcolor{red}{ indem unterkapitel noch mehr bilder bzw schönerer aufbau ist nämlich aktuell viel text!!}
  
- \subsection{Teilweise redundante Subcircuits}
+ \subsection{Teilweise überflüssige Subcircuits}
  In der Abbildung \textcolor{red}{hier nummer für die abb der red ands einfügen} lässt sich erahnen, dass es möglich ist, dass nicht alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition.\\
  
  \begin{definition}{vollständig überflüssiger und teilweise überflüssiger Circuit }
@@ -334,7 +338,8 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
 Im Gegensatz dazu kommen die teilweise überflüssigen Circuits sehr wohl vor. Bei der Konstruktion eines Chips passiert dies durch das Zusammensetzen unterschiedlicher Circuits.\\
 In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch mit den Suchen nach Matchen erledigt, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. \\
 Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library vorhanden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Inputs des Buffers zu seinen Outputs gebaut. Die vermeidet den Einbau eines nicht nötigen Gates. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\textcolor{red}{was ist mit dem Laufzeit statistiken?}
- \textcolor{red}{bei klarem verstand nochmal durchlesen}
+ \textcolor{red}{bei klarem verstand nochmal durchlesen}\\
+ Obwohl nun das Gegenbeispiel aus Kapitel 2.2 nicht mehr gültig ist, garantiert auch hier ein optimaler Algorithmus keine bestmögliche Implementierung der eines Circuits zugrunde liegender logischer Funktion.
  
  \subsection{Allgemeiner Algorithmus}
  Es folgt ein optimaler  \TM Algorithmus welcher auf allgemeinen Circuits arbeitet. 
