@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1}Einleitung}{2}{section.1}
 \contentsline {section}{\numberline {2}Terminologie \& grundlegender Algorithmus}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}grundlegende Definitionen}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Kern Algorithmus}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Kern Algorithmus}{6}{subsection.2.2}
 \contentsline {section}{\numberline {3}Allgemeiner Algorithmus und Heuristik}{8}{section.3}
 \contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{8}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{9}{subsection.3.2}

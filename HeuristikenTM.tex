@@ -106,8 +106,16 @@ Ein (invertierter) Kandidat auf g besteht aus einem (invertierten) Match auf g u
 \begin{definition}{Circuit-Kandidat:}\\
 Sei C ein Circuit mit Outputknoten Menge O. Eine Circuit-Kandidat K von C ist eine Menge von Kandidaten, sodass $\forall o \in O \, \exists!  h  \in K : h$ ist Kandidat von $ o$ und an jedem Knoten von C an dem sich mehrere Kandidaten überschneiden ist dasselbe Match gewählt.
 \end{definition}
+\newpage
 Folgendes Beispiel visualisiert die vorherigen Definitionen.\\
 \textcolor{red}{BILD EINSETZEN}
+\begin{figure}[h]
+\begin{center}
+ \includegraphics[width = 250pt]{./pictures/compiled/grundl_def_veransch.pdf}
+ \caption{Beispiel einer Library}
+ \label{fig:bsplib}
+\end{center}
+\end{figure}
 
 Ein Circuit-Kandidat C ist eine Möglichkeit den Circuit physikalisch zu realisieren. Wie bereits in der Einleitung bemerkt gilt es nun den besten Kandidaten auf C auszuwählen. Dafür ist ein Maß für Implementierungen von Circuits notwendig. Es folgen zwei geläufige Beispiele. In der Praxis (und im späteren Verlauf dieser Arbeit) wird in der Regel eine convex-Kombination aus beiden verwendet.
 
@@ -159,7 +167,7 @@ Es folgt ein grundlegender Algorithmus, welcher auf eingeschränkten Circuits ar
 \end{definition}
 Daraus folgt, dass der Zusatz optimal abhängig davon ist, was die erlaubten Operationen sind.
 Im Weiteren Verlauf der Arbeit werden weitere Operationen hinzugefügt und der Circuit verallgemeinert. Das Attribut optimal bezieht dann, wenn dies nicht dabei steht,  auf alle bisher vorgestellten Operationen. Zu diesem Punkt umfasst die Menge der erlaubte Operationen das logische äquvalente matchen von Subcircuits mit Elementen der Library.\\
-
+\newpage
 \begin{wrapfigure}{r}{3cm}
 		\includegraphics[width = 3cm]{pictures/compiled/compl_redundant}
 		\caption{Ein Circuit desen boolesche Funktion $f = 0 $ ist}
@@ -206,10 +214,10 @@ Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist bezü
 Im weiteren Verlauf dieses Kapitels, werden diese Problemstellungen auf Circuits mit mehreren Outputs erweitert. \\
 
 Diese \textcolor{red}{diese Probleme sind äquvalent Beweis? oder verweis aus quelle}
-\textcolor{red}{erwähnen dass da die äquivalent sind von nun an nur noch die Konvexkombination verwendet wird}
+\textcolor{red}{erwähnen dass da die äquivalent  nur noch  Konvexkombination}
 
 Dadurch ergibt sich folgende Problemstellung für den Algorithmus: \\
-Angenommen an jedem Knoten $v$ würde, wie im Kern-Algorithmus, nur derjenige Kandidat gespeichert werden, welcher die Kostenfunktion an $v$ optimiert. Dadurch kann nicht mehr garantiert werden, dass beim errechnen der Kandidaten für den Output, der für ihn optimale Kandidat noch vorhanden ist. Dies beweist das Beispiel in Abbildung \textcolor{red}{hier abb einfügen}. Beide Inputs getrennt nach der Kostenfunktion zu optimieren, garantiert offenbar nicht das optimale Ergebnis.\\
+Angenommen an jedem Knoten $v$ würde, wie im Kern-Algorithmus, nur derjenige Kandidat gespeichert werden, welcher die Kostenfunktion an $v$ optimiert. Dadurch kann nicht mehr garantiert werden, dass beim errechnen der Kandidaten für den Output, der für ihn optimale Kandidat noch vorhanden ist. Dies beweist das Beispiel in Abbildung \textcolor{red}{abb noetig ??}. Beide Inputs getrennt nach der Kostenfunktion zu optimieren, garantiert offenbar nicht das optimale Ergebnis.\\
 
 Die Kosten eines Kandidaten k sind somit nicht $\lambda AT(k) +(1-\lambda )area(k)$,  sondern das Tupel $(AT(k), area(k))$.
 Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss. Dazu folgende Definition\\
