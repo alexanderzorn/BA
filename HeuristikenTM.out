@@ -2,18 +2,20 @@
 \BOOKMARK [1][-]{section.2}{Terminologie \046 grundlegender Algorithmus}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{grundlegende Definitionen}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Kern Algorithmus}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Allgemeiner Algorithmus und Heuristik}{}% 5
+\BOOKMARK [1][-]{section.3}{Allgemeiner Algorithmus}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.3}{required Arrivaltimes}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.4}{zu lange Kanten}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.5}{pinabh\344ngiges Delay}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.6}{Mehrere Outputs}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.7}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.8}{Allgemeiner Algorithmus}{section.3}% 13
-\BOOKMARK [1][-]{section.4}{erste Heuristik}{}% 14
-\BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 15
-\BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 16
-\BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 17
-\BOOKMARK [1][-]{section.8}{Laufzeitanalyse}{}% 18
-\BOOKMARK [1][-]{section.9}{Fazit und Ausblick}{}% 19
+\BOOKMARK [2][-]{subsection.3.3}{zu lange Kanten}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{FPTAS und Heuristik}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.5}{required Arrivaltimes}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.6}{pinabh\344ngiges Delay}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.7}{Mehrere Outputs}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.8}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.9}{Allgemeiner Algorithmus}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Premapping von Highfanoutknoten}{}% 15
+\BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 16
+\BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 17
+\BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 18
+\BOOKMARK [1][-]{section.8}{Ressource sharing}{}% 19
+\BOOKMARK [1][-]{section.9}{Laufzeitanalyse}{}% 20
+\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 21
