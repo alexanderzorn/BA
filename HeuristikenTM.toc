@@ -7,15 +7,15 @@
 \contentsline {section}{\numberline {3}Allgemeiner Algorithmus und Heuristik}{8}{section.3}
 \contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{8}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}required Arrivaltimes}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}zu lange Kanten}{14}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}pinabh\IeC {\"a}ngiges Delay}{14}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Mehrere Outputs}{15}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{16}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Allgemeiner Algorithmus}{18}{subsection.3.8}
-\contentsline {section}{\numberline {4}erste Heuristik}{19}{section.4}
-\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{21}{section.5}
-\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{21}{section.6}
-\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{22}{section.7}
-\contentsline {section}{\numberline {8}Laufzeitanalyse}{22}{section.8}
-\contentsline {section}{\numberline {9}Fazit und Ausblick}{22}{section.9}
+\contentsline {subsection}{\numberline {3.3}required Arrivaltimes}{13}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}zu lange Kanten}{15}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}pinabh\IeC {\"a}ngiges Delay}{15}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Mehrere Outputs}{16}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{17}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Allgemeiner Algorithmus}{19}{subsection.3.8}
+\contentsline {section}{\numberline {4}erste Heuristik}{20}{section.4}
+\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{22}{section.5}
+\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{22}{section.6}
+\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{23}{section.7}
+\contentsline {section}{\numberline {8}Laufzeitanalyse}{23}{section.8}
+\contentsline {section}{\numberline {9}Fazit und Ausblick}{23}{section.9}
