@@ -9,15 +9,18 @@
 \contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{9}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}zu lange Kanten}{12}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}FPTAS und Heuristik}{13}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}required Arrivaltimes}{13}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}pinabh\IeC {\"a}ngiges Delay}{15}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Mehrere Outputs}{15}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{17}{subsection.3.8}
-\contentsline {subsection}{\numberline {3.9}Allgemeiner Algorithmus}{18}{subsection.3.9}
-\contentsline {section}{\numberline {4}Premapping von Highfanoutknoten}{20}{section.4}
-\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{21}{section.5}
-\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{21}{section.6}
-\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{22}{section.7}
-\contentsline {section}{\numberline {8}Ressource sharing}{22}{section.8}
-\contentsline {section}{\numberline {9}Laufzeitanalyse}{22}{section.9}
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{22}{section.10}
+\contentsline {subsubsection}{\numberline {3.4.1}Filtern mit Buckets}{13}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}FPTAS}{13}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}Heuristik}{14}{subsubsection.3.4.3}
+\contentsline {subsection}{\numberline {3.5}required Arrivaltimes}{14}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}pinabh\IeC {\"a}ngiges Delay}{17}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Mehrere Outputs}{17}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{19}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Allgemeiner Algorithmus}{20}{subsection.3.9}
+\contentsline {section}{\numberline {4}Premapping von Highfanoutknoten}{22}{section.4}
+\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{23}{section.5}
+\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{23}{section.6}
+\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{24}{section.7}
+\contentsline {section}{\numberline {8}Ressource sharing}{24}{section.8}
+\contentsline {section}{\numberline {9}Laufzeitanalyse}{24}{section.9}
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{24}{section.10}
