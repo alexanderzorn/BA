@@ -19,6 +19,9 @@
 \BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 19
 \BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 20
 \BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 21
-\BOOKMARK [1][-]{section.8}{Ressource sharing}{}% 22
+\BOOKMARK [1][-]{section.8}{Ressource Sharing}{}% 22
 \BOOKMARK [1][-]{section.9}{Laufzeitanalyse}{}% 23
-\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 24
+\BOOKMARK [2][-]{subsection.9.1}{Struktur realer Instanzen}{section.9}% 24
+\BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 25
+\BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 26
+\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 27
