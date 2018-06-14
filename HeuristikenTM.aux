@@ -51,6 +51,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Ordnen der Kandidaten in einer Tradeoffkurve\relax }}{9}{figure.caption.6}}
 \newlabel{bild:tradeoff_kurve}{{5}{9}{Ordnen der Kandidaten in einer Tradeoffkurve\relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{9}{subsection.3.2}}
+\newlabel{subsec:highfanout}{{3.2}{9}{Highfanoutknoten}{subsection.3.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Unterteilen eines Circuit in Highfanoutfreie Subcircuits\relax }}{10}{figure.caption.7}}
 \newlabel{bild:ohne_highfanout_heu}{{6}{10}{Unterteilen eines Circuit in Highfanoutfreie Subcircuits\relax }{figure.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Exponentiell viele Kandidaten bereits bei sehr eingeschr\IeC {\"a}nkter Library\relax }}{10}{figure.caption.8}}
@@ -61,40 +62,50 @@
 \newlabel{subsec:zu_lange_kanten}{{3.3}{12}{zu lange Kanten}{subsection.3.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Visualisierung eines Matches \IeC {\"u}ber eine lange Kante\relax }}{12}{figure.caption.10}}
 \newlabel{bild:zu_lange_kanten}{{9}{12}{Visualisierung eines Matches über eine lange Kante\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}FPTAS und Heuristik}{13}{subsection.3.4}}
-\newlabel{subsec:fptas}{{3.4}{13}{FPTAS und Heuristik}{subsection.3.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Filtern mit Buckets}{13}{subsubsection.3.4.1}}
-\newlabel{subsec:filtern}{{3.4.1}{13}{Filtern mit Buckets}{subsubsection.3.4.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}FPTAS}{13}{subsubsection.3.4.2}}
-\newlabel{subsubsec:fptas}{{3.4.2}{13}{FPTAS}{subsubsection.3.4.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Heuristik}{14}{subsubsection.3.4.3}}
-\newlabel{subsubsec:heuristik}{{3.4.3}{14}{Heuristik}{subsubsection.3.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}required Arrivaltimes}{14}{subsection.3.5}}
-\newlabel{subsec:rat}{{3.5}{14}{required Arrivaltimes}{subsection.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}pinabh\IeC {\"a}ngiges Delay}{16}{subsection.3.6}}
-\newlabel{subsec:pinabh_delay}{{3.6}{16}{pinabhängiges Delay}{subsection.3.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Mehrere Outputs}{17}{subsection.3.7}}
-\newlabel{subsec:mehrere_outputs}{{3.7}{17}{Mehrere Outputs}{subsection.3.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{18}{subsection.3.8}}
-\newlabel{subsec:teilweise_ueberfkl_subcircuits}{{3.8}{18}{Teilweise überflüssige Subcircuits}{subsection.3.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Nur Input 1 und 2 sind die relevanten Inputs\relax }}{18}{figure.caption.11}}
-\newlabel{bild:partly_redundant}{{10}{18}{Nur Input 1 und 2 sind die relevanten Inputs\relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Allgemeiner Algorithmus}{19}{subsection.3.9}}
-\newlabel{subsec:allg_algorithmus}{{3.9}{19}{Allgemeiner Algorithmus}{subsection.3.9}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {}{\ignorespaces (allgemeines) TechnologyMapping \relax }}{20}{algocf.}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{13}{subsection.3.4}}
+\newlabel{subsec:teilweise_ueberfkl_subcircuits}{{3.4}{13}{Teilweise überflüssige Subcircuits}{subsection.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Nur Input 1 und 2 sind die relevanten Inputs\relax }}{13}{figure.caption.11}}
+\newlabel{bild:partly_redundant}{{10}{13}{Nur Input 1 und 2 sind die relevanten Inputs\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}FPTAS und Heuristik}{14}{subsection.3.5}}
+\newlabel{subsec:fptas}{{3.5}{14}{FPTAS und Heuristik}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Matching Suche in polynomieller Zeit}{14}{subsubsection.3.5.1}}
+\newlabel{subsubsec:pol_matchen}{{3.5.1}{14}{Matching Suche in polynomieller Zeit}{subsubsection.3.5.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}Filtern mit Buckets}{14}{subsubsection.3.5.2}}
+\newlabel{subsubsec:filtern}{{3.5.2}{14}{Filtern mit Buckets}{subsubsection.3.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Einteilen und filtern mit Buckets\relax }}{15}{figure.caption.12}}
+\newlabel{bild:tradeoff_kurven_filtern}{{11}{15}{Einteilen und filtern mit Buckets\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}FPTAS}{15}{subsubsection.3.5.3}}
+\newlabel{subsubsec:fptas}{{3.5.3}{15}{FPTAS}{subsubsection.3.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.4}Heuristik}{16}{subsubsection.3.5.4}}
+\newlabel{subsubsec:heuristik}{{3.5.4}{16}{Heuristik}{subsubsection.3.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}required Arrivaltimes}{16}{subsection.3.6}}
+\newlabel{subsec:rat}{{3.6}{16}{required Arrivaltimes}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}pinabh\IeC {\"a}ngiges Delay}{18}{subsection.3.7}}
+\newlabel{subsec:pinabh_delay}{{3.7}{18}{pinabhängiges Delay}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Mehrere Outputs}{18}{subsection.3.8}}
+\newlabel{subsec:mehrere_outputs}{{3.8}{18}{Mehrere Outputs}{subsection.3.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.9}Allgemeiner Algorithmus}{20}{subsection.3.9}}
+\newlabel{subsec:allg_algorithmus}{{3.9}{20}{Allgemeiner Algorithmus}{subsection.3.9}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {}{\ignorespaces (allgemeines) TechnologyMapping\relax }}{20}{algocf.}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Premapping von Highfanoutknoten}{21}{section.4}}
 \newlabel{sec:premapping}{{4}{21}{Premapping von Highfanoutknoten}{section.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{22}{section.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{22}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{23}{section.7}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Ressource Sharing}{23}{section.8}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Laufzeitanalyse}{24}{section.9}}
-\newlabel{sec:analyse}{{9}{24}{Laufzeitanalyse}{section.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{24}{subsection.9.1}}
-\newlabel{subsec:struktur_realer_instanzen}{{9.1}{24}{Struktur realer Instanzen}{subsection.9.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{24}{subsection.9.2}}
-\newlabel{subsec:analyse_der_ergebnisse}{{9.2}{24}{Analyse der Ergebnisse}{subsection.9.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{25}{subsection.9.3}}
-\newlabel{subsec:laufzeitanalyse}{{9.3}{25}{Laufzeitanalyse}{subsection.9.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10}Fazit und Ausblick}{25}{section.10}}
-\newlabel{sec:fazit_und_ausblick}{{10}{25}{Fazit und Ausblick}{section.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}triviales Premapping}{22}{subsection.4.1}}
+\newlabel{subsec:triviales_premapping}{{4.1}{22}{triviales Premapping}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}erweiteretes Premapping}{22}{subsection.4.2}}
+\newlabel{subsec:erweitertes_premapping}{{4.2}{22}{erweiteretes Premapping}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Premapping durch Sch\IeC {\"a}tzen}{22}{subsection.4.3}}
+\newlabel{subsec:neinhierfrnochkeinlabel}{{4.3}{22}{Premapping durch Schätzen}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{23}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Weitere Optimierungskriterien}{23}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Version der Heuristik, welche obige Kriterien beherzigt}{24}{section.7}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Ressource Sharing}{24}{section.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Laufzeitanalyse}{25}{section.9}}
+\newlabel{sec:analyse}{{9}{25}{Laufzeitanalyse}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{25}{subsection.9.1}}
+\newlabel{subsec:struktur_realer_instanzen}{{9.1}{25}{Struktur realer Instanzen}{subsection.9.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{25}{subsection.9.2}}
+\newlabel{subsec:analyse_der_ergebnisse}{{9.2}{25}{Analyse der Ergebnisse}{subsection.9.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{26}{subsection.9.3}}
+\newlabel{subsec:laufzeitanalyse}{{9.3}{26}{Laufzeitanalyse}{subsection.9.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Fazit und Ausblick}{26}{section.10}}
+\newlabel{sec:fazit_und_ausblick}{{10}{26}{Fazit und Ausblick}{section.10}{}}

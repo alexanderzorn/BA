@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  14 JUN 2018 21:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  14 JUN 2018 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**tradeoff_kurve.tex
-(./tradeoff_kurve.tex
+**tradeoff_kurve_filtered.tex
+(./tradeoff_kurve_filtered.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/standalone/standalone.cls
@@ -1608,8 +1608,9 @@ File: pgflibraryarrows.meta.code.tex 2013/12/13 v3.0.0 (rcs-revision 1.12)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrary3d.code.tex
 File: tikzlibrary3d.code.tex 2013/07/17 v3.0.0 (rcs-revision 1.2)
-) (./tradeoff_kurve.aux)
-\openout1 = `tradeoff_kurve.aux'.
+)
+No file tradeoff_kurve_filtered.aux.
+\openout1 = `tradeoff_kurve_filtered.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -1626,7 +1627,6 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 5.
-
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1673,10 +1673,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
 LaTeX Info: Redefining \nameref on input line 5.
-
-(./tradeoff_kurve.out) (./tradeoff_kurve.out)
 \@outlinefile=\write4
-\openout4 = `tradeoff_kurve.out'.
+\openout4 = `tradeoff_kurve_filtered.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -1741,9 +1739,9 @@ File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Missing character: There is no ; in font nullfont!
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 48.
+(Font)              <9> on input line 37.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 48.
+(Font)              <6> on input line 37.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -1751,28 +1749,36 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 Package caption Warning: Unused \captionsetup[sub] on input line 20.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
-(./tradeoff_kurve.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
-Package rerunfilecheck Info: File `tradeoff_kurve.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
+(./tradeoff_kurve_filtered.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 39.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 39.
+
+
+Package rerunfilecheck Warning: File `tradeoff_kurve_filtered.out' has changed.
+
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `tradeoff_kurve_filtered.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 51090 strings out of 493089
- 1226597 string characters out of 6134843
- 1508043 words of memory out of 5000000
- 53677 multiletter control sequences out of 15000+600000
+ 51066 strings out of 493089
+ 1226235 string characters out of 6134843
+ 1502975 words of memory out of 5000000
+ 53659 multiletter control sequences out of 15000+600000
  41032 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,7n,100p,10402b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,7n,100p,10411b,739s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
 cal/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-di
 st/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb>
-Output written on tradeoff_kurve.pdf (1 page, 32262 bytes).
+Output written on tradeoff_kurve_filtered.pdf (1 page, 31702 bytes).
 PDF statistics:
  30 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream

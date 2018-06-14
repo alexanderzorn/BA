@@ -6,22 +6,26 @@
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{zu lange Kanten}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.4}{FPTAS und Heuristik}{section.3}% 9
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Filtern mit Buckets}{subsection.3.4}% 10
-\BOOKMARK [3][-]{subsubsection.3.4.2}{FPTAS}{subsection.3.4}% 11
-\BOOKMARK [3][-]{subsubsection.3.4.3}{Heuristik}{subsection.3.4}% 12
-\BOOKMARK [2][-]{subsection.3.5}{required Arrivaltimes}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.6}{pinabh\344ngiges Delay}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.7}{Mehrere Outputs}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.8}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.9}{Allgemeiner Algorithmus}{section.3}% 17
-\BOOKMARK [1][-]{section.4}{Premapping von Highfanoutknoten}{}% 18
-\BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 19
-\BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 20
-\BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 21
-\BOOKMARK [1][-]{section.8}{Ressource Sharing}{}% 22
-\BOOKMARK [1][-]{section.9}{Laufzeitanalyse}{}% 23
-\BOOKMARK [2][-]{subsection.9.1}{Struktur realer Instanzen}{section.9}% 24
-\BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 25
-\BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 26
-\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 27
+\BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.5}{FPTAS und Heuristik}{section.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 11
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Filtern mit Buckets}{subsection.3.5}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.3}{FPTAS}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.4}{Heuristik}{subsection.3.5}% 14
+\BOOKMARK [2][-]{subsection.3.6}{required Arrivaltimes}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.7}{pinabh\344ngiges Delay}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.8}{Mehrere Outputs}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.9}{Allgemeiner Algorithmus}{section.3}% 18
+\BOOKMARK [1][-]{section.4}{Premapping von Highfanoutknoten}{}% 19
+\BOOKMARK [2][-]{subsection.4.1}{triviales Premapping}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.2}{erweiteretes Premapping}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.3}{Premapping durch Sch\344tzen}{section.4}% 22
+\BOOKMARK [1][-]{section.5}{Pr\344prozessing zus\344tzliche Addons}{}% 23
+\BOOKMARK [1][-]{section.6}{Weitere Optimierungskriterien}{}% 24
+\BOOKMARK [1][-]{section.7}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 25
+\BOOKMARK [1][-]{section.8}{Ressource Sharing}{}% 26
+\BOOKMARK [1][-]{section.9}{Laufzeitanalyse}{}% 27
+\BOOKMARK [2][-]{subsection.9.1}{Struktur realer Instanzen}{section.9}% 28
+\BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 29
+\BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 30
+\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 31

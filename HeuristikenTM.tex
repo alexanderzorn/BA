@@ -5,7 +5,7 @@
 \usepackage{Titelseite}
 \usepackage{bbold}
 \usepackage{graphicx}
-\newcommand{\TM}{TechnologyMapping }
+\newcommand{\TM}{TechnologyMapping}
 
 %Namen des Verfassers der Arbeit
 \author{Alexander Zorn}
@@ -93,7 +93,7 @@ Ein Circuit realisiert durch Verschachtelung der booleschen Funktionen seiner Ga
 Zwei Circuits heißen äquivalent, wenn sie die gleiche boolesche Funktion realisieren.
 \end{definition}
 
-In einem Circuit lassen sich Teilgraphen durch ein Gate der Library austauschen. Voraussetzung für einen solchen Tausch ist, dass der veränderte Circuit äquivalent zu dem originalen ist. Dies sicher die folgenden Definitionen. 
+In einem Circuit lassen sich Teilgraphen durch ein Gate der Library austauschen. Voraussetzung für einen solchen Tausch ist, dass der veränderte Circuit äquivalent zu dem originalen ist. Dies formalisieren die folgenden Definitionen. 
 
 \begin{definition}{Match und Kandidat:}\\
 Sei g ein Gate in einem Circuit $C$. Ein (invertiertes) Match m ist ein Tupel $(p_m, I_m, f_m, inv_m)$ welches folgendes enthält:
@@ -246,6 +246,7 @@ Die beiden vorgestellten Probleme sind NP-vollständig. Daraus folgt, dass sich 
 Ein Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den verweis zu einem Beweis einfügen}.
 
 \subsection{Highfanoutknoten}
+\label{subsec:highfanout}
 Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(ca. 25\% der gesamten Knoten sind Highfanoutknoten für einen genaueren Zusammenhang von der Anzahl der Highfanoutknoten und der Laufzeit siehe das Kapitel \ref{sec:analyse}).\\
  \begin{wrapfigure}{r}{6cm}
 		\includegraphics[width = 6cm]{pictures/compiled/ohne_highfanout_heu}
@@ -312,15 +313,54 @@ Diese Kanten bezeichet man als konstant.
 Um diese Situation zu vermeiden, wird bei der Bildung jedes Matches darauf geachtet über keine konstante Kante zu matchen.\\
 Durch die Hinzunahme der zu langen Kanten zu den konstanten Kanten, kann keine optimale Lösung mehr im allgemeinen Algorithmus garantiert werden, von daher wird dies im optimalen Algorithmus nicht gemacht, bei der darauffolgenden Heuristik jedoch schon. \\
 
-
+ \subsection{Teilweise überflüssige Subcircuits}
+ \label{subsec:teilweise_ueberfkl_subcircuits}
+ In der Abbildung 4 lässt sich erahnen, dass nicht unbedingt alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition.\\
+ 
+ \begin{definition}{vollständig überflüssiger und teilweise überflüssiger Circuit }
+ 	Sei $C$ ein Circuit mit Logischer Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $. $C$ wird vollständig überflüssig genannt, wenn gilt:
+ 	\[  \exists y \in \{0,1 \}^m \forall x \in \{ 0, 1\}^n : f(x) = y  \]
+ 	$C$ wird teilweise überflüssig genannt, wenn es eine Teilmenge der Inputs gibt, von denen die Signale der Outputs nicht abhängen.
+ \end{definition}
+ \begin{wrapfigure}{r}{6cm}
+		\includegraphics[height = 5cm]{pictures/compiled/partly_redundant}
+		\caption{Nur Input 1 und 2 sind die relevanten Inputs}
+		\label{bild:partly_redundant}
+\end{wrapfigure}
+Die Berücksichtigung von vollständig überflüssigen Subcircuits bedeuted, dass Teile des Circuits entfernt werden und die Outputs der Inputs der Nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden.Dies lässt sich jedoch weiter verbessern, da die Information an den Nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch birgt es ebenfalls einen großen Aufwand zur Implementierung in der aktuellen Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssige Circuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits nicht mehr behandelt und kommen auch in den Folgenden Algorithmen nicht vor und zählen auch nicht zu den Kriterien des optimalen \TM. \\
+ 
+Im Gegensatz dazu kommen die teilweise überflüssigen Circuits sehr wohl vor. Bei der Konstruktion eines Chips passiert dies durch das Zusammensetzen unterschiedlicher Circuits.\\
+In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch bei der  Suche der Matche gefunden, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. Dies veranschaulicht Abbildung \ref{bild:partly_redundant}. \\
+Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library für das \TM vorhanden und kann vermieden werden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Input des Buffers zu seinen Outputs gebaut. Dies verhindert den Einbau eines nicht nötigen Gates. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\textcolor{red}{was ist mit dem Laufzeit statistiken?}\\
+ Obwohl nun das Gegenbeispiel aus Kapitel \ref{subsec:kern_algorithmus} nicht mehr gültig ist, garantiert auch hier ein optimaler Algorithmus keine bestmögliche Implementierung der eines Circuits zugrunde liegenden logischen Funktion.
+ 
 \subsection{FPTAS und Heuristik}
 \label{subsec:fptas}
-\textcolor{red}{heir eingehen auf das polynomielle finden von matchen oben bei dem kern algorithmus das jedoch auch erwähnen!!
-redundante subcircuits evtl noch hiervor setzen damit darauf bei dem pol. finden der matche eingegangen werden kann}\\
 Mit der Einführung von Highfanoutknoten, ist die Anzahl der Kandidaten im Allgemeinen nur exponentiell beschränkt. Der Speicheraufwand lässt sich jedoch deutlich reduzieren, wenn das Ergebnis des Algorithmus um einen Faktor $\epsilon > 0$ von der besten Lösung abweichen darf. \\
+
+\subsubsection{Matching Suche in polynomieller Zeit}
+\label{subsubsec:pol_matchen}
+Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, das der ungerichtete Graph Kreisfrei ist und somit jedes weitere Gate, welches mit in das Match einbezogen wird, die Anzahl der Inputs um eins erhöht. Dadurch ist die Anzahl der möglichen Matche für einen Knoten beschränkt.\\
+Mit den in Kapitel  \ref{subsec:highfanout} eingeführten Highfanoutknoten, ist es jedoch möglich, dass einem Knoten eine beliebig grosse Menge möglicher Matche zugeordnet werden können. Dies beweist Abbildung \textcolor{red}{??}. \\
+Dies bedeutet, dass es beliebig große Subciruits von $C$ gibt, welche eine logische Funktion realisieren, die nur ein Gate braucht. Dadurch hat das Suchen aller Matche eine Laufzeit von $\mathcal{O}(|V(C)|!)$\\
+ Auf realen Chips ist die Größe solcher Subcircuits stark beschränkt, woraus folgt, dass das Finden aller Matche in polynomieller Zeit möglich bleibt.\\
+
 \subsubsection{Filtern mit Buckets}
-\label{subsec:filtern}
-Die Kandidaten eines beliebigen Knoten sind in Tradeoffkurven, nach Klassen sortiert, gespeichert. Die Werte einer solchen Kurve lassen sich in Abschnitte (buckets) fester Größe einteilen. Dabei lässt sich eine Kurve sowohl in Delay-Buckets  der Größe $\delta_{delay}$, als auch in Area-Buckets der Größe $\delta_{area}$ unterteilen. Dies wird in Abbildung \textcolor{red}{??} veranschaulicht.\\
+\label{subsubsec:filtern}
+Die Kandidaten eines beliebigen Knoten sind in Tradeoffkurven, nach Klassen sortiert, gespeichert. Die Werte einer solchen Kurve lassen sich in Abschnitte (buckets) fester Größe einteilen. Dabei lässt sich eine Kurve sowohl in Delay-Buckets  der Größe $\delta_{delay}$, als auch in Area-Buckets der Größe $\delta_{area}$ unterteilen. Dies wird in Abbildung \ref{bild:tradeoff_kurven_filtern} veranschaulicht.\\
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{pictures/compiled/tradeoff_kurve_buckets}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{pictures/compiled/tradeoff_kurve_filtered}
+\end{subfigure}
+\caption{Einteilen und filtern mit Buckets}
+\label{bild:tradeoff_kurven_filtern}
+\end{figure}
 Wählt man die Bucketgrößen $\delta_{area} = \delta_{delay} = \epsilon$, und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket, so liegen die Kosten eines Kandidaten maximal $\epsilon |V(C)|$ von denen des bestmöglichen entfernt. Dies gilt auch für den Output. \\
 Die Größe eines Gates wird relativ zu einem Gate der Library gemessen und die Größe der Library wird als gegeben vorausgesetzt. Daher gilt  $\mathcal{O}(|V(C)|) \in \mathcal{O}(area(C)) $. Somit findet der Algorithmus eine Lösung mit Kosten $c\leq (1+\epsilon)OPT$, wobei $OPT$ die Kosten einer optimalen Lösung sind.
 
@@ -400,29 +440,6 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
 
  \textcolor{red}{ indem unterkapitel noch mehr bilder bzw schönerer aufbau ist nämlich aktuell viel text!!}
  
- \subsection{Teilweise überflüssige Subcircuits}
- \label{subsec:teilweise_ueberfkl_subcircuits}
- In der Abbildung 4 lässt sich erahnen, dass nicht unbedingt alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition.\\
- 
- \begin{definition}{vollständig überflüssiger und teilweise überflüssiger Circuit }
- 	Sei $C$ ein Circuit mit Logischer Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $. $C$ wird vollständig überflüssig genannt, wenn gilt:
- 	\[  \exists y \in \{0,1 \}^m \forall x \in \{ 0, 1\}^n : f(x) = y  \]
- 	$C$ wird teilweise überflüssig genannt, wenn es eine Teilmenge der Inputs gibt, von denen die Signale der Outputs nicht abhängen.
- \end{definition}
- \begin{wrapfigure}{r}{6cm}
-		\includegraphics[height = 6cm]{pictures/compiled/partly_redundant}
-		\caption{Nur Input 1 und 2 sind die relevanten Inputs}
-		\label{bild:partly_redundant}
-\end{wrapfigure}
- \textcolor{red}{hier noch mein liebingsbild einfügen zu einem vollst. überflüssigen Circuit? oder handel beiden fälle mit ich das mit einem Bild oben ab und gehe nur noch kurz darauf ein ?}
- Die Berücksichtigung von vollständig überflüssigen Subcircuits bedeuted, dass Teile des Circuits entfernt werden und die Outputs der Inputs der Nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden.Dies lässt sich jedoch weiter verbessern, da die Information an den Nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch birgt es ebenfalls einen großen Aufwand zur Implementierung in der aktuellen Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssige Circuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits nicht mehr behandelt und kommen auch in den Folgenden Algorithmen nicht vor sowie und zählen auch nicht zu den Kriterien des optimalen \TM. \textcolor{red}{formulierung?} \\
- 
-Im Gegensatz dazu kommen die teilweise überflüssigen Circuits sehr wohl vor. Bei der Konstruktion eines Chips passiert dies durch das Zusammensetzen unterschiedlicher Circuits.\\
-In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch mit den Suchen nach Matchen erledigt, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. \\
-Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library vorhanden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Inputs des Buffers zu seinen Outputs gebaut. Die vermeidet den Einbau eines nicht nötigen Gates. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\textcolor{red}{was ist mit dem Laufzeit statistiken?}
- \textcolor{red}{bei klarem verstand nochmal durchlesen}\\
- Obwohl nun das Gegenbeispiel aus Kapitel \ref{subsec:kern_algorithmus} nicht mehr gültig ist, garantiert auch hier ein optimaler Algorithmus keine bestmögliche Implementierung der eines Circuits zugrunde liegender logischer Funktion.
- 
  \subsection{Allgemeiner Algorithmus}
  \label{subsec:allg_algorithmus}
  Es folgt ein optimaler  \TM Algorithmus welcher auf allgemeinen Circuits arbeitet. 
@@ -480,16 +497,21 @@ Folgende Abbildung veranschaulicht das exponentielle Wachstum der Kandidatenmeng
 
  \section{Premapping von Highfanoutknoten}
  \label{sec:premapping}
- \textcolor{red}{ich muss noch erwähnen dass das finden von matchen in der praxis nur eingeschränkt funktioniert weil der allgemeine fall |V(C)|! laufzeit hat aber der implementierte algorithmus die meisten fälle abwickelt!! dies gilt natürlich auch für die teilweise redundanten subcircuits die in der parxis zusammen mit den matchen gesucht werden da kommt heraus dass dann unnötig gewordenen inputs nicht mehr gebaut werden}
- \textcolor{red}{eigenes Kapitel ? die Laufzeit muss sichtlich von den Highfanoutknoten abhängen den teil genauer erklären anhand der laufzeit zeigen (vielleicht den Beweis von Lukas umschreiben}\\
- 
- Der exponentielle Anstieg der Kandidatenmenge wird, wie oben gezeigt, durch die Highfanout-Knoten verursacht. Daraus folgt, dass ein sehr großes Potenzial in der Reduzierung der Kandidaten für diese Knoten liegt. 
- 
- \textcolor{red}{TODO hier: 
- 	filterung mit Buckets (wurde bisher nicht erähnt auch die epsilon diskussion einfügen)wodurch die Anzahl der kandidaten radikal reduziert wird und der Algorithmus nur eine güte von epsilon einbüßt ? das genauer herausarbeiten!\\
- 	zweitens: speicherung von nur einem Kandidaten pro Highfanoutknoten inklusive Präprozessing der schranken welcher der bestmögliche zu speichernde kandidat ist\\
- 	daraufhin Lukas Algorithmus übernehmen / umschreiben auf die RAts}
+Der exponentielle Anstieg der Kandidatenmenge wird, wie oben gezeigt, durch die Highfanout-Knoten verursacht. Daraus folgt, dass ein sehr großes Laufzeit Potenzial in der Reduzierung der Kandidaten für diese Knoten liegt. \\
+ Die Kandidatenmenge eines jeden Highfanoutknotens wird, wie bereits in Kapitel \ref{subsubsec:heuristik} geschehen, auf eins reduziert. Diese Routine wird auch das Premapping der Highfanoutknoten genannt.Dadurch folgt, dass jeder Knoten des Circuits $C$ nur noch eine Klasse an Kandidaten besitzt, denn alle offenen Knoten seiner cone sind Highfanoutknoten und somit festgelegt.  Die Kandidatenmenge der Outputs, welche noch Nachfolger $o \in C$ haben, wird ebenfalls auf einen Kandidaten reduziert. Dies verhindert das Klonen in $cone(o)$, da  auch die nicht offenen Knoten von $o$ von allen Knoten der Menge $O := \{ v \in Outputs(C): o \in cone(v) \}$ mit einem Kandidaten belegt werden.\\
+Nun lässt sich der bestmögliche Kandidate eines jeden Outputs, ohne Nachfolger, finden, indem die einzige verbleibende Tradeoffkurve nach dem Kandidaten mit den geringsten Kosten gesucht wird. Dadurch ist das Finden des noch bestmöglichen Circuit Kandidaten ohne Laufzeiteinbußen möglich. \\
+Daraus folgt, dass der zu wählende Circuit-Kandidat eindeutig ist, sobald jedem Highfanoutknoten ein Kandidat zugewiesen wurde. Dadurch hat die Wahl der Premapping Routine eine zentrale Bedeutung der Heuristik.\\
+Im folgenden werden drei verschiedene Routinen vorgestellt und auf ihre Eigenschaften eingegangen. Genauere Informationen über die Unterschiede der Resultate dieser Routinen finden sich in Kapitel \ref{sec:analyse}.
 
+\subsection{triviales Premapping}
+\label{subsec:triviales_premapping}
+ 
+\subsection{erweiteretes Premapping}
+\label{subsec:erweitertes_premapping}
+ 
+\subsection{Premapping durch Schätzen}
+\label{subsec:neinhierfrnochkeinlabel}
+ 
 
 \newpage
 
