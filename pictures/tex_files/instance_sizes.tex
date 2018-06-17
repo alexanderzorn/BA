@@ -1,0 +1,23 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{filecontents}
+\usepackage{pgfplots, pgfplotstable}
+\usepgfplotslibrary{statistics}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    ymin=0,
+    ymode=log,
+    xmode=log
+]
+\addplot +[
+    hist={
+        bins=100,
+        data min=0,
+        data max=100000
+    }   
+] table [y index=0] {instance_sizes_data};
+\end{axis}
+\end{tikzpicture}
+\end{document}
