@@ -340,10 +340,15 @@ Mit der Einführung von Highfanoutknoten, ist die Anzahl der Kandidaten im Allge
 
 \subsubsection{Matching Suche in polynomieller Zeit}
 \label{subsubsec:pol_matchen}
-Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, das der ungerichtete Graph Kreisfrei ist und somit jedes weitere Gate, welches mit in das Match einbezogen wird, die Anzahl der Inputs um eins erhöht. Dadurch ist die Anzahl der möglichen Matche für einen Knoten beschränkt.\\
-Mit den in Kapitel  \ref{subsec:highfanout} eingeführten Highfanoutknoten, ist es jedoch möglich, dass einem Knoten eine beliebig grosse Menge möglicher Matche zugeordnet werden können. Dies beweist Abbildung \textcolor{red}{??}. \\
-Dies bedeutet, dass es beliebig große Subciruits von $C$ gibt, welche eine logische Funktion realisieren, die nur ein Gate braucht. Dadurch hat das Suchen aller Matche eine Laufzeit von $\mathcal{O}(|V(C)|!)$\\
- Auf realen Chips ist die Größe solcher Subcircuits stark beschränkt, woraus folgt, dass das Finden aller Matche in polynomieller Zeit möglich bleibt.\\
+ \begin{wrapfigure}{r}{3cm}
+		\includegraphics[]{pictures/compiled/bel_viele_matche}
+		\caption{}
+		\label{bild:bel_viele_matche}
+\end{wrapfigure}
+Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, das der ungerichtete Graph Kreisfrei ist und somit jedes weitere Gate, welches mit in das Match einbezogen wird, die Anzahl der Inputs erhöht. Dadurch ist die Anzahl der möglichen Matche für einen Knoten, unabhängig von der Wahl des Ciruits, beschränkt.\\
+Mit den in Kapitel  \ref{subsec:highfanout} eingeführten Highfanoutknoten, ist es jedoch möglich, dass einem Knoten, abhängig vom gewählten Ciruit, eine beliebig grosse Menge möglicher Matche zugeordnet werden können. Dies beweist Abbildung \ref{bild:bel_viele_matche}. Bei diesem Beispiel mit Library $L = \{ AND2, AND3\}$ besitzt $v$ mindestens n mögliche Matchings, wobei $n \geq |V(C)|/2$.  \\
+Dies bedeutet, dass die Größe eines Subcircuits von $C$ welche die logische Funktion eines Gates der Library realisiert, nicht beschränkt ist. Dadurch hat das Suchen aller Matche eine Laufzeit von $\mathcal{O}(|V(C)|!)$\\
+Schränkt man die maximale Anzahl von Highfanoutknoten ein, so sind auch diese Subciruits wieder unabhängig von der $C$ beschränkt, wodurch ein polynomielles Finden von Matchen wieder möglich ist.\\
 
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}

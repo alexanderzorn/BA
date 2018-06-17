@@ -11,12 +11,12 @@
 \contentsline {subsection}{\numberline {3.4}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{13}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}FPTAS und Heuristik}{14}{subsection.3.5}
 \contentsline {subsubsection}{\numberline {3.5.1}Matching Suche in polynomieller Zeit}{14}{subsubsection.3.5.1}
-\contentsline {subsubsection}{\numberline {3.5.2}Filtern mit Buckets}{14}{subsubsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.2}Filtern mit Buckets}{15}{subsubsection.3.5.2}
 \contentsline {subsubsection}{\numberline {3.5.3}FPTAS}{15}{subsubsection.3.5.3}
 \contentsline {subsubsection}{\numberline {3.5.4}Heuristik}{16}{subsubsection.3.5.4}
 \contentsline {subsection}{\numberline {3.6}required Arrivaltimes}{16}{subsection.3.6}
 \contentsline {subsection}{\numberline {3.7}pinabh\IeC {\"a}ngiges Delay}{18}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Mehrere Outputs}{18}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.8}Mehrere Outputs}{19}{subsection.3.8}
 \contentsline {subsection}{\numberline {3.9}Allgemeiner Algorithmus}{20}{subsection.3.9}
 \contentsline {section}{\numberline {4}Premapping von Highfanoutknoten}{21}{section.4}
 \contentsline {subsection}{\numberline {4.1}triviales Premapping}{22}{subsection.4.1}
