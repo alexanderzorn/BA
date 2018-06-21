@@ -18,21 +18,22 @@
 \contentsline {subsubsection}{\numberline {3.6.1}Filtern mit Buckets}{17}{subsubsection.3.6.1}
 \contentsline {subsubsection}{\numberline {3.6.2}FPTAS}{18}{subsubsection.3.6.2}
 \contentsline {subsubsection}{\numberline {3.6.3}Heuristik}{19}{subsubsection.3.6.3}
-\contentsline {section}{\numberline {4}Allgemeine Circuits}{20}{section.4}
+\contentsline {section}{\numberline {4}Mehrere Outputs}{20}{section.4}
 \contentsline {subsection}{\numberline {4.1}required Arrivaltimes}{20}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}pinabh\IeC {\"a}ngiges Delay}{22}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Mehrere Outputs}{22}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Allgemeiner Algorithmus}{24}{subsection.4.4}
-\contentsline {section}{\numberline {5}Premapping von Highfanoutknoten}{25}{section.5}
-\contentsline {subsection}{\numberline {5.1}triviales Premapping}{26}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}erweitertes Premapping}{26}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Premapping durch Sch\IeC {\"a}tzen}{26}{subsection.5.3}
-\contentsline {section}{\numberline {6}Pr\IeC {\"a}prozessing zus\IeC {\"a}tzliche Addons}{26}{section.6}
-\contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{27}{section.7}
+\contentsline {subsection}{\numberline {4.2}Mehrere Outputs}{22}{subsection.4.2}
+\contentsline {section}{\numberline {5}Premapping von Highfanoutknoten}{23}{section.5}
+\contentsline {subsection}{\numberline {5.1}triviales Premapping}{23}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}erweitertes Premapping}{24}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Premapping durch Sch\IeC {\"a}tzen}{24}{subsection.5.3}
+\contentsline {section}{\numberline {6}Pr\IeC {\"a}prozessing}{24}{section.6}
+\contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{24}{section.7}
+\contentsline {subsection}{\numberline {7.1}pinabh\IeC {\"a}ngiges Delay}{25}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Power Optimierung}{25}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Layer Assignment}{26}{subsection.7.3}
 \contentsline {section}{\numberline {8}Version der Heuristik, welche obige Kriterien beherzigt}{27}{section.8}
 \contentsline {section}{\numberline {9}Ressource Sharing}{27}{section.9}
 \contentsline {section}{\numberline {10}Laufzeitanalyse}{28}{section.10}
 \contentsline {subsection}{\numberline {10.1}Struktur realer Instanzen}{28}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Analyse der Ergebnisse}{29}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.2}Analyse der Ergebnisse}{28}{subsection.10.2}
 \contentsline {subsection}{\numberline {10.3}Laufzeitanalyse}{29}{subsection.10.3}
 \contentsline {section}{\numberline {11}Fazit und Ausblick}{29}{section.11}

@@ -16,21 +16,22 @@
 \BOOKMARK [3][-]{subsubsection.3.6.1}{Filtern mit Buckets}{subsection.3.6}% 16
 \BOOKMARK [3][-]{subsubsection.3.6.2}{FPTAS}{subsection.3.6}% 17
 \BOOKMARK [3][-]{subsubsection.3.6.3}{Heuristik}{subsection.3.6}% 18
-\BOOKMARK [1][-]{section.4}{Allgemeine Circuits}{}% 19
+\BOOKMARK [1][-]{section.4}{Mehrere Outputs}{}% 19
 \BOOKMARK [2][-]{subsection.4.1}{required Arrivaltimes}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.2}{pinabh\344ngiges Delay}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.3}{Mehrere Outputs}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.4}{Allgemeiner Algorithmus}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Premapping von Highfanoutknoten}{}% 24
-\BOOKMARK [2][-]{subsection.5.1}{triviales Premapping}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{erweitertes Premapping}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.3}{Premapping durch Sch\344tzen}{section.5}% 27
-\BOOKMARK [1][-]{section.6}{Pr\344prozessing zus\344tzliche Addons}{}% 28
-\BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 29
-\BOOKMARK [1][-]{section.8}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 30
-\BOOKMARK [1][-]{section.9}{Ressource Sharing}{}% 31
-\BOOKMARK [1][-]{section.10}{Laufzeitanalyse}{}% 32
-\BOOKMARK [2][-]{subsection.10.1}{Struktur realer Instanzen}{section.10}% 33
-\BOOKMARK [2][-]{subsection.10.2}{Analyse der Ergebnisse}{section.10}% 34
-\BOOKMARK [2][-]{subsection.10.3}{Laufzeitanalyse}{section.10}% 35
-\BOOKMARK [1][-]{section.11}{Fazit und Ausblick}{}% 36
+\BOOKMARK [2][-]{subsection.4.2}{Mehrere Outputs}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Premapping von Highfanoutknoten}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{triviales Premapping}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.2}{erweitertes Premapping}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.3}{Premapping durch Sch\344tzen}{section.5}% 25
+\BOOKMARK [1][-]{section.6}{Pr\344prozessing}{}% 26
+\BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 27
+\BOOKMARK [2][-]{subsection.7.1}{pinabh\344ngiges Delay}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.2}{Power Optimierung}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.3}{Layer Assignment}{section.7}% 30
+\BOOKMARK [1][-]{section.8}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 31
+\BOOKMARK [1][-]{section.9}{Ressource Sharing}{}% 32
+\BOOKMARK [1][-]{section.10}{Laufzeitanalyse}{}% 33
+\BOOKMARK [2][-]{subsection.10.1}{Struktur realer Instanzen}{section.10}% 34
+\BOOKMARK [2][-]{subsection.10.2}{Analyse der Ergebnisse}{section.10}% 35
+\BOOKMARK [2][-]{subsection.10.3}{Laufzeitanalyse}{section.10}% 36
+\BOOKMARK [1][-]{section.11}{Fazit und Ausblick}{}% 37
