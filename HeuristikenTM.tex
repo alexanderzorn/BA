@@ -20,7 +20,8 @@
 % z.B.: Prof. Dr. Peter Koepke
 \betreuer{Betreuer: Prof. Dr. Stephan Held}
 %Name des Instituts an dem der Betreuer der Arbeit tätig ist.
-\zweitgutachter{Zweitgutachter: YYYY YYYY}
+\zweitgutachter{Zweitgutachter: 
+Prof. Dr. Dr. h.c. Bernhard Korte}
 %z.B.: Mathematisches Institut
 \institut{Forschungsinstitut f\"ur Diskrete Mathematik}
 %Titel der Bachelorarbeit
@@ -189,11 +190,11 @@ Ein optimaler \TM Algorithmus liefert in der Regel nicht die bestmögliche Imple
  Angenommen es gibt einen besseren Kandidaten $k'$, als $k$, welcher von dem Algorithmus gespeichert wurde. Sei $k''$ der Kandidate, welcher dasselbe Match wie $k'$ benutzt und die besten Input Kandidaten. Da $k''$ die besten Input Kandidaten benutzt ist er mindestens so schnell (bzw. klein) wie $k'$. $k$ ist jedoch ebenfalls mindestens so kostengünstig wie $k''$ (andernfalls hätte der Algorithmus $k''$, $k$ vorgezogen). Dies ist ein Widerspruch zur Annahme. 
 \end{proof}
  
-\begin{cor}{Der Algorithmus für das (einfache) \TM  \\ besitzt $\mathcal{O}(  |V(C)||L|)$-Laufzeit}
+\begin{cor}{Der Algorithmus für das (einfache) \TM  \\ besitzt $\mathcal{O}(  |V(C)|^3|L|^2)$-Laufzeit}
 \end{cor}
 \begin{proof}
-Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich, aufgrund von einem beschränkten $fanin_{max}$ und ohne Highfanoutgates, in $\mathcal{O}(fanin_{max}!)$ errechnen. Da $fanin_{max}$ als beschränkt gegeben ist, entspricht dies  $\mathcal{O}(1)$. \textcolor{red}{Beweis ?}. Schritt 6 ist, wie bereits erwähnt, schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs nur der beste Kandidat verlinkt werden muss. Ein Invertiertes Match wird nur gebraucht wenn der korrespondierende Input des darüber liegenden Gates invertiert ist. Schritt 6 lässt sich somit in  $\mathcal{O}(fanin_{max})$ realisieren. Schritt 3 und 5 sind zwei verschachtelte Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
-Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)||L|)$.
+Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich, aufgrund von einem beschränkten $fanin_{max}$ und ohne Highfanoutgates, in $\mathcal{O}(|V(C)|^2|L|)$ errechnen. Der Beweis dieser Aussage befindet sich in Kapitel \ref{subsec:match_kandidaten}. Schritt 6 ist, wie bereits erwähnt, schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs nur der beste Kandidat verlinkt werden muss. Ein Invertiertes Match wird nur gebraucht wenn der korrespondierende Input des darüber liegenden Gates invertiert ist. Schritt 6 lässt sich somit in  $\mathcal{O}(fanin_{max})$ realisieren. Schritt 3 und 5 sind zwei verschachtelte Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
+Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)|^3|L|^2)$.
 \end{proof}
 
 
@@ -355,29 +356,54 @@ In Circuits mit beliebig vielen Highfanoutknoten steigt die Anzahl der mögliche
 
 \subsubsection{Anzahl Matchings}
 \label{subsubsec:anzahl_matchings}
-\textcolor{red}{hier noch auf professor helds idee eingehen!! mit dem suchen nach matchen durch durchgehen aller möglichkeiten von schnitten und die dissertation verlinken sowie eine Schranken für die anzahl der Matche angeben}
 Folgendes Lemma legt eine äquivalente Definition für Matche nahe.
 Sei, gegeben ein Circuit $C$ ohne teilweise überflüssige Subciruits, \\$\bar{C}_v := (V(C[cone(v)]), \{ (u,v) | (v,u) \in E(C[cone(v)])\})$. 
 \begin{lemma}{Die Inputs eines Matches auf $v$ korrespondieren zu den Kanten eines gerichteten $v$-Schnitts in $\bar{C}_v $}
 \end{lemma}
 \begin{proof}
-Zu jedem Inputpin eines Matches gehört eindeutig eine Kante aus $C$. Sei $I$ die Menge der zu den Inputs korrespondierenden Kanten.\\ 
-Es genügt zu zeigen, dass $I$ die Kantenmenge eines gerichteten $v$-Schnitts in $\bar{C}_v$ ist. \\
-Angenommen $I$ bildet keinen gerichteten $v$-Schnitt, dann existiert in $\bar{C}_v\backslash I$ ein Weg von einen Input von $cone(v)$ zu $v$, welcher keine Kante aus $I$ benutzt. \\
+Zu jedem Inputpin eines Matches gehört eindeutig eine Kantemenge $K$ aus $C$. Es ist möglich, dass $|K| > 1$, denn ein Match kann mehrere ausgehende Kanten eines Knoten zu einer Kante zusammenfasst. Dies veranschaulicht Abbildung \textcolor{red}{??} für ein Match eines MUX Gates.  Sei $I$ die Menge der zu den Inputs korrespondierenden Kantenmengen.\\ 
+Es genügt zu zeigen, dass alle Kanten $I'$ in $I$ gerade die Kantenmenge eines gerichteten $v$-Schnitts in $\bar{C}_v$ ist. \\
+Angenommen $I'$ bildet keinen gerichteten $v$-Schnitt, dann existiert in $\bar{C}_v\backslash I$ ein Weg von einen Input von $cone(v)$ zu $v$, welcher keine Kante aus $I$ benutzt. \\
 Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, denn sonst hätte das Match einen Seiteninput, was nicht erlaubt ist, oder es existiert ein teilweise überflüssiger Subcircuit. Daraus folgt die Aussage. 
 \end{proof}
-Die Menge der Matchings von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inclusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph interpretiert eine Gate der Library realisieren.
-\begin{cor}
-	Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$ ist durch $n^{fanin_{max}} fanin_{max}$ beschränkt
+Die Korrespondenz ist nicht eindeutig, denn ob mehrere Kanten eines Outputs zusammengefasste oder getrennte Inputkanten eines Matches sind, lässt sich anhand des Schnittes nicht herleiten. Die wird ebenfalls durch Abbildung \textcolor{red}{??} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eindeutig, wenn es keine zwei Gate der Library gibt, welche diegleiche  logische Funktion realisieren.\\
+In einem Graphen ohne Highfanoutknoten gilt somit: 
+Die Menge der Matchings von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inclusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph interpretiert ein Gate der Library realisieren.
+\begin{cor}\label{cor:anz_matche_einfach}
+Sei $C$ ein Circuit. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Highfanoutknoten enthält, ist durch $n_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt
 \end{cor}
 \begin{proof}
-Sei  $X_v:= \{ E \subseteq E(C[cone(v)]) | |E|\leq fanin_{max}  \}$. Die Menge der maximal $fanin_{max}$ großen $v$-Schnitte ist in Circuits mit beliebig vielen Highfanoutknoten durch $ |X_v|$ beschränkt. Es gilt hierbei \[ |X_v| = \sum\limits_{i \leq fanin_{max}} \binom{n}{i} \leq  \sum\limits_{i \leq fanin_{max}}\frac{n}{i!(n-fanin_{max})!} \leq n^{fanin_{max}} fanin_{max} \]
+Sei  $X_v:= \{ E \subseteq E(C[cone(v)]) | |E|\leq fanin_{max}  \}$. Die Menge der maximal $fanin_{max}$ großen $v$-Schnitte ist in $C[cone(v)]$ durch $ |X_v|$ beschränkt. Es gilt hierbei \[ |X_v| = \sum\limits_{i \leq fanin_{max}} \binom{n}{i} \leq  \sum\limits_{i \leq fanin_{max}}\frac{n}{i!(n-fanin_{max})!} \leq n^{fanin_{max}} fanin_{max} \]
+Für jeden Schnitt gibt es noch zwei Verschiedene mögliche Output-Invertierungen und maximal  $2^{fanin_{max}}$ viele Möglichen die Inputs zu Invertieren. Jedes mögliche Match ist nun durch ein Element aus $X_v$ und eine Wahl von Invertierungen eindeutig charakterisiert. Daraus folgt die Aussage.
+\end{proof}
+Für allgemeinere Circuits lässt sich folgende Schranke angeben. 
+\begin{cor}\label{cor:anzahl_matche_bel}
+Sei $C$ ein Circuit. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$ mit $\Delta C[cone(v)] \leq fanout_{max}$, enthält, ist durch $n_v^{fanin_{max}} fanin_{max}^22^{fanin_{max}+1}2^{fanout_{max}}$ beschränkt
+\end{cor}
+\begin{proof}
+Korollar \ref{cor:anz_matche_einfach} gibt eine obere Schranke für die Anzahl aller Matche inklusive der möglichen Invertierungen an. Sei $u \in x \in X_v$ (Definition siehe oben) zusätzlich ausgehende Kante eines Highfanoutknoten $w$, so gibt es bis zu $2^{fanout_{max}-1}$ Möglichkeiten weitere Kanten von $w$ der korrespondierenden Kantemenge von $u$ hinzuzufügen.  Diese Möglichkeit besteht für alle maximal $fanin_{max}$ Kanten von $x$. Durch Multiplikation mit der oberen Schranke aus Korollar \ref{cor:anz_matche_einfach} folgt die Aussage.
+\end{proof}
+In einem Circuit ohne Highfanoutknoten lässt sich die Schranke noch genauer angeben. 
+\begin{cor}\label{cor:anz_matche_einfach_genauer}
+Sei $C$ ein Circuit ohne Highfanoutknoten. Die Anzahl der Matche eines Knoten ist durch $2^{2fanin_{max} +1}fanin_{max}$ beschränkt.
+\end{cor}
+\begin{proof}
+Ausgehen von einem Knoten $v \in V(C)$ mit maximal $fanin_{max}$ Inputs, gibt es  $2^{fanin_{max}}$ Möglichkeiten die an den Input liegenden Gates mit in das Match einzuschließen. Abgesehen von einer, schließt jede dieser Möglichkeiten mindestens ein Gate mit ein. Da $C$ keine Highfanoutknoten enthält, wird der Fanin des Matches um mindestens eins erhöht, denn es ist nicht möglich Kreise zu schließen. Daraus folgt, dass der obige Schritt maximal $fanin_{max}$ mal durchführbar ist. Für jedes so berechneten Prototyp einen Matches gibt es noch $2^{fanin_{max}}$ mögliche Invertierungen der Inputs und $2$ des Outputs, woraus die obige Aussage folgt.
 \end{proof}
 
+
 \subsubsection{Matching Suche in polynomieller Zeit}
-Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, da in dem Circuit keine Highfanoutknoten existieren. Die Matche werden durch das iterative  Hinzufügen von Gates zum aktuellen Knoten errechnet. Zu einem Knoten $v$ gibt es maximal  $2^{|inputs(v)|} \leq 2^{fanin_{max}}$ Möglichkeiten eine Kombination von Input Gates dem Gate von $v$ hinzuzufügen. Jeder enstehende Subcircuit (außer das Gate von $v$ selber) besitzt, da keine Highfanoutknoten existieren, mindestens einen Inputs mehr als das Gate von $v$. Dieser Schritt lässt sich somit maximal $fanin_{max}$ oft wiederholen. Daraus folgt dass in $\mathcal{O}(2^{fanin_{max}^2})$ alle Matche für $v$ gefunden werden können. Da $fanin_{max}$ konstant ist, entspricht dies Linearer Laufzeit. \\
-Bei Circuits mit beliebig vielen Highfanoutknoten, lassen sich alle Matche für einen Knoten $v$ finden, indem man in maximal $n_v^{fanin_{max}}fanin_{max}$ Durchläufen für alle Elemente von $X_v$ prüft, ob diese einen $v$-Schnitt bilden, was in polynomieller Zeit möglich ist. Mit einem konstanten $fanin_{max}$ ist somit das Finden von Matchen in Circuits ohne überflüssige Subcircuits und beliebig vielen Highfanoutknoten in polynomieller Laufzeit möglich. Der Einfachheit halber wird diese Laufzeit durch $\mathcal{O}(M)$ beschrieben. \textcolor{red}{ist das mit der Konstante sinnvoll und der Fall mit überflüssigen Subciruits ist damit leider immer noch nicht abgedeckt. gebe hier noch die Dissertation als mögliche schnellere Alternative zum Finden von Matches an muss hier noch ein kommentar hin wie es in der Praxis gelöst wird ? und soll ich diese laufzeit noch zu einer gesamtlaufzeit für alle knoten erweitern beziehungsweise die Laufzeit für die überprüfung eines Matches noch mit reinnehmen -> denke schon }
+Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, da in dem Circuit keine Highfanoutknoten existieren. Aus Korollar \ref{cor:anz_matche_einfach_genauer} folgt, dass potenziellen Matche aller Knoten  in $\mathcal{O}(2^{2fanin_{max} +1}fanin_{max} |V(C)|)$ errechnet werden können. Da $fanin_{max}$ als Konstante deklariert wurde entspricht dies linearer Laufzeit. Es bleibt zu prüfen ob  ein solcher Prototyp einem Match in $C$ entspricht, also ob die logische Funktion des Subcircuits einem Match der Library gleicht. Für jede der maximal $2^{fanin_{max}}$ möglichen Wahrheitsbelegungen der Inputs wird der Wahrheitsgehalt des Outputs errechnet. Dies ist linear in $|V(C)|$ möglich. Die dadurch errechnete Tabelle wir mit den $|L|$ Gates der Library verglichen. \\
+Daraus folgt, dass das Finden aller Matche in $\mathcal{O}(|V(C)|^2|L|)$ und somit polynomiell, möglich ist.
+
+Bei Circuits mit beliebig vielen Highfanoutknoten aber beschränktem $fanout_{max}$, lassen sich durch Korollar \ref{cor:anzahl_matche_bel} und gleichem Vorgehen wie oben alle Matche ebenfalls in polynomieller Zeit finden. Dabei beträgt die Laufzeit $\mathcal{O}(|V(C)|^{fanin_{max}+2}|L|)$.
+
+\subsubsection{heuristische Matching Suche}
+ \textcolor{red}{ gebe hier noch die Dissertation als mögliche schnellere Alternative zum Finden von Matches an muss hier noch ein kommentar hin wie es in der Praxis gelöst wird ? und soll ich diese laufzeit noch zu einer gesamtlaufzeit für alle knoten erweitern}
 \textcolor{red}{hier noch auf das finden von matchen in der heuristik eingehen !!}
+
+\subsection{Kandidaten-Probleme}
+\textcolor{red}{hier kurz auf die anzahl der Kandidaten im circuit eingehen und erklären wie neue Kandidaten praktisch gebaut werden hierfür auch Laufzeiten angeben, damit die in den Algorithmen übernommen werden können}
  
 \subsection{FPTAS und Heuristik}
 \label{subsec:fptas}
@@ -628,8 +654,11 @@ Static Power lässt sich natürlich auch zusätzlich zu Area in die Kostenfunkti
 In Kapitel \ref{sec:analyse} finden sich weitere Informationen über die Auswirkungen von diesem Austausch in der Kostenfunktion.
 	
 \subsection{Layer Assignment}
-Die Knoten eines Circuits sind durch Kanten miteinander verbunden. Diese müssen auf dem Chip in einer Menge von Schichten(Layer) liegen. Hierbei besitzt jede Schicht spezifische Eigenschaften an Geschwindigkeit und anderweitigen Kosten. \\
-Während jedes \TM Algorithmus kommen neue Kanten hinzu oder verschwinden in dem äquivalenten Circuit. Das zu lösende Optimierungsproblem ist es nun den neu hinzugekommenden Kanten Layer zuzuordnen. In den Implementierungen der Algorithmen dieser Arbeit, werden die Kanten auf die Layer gelegt, auf welchen Sie vorher lagen. \\ Es steht noch aus zu prüfen ob und wie dieses Verfahren verbessert werden kann. Da dies bisher die beste Methode diese Problem zu lösen und in den getesteten Instanzen die zusätzlichen Kosten durch die Zuteilung der Kanten nicht übermäßig hoch sind, werden weder diese Kosten noch das Layer Assignment eine weitere Erwähnung in dieser Arbeit finden.
+Die Knoten eines Circuits sind durch Kanten miteinander verbunden.  Die ausgehenden Kanten eines Knotens bilden ein Netz und  die Endknoten der Kanten dessen Menge von Terminalen. Diese werden auf dem Chip zu einem Steinerbaum verbunden. Des Weiteren ist ein Chip in mehrere Schichten (Layers) unterteilt, in welche die Kanten physikalisch eingebettet werden. Das verlegen einer Kante in einem Layer bringt Kosten mit sich, welche abhängig von der Wahl des Layers sind. Jedem Netz ist nun eine Menge von Schichten zugeordnet, in welche die Kanten des Steinerbaumes gelegt werden dürfen. \\
+Durch die vorgestellten \TM Algorithmen  werden in dem umgebauten Circuit $C'$ Netze von Knoten, über die gematcht wurde, nicht mehr benötigt. Für Gates über deren Nachfolger gematcht wurde, verändert sich jedoch die Terminalmenge des dazugehörigen Netzes. Den Netzen aus $C'$ muss nun wieder eine Menge von Layern zugeordnet werden, sodass die  Terminalmengen untereinander auf dem Chip verbunden werden können und die zusätzlichen Kosten nicht beliebig groß werden. \\
+Wenn sich ein Terminal eines Netzes $N$ mit Layermenge $L$ ändert, wurde über den darüberliegenden Knoten gematcht und dessen Netz $N'$ mit Layermenge $L'$ ist verschwunden. Um sicherzustellen, dass in $N$ jedes Terminal über die Layer erreichbar ist wird aktuell $L := L \cup L'$ gesetzt. Dies geschieht für jedes Netz $M$ aus $C'$ und dessen geänderte Terminale und garantiert die Existenz eines Steinerbaums in $M$. \\
+Es steht noch aus zu überprüfen, ob durch eine geänderte Zuweisung der Layermenge der Netze von $C'$ geringere Kosten bei der Realisierung der Netze garantiert werden können.
+Da dies bisher die beste Methode das Problem an dieser Stelle zu lösen ist und in den getesteten Instanzen die zusätzlichen Kosten durch die Zuteilung der Kanten nicht übermäßig hoch sind, werden weder diese Kosten noch das Layer Assignment keine weitere Erwähnung in dieser Arbeit finden.
 	
 	
 \section{Version der Heuristik, welche obige Kriterien beherzigt}
