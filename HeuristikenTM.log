@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  24 JUN 2018 22:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  25 JUN 2018 23:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1689,7 +1689,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
  (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 ...tur realer Instanzen}{29}{subsection.10.1}
+l.38 ...tur realer Instanzen}{31}{subsection.10.1}
                                                    [1
 
 ])
@@ -1956,27 +1956,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--298
 
  []
 
-[12 <./pictures/compiled/cone.pdf>] [13]
-<pictures/compiled/zu_lange_kante.pdf, id=396, 91.53197pt x 160.93022pt>
+[12 <./pictures/compiled/cone.pdf>]
+<pictures/compiled/zu_lange_kante.pdf, id=392, 91.53197pt x 160.93022pt>
 File: pictures/compiled/zu_lange_kante.pdf Graphic file (type pdf)
 
 <use pictures/compiled/zu_lange_kante.pdf>
 Package pdftex.def Info: pictures/compiled/zu_lange_kante.pdf used on input lin
-e 321.
+e 309.
 (pdftex.def)             Requested size: 129.46928pt x 227.62204pt.
 
-Underfull \hbox (badness 1152) in paragraph at lines 322--322
+Underfull \hbox (badness 1152) in paragraph at lines 310--310
 []\OT1/lmr/m/n/8 Abbildung 9: |Vi-sua-li-sie-rung ei-nes Mat-ches
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 325--330
+Underfull \hbox (badness 5175) in paragraph at lines 313--318
 []\OT1/lmr/m/n/10.95 Abbildung []9[] ver-an-schau-licht ei-ne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--330
+Underfull \hbox (badness 10000) in paragraph at lines 313--318
 
+ []
+
+[13 <./pictures/compiled/zu_lange_kante.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+ []
+
+<pictures/compiled/partly_redundant.pdf, id=400, 85.8417pt x 92.94624pt>
+File: pictures/compiled/partly_redundant.pdf Graphic file (type pdf)
+
+<use pictures/compiled/partly_redundant.pdf>
+Package pdftex.def Info: pictures/compiled/partly_redundant.pdf used on input l
+ine 329.
+(pdftex.def)             Requested size: 131.40154pt x 142.26378pt.
+
+Overfull \hbox (11.54794pt too wide) in paragraph at lines 333--334
+[][]\OT1/lmr/m/n/10.95 Die Ber[]ucksichtigung von vollst[]andig
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 333--334
+[]\OT1/lmr/m/n/10.95 uberfl[]ussigen Sub-cir-cuits be-deu-ted,
+ []
+
+
+Underfull \hbox (badness 3724) in paragraph at lines 333--334
+\OT1/lmr/m/n/10.95 des Chips ver-bun-den wer-den.Dies
+ []
+
+
+Underfull \hbox (badness 1400) in paragraph at lines 333--334
+\OT1/lmr/m/n/10.95 sie auch nicht ver-ar-bei-tet wer-den.
  []
 
 
@@ -1984,157 +2016,141 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
-[14 <./pictures/compiled/zu_lange_kante.pdf>]
-<pictures/compiled/partly_redundant.pdf, id=405, 85.8417pt x 92.94624pt>
-File: pictures/compiled/partly_redundant.pdf Graphic file (type pdf)
-
-<use pictures/compiled/partly_redundant.pdf>
-Package pdftex.def Info: pictures/compiled/partly_redundant.pdf used on input l
-ine 341.
-(pdftex.def)             Requested size: 131.40154pt x 142.26378pt.
-
-Overfull \hbox (11.54794pt too wide) in paragraph at lines 345--346
-[][]\OT1/lmr/m/n/10.95 Die Ber[]ucksichtigung von vollst[]andig
- []
-
-
-Underfull \hbox (badness 2197) in paragraph at lines 345--346
-[]\OT1/lmr/m/n/10.95 uberfl[]ussigen Sub-cir-cuits be-deu-ted,
- []
-
-
-Underfull \hbox (badness 3724) in paragraph at lines 345--346
-\OT1/lmr/m/n/10.95 des Chips ver-bun-den wer-den.Dies
- []
-
-
-Underfull \hbox (badness 1400) in paragraph at lines 345--346
-\OT1/lmr/m/n/10.95 sie auch nicht ver-ar-bei-tet wer-den.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
-
- []
-
-
-Overfull \hbox (16.13155pt too wide) in paragraph at lines 355--356
+[14 <./pictures/compiled/partly_redundant.pdf>]
+Overfull \hbox (16.13155pt too wide) in paragraph at lines 343--344
 \OT1/lmr/m/n/10.95 In Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten ste
 igt die An-zahl der m[]oglichen
  []
 
-[15 <./pictures/compiled/partly_redundant.pdf>] [16]
-Overfull \hbox (3.84026pt too wide) detected at line 376
+[15]
+Overfull \hbox (3.84026pt too wide) detected at line 364
 \OMS/lmsy/m/n/10.95 j\OML/lmm/m/it/10.95 X[]\OMS/lmsy/m/n/10.95 j \OT1/lmr/m/n/
 10.95 = [] [] \OMS/lmsy/m/n/10.95 ^^T [] [] ^^T \OML/lmm/m/it/10.95 n[]fanin[]
  []
 
 
-Overfull \hbox (21.2118pt too wide) in paragraph at lines 376--378
+Overfull \hbox (21.2118pt too wide) in paragraph at lines 364--366
 \OT1/lmr/m/n/10.95 F[]ur je-den Schnitt gibt es noch zwei Ver-schie-de-ne m[]og
 liche Output-Invertierungen
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
-
- []
-
-
-<pictures/compiled/tradeoff_kurve_buckets.pdf, id=436, 171.51678pt x 171.51678p
+[16] [17]
+<pictures/compiled/tradeoff_kurve_buckets.pdf, id=439, 171.51678pt x 171.51678p
 t>
 File: pictures/compiled/tradeoff_kurve_buckets.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_buckets.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_buckets.pdf used on i
-nput line 419.
+nput line 414.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
-<pictures/compiled/tradeoff_kurve_filtered.pdf, id=437, 171.51678pt x 171.51678
+<pictures/compiled/tradeoff_kurve_filtered.pdf, id=440, 171.51678pt x 171.51678
 pt>
 File: pictures/compiled/tradeoff_kurve_filtered.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_filtered.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_filtered.pdf used on 
-input line 423.
+input line 418.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
- [18] [19 <./pictures/compiled/tradeoff_kurve_buckets.pdf> <./pictures/compiled
-/tradeoff_kurve_filtered.pdf>]pdfTeX warning (ext4): destination with the same 
-identifier (name{algocf.}) has been already used, duplicate ignored
+ [18]
+Underfull \hbox (badness 10000) in paragraph at lines 432--434
+
+ []
+
+[19 <./pictures/compiled/tradeoff_kurve_buckets.pdf> <./pictures/compiled/trade
+off_kurve_filtered.pdf>] [20]pdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.453 ...istik f\"ur das TM mit Konvexkombination}
-                                                  
-Underfull \hbox (badness 10000) in paragraph at lines 475--476
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 492--495
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 510--511
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 512--514
+l.474 ...istik f\"ur das TM mit Konvexkombination}
+                                                   [21]
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
+Underfull \hbox (badness 10000) in paragraph at lines 513--516
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--523
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
 
  []
 
 
-Overfull \hbox (9.34868pt too wide) in paragraph at lines 524--529
+Underfull \hbox (badness 10000) in paragraph at lines 533--535
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 542--544
+
+ []
+
+[24]
+Overfull \hbox (9.34868pt too wide) in paragraph at lines 545--550
 \OT1/lmr/m/n/10.95 Also muss aus den Kan-di-da-ten-men-gen der Out-puts der-je-
 ni-ge Circuit-Kandidat
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--529
+Underfull \hbox (badness 10000) in paragraph at lines 545--550
 
  []
 
-[23] [24] [25] [26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 666--668
+
+LaTeX Warning: Reference `subsubsec:heuristik' on page 25 undefined on input li
+ne 624.
+
+[25]
+
+LaTeX Warning: Reference `subsubsec:heuristik' on page 26 undefined on input li
+ne 631.
+
+[26] [27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 687--689
 
  []
 
-[28]
-Overfull \hbox (16.25174pt too wide) in paragraph at lines 685--689
+[29] [30]
+Overfull \hbox (16.25174pt too wide) in paragraph at lines 706--710
 \OT1/lmr/m/n/10.95 Die In-stan-zen ei-nes Chips sind im Fol-gen-den al-le ma-xi
 -mal zu-sam-menh[]angenden,
  []
 
-[29] [30]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 721.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 721.
+
+LaTeX Warning: Reference `subsubsec:heuristik' on page 31 undefined on input li
+ne 725.
+
+[31] [32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 742.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 742.
  (./HeuristikenTM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 721.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 721.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 742.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 742.
 Package rerunfilecheck Info: File `HeuristikenTM.out' has not changed.
-(rerunfilecheck)             Checksum: 9C2745629029CED25DD41255C45231F6;2694.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 721.
+(rerunfilecheck)             Checksum: EC88C6823E2DAF5362CE03C6B1F7CEE5;2686.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 742.
  ) 
 Here is how much of TeX's memory you used:
- 42898 strings out of 493089
- 1013623 string characters out of 6134843
- 1458836 words of memory out of 5000000
- 45351 multiletter control sequences out of 15000+600000
- 55790 words of font info for 59 fonts, out of 8000000 for 9000
+ 42907 strings out of 493089
+ 1013708 string characters out of 6134843
+ 1456772 words of memory out of 5000000
+ 45353 multiletter control sequences out of 15000+600000
+ 64232 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,21n,100p,1017b,673s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -2161,10 +2177,10 @@ m/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pfb><
 /texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on HeuristikenTM.pdf (32 pages, 452248 bytes).
+Output written on HeuristikenTM.pdf (34 pages, 458254 bytes).
 PDF statistics:
- 633 PDF objects out of 1000 (max. 8388607)
- 559 compressed objects within 6 object streams
- 125 named destinations out of 1000 (max. 500000)
+ 643 PDF objects out of 1000 (max. 8388607)
+ 567 compressed objects within 6 object streams
+ 130 named destinations out of 1000 (max. 500000)
  385 words of extra memory for PDF output out of 10000 (max. 10000000)
 

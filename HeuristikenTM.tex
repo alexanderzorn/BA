@@ -303,18 +303,6 @@ Dabei wird, zur Speicherung der Kandidaten, für jede Klasse eines Knotens eine 
 \subsubsection{Klonen}
 Oben wurde erwähnt, dass Kandidaten zweier Knoten an den offenen Knoten übereinstimmen müssen. Tun Sie das nicht, so werden offenen Knoten evtl mehrere Male mit verschiedenen Kandidaten gebaut. Dieser Vorgang wird auch Klonen genannt. Dies kann von Vorteil sein, wenn zum Beispiel ein offener Knoten Teil eines sowohl sehr Delay als auch sehr Area kritischen Gebietes ist. Dann würde einmal ein schneller und einmal ein sehr kleiner Kandidat realisiert. Dies führt in der Regel jedoch zu einem deutlich erhöhten Platzverbrauch und es werden mehr Kanten gebraucht, was zu vermeiden gilt. Der erhöhte Verbrauch von Kanten bringt höhere Routing Kosten mit sich, welche im \TM nicht beachtet werden. Um zu verhindern, dass nicht beachtete Ressourcen übermäßig verbraucht werden, Ist das Klonen in den vorgestellten Algorithmen nicht erlaubt und wird durch die Klassen und die Routine, welche beim Verknüpfen von Input Kandidaten zu einem neuen Kandidaten genutzt wird, verhindert. 
 
-\subsubsection{Verknüpfen von Kandidaten}
-Ohne Highfanoutknoten lassen sich bei der Konstruktion eines Kandidaten für einen Knoten $x$, die Kandidaten $k_i$ der Inputs $i$ unabhängig voneinander wählen.\\
-Da das Klonen nicht erlaubt ist, ist dies bei Circuits mit erlaubtem höheren Fanout nicht möglich.\\
-Die folgenden Bedingungen stellen sicher, dass Klonen verhindert wird. \\
-Seien für einen Knoten $v$ $O_v$ die Menge seiner offenen Knoten.
-\begin{itemize}
-	\item[1.] $\forall v,w \in Inputs(x) \forall y \in O_v \cap O_w : class(k_v)(y) = class(k_w)(y)$
-	\item[2.] $\forall v,w \in inputs(x) \text{ mit } v \in O_w : k_v = class(k_w)(v)$
-\end{itemize}
-Bedingung 1 stellt sicher, dass die an den offenen Knoten der Inputkandidaten ein eindeutiger Kandidate festgelegt wird. Bedingung 2 sichert diese Eigenschaft auch für die Inputs selber, denn es ist möglich dass ein Inputknoten von $x$ auch ein offener Knoten eines weiteren Inputs ist. Für diesen wird dadurch ebenfalls ein eindeutiger Kandidat festgelegt. \\
-Somit sind alle Inputkandidatenmengen, welche diese beiden Bedingungen erfüllen, eine mögliche Grundlage für einen Kandidaten auf $x$.
-
 \subsection{zu lange Kanten}
 \label{subsec:zu_lange_kanten}
  \begin{wrapfigure}{r}{6cm}
@@ -390,7 +378,9 @@ Sei $C$ ein Circuit ohne Highfanoutknoten. Die Anzahl der Matche eines Knoten is
 \begin{proof}
 Ausgehen von einem Knoten $v \in V(C)$ mit maximal $fanin_{max}$ Inputs, gibt es  $2^{fanin_{max}}$ Möglichkeiten die an den Input liegenden Gates mit in das Match einzuschließen. Abgesehen von einer, schließt jede dieser Möglichkeiten mindestens ein Gate mit ein. Da $C$ keine Highfanoutknoten enthält, wird der Fanin des Matches um mindestens eins erhöht, denn es ist nicht möglich Kreise zu schließen. Daraus folgt, dass der obige Schritt maximal $fanin_{max}$ mal durchführbar ist. Für jedes so berechneten Prototyp einen Matches gibt es noch $2^{fanin_{max}}$ mögliche Invertierungen der Inputs und $2$ des Outputs, woraus die obige Aussage folgt.
 \end{proof}
-
+\begin{definition}
+Sei $\mathcal{M}:= |V(C)|^{fanin_{max}} fanin_{max}^22^{fanin_{max}+1}2^{fanout_{max}}$ eine Bezeichnung der oberen Schranke für die Anzahl der Matche eines Knoten in einem Graphen mit beschränktem $fanin_{max}$ und $fanout_{max}$.
+\end{definition}
 
 \subsubsection{Matching Suche in polynomieller Zeit}
 Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, da in dem Circuit keine Highfanoutknoten existieren. Aus Korollar \ref{cor:anz_matche_einfach_genauer} folgt, dass potenziellen Matche aller Knoten  in $\mathcal{O}(2^{2fanin_{max} +1}fanin_{max} |V(C)|)$ errechnet werden können. Da $fanin_{max}$ als Konstante deklariert wurde entspricht dies linearer Laufzeit. Es bleibt zu prüfen ob  ein solcher Prototyp einem Match in $C$ entspricht, also ob die logische Funktion des Subcircuits einem Match der Library gleicht. Für jede der maximal $2^{fanin_{max}}$ möglichen Wahrheitsbelegungen der Inputs wird der Wahrheitsgehalt des Outputs errechnet. Dies ist linear in $|V(C)|$ möglich. Die dadurch errechnete Tabelle wir mit den $|L|$ Gates der Library verglichen. \\
@@ -399,15 +389,20 @@ Daraus folgt, dass das Finden aller Matche in $\mathcal{O}(|V(C)|^2|L|)$ und som
 Bei Circuits mit beliebig vielen Highfanoutknoten aber beschränktem $fanout_{max}$, lassen sich durch Korollar \ref{cor:anzahl_matche_bel} und gleichem Vorgehen wie oben alle Matche ebenfalls in polynomieller Zeit finden. Dabei beträgt die Laufzeit $\mathcal{O}(|V(C)|^{fanin_{max}+2}|L|)$.
 
 \subsubsection{heuristische Matching Suche}
- \textcolor{red}{ gebe hier noch die Dissertation als mögliche schnellere Alternative zum Finden von Matches an muss hier noch ein kommentar hin wie es in der Praxis gelöst wird ? und soll ich diese laufzeit noch zu einer gesamtlaufzeit für alle knoten erweitern}
-\textcolor{red}{hier noch auf das finden von matchen in der heuristik eingehen !!}
+In der Praxis, ähnlich dem oben beschriebenen Fall ohne Highfanoutknoten, wird von dem Gate eines Knoten ausgehend überprüft ob dieser, oder eine Mögliche Invertierung, einem Gate der Library entspricht. Daraufhin wird jede der maximal $2^{fanin_{max}}$ Möglichkeiten die an den Input liegenden Gates mit in das potenzielle Match hinzuzufügen inclusive möglicher Invertierungen überprüft. Dieser Vorgang wird für jede der Möglichkeiten so lange wiederholt, bis die Anzahl der Inputs des durch das potenzielle Match,  beschriebenen Subcircuit größer als $fanin_{max}$ ist. Ab diesem Punkt wird das vorliegende Potenzielle Match nicht mehr erweitert. \\
+Dies garantiert, bei einem Circuit mit Highfanoutknoten, nicht das Finden aller möglicher Matche, da sobald ein potenzielles Match einen Highfanoutknoten mit einschließt die Zahl der Inputs sinken kann. \\
+In der Praxis werden so jedoch die überwiegende Mehrheit der Matche gefunden. Der Verlust einiger weniger Matche spiegelt bringt einen enormen Laufzeitgewinn mit sich.
+\textcolor{red}{die dissertation für den fall ohne highfanoutknoten erwähnen ? und nochmal genau durchsehen ob die teilweise überflüssigen Subcircuits überall rausgehalten wurden }
+
 
 \subsection{Kandidaten-Probleme}
-\textcolor{red}{hier kurz auf die anzahl der Kandidaten im circuit eingehen und erklären wie neue Kandidaten praktisch gebaut werden hierfür auch Laufzeiten angeben, damit die in den Algorithmen übernommen werden können}
- 
-\subsection{FPTAS und Heuristik}
-\label{subsec:fptas}
-Die Anzahl der Kandidaten ist im Allgemeinen nur exponentiell beschränkt. Der Speicheraufwand lässt sich jedoch deutlich reduzieren, wenn das Ergebnis des Algorithmus um einen Faktor $\epsilon > 0$ von der besten Lösung abweichen darf. \\
+Die Anzahl der Kandidaten an einem Knoten ist im Allgemeinen nicht polynomiell Beschränkt, wie Abbildung \ref{bild:expo_kan} beweist. Dies gilt offenbar auch wenn der Circuit $C$ keine Highfanoutknoten besitzt. Dieses Problem wird durch das Filtern mit Buckets gelöst. Dies wird nach dem Folgenden Korollar eingeführt. 
+\begin{cor}
+Sei $C$ ein Circuit und $v \in C$. Die Anzahl der Klassen von $v$ ist exponentiell in $k:= |offene\_Knoten(v)|$ beschränkt.
+\end{cor}
+\begin{proof}
+Sei $K$ die größte Kardinalität einer Kandidatenmenge von einem Knoten $w\in offene\_Knoten(v)$. Jede Kombination von Kandidaten der offenen Knoten entspricht, solange sich diese nicht gegenseitig ausschließen, einer Klasse von $v$. Die Anzahl dieser Kombinationen ist durch $K^k$ beschränkt. Daraus folgt die Aussage.
+\end{proof}
 
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}
@@ -426,23 +421,49 @@ Die Kandidaten eines beliebigen Knoten sind in Tradeoffkurven, nach Klassen sort
 \label{bild:tradeoff_kurven_filtern}
 \end{figure}
 Man wählt die Bucketgrößen $\delta_{area} = \frac{\epsilon}{2(1-\lambda)}, \delta_{delay} = \frac{\epsilon}{2\lambda}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket.\\
-Dadurch exitstieren, bei einer maximal Zahl von Highfanoutknoten, nur beschränkt viele Kandidaten für jeden Knoten. Dies ermöglicht dem  Algorithmus eine Lösung mit Kosten $c\leq (1+\epsilon)OPT$, wobei $OPT$ die Kosten einer optimalen Lösung sind, in polynomieller Zeit zu finden.
+Dadurch ist die maximale Anzahl an Kandidaten in einer Tradeoffkurve polynomiell beschränkt. 
+\begin{definition}
+Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve, nachdem sie gefiltert wurde.\\
+Des Weiteren sei $\mathcal{K}$ die maximale Kardinalität von Klassen eines Knoten.
+\end{definition}
+\textcolor{red}{M genauer einschränen und die Schranken irgendwo mit hineinbringen bzw beweisen, dass M pol. beschränkt ist. }
 \textcolor{red}{was ist mit dem beweis ? kann ich lukas verlinken oder verlinkt der auf irgendwen ?}
 
+Beschränkt man die maximale Anzahl von Highfanoutknoten in $C$, so folgt aus dem obigen Korollar, dass die Anzahl der Klassen eines jeden Knoten und die Menge der sich darin befindlichen Kandidaten, polynomiell beschränkt ist. \\
+Aus diesem Grund geht der im Folgenden vorgestellte polynomielle Algorithmus von einer beschränkten Anzahl von Highfanoutknoten aus.\\ 
 
-\subsubsection{FPTAS}
-\label{subsubsec:fptas}
+Es folgt ein kurze Beschreibung, wie die Kandidatemenge eines Knoten gebildet wird.
+
+\subsubsection{Verknüpfen von Kandidaten}
+Ohne Highfanoutknoten lassen sich bei der Konstruktion eines Kandidaten für einen Knoten $x$, die Kandidaten $k_i$ der Inputs $i$ unabhängig voneinander wählen.
+Da das Klonen nicht erlaubt ist, ist dies bei Circuits mit erlaubtem höheren Fanout nicht möglich.\\
+Die folgenden Bedingungen stellen sicher, dass Klonen verhindert wird. \\
+Seien für einen Knoten $v$, $O_v$ die Menge seiner offenen Knoten.
+\begin{itemize}
+	\item[1.] $\forall v,w \in Inputs(x) \forall y \in O_v \cap O_w : class(k_v)(y) = class(k_w)(y)$
+	\item[2.] $\forall v,w \in inputs(x) \text{ mit } v \in O_w : k_v = class(k_w)(v)$
+\end{itemize}
+Bedingung 1 stellt sicher, dass die an den offenen Knoten der Inputkandidaten ein eindeutiger Kandidate festgelegt wird. Bedingung 2 sichert diese Eigenschaft auch für die Inputs selber, denn es ist möglich dass ein Inputknoten von $x$ auch ein offener Knoten eines weiteren Inputs ist. Für diesen wird dadurch ebenfalls ein eindeutiger Kandidat festgelegt. \\
+Somit sind alle Inputkandidatenmengen, welche diese beiden Bedingungen erfüllen, eine mögliche Grundlage für einen Kandidaten auf $x$. 
+
+\subsubsection{Finden von Kandidaten} 
+Für jedes der maximal $\mathcal{M}$ Matche eines Knoten $v$ von einem Circuits mit den oben genannten Einschränkungen gilt folgende Vorgehensweise zur Findung aller passender Kandidaten. Jedes Match $m$ besitzt höchstens $fanin_{max}$ Inputs. Sei $K_i$ die Menge der Klassen von Input $i$ des Matches. Jedes Element aus der Menge der möglichen Klassen $\prod_{i\leq |inputs(m)|} K_i $ wird auf die obigen Bedingungen überprüft. Die Kombinationen $O$, welche beide Bedingungen erfüllen bilden eine Klasse von $v$. In die  dazugehörige Tradeoffkurve kommt nun jede nicht dominierte Kombination von Kanidaten der Tradeoffkurven von $O$. \\
+Die lässt sich in Laufzeit $\mathcal{O}(\mathcal{M}(\mathcal{KB})^{fanin_{max}} )$ implementieren. Da alle Elemente dieser Formel polynomiell beschränkt sind, entspricht aus dies polynomieller Laufzeit.
+ 
+\subsection{FPTAS}
+\label{subsec:fptas}
 Erweitert man Circuits um die bisher in diesem Kapitel beschriebenen Eigenschaften, beschränkt durch $k$-Highfanoutgates. So gibt es für das folgende Problem einen FPTAS(Fully polynomial time approximation scheme). Ein FPTAS ist ein Algorithmus, welcher, gegeben ein $\epsilon > 0$, eine Lösung des Problems errechnet mit der Eigenschaft, dass für deren Kosten $c \leq (1+\epsilon)OPT$ gilt. \\
  \begin{problem}[framed]{FPTAS für das \TM}
   Instanz:  & Circuit $C$ mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$, maximal $k$ Highfanoutknoten, Tradeoffparameter $\lambda \in [0,1]$, Toleranz $\epsilon > 0$ \\
   Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, mit Kosten $c \leq (1+\epsilon)OPT$.
 \end{problem}
+\textcolor{red}{algorithmus und laufzeit einfügen}\\
 {\bf Laufzeit: }
 \textcolor{red}{hier kommt die anahme der polynomiellen laufzeit hin diese hier grob beschreiben. bei den überflüssigen Circuits kann man darauf eingehen, dass die ohne diese auch polynomiell ist man könnte dafür die überflüssigen subcircuits auch einfach vorziehen. dann wird der tiel leichter}\\
 \textcolor{red}{Laufzeit des FPTAS}
 
-\subsubsection{Heuristik}
-\label{subsubsec:heuristik}
+\subsection{Heuristik}
+\label{subsec:heuristik}
 Im folgenden Algorithmus ist die Menge der Knoten mit $fanout > 1$ beliebig groß.
 Die Anzahl der Highfanoutknoten bestimmt maßgeblich den Speicherbedarf an Kandidaten und Laufzeit des FPTAS. Sie sind der Grund, warum sich der FPTAS für eine Anwendung des \TM auf einem gesamten Chip nicht eignet. \\
 Von daher ist es ein naheliegender Ansatz für eine Heuristik, an jedem Highfanoutknoten nur einen Kandidaten zu speichern. Es ist jedoch nicht trivial, welchen man dort auswählt. Die Auswahl eines solchen Verfahrens wird in Kapitel \ref{sec:premapping} ausführlich behandelt. Im Folgenden wird Beipielhaft eines dieser Verfahren erläutert. \\

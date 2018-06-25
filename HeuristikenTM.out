@@ -6,18 +6,18 @@
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Klonen}{subsection.3.2}% 8
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Verkn\374pfen von Kandidaten}{subsection.3.2}% 9
-\BOOKMARK [2][-]{subsection.3.3}{zu lange Kanten}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.5}{Matchingprobleme}{section.3}% 12
-\BOOKMARK [3][-]{subsubsection.3.5.1}{Anzahl Matchings}{subsection.3.5}% 13
-\BOOKMARK [3][-]{subsubsection.3.5.2}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 14
-\BOOKMARK [3][-]{subsubsection.3.5.3}{heuristische Matching Suche}{subsection.3.5}% 15
-\BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.7}{FPTAS und Heuristik}{section.3}% 17
-\BOOKMARK [3][-]{subsubsection.3.7.1}{Filtern mit Buckets}{subsection.3.7}% 18
-\BOOKMARK [3][-]{subsubsection.3.7.2}{FPTAS}{subsection.3.7}% 19
-\BOOKMARK [3][-]{subsubsection.3.7.3}{Heuristik}{subsection.3.7}% 20
+\BOOKMARK [2][-]{subsection.3.3}{zu lange Kanten}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.5}{Matchingprobleme}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Anzahl Matchings}{subsection.3.5}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.3}{heuristische Matching Suche}{subsection.3.5}% 14
+\BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.6.1}{Filtern mit Buckets}{subsection.3.6}% 16
+\BOOKMARK [3][-]{subsubsection.3.6.2}{Verkn\374pfen von Kandidaten}{subsection.3.6}% 17
+\BOOKMARK [3][-]{subsubsection.3.6.3}{Finden von Kandidaten}{subsection.3.6}% 18
+\BOOKMARK [2][-]{subsection.3.7}{FPTAS}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.8}{Heuristik}{section.3}% 20
 \BOOKMARK [1][-]{section.4}{Mehrere Outputs}{}% 21
 \BOOKMARK [2][-]{subsection.4.1}{required Arrivaltimes}{section.4}% 22
 \BOOKMARK [2][-]{subsection.4.2}{Mehrere Outputs}{section.4}% 23
