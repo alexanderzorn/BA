@@ -5,7 +5,7 @@
 \usepackage{Titelseite}
 \usepackage{bbold, verbatim}
 \usepackage{graphicx}
-\newcommand{\TM}{TechnologyMapping }
+\newcommand{\TM}{Technology Mapping }
 
 %Namen des Verfassers der Arbeit
 \author{Alexander Zorn}
@@ -25,7 +25,7 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 %z.B.: Mathematisches Institut
 \institut{Forschungsinstitut f\"ur Diskrete Mathematik}
 %Titel der Bachelorarbeit
-\title{Heuristiken f\"ur das TechnologyMapping}
+\title{Algorithmen f\"ur das TechnologyMapping}
 %Do not change!
 \ausarbeitungstyp{Bachelorarbeit Mathematik}
 
@@ -697,7 +697,7 @@ Es folgt die formale Definition des Problems. \\
 \textcolor{red}{hier vielleicht noch ein einfaches beispiel (evtl) und auf jeden fall der Verweis zum paper und ein Vermerk auf die Benutzung im Chipdesign \\ daraufhin der \TM ansatz! theoretische Beweise?}
 
 
-\section{Laufzeitanalyse}
+\section{Analyse}
 \label{sec:analyse}
 In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und Güte analysiert. Vorher jedoch ein paar Angaben zu den bearbeiteten Instanzen, um die Ergebnisse der Algorithmen besser einordnen zu können.
 
@@ -745,7 +745,7 @@ In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und 
  
  \subsection{Laufzeitanalyse}
  \label{subsec:laufzeitanalyse}
-Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsubsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Highfanoutknoten abhängt. Andere Faktoren wie das Aufteilen von Gates, die Größe der Library oder die Wahl der Premapping subroutine spielen ebenfalls eine wichtige Rolle. Dies verdeutlicht die Übersicht \textcolor{red}{??}.\\
+Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Highfanoutknoten abhängt. Andere Faktoren wie das Aufteilen von Gates, die Größe der Library oder die Wahl der Premapping subroutine spielen ebenfalls eine wichtige Rolle. Dies verdeutlicht die Übersicht \textcolor{red}{??}.\\
  Bezüglich der Größe der Library lassen sich die Chips, abzüglich weniger Unterschiede in zwei Gruppen einteilen. Die markierte Teilmenge der Abbildung \textcolor{red}{??} entspricht der Menge der (so genannten) komplexen Gates. Ein Chip lässt sich in der Praxis, abhängig davon ob er de komplexen Gates grundsätzlich erlaubt, einer der zwei Gruppen zuordnen. Diese Unterscheidung findet sich ebenfalls in Abbildung \textcolor{red}{??}.
  
 \subsubsection{globale Laufzeitanalyse}
