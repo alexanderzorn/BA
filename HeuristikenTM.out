@@ -35,5 +35,21 @@
 \BOOKMARK [1][-]{section.10}{Laufzeitanalyse}{}% 35
 \BOOKMARK [2][-]{subsection.10.1}{Struktur realer Instanzen}{section.10}% 36
 \BOOKMARK [2][-]{subsection.10.2}{Analyse der Ergebnisse}{section.10}% 37
-\BOOKMARK [2][-]{subsection.10.3}{Laufzeitanalyse}{section.10}% 38
-\BOOKMARK [1][-]{section.11}{Fazit und Ausblick}{}% 39
+\BOOKMARK [3][-]{subsubsection.10.2.1}{Tradeoffparameter}{subsection.10.2}% 38
+\BOOKMARK [3][-]{subsubsection.10.2.2}{Premapping}{subsection.10.2}% 39
+\BOOKMARK [3][-]{subsubsection.10.2.3}{Pr\344prozessing}{subsection.10.2}% 40
+\BOOKMARK [3][-]{subsubsection.10.2.4}{Power und Area Vergleich}{subsection.10.2}% 41
+\BOOKMARK [3][-]{subsubsection.10.2.5}{Bucket filetering \040im vergleich }{subsection.10.2}% 42
+\BOOKMARK [3][-]{subsubsection.10.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.10.2}% 43
+\BOOKMARK [3][-]{subsubsection.10.2.7}{Verhalten weiterer Kosten}{subsection.10.2}% 44
+\BOOKMARK [3][-]{subsubsection.10.2.8}{Zusammenfassung?}{subsection.10.2}% 45
+\BOOKMARK [2][-]{subsection.10.3}{Laufzeitanalyse}{section.10}% 46
+\BOOKMARK [3][-]{subsubsection.10.3.1}{globale Laufzeitanalyse}{subsection.10.3}% 47
+\BOOKMARK [3][-]{subsubsection.10.3.2}{locale Laufzeitanalyse}{subsection.10.3}% 48
+\BOOKMARK [3][-]{subsubsection.10.3.3}{Bucket filetering \040im vergleich }{subsection.10.3}% 49
+\BOOKMARK [3][-]{subsubsection.10.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.10.3}% 50
+\BOOKMARK [2][-]{subsection.10.4}{G\374te laufzeit vergleich}{section.10}% 51
+\BOOKMARK [3][-]{subsubsection.10.4.1}{kleine Instanzen}{subsection.10.4}% 52
+\BOOKMARK [3][-]{subsubsection.10.4.2}{allgemein}{subsection.10.4}% 53
+\BOOKMARK [3][-]{subsubsection.10.4.3}{G\374te Bucket filetering \040}{subsection.10.4}% 54
+\BOOKMARK [1][-]{section.11}{Fazit und Ausblick}{}% 55

@@ -718,13 +718,53 @@ In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und 
  
  \subsection{Analyse der Ergebnisse}
  \label{subsec:analyse_der_ergebnisse}
-\textcolor{red}{Funktion/Abbildung mit Tradeoff in bezug zur Kostenersparnis \\ irgendwo muss noch erwähnt werden, dass die größe/vt und at werte am anfang gleich gesetzt werden }
+\textcolor{red}{irgendwo muss noch erwähnt werden, dass die größe/vt und at werte am anfang gleich gesetzt werden }
+\subsubsection{Tradeoffparameter}
+
+\subsubsection{Premapping}
+
+\subsubsection{Präprozessing}
+\textcolor{red}{inclusive der graphen größe vergleiche}
+
+\subsubsection{Power und Area Vergleich}
+
+\subsubsection{Bucket filetering $\epsilon$ im vergleich }
+
+\subsubsection{Gütevergleich kleiner "optimal " gel instanzen}
+
+
+\subsubsection{Verhalten weiterer Kosten}
+\textcolor{red}{die anfallenden kosten die nicht im \TM gemessen werden beobachten und in der future work dran anschließen}
+
+\subsubsection{Zusammenfassung?}
+\textcolor{red}{oder am ende nur ein laufzeit güte tradeoff mit eigenem Unterkapitel ?} 
+ 
  
  \subsection{Laufzeitanalyse}
  \label{subsec:laufzeitanalyse}
 Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsubsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Highfanoutknoten abhängt. Andere Faktoren wie das Aufteilen von Gates, die Größe der Library oder die Wahl der Premapping subroutine spielen ebenfalls eine wichtige Rolle. Dies verdeutlicht die Übersicht \textcolor{red}{??}.\\
  Bezüglich der Größe der Library lassen sich die Chips, abzüglich weniger Unterschiede in zwei Gruppen einteilen. Die markierte Teilmenge der Abbildung \textcolor{red}{??} entspricht der Menge der (so genannten) komplexen Gates. Ein Chip lässt sich in der Praxis, abhängig davon ob er de komplexen Gates grundsätzlich erlaubt, einer der zwei Gruppen zuordnen. Diese Unterscheidung findet sich ebenfalls in Abbildung \textcolor{red}{??}.
+ 
+\subsubsection{globale Laufzeitanalyse}
+\textcolor{red}{welche größenordnungen sind überhaupt lösbar}
 
+\subsubsection{locale Laufzeitanalyse}
+\textcolor{red}{wie unterscheiden sich die einzelnen Varianten in der Laufzeit? \\ oder lässt sich beides gut in einem bild erkennen ?} \\
+
+\textcolor{red}{hier auch die decompose laufzeit vgl mit rein ?}
+
+\subsubsection{Bucket filetering $\epsilon$ im vergleich } 
+ 
+\subsubsection{Laufzeitverlgeich kleiner "optimal " gel instanzen}
+
+
+\subsection{Güte laufzeit vergleich}
+\subsubsection{kleine Instanzen}
+
+\subsubsection{allgemein}
+\textcolor{red}{wahrscheinlich ist der unterschied bei decompose und ohne am größten den mit der besten premapping methode durchführen}
+
+\subsubsection{Güte Bucket filetering $\epsilon$ }
 
 \section{Fazit und Ausblick}
 \label{sec:fazit_und_ausblick}
