@@ -36,6 +36,7 @@
 \contentsline {section}{\numberline {9}Ressource Sharing}{30}{section.9}
 \contentsline {section}{\numberline {10}Laufzeitanalyse}{31}{section.10}
 \contentsline {subsection}{\numberline {10.1}Struktur realer Instanzen}{31}{subsection.10.1}
+<<<<<<< HEAD
 \contentsline {subsection}{\numberline {10.2}Analyse der Ergebnisse}{31}{subsection.10.2}
 \contentsline {subsubsection}{\numberline {10.2.1}Tradeoffparameter}{32}{subsubsection.10.2.1}
 \contentsline {subsubsection}{\numberline {10.2.2}Premapping}{32}{subsubsection.10.2.2}
@@ -45,6 +46,9 @@
 \contentsline {subsubsection}{\numberline {10.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{32}{subsubsection.10.2.6}
 \contentsline {subsubsection}{\numberline {10.2.7}Verhalten weiterer Kosten}{32}{subsubsection.10.2.7}
 \contentsline {subsubsection}{\numberline {10.2.8}Zusammenfassung?}{32}{subsubsection.10.2.8}
+=======
+\contentsline {subsection}{\numberline {10.2}Analyse der Ergebnisse}{32}{subsection.10.2}
+>>>>>>> 8e05e9fc7f0dde403d7fc46e39c3c9e188694b76
 \contentsline {subsection}{\numberline {10.3}Laufzeitanalyse}{32}{subsection.10.3}
 \contentsline {subsubsection}{\numberline {10.3.1}globale Laufzeitanalyse}{32}{subsubsection.10.3.1}
 \contentsline {subsubsection}{\numberline {10.3.2}locale Laufzeitanalyse}{32}{subsubsection.10.3.2}

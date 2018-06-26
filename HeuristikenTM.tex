@@ -250,7 +250,7 @@ Ein Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den verwe
 
 \subsection{Highfanoutknoten}
 \label{subsec:highfanout}
-Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(ca. 25\% der gesamten Knoten sind Highfanoutknoten für einen genaueren Zusammenhang von der Anzahl der Highfanoutknoten und der Laufzeit siehe das Kapitel \ref{sec:analyse}).\\
+Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese Eigenschaft kommt auf einem realen Chip jedoch sehr häufig vor(ca. $30\%$ der gesamten Knoten sind Highfanoutknoten für einen genaueren Zusammenhang von der Anzahl der Highfanoutknoten und der Laufzeit siehe das Kapitel \ref{sec:analyse}).\\
  \begin{wrapfigure}{r}{6cm}
 		\includegraphics[width = 6cm]{pictures/compiled/ohne_highfanout_heu}
 		\caption{Unterteilen eines Circuit in Highfanoutfreie Subcircuits}
@@ -705,14 +705,17 @@ In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und 
 \label{subsec:struktur_realer_instanzen} 
  Die Instanzen eines Chips sind im Folgenden alle maximal zusammenhängenden, mit \TM vollständig bearbeitbaren Circuits eines Chips. Da auf einem Chip, beispielsweise durch Register, gerichtete Kreise entstehen, oder Bauteile existieren, welche nicht in der Library vorhanden sind, lässt sich der Logik Graph eines Chips nicht vollständig mit dem \TM Algorithmus verarbeiten. \\
  Das Chipdesign besteht aus sehr vielen Routinen, welche aus einem Bauplan einen produzierbaren Chip designen. Auf diesem Weg gibt es viele Zwischenstände (Snapshots genannt). Alle gestesteten Chips wurde auf dem Stand  desgleichen Snapshots bearbeitet. Dadurch lassen sich die Verbesserungen von Instanzen durch die Algorithmen miteinenander vergleichen, auch wenn Sie von verschiedenen Chips stammen.\\
- Die Folgenden Angaben betreffen den Mittelwert aller getesteter Instanzen. \\
- \textcolor{red}{anzahl getesteter instanzen}
- \begin{itemize}
- 	\item Anteil Highfanouknoten 
- 	\item Anteil Outputs / Anteil outputs mit Nachfolger
- 	\item Anteil an Inputs
- \end{itemize}
- Abbildung \textcolor{red}{??} zeigt die Verteilung der getesteten Instanzen hinsichtlich der Größe  ihrer Knotenmenge.
+ Die Folgenden Angaben betrachten alle Instanzen zusammengesetzt zu einem Circuit.
+ Insgesamt wurden $1107$ Instanzen getestet. \\
+ Sei $H_C$ die Menge Highfanouknoten, welche keine Inputs sind, eines Circuits $C$ und $NI_C$ die Menge aller Knoten abz\"uglich der Inputknoten von $C$. Der durchschnittliche Anteil von $H_C$ an $NI_C$ betr\"agt $30,95\%$. Die Menge der Highfanouknoten, welche ebenfalls Inputs sind wurde hier nicht beachtet, da nur einen m\"oglichen Kandidaten besitzen und somit nicht zu dem Problem des exponentiellen Klassenwachstums beitragen. Diese Werte besitzen bei den gr\"o{\ss}eren Instanzen eine kleine Varianz. Aus diesem Grund werden die Circuits im Folgenden nur anhand ihrer Knotenzahl analysiert.\\
+ Der Anteil von Outputs an der Gesamtzahl von Knoten eines Circuits liegt bei $15,26\%$. Von allen Outputs haben $4,13\%$ noch weitere Nachfolger im gleichen Circuit. Outputs mit Nachfolgern werden werden ebenfalls auf einen Kandidaten beschr\"ankt \textcolor{red}{oben erw\"ahnt ?}, da Sie zu den offenen Knoten darauffolgender Knoten gehören. Da diese nur einen solch geringen Anteil an allen Outputs besitzen werden nur wenige Outputs so fr\"uh festgelegt. Auch hier wurden Outputs, welche auch Inputs sind, aus den gleich Gr\"unden wie oben, nicht betrachtet.\\
+ Die Inputs eines Circuits machen durchschnittlich $16,73\%$ an der Gesamtzahl der Knoten aus. Daraus folgt, dass etwa jeder Achte Knoten nur einen Kandidaten tr\"agt. Dies ist bei der Interpretation der folgenden Analysen zu beachten.\\
+  \begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/compiled/instance_sizes_distribution_table}
+		\caption{Visualisierung eines Matches über eine lange Kante}
+		\label{bild:sizes_table}
+	\end{wrapfigure}
+ Abbildung \ref{bild:sizes_table} zeigt die Verteilung der getesteten Instanzen hinsichtlich der Größe  ihrer Knotenmenge.
  
 \textcolor{red}{ Kandidaten menge kann hier noch hin also menge der Kandidaten abh von Knotenmenge bzw anzahl highfanoutknoten  und abh von den oben genannten zusatzfeatures (zb pinabh. delay, Library )  \\  und dass vielleicht die varianz (anhand eines bildes beweisen?) des hoghfanout anteil ziemlich klein ist und somit Knotenmenge und highfanoutmenge ansich ausreichend aussagekräftig sind} 
  
