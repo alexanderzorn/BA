@@ -349,12 +349,17 @@ Sei, gegeben ein Circuit $C$ ohne teilweise überflüssige Subciruits, \\$\bar{C
 \begin{lemma}{Die Inputs eines Matches auf $v$ korrespondieren zu den Kanten eines gerichteten $v$-Schnitts in $\bar{C}_v $}
 \end{lemma}
 \begin{proof}
-Zu jedem Inputpin eines Matches gehört eindeutig eine Kantemenge $K$ aus $C$. Es ist möglich, dass $|K| > 1$, denn ein Match kann mehrere ausgehende Kanten eines Knoten zu einer Kante zusammenfasst. Dies veranschaulicht Abbildung \textcolor{red}{??} für ein Match eines MUX Gates.  Sei $I$ die Menge der zu den Inputs korrespondierenden Kantenmengen.\\ 
+Zu jedem Inputpin eines Matches gehört eindeutig eine Kantemenge $K$ aus $C$. Es ist möglich, dass $|K| > 1$, denn ein Match kann mehrere ausgehende Kanten eines Knoten zu einer Kante zusammenfassen. Dies veranschaulicht Abbildung \ref{bild:mux_match} für ein Match eines MUX Gates.  Sei $I$ die Menge der zu den Inputs korrespondierenden Kantenmengen.\\
 Es genügt zu zeigen, dass alle Kanten $I'$ in $I$ gerade die Kantenmenge eines gerichteten $v$-Schnitts in $\bar{C}_v$ ist. \\
 Angenommen $I'$ bildet keinen gerichteten $v$-Schnitt, dann existiert in $\bar{C}_v\backslash I$ ein Weg von einen Input von $cone(v)$ zu $v$, welcher keine Kante aus $I$ benutzt. \\
 Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, denn sonst hätte das Match einen Seiteninput, was nicht erlaubt ist, oder es existiert ein teilweise überflüssiger Subcircuit. Daraus folgt die Aussage. 
 \end{proof}
-Die Korrespondenz ist nicht eindeutig, denn ob mehrere Kanten eines Outputs zusammengefasste oder getrennte Inputkanten eines Matches sind, lässt sich anhand des Schnittes nicht herleiten. Die wird ebenfalls durch Abbildung \textcolor{red}{??} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eindeutig, wenn es keine zwei Gate der Library gibt, welche diegleiche  logische Funktion realisieren.\\
+\begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/compiled/mux_match}
+		\caption{Das MUX Match hat verbindet zwei Kanten}
+		\label{bild:mux_match}
+\end{wrapfigure}
+Die Korrespondenz ist nicht eindeutig, denn ob mehrere Kanten eines Outputs zusammengefasste oder getrennte Inputkanten eines Matches sind, lässt sich anhand des Schnittes nicht herleiten. Die wird ebenfalls durch Abbildung \ref{bild:mux_match} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eindeutig, wenn es keine zwei Gate der Library gibt, welche diegleiche  logische Funktion realisieren.\\
 In einem Graphen ohne Highfanoutknoten gilt somit: 
 Die Menge der Matchings von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inclusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph interpretiert ein Gate der Library realisieren.
 \begin{cor}\label{cor:anz_matche_einfach}
@@ -703,7 +708,7 @@ In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und 
 
  \subsection{Struktur realer Instanzen}
 \label{subsec:struktur_realer_instanzen} 
- Die Instanzen eines Chips sind im Folgenden alle maximal zusammenhängenden, mit \TM vollständig bearbeitbaren Circuits eines Chips. Da auf einem Chip, beispielsweise durch Register, gerichtete Kreise entstehen, oder Bauteile existieren, welche nicht in der Library vorhanden sind, lässt sich der Logik Graph eines Chips nicht vollständig mit dem \TM Algorithmus verarbeiten. \\
+ Die Instanzen eines Chips sind im Folgenden alle maximal zusammen"-h\"angen\-den, mit \TM vollständig bearbeitbaren Circuits eines Chips. Da auf einem Chip, beispielsweise durch Register, gerichtete Kreise entstehen, oder Bauteile existieren, welche nicht in der Library vorhanden sind, lässt sich der Logik Graph eines Chips nicht vollständig mit dem \TM Algorithmus verarbeiten. \\
  Das Chipdesign besteht aus sehr vielen Routinen, welche aus einem Bauplan einen produzierbaren Chip designen. Auf diesem Weg gibt es viele Zwischenstände (Snapshots genannt). Alle gestesteten Chips wurde auf dem Stand  desgleichen Snapshots bearbeitet. Dadurch lassen sich die Verbesserungen von Instanzen durch die Algorithmen miteinenander vergleichen, auch wenn Sie von verschiedenen Chips stammen.\\
  Die Folgenden Angaben betrachten alle Instanzen zusammengesetzt zu einem Circuit.
  Insgesamt wurden $1107$ Instanzen getestet. \\
