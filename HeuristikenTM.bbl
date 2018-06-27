@@ -1,0 +1,27 @@
+\begin{thebibliography}{Keu87}
+
+\bibitem[Elb17]{Elbert}
+Lucas Elbert.
+\newblock Approximationsalgorithmen f\"ur das {T}echnology-{M}apping, 2017.
+
+\bibitem[Keu87]{DAGON}
+K.~Keutzer.
+\newblock Dagon: Technology binding and local optimization by dag matching.
+\newblock In {\em 24th ACM/IEEE Design Automation Conference}, pages 341--347,
+  June 1987.
+
+\bibitem[KR89]{ComplexitySynthesis}
+Keutzer and Richards.
+\newblock Computational complexity of logic synthesis and optimization.
+\newblock In {\em International Workshop on Logic Synthesis}, 1989.
+
+\bibitem[Pos41]{Post}
+Emil~Leon Post.
+\newblock The two-valued iterative systems of mathematical logic.
+\newblock {\em Annals of Mathematics}, 5, 1941.
+
+\bibitem[Tra15]{Tran}
+Khai~Van Tran.
+\newblock Algorithmen f\"ur das {T}echnology-{M}apping, 2015.
+
+\end{thebibliography}

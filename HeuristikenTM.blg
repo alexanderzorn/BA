@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: HeuristikenTM.aux
+The style file: alpha.bst
+Database file #1: HeuristikenTM.bib.bib
+You've used 5 entries,
+            2543 wiz_defined-function locations,
+            588 strings with 5019 characters,
+and the built_in function-call counts, 1628 in all, are:
+= -- 152
+> -- 51
+< -- 5
++ -- 15
+- -- 14
+* -- 84
+:= -- 258
+add.period$ -- 13
+call.type$ -- 5
+change.case$ -- 26
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 80
+empty$ -- 146
+format.name$ -- 23
+if$ -- 347
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 3
+newline$ -- 26
+num.names$ -- 15
+pop$ -- 40
+preamble$ -- 1
+purify$ -- 31
+quote$ -- 0
+skip$ -- 73
+stack$ -- 0
+substring$ -- 64
+swap$ -- 16
+text.length$ -- 5
+text.prefix$ -- 4
+top$ -- 0
+type$ -- 40
+warning$ -- 0
+while$ -- 13
+width$ -- 7
+write$ -- 60

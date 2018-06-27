@@ -3,6 +3,7 @@
 \input{header}
 \input{textheader}
 \usepackage{Titelseite}
+\usepackage{natbib}
 \usepackage{bbold, verbatim}
 \usepackage{graphicx}
 \newcommand{\TM}{Technology Mapping }
@@ -220,8 +221,7 @@ Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist bezü
 \end{problem}
 Im weiteren Verlauf dieses Kapitels, werden diese Problemstellungen auf Circuits mit mehreren Outputs erweitert. \\
 
-Diese \textcolor{red}{diese Probleme sind äquvalent Beweis? oder verweis aus quelle}
-\textcolor{red}{erwähnen dass da die äquivalent  nur noch  Konvexkombination}
+Beide Probleme sind gleich schwer und lassen sich mit dem noch vorzustellenden FPTAS lösen. Eine Beschreibung wie sich das \TM mit Arrivaltimeschranke mit dem FPTAS lösen lässt findet sich in \cite{Elbert}.  Da im späteren Verlauf dieser Arbeit die Arrivaltime nicht der Einzige zu beachtende Faktor bei der Geschwindigkeitsoptimierung ist, wird im Folgenden nur noch die Konvexkombination behandelt.\\
 
 Dadurch ergibt sich folgende Problemstellung für den Algorithmus: \\
 Angenommen an jedem Knoten $v$ würde, wie im Kern-Algorithmus, nur derjenige Kandidat gespeichert werden, welcher die Kostenfunktion an $v$ optimiert. Dadurch kann nicht mehr garantiert werden, dass beim errechnen der Kandidaten für den Output, der für ihn optimale Kandidat noch vorhanden ist. Beide Inputs getrennt nach der Kostenfunktion zu optimieren, garantiert also nicht das optimale Ergebnis.\\
@@ -242,11 +242,11 @@ Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss. Dazu f
 		\caption{Ordnen der Kandidaten in einer Tradeoffkurve}
 		\label{bild:tradeoff_kurve}
 \end{wrapfigure}
-Eine optimale Lösung des \TM verwendet offenbar (\textcolor{red}{in einem Korollar beweisen ?}) nur nicht-dominierte Kandidaten, woraus folgt, dass nur diese während der Ausführung des Algorithmus gespeichert werden müssen.\\
+Eine optimale Lösung des \TM verwendet nur nicht-dominierte Kandidaten, anderweitig ließe sich, durch ersetzen eines solchen durch einen nicht-dominierten eine bessere Lösung erzielen, was ein Widerspruch ist. Daraus folgt, dass nur diese während der Ausführung des Algorithmus gespeichert werden müssen.\\
 Die Menge der noch bleibenden Kandidaten lassen sich in sogenannten Tradeoff-Kurven speichern (s. Abb. \ref{bild:tradeoff_kurve}). Welche jeden Kandidaten zweidimensional anhand seiner Kosten erfasst.\\
 
 Die beiden vorgestellten Probleme sind NP-vollständig. Daraus folgt, dass sich ab diesem Punkt wahrscheinlich  kein polynomieller optimaler Algorithmus für das \TM finden lässt. Dadurch dass sich zwei Kandidaten in den meisten Fällen nicht mehr vergleichen lassen, wird eine Vielzahl von Kandidaten an jedem Knoten gespeichert. Dies zeigt sich in einem exponentiell großen Speicheraufwand. \\
-Ein Beweis der NP-vollständigkeit findet sich in \textcolor{red}{hier den verweis zu einem Beweis einfügen}.
+Ein Beweis der NP-vollständigkeit und genauere Informationen zur Einordnung der Schwere dieser Probleme finden sich in \cite{ComplexitySynthesis} und \citep{Elbert}. 
 
 \subsection{Highfanoutknoten}
 \label{subsec:highfanout}
@@ -256,8 +256,8 @@ Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine
 		\caption{Unterteilen eines Circuit in Highfanoutfreie Subcircuits}
 		\label{bild:ohne_highfanout_heu}
 \end{wrapfigure}
- Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquivalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \textcolor{red}{Hier das eine Paper einsetzen} wieder. Abbildung \ref{bild:ohne_highfanout_heu} verbildlicht diesen Ansatz einer Heuristik. 
-  Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine Vielzahl sehr kleiner Subcircuits entsteht, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen.\textcolor{red}{zu anna gibt es sonst noch einen grund dies nicht doch einmal auszuprobieren?}\\
+ Es ist möglich einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht besitzen. Die Subcircuits werden einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquivalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \cite{DAGON} wieder. Abbildung \ref{bild:ohne_highfanout_heu} verbildlicht diesen Ansatz einer Heuristik. 
+  Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine Vielzahl sehr kleiner Subcircuits entsteht, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich auf diese Art der   Heuristik nicht mehr eingehen.\\
 
 \begin{wrapfigure}{r}{7cm}%[htb]
 %\centering
@@ -267,7 +267,7 @@ Der oben beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine
 \end{wrapfigure}
 
 Das Kern-Problem der Highfanoutknoten ist, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen. Daraus folgt, das bei der Wahl eines Kandidaten für einen Knoten w die Wahl der Kandidaten der Input-Kandidaten von w nicht unabhängig von einander sein muss. \\
-Abbildung \ref{bild:expo_kan} zeigt zudem ein weiteres Problem der Implementierung auf. Die Anzahl der zu Speichernden Kandidaten kann, mit beliebig vielen Highfanoutknoten in $C$,  exponentiell bezüglich $|V(C)|$ sein. Daraus folgt ein Implementierungsproblem, auf welches im Weiteren Verlauf dieser Arbeit noch eingegangen wird. \\
+Abbildung \ref{bild:expo_kan} zeigt zudem ein weiteres Problem der Implementierung auf. Die Anzahl der zu Speichernden Kandidaten kann, mit beliebig vielen Highfanoutknoten in $C$,  exponentiell bezüglich $|V(C)|$ sein. Daraus folgt ein Implementierungsproblem, auf welches er Arbeit noch eingegangen wird. \\
 Zur Lösung des ersten Problems helfen die folgenden Definitionen:\\
 
 \begin{definition}{Cone eines Knoten:}\\
@@ -334,7 +334,7 @@ Die Berücksichtigung von vollständig überflüssigen Subcircuits bedeuted, das
  
 Im Gegensatz dazu kommen die teilweise überflüssigen Circuits sehr wohl vor. Bei der Konstruktion eines Chips passiert dies durch das Zusammensetzen unterschiedlicher Circuits.\\
 In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch bei der  Suche der Matche gefunden, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. Dies veranschaulicht Abbildung \ref{bild:partly_redundant}. \\
-Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library für das \TM vorhanden und kann vermieden werden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Input des Buffers zu seinen Outputs gebaut. Dies verhindert den Einbau eines nicht nötigen Gates. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\textcolor{red}{was ist mit dem Laufzeit statistiken?}\\
+Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen Irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library für das \TM vorhanden und kann vermieden werden. Von daher wird in diesem Fall kein Buffer, sondern nur die Kanten vom Input des Buffers zu seinen Outputs gebaut. Dies verhindert den Einbau eines nicht nötigen Gates. Da $fanout_{max}$ und $fanin_{max}$ im weiteren Verlauf dieser Arbeit beschränkt werden, lässt sich dies in linearer Laufzeit im implementieren. Diese zusätzliche Bearbeitung läuft von nun an in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\\
  Obwohl nun das Gegenbeispiel aus Kapitel \ref{subsec:kern_algorithmus} nicht mehr gültig ist, garantiert auch hier ein optimaler Algorithmus keine bestmögliche Implementierung der eines Circuits zugrunde liegenden logischen Funktion.
  
  
@@ -399,6 +399,7 @@ Dies garantiert, bei einem Circuit mit Highfanoutknoten, nicht das Finden aller 
 In der Praxis werden so jedoch die überwiegende Mehrheit der Matche gefunden. Der Verlust einiger weniger Matche spiegelt bringt einen enormen Laufzeitgewinn mit sich.
 \textcolor{red}{die dissertation für den fall ohne highfanoutknoten erwähnen ? und nochmal genau durchsehen ob die teilweise überflüssigen Subcircuits überall rausgehalten wurden }
 
+\textcolor{red}{boolean Matching hier erwähnen und sinnvolle quellen mit einbringen}
 
 \subsection{Kandidaten-Probleme}
 Die Anzahl der Kandidaten an einem Knoten ist im Allgemeinen nicht polynomiell Beschränkt, wie Abbildung \ref{bild:expo_kan} beweist. Dies gilt offenbar auch wenn der Circuit $C$ keine Highfanoutknoten besitzt. Dieses Problem wird durch das Filtern mit Buckets gelöst. Dies wird nach dem Folgenden Korollar eingeführt. 
@@ -533,10 +534,8 @@ Hieraus ergeben für einen Circuit die beiden folgenden Werte:
 \end{itemize}
 Letzteres ist in der Praxis gefragter, da eine sehr gute Verbesserung der SNS eine Verbesserung des WS in der Regel mit einschließt. \\
 
-\textcolor{red}{hier passt sehr gut rein Lukas FPTAS zu erwähnen da er auf den schlechtesten Pfad angewendet wird, war die anzahl der Highfanout gates vorhersebar? -> in den nächsten absatz mit einbauen}\\
-
 Angenommen man betrachtet einen Chip, dann lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird. Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einem Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
-Hieraus entsteht ein Circuit $C$ welcher einen Output hat und aus einer hintereinangeschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquvalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Dieser lässt sich dann mit  Delay optimierenden \TM (in polynomieller Laufzeit\textcolor{red}{zeigen ?}) umbauen und wieder in den Chip einbauen. Der Große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Zeit. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
+Hieraus entsteht ein Circuit $C$ welcher einen Output hat und aus einer hintereinangeschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquvalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Diese umgebauten Instanzen besitzen nur einen Output, wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der Große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Zeit. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
 
 Eine weitere Herangehensweise für das \TM ist es einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach AT, da nur Instanzen mit einem Output betrachtet wurden und RAT für diesen eine Konstante ist.
 
@@ -555,8 +554,6 @@ Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut
  
  Des Weiteren müssen nach dem \TM noch alle Outputs, mit der bis zu ihnen realisierten Logischen Funktion, vorhanden sein. Daraus folgt, dass über einen Output-Knoten, welcher in dem Circuit noch mindestens einen Nachfolger hat, nicht gematcht werden darf, denn sonst würde ein nicht erlaubter Seitenoutput entstehen.\\
  Die lässt dadurch bewerkstelligen, dass man eine seiner ausgehenden Kanten als konstant deklariert, wie das bereits bei den zu langen Kanten geschehen ist. 
-
- \textcolor{red}{ indem unterkapitel noch mehr bilder bzw schönerer aufbau ist nämlich aktuell viel text!!}
  
 \begin{comment}
  \subsection{Allgemeiner Algorithmus}
@@ -626,7 +623,7 @@ Folgende Abbildung veranschaulicht das exponentielle Wachstum der Kandidatenmeng
  \section{Premapping von Highfanoutknoten}
  \label{sec:premapping}
 Der exponentielle Anstieg der Kandidatenmenge wird, wie oben gezeigt, durch die Highfanout-Knoten verursacht. Daraus folgt, dass ein sehr großes Laufzeit Potenzial in der Reduzierung der Kandidaten für diese Knoten liegt. \\
- Die Kandidatenmenge eines jeden Highfanoutknotens wird, wie bereits in Kapitel \ref{subsubsec:heuristik} geschehen, auf eins reduziert. Diese Routine wird auch das Premapping der Highfanoutknoten genannt. Dadurch folgt, dass jeder Knoten des Circuits $C$ nur noch eine Klasse an Kandidaten besitzt, denn alle offenen Knoten seiner Cone sind Highfanoutknoten und somit festgelegt.  Die Kandidatenmenge der Outputs, welche noch Nachfolger $o \in C$ haben, wird ebenfalls auf einen Kandidaten reduziert. Dies verhindert das Klonen in $cone(o)$, da  auch die nicht offenen Knoten von $o$ von allen Knoten der Menge $O := \{ v \in Outputs(C): o \in cone(v) \}$ mit einem Kandidaten belegt werden.\\
+ Die Kandidatenmenge eines jeden Highfanoutknotens wird, wie bereits in Kapitel \ref{subsec:heuristik} geschehen, auf eins reduziert. Diese Routine wird auch das Premapping der Highfanoutknoten genannt. Dadurch folgt, dass jeder Knoten des Circuits $C$ nur noch eine Klasse an Kandidaten besitzt, denn alle offenen Knoten seiner Cone sind Highfanoutknoten und somit festgelegt.  Die Kandidatenmenge der Outputs, welche noch Nachfolger $o \in C$ haben, wird ebenfalls auf einen Kandidaten reduziert. Dies verhindert das Klonen in $cone(o)$, da  auch die nicht offenen Knoten von $o$ von allen Knoten der Menge $O := \{ v \in Outputs(C): o \in cone(v) \}$ mit einem Kandidaten belegt werden.\\
 Nun lässt sich der bestmögliche Kandidate eines jeden Outputs, ohne Nachfolger, finden, indem die einzige verbleibende Tradeoffkurve nach dem Kandidaten mit den geringsten Kosten gesucht wird. Dadurch ist das Finden des noch bestmöglichen Circuit Kandidaten ohne Laufzeiteinbußen möglich. \\
 Daraus folgt, dass der zu wählende Circuit-Kandidat eindeutig ist, sobald jedem Highfanoutknoten ein Kandidat zugewiesen wurde. Dadurch hat die Wahl der Premapping Routine eine zentrale Bedeutung der Heuristik.\\
 Im folgenden werden drei verschiedene Routinen vorgestellt und auf ihre Eigenschaften eingegangen. Genauere Informationen über die Unterschiede der Resultate dieser Routinen finden sich in Kapitel \ref{sec:analyse}.
@@ -651,10 +648,10 @@ Die garantiert optimale Lösung findet das triviale Premapping jedoch nur mit Tr
 
 \section{Präprozessing}
 Die Möglichkeiten des Matchings sind im allgemeinen Vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
-Um diesem Problem aus dem Weg zu gehen, ist es möglich vor dem \TM Algorithmus jedes Gate mit mehr als zwei eingehenden Inputs durch einen kleinen Subcircuit bestehend aus zwei Input Gates zu ersetzen. Dies ist immer möglich, da jede Logische Funktion nur mithilfe von NAND2 und INV Gates realisierbar ist (\textcolor{red}{beweis verlinken ?} und auf jedem realen Chip standartmäßig ein AND oder NAND sowie ein OR oder NOR in der Library vorhanden sind. INV Gates sind fester Bestandteil jeder realen Library.\\
+Um diesem Problem aus dem Weg zu gehen, ist es möglich vor dem \TM Algorithmus jedes Gate mit mehr als zwei eingehenden Inputs durch einen kleinen Subcircuit bestehend aus zwei Input Gates zu ersetzen. Dies ist immer möglich, da jede Logische Funktion nur mithilfe von NAND2 und INV Gates realisierbar ist (\cite{Post}) und auf jedem realen Chip standartmäßig ein AND oder NAND sowie ein OR oder NOR in der Library vorhanden sind. INV Gates sind fester Bestandteil jeder realen Library.\\
 Dabei werden die Gates nach folgender Routine zerlegt. \textcolor{red}{hier das huffman coding und ein Beispiel mit einbringen und decomposing begriff einführen}\\
-Der Vorteil des Decompose ist, dass die Möglichkeiten des \TM deutlich erweitert werden. Jedoch werden für ein AND4 Gate Beispielsweise 3 AND2 Gates eingesetzt, was dazu führt, dass sich im Allgemeinen die Kosten des Augangscircuits verschlechtern.\\
-Eine ausfürhliche Analyse der Vor- und Nachteile des decomposen finden sich in Kappitel \ref{sec:analyse}.
+Der Vorteil des Decompose ist, dass die Möglichkeiten des \TM deutlich erweitert werden. Jedoch werden für ein AND4 Gate Beispielsweise 3 AND2 Gates eingesetzt, was dazu führt, dass sich im Allgemeinen die Kosten des Ausgangscircuits verschlechtern.\\
+Eine ausführliche Analyse der Vor- und Nachteile des decomposen finden sich in Kapitel \ref{sec:analyse}.
 	
 
 \section{Weitere Optimierungskriterien}
@@ -726,8 +723,18 @@ In diesem Kapitel werden, die vorgestellten Algorithmen bezüglich Laufzeit und 
  
  \subsection{Analyse der Ergebnisse}
  \label{subsec:analyse_der_ergebnisse}
-\textcolor{red}{irgendwo muss noch erwähnt werden, dass die größe/vt und at werte am anfang gleich gesetzt werden }
+ Es folgt eine Anlayse der Ergebnisse des Algorithmus hinsichtlich der verschiedenen, oben vorgestellten Variationen.
 \subsubsection{Tradeoffparameter}
+Area, SNS, WS oder Energieverbrauch eines Circuits liegen nicht unbedingt in derselben Größenordnung. Im Folgenden wird ausgehend von der \TM Heuristik ohne Präpozessing, und mit \textcolor{red}{premappinmethode}  der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
+Abbildung \textcolor{red}{??} veranschaulicht die durchschnittliche prozentuale Verbesserung der Kosten abhängig von $\lambda$.\\
+\textcolor{red}{mit der neuen premapping methode starten oder einfach die schätzen methode nehmen!}\\
+
+
+\textcolor{red}{ABBILDUNG}\\
+
+Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im Folgenen sei $\lambda$ durch diese Werte vorgegeben. 
+
+\textcolor{red}{was ist mit lambda abh. von diesem verhätnis wählen ?}
 
 \subsubsection{Premapping}
 
@@ -780,11 +787,11 @@ Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt,
 
 
 
-
-
-
-
 \newpage
+\nocite{*}
+\bibliography{HeuristikenTM.bib}
+\bibliographystyle{alpha}
+
 %\clearpage
 
 \end{document}
