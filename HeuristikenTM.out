@@ -1,55 +1,55 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.2}{Terminologie \046 grundlegender Algorithmus}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{grundlegende Definitionen}{section.2}% 3
+\BOOKMARK [1][-]{section.2}{Terminologie und grundlegender Algorithmus}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Grundlegende Definitionen}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Kern Algorithmus}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{FPTAS und Heuristik}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Klonen}{subsection.3.2}% 8
-\BOOKMARK [2][-]{subsection.3.3}{zu lange Kanten}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Zu lange Kanten}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.5}{Matchingprobleme}{section.3}% 11
 \BOOKMARK [3][-]{subsubsection.3.5.1}{Anzahl Matchings}{subsection.3.5}% 12
 \BOOKMARK [3][-]{subsubsection.3.5.2}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 13
-\BOOKMARK [3][-]{subsubsection.3.5.3}{heuristische Matching Suche}{subsection.3.5}% 14
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Heuristische Matching Suche}{subsection.3.5}% 14
 \BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 15
 \BOOKMARK [3][-]{subsubsection.3.6.1}{Filtern mit Buckets}{subsection.3.6}% 16
 \BOOKMARK [3][-]{subsubsection.3.6.2}{Verkn\374pfen von Kandidaten}{subsection.3.6}% 17
 \BOOKMARK [3][-]{subsubsection.3.6.3}{Finden von Kandidaten}{subsection.3.6}% 18
 \BOOKMARK [2][-]{subsection.3.7}{FPTAS}{section.3}% 19
 \BOOKMARK [2][-]{subsection.3.8}{Heuristik}{section.3}% 20
-\BOOKMARK [1][-]{section.4}{Mehrere Outputs}{}% 21
-\BOOKMARK [2][-]{subsection.4.1}{required Arrivaltimes}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.2}{Mehrere Outputs}{section.4}% 23
+\BOOKMARK [1][-]{section.4}{DAGs mit mehreren Outputs}{}% 21
+\BOOKMARK [2][-]{subsection.4.1}{Required Arrivaltimes}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.2}{Implementierung mehrerer Outputs}{section.4}% 23
 \BOOKMARK [1][-]{section.5}{Premapping von Highfanoutknoten}{}% 24
-\BOOKMARK [2][-]{subsection.5.1}{triviales Premapping}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{erweitertes Premapping}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.1}{Triviales Premapping}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Erweitertes Premapping}{section.5}% 26
 \BOOKMARK [2][-]{subsection.5.3}{Premapping durch Sch\344tzen}{section.5}% 27
 \BOOKMARK [1][-]{section.6}{Pr\344prozessing}{}% 28
 \BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 29
 \BOOKMARK [2][-]{subsection.7.1}{pinabh\344ngiges Delay}{section.7}% 30
 \BOOKMARK [2][-]{subsection.7.2}{Power Optimierung}{section.7}% 31
 \BOOKMARK [2][-]{subsection.7.3}{Layer Assignment}{section.7}% 32
-\BOOKMARK [1][-]{section.8}{Version der Heuristik, welche obige Kriterien beherzigt}{}% 33
-\BOOKMARK [1][-]{section.9}{Ressource Sharing}{}% 34
-\BOOKMARK [1][-]{section.10}{Analyse}{}% 35
-\BOOKMARK [2][-]{subsection.10.1}{Struktur realer Instanzen}{section.10}% 36
-\BOOKMARK [2][-]{subsection.10.2}{Analyse der Ergebnisse}{section.10}% 37
-\BOOKMARK [3][-]{subsubsection.10.2.1}{Tradeoffparameter}{subsection.10.2}% 38
-\BOOKMARK [3][-]{subsubsection.10.2.2}{Premapping}{subsection.10.2}% 39
-\BOOKMARK [3][-]{subsubsection.10.2.3}{Pr\344prozessing}{subsection.10.2}% 40
-\BOOKMARK [3][-]{subsubsection.10.2.4}{Power und Area Vergleich}{subsection.10.2}% 41
-\BOOKMARK [3][-]{subsubsection.10.2.5}{Bucket filetering \040im vergleich }{subsection.10.2}% 42
-\BOOKMARK [3][-]{subsubsection.10.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.10.2}% 43
-\BOOKMARK [3][-]{subsubsection.10.2.7}{Verhalten weiterer Kosten}{subsection.10.2}% 44
-\BOOKMARK [3][-]{subsubsection.10.2.8}{Zusammenfassung?}{subsection.10.2}% 45
-\BOOKMARK [2][-]{subsection.10.3}{Laufzeitanalyse}{section.10}% 46
-\BOOKMARK [3][-]{subsubsection.10.3.1}{globale Laufzeitanalyse}{subsection.10.3}% 47
-\BOOKMARK [3][-]{subsubsection.10.3.2}{locale Laufzeitanalyse}{subsection.10.3}% 48
-\BOOKMARK [3][-]{subsubsection.10.3.3}{Bucket filetering \040im vergleich }{subsection.10.3}% 49
-\BOOKMARK [3][-]{subsubsection.10.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.10.3}% 50
-\BOOKMARK [2][-]{subsection.10.4}{G\374te laufzeit vergleich}{section.10}% 51
-\BOOKMARK [3][-]{subsubsection.10.4.1}{kleine Instanzen}{subsection.10.4}% 52
-\BOOKMARK [3][-]{subsubsection.10.4.2}{allgemein}{subsection.10.4}% 53
-\BOOKMARK [3][-]{subsubsection.10.4.3}{G\374te Bucket filetering \040}{subsection.10.4}% 54
-\BOOKMARK [1][-]{section.11}{Fazit und Ausblick}{}% 55
+\BOOKMARK [1][-]{section.8}{Ressource Sharing}{}% 33
+\BOOKMARK [1][-]{section.9}{Qualit\344ts- und Laufzeit-Analyse}{}% 34
+\BOOKMARK [2][-]{subsection.9.1}{Struktur realer Instanzen}{section.9}% 35
+\BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 36
+\BOOKMARK [3][-]{subsubsection.9.2.1}{Tradeoffparameter}{subsection.9.2}% 37
+\BOOKMARK [3][-]{subsubsection.9.2.2}{Premapping}{subsection.9.2}% 38
+\BOOKMARK [3][-]{subsubsection.9.2.3}{Pr\344prozessing}{subsection.9.2}% 39
+\BOOKMARK [3][-]{subsubsection.9.2.4}{Power und Area Vergleich}{subsection.9.2}% 40
+\BOOKMARK [3][-]{subsubsection.9.2.5}{Bucket filetering \040im vergleich }{subsection.9.2}% 41
+\BOOKMARK [3][-]{subsubsection.9.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.9.2}% 42
+\BOOKMARK [3][-]{subsubsection.9.2.7}{Verhalten weiterer Kosten}{subsection.9.2}% 43
+\BOOKMARK [3][-]{subsubsection.9.2.8}{Zusammenfassung?}{subsection.9.2}% 44
+\BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 45
+\BOOKMARK [3][-]{subsubsection.9.3.1}{globale Laufzeitanalyse}{subsection.9.3}% 46
+\BOOKMARK [3][-]{subsubsection.9.3.2}{locale Laufzeitanalyse}{subsection.9.3}% 47
+\BOOKMARK [3][-]{subsubsection.9.3.3}{Bucket filetering \040im vergleich }{subsection.9.3}% 48
+\BOOKMARK [3][-]{subsubsection.9.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.9.3}% 49
+\BOOKMARK [2][-]{subsection.9.4}{G\374te laufzeit vergleich}{section.9}% 50
+\BOOKMARK [3][-]{subsubsection.9.4.1}{kleine Instanzen}{subsection.9.4}% 51
+\BOOKMARK [3][-]{subsubsection.9.4.2}{allgemein}{subsection.9.4}% 52
+\BOOKMARK [3][-]{subsubsection.9.4.3}{G\374te Bucket filetering \040}{subsection.9.4}% 53
+\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 54
+\BOOKMARK [1][-]{section.11}{Literaturverzeichnis}{}% 55
