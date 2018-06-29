@@ -25,7 +25,7 @@
 \BOOKMARK [2][-]{subsection.5.1}{Triviales Premapping}{section.5}% 25
 \BOOKMARK [2][-]{subsection.5.2}{Erweitertes Premapping}{section.5}% 26
 \BOOKMARK [2][-]{subsection.5.3}{Premapping durch Sch\344tzen}{section.5}% 27
-\BOOKMARK [1][-]{section.6}{Pr\344prozessing}{}% 28
+\BOOKMARK [1][-]{section.6}{Preprocessing}{}% 28
 \BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 29
 \BOOKMARK [2][-]{subsection.7.1}{pinabh\344ngiges Delay}{section.7}% 30
 \BOOKMARK [2][-]{subsection.7.2}{Power Optimierung}{section.7}% 31
@@ -36,7 +36,7 @@
 \BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 36
 \BOOKMARK [3][-]{subsubsection.9.2.1}{Tradeoffparameter}{subsection.9.2}% 37
 \BOOKMARK [3][-]{subsubsection.9.2.2}{Premapping}{subsection.9.2}% 38
-\BOOKMARK [3][-]{subsubsection.9.2.3}{Pr\344prozessing}{subsection.9.2}% 39
+\BOOKMARK [3][-]{subsubsection.9.2.3}{Preprozessing}{subsection.9.2}% 39
 \BOOKMARK [3][-]{subsubsection.9.2.4}{Power und Area Vergleich}{subsection.9.2}% 40
 \BOOKMARK [3][-]{subsubsection.9.2.5}{Bucket filetering \040im vergleich }{subsection.9.2}% 41
 \BOOKMARK [3][-]{subsubsection.9.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.9.2}% 42
