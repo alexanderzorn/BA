@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {3.3}Zu lange Kanten}{13}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{14}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Matchingprobleme}{15}{subsection.3.5}
-\contentsline {subsubsection}{\numberline {3.5.1}Anzahl Matchings}{15}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.1}Obere Schranke f\IeC {\"u}r die Anzahl Matche eines Knoten}{15}{subsubsection.3.5.1}
 \contentsline {subsubsection}{\numberline {3.5.2}Matching Suche in polynomieller Zeit}{17}{subsubsection.3.5.2}
 \contentsline {subsubsection}{\numberline {3.5.3}Heuristische Matching Suche}{18}{subsubsection.3.5.3}
 \contentsline {subsection}{\numberline {3.6}Kandidaten-Probleme}{18}{subsection.3.6}
@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {3.7}FPTAS}{20}{subsection.3.7}
 \contentsline {subsection}{\numberline {3.8}Heuristik}{21}{subsection.3.8}
 \contentsline {section}{\numberline {4}DAGs mit mehreren Outputs}{22}{section.4}
-\contentsline {subsection}{\numberline {4.1}Required Arrivaltimes}{23}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Required Arrivaltimes}{22}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Implementierung mehrerer Outputs}{24}{subsection.4.2}
 \contentsline {section}{\numberline {5}Premapping von Highfanoutknoten}{25}{section.5}
 \contentsline {subsection}{\numberline {5.1}Triviales Premapping}{26}{subsection.5.1}
@@ -31,12 +31,12 @@
 \contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{27}{section.7}
 \contentsline {subsection}{\numberline {7.1}pinabh\IeC {\"a}ngiges Delay}{27}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Power Optimierung}{28}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Layer Assignment}{29}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.3}Layer Assignment}{28}{subsection.7.3}
 \contentsline {section}{\numberline {8}Ressource Sharing}{29}{section.8}
 \contentsline {section}{\numberline {9}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{30}{section.9}
 \contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{30}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{32}{subsection.9.2}
-\contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{32}{subsubsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{31}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{31}{subsubsection.9.2.1}
 \contentsline {subsubsection}{\numberline {9.2.2}Premapping}{32}{subsubsection.9.2.2}
 \contentsline {subsubsection}{\numberline {9.2.3}Pr\IeC {\"a}prozessing}{32}{subsubsection.9.2.3}
 \contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{32}{subsubsection.9.2.4}
@@ -44,7 +44,7 @@
 \contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{32}{subsubsection.9.2.6}
 \contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{32}{subsubsection.9.2.7}
 \contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{32}{subsubsection.9.2.8}
-\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{33}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{32}{subsection.9.3}
 \contentsline {subsubsection}{\numberline {9.3.1}globale Laufzeitanalyse}{33}{subsubsection.9.3.1}
 \contentsline {subsubsection}{\numberline {9.3.2}locale Laufzeitanalyse}{33}{subsubsection.9.3.2}
 \contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{33}{subsubsection.9.3.3}
@@ -52,6 +52,6 @@
 \contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{33}{subsection.9.4}
 \contentsline {subsubsection}{\numberline {9.4.1}kleine Instanzen}{33}{subsubsection.9.4.1}
 \contentsline {subsubsection}{\numberline {9.4.2}allgemein}{33}{subsubsection.9.4.2}
-\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{34}{subsubsection.9.4.3}
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{34}{section.10}
-\contentsline {section}{\numberline {11}Literaturverzeichnis}{34}{section.11}
+\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{33}{subsubsection.9.4.3}
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{33}{section.10}
+\contentsline {section}{\numberline {11}Literaturverzeichnis}{33}{section.11}

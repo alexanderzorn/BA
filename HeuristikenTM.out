@@ -9,7 +9,7 @@
 \BOOKMARK [2][-]{subsection.3.3}{Zu lange Kanten}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.5}{Matchingprobleme}{section.3}% 11
-\BOOKMARK [3][-]{subsubsection.3.5.1}{Anzahl Matchings}{subsection.3.5}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Obere Schranke f\374r die Anzahl Matche eines Knoten}{subsection.3.5}% 12
 \BOOKMARK [3][-]{subsubsection.3.5.2}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 13
 \BOOKMARK [3][-]{subsubsection.3.5.3}{Heuristische Matching Suche}{subsection.3.5}% 14
 \BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 15
