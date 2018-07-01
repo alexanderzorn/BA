@@ -23,8 +23,8 @@
 \BOOKMARK [2][-]{subsection.4.2}{Implementierung mehrerer Outputs}{section.4}% 23
 \BOOKMARK [1][-]{section.5}{Premapping von Highfanoutknoten}{}% 24
 \BOOKMARK [2][-]{subsection.5.1}{Triviales Premapping}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{Erweitertes Premapping}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.3}{Premapping durch Sch\344tzen}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.2}{Premapping durch Sch\344tzen}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.3}{Erweitertes Premapping durch Sch\344tzen}{section.5}% 27
 \BOOKMARK [1][-]{section.6}{Preprocessing}{}% 28
 \BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 29
 \BOOKMARK [2][-]{subsection.7.1}{pinabh\344ngiges Delay}{section.7}% 30
@@ -43,13 +43,13 @@
 \BOOKMARK [3][-]{subsubsection.9.2.7}{Verhalten weiterer Kosten}{subsection.9.2}% 43
 \BOOKMARK [3][-]{subsubsection.9.2.8}{Zusammenfassung?}{subsection.9.2}% 44
 \BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 45
-\BOOKMARK [3][-]{subsubsection.9.3.1}{globale Laufzeitanalyse}{subsection.9.3}% 46
-\BOOKMARK [3][-]{subsubsection.9.3.2}{locale Laufzeitanalyse}{subsection.9.3}% 47
+\BOOKMARK [3][-]{subsubsection.9.3.1}{Globale Laufzeitanalyse}{subsection.9.3}% 46
+\BOOKMARK [3][-]{subsubsection.9.3.2}{Lokale Laufzeitanalyse}{subsection.9.3}% 47
 \BOOKMARK [3][-]{subsubsection.9.3.3}{Bucket filetering \040im vergleich }{subsection.9.3}% 48
 \BOOKMARK [3][-]{subsubsection.9.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.9.3}% 49
 \BOOKMARK [2][-]{subsection.9.4}{G\374te laufzeit vergleich}{section.9}% 50
-\BOOKMARK [3][-]{subsubsection.9.4.1}{kleine Instanzen}{subsection.9.4}% 51
-\BOOKMARK [3][-]{subsubsection.9.4.2}{allgemein}{subsection.9.4}% 52
+\BOOKMARK [3][-]{subsubsection.9.4.1}{Kleine Instanzen}{subsection.9.4}% 51
+\BOOKMARK [3][-]{subsubsection.9.4.2}{Allgemein}{subsection.9.4}% 52
 \BOOKMARK [3][-]{subsubsection.9.4.3}{G\374te Bucket filetering \040}{subsection.9.4}% 53
 \BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 54
-\BOOKMARK [1][-]{section.11}{Literaturverzeichnis}{}% 55
+\BOOKMARK [1][-]{section.10}{Literaturverzeichnis}{}% 55

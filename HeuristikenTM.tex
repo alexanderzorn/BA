@@ -36,6 +36,7 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 \setlength{\parindent}{0pt} %kein Einrücken zu Beginn eines Absatzes
 \maketitle
 
+%\setcounter{tocdepth}{2}
 \tableofcontents
 \newpage 
 \section{Einleitung}
@@ -442,7 +443,7 @@ Dadurch ist die maximale Anzahl an Kandidaten in einer Tradeoffkurve polynomiell
 Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve, nachdem sie gefiltert wurde.\\
 Des Weiteren sei $\mathcal{K}$ die maximale Kardinalität von Klassen eines Knoten.
 \end{definition}
-\textcolor{red}{M genauer einschränen und die Schranken irgendwo mit hineinbringen bzw beweisen, dass M pol. beschränkt ist. }
+\textcolor{red}{B genauer einschränen und die Schranken irgendwo mit hineinbringen bzw beweisen, dass B pol. beschränkt ist. }
 \textcolor{red}{was ist mit dem beweis ? kann ich lukas verlinken oder verlinkt der auf irgendwen ?}
 
 Beschränkt man die maximale Anzahl von Highfanoutknoten in $C$, so folgt aus dem obigen Korollar, dass die Anzahl der Klassen eines jeden Knoten und die Menge der sich darin befindlichen Kandidaten, polynomiell beschränkt ist. \\
@@ -473,10 +474,52 @@ Erweitert man Circuits um die bisher in diesem Kapitel beschriebenen Eigenschaft
   Instanz:  & Circuit $C$ mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$, maximal $k$ Highfanoutknoten, Tradeoffparameter $\lambda \in [0,1]$, Toleranz $\epsilon > 0$ .\\
   Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, mit Kosten $c \leq (1+\epsilon)OPT$.
 \end{problem}
-\textcolor{red}{algorithmus und laufzeit einfügen}\\
-{\bf Laufzeit: }
-\textcolor{red}{hier kommt die anahme der polynomiellen laufzeit hin diese hier grob beschreiben. bei den überflüssigen Circuits kann man darauf eingehen, dass die ohne diese auch polynomiell ist man könnte dafür die überflüssigen subcircuits auch einfach vorziehen. dann wird der tiel leichter}\\
-\textcolor{red}{Laufzeit des FPTAS}
+Diese Problemstellung lässt sich mit folgendem Algorithmus lösen.\\
+
+\LinesNumbered
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\caption{FPTAS f\"ur das TM mit Konvexkombination}
+\SetKwInOut{Task}{Task}
+\KwIn{Circuit $C$ ohne teilweise überflüssige Subcircuits und mit finalem Output $o$, Library $L$,$ \epsilon > 0$, $k$ Highfanoutknoten mit beschränktem $fanout_{max}$, Tradeoff $\lambda \in [0,1]$}
+
+   $M \gets$ finde\_alle\_matchings($C$)\;
+   lösche\_konst\_Kanten\_überdeckende\_Matche($M, C$)\;
+   \ForEach{Knoten $g \in V(C)$ }
+        {
+			berechne\_offene\_Knoten($g$)\;	 
+        }
+  \ForEach{Knoten $g \in V(C)$ in topologischer Reihenfolge}
+  {
+    g.tradeoff\_curves[] $\gets [\emptyset]$\;
+    \ForEach{ Match $m \in M[g]$ auf $g$}
+    {
+      \ForEach{ m\"ogliche Klasse $A$ auf $g$ }
+      {
+        \ForEach{Kandidaten $k$ auf $g$ mit $m$  der $A$ respektiert}
+        {
+		 \If{ $k$ ist nicht dominiert in $g$.tradeoff\_curves[$A$] }
+        	 {
+			$g$.tradeoff\_curves[$A$].push\_back($k$)\;      	 
+        	 }  
+        }
+      }
+    }
+    filter\_mit\_buckets(g.tradeoff\_curves, $\epsilon$)\;
+  }
+  $C' \gets $ circuit(bester\_kandidat($o, \lambda$))\;
+  \Return $C'$\;
+\end{algorithm}\ \\
+
+Hierbei wurde der Kern-Algorithmus um die in diesem Kapitel beschriebenen Routinen erweitert. \\
+Für jeden Knoten werden vorbereitend alle, keine konstanten Kanten überdeckenden, Matche berechnet und seine offenen Knoten ermittelt. Daraufhin werden für alle Knoten, in topologischer Reihenfolge, und deren Klassen  jegliche nicht dominierten Kandidaten hinzugefügt und die Tradeoffkurven daraufhin gefiltert. Es bleiben für jeden Knoten, aufgrund der Beschränkung auf $k$ Highfanoutknoten, polynomiel beschränkt viele Kandidaten übrig. So auch für den Output $o$. Anschließend wird aus $o$'s einziger Tradeoffkurve der beste Kandidat $k*$ ausgewählt und der zu $C$ äquivalente Circuit $C'$ anhand von $k^*$ gebaut und zurückgegeben.
+
+\begin{lemma}
+	FPTAS ist in polynomieller Laufzeit implementierbar.
+\end{lemma}
+\begin{proof}
+\textcolor{red}{...}
+\end{proof}
 
 \subsection{Heuristik}
 \label{subsec:heuristik}
@@ -484,33 +527,58 @@ Im folgenden Algorithmus ist die Menge der Knoten mit $fanout > 1$ beliebig gro�
 Die Anzahl der Highfanoutknoten bestimmt maßgeblich den Speicherbedarf an Kandidaten und die Laufzeit des FPTAS. Sie sind der Grund, warum sich der FPTAS für eine Anwendung des \TM auf einem gesamten Chip nicht eignet. \\
 Von daher ist es ein naheliegender Ansatz für eine Heuristik, an jedem Highfanoutknoten nur einen Kandidaten zu speichern. Es ist jedoch wichtig aber nicht trivial, welchen man dort auswählt. Routinen für eine solche Auswahl werden in Kapitel \ref{sec:premapping} ausführlich behandelt. Im Folgenden wird beipielhaft eines dieser Verfahren erläutert. \\
 Ist an jedem Highfanoutknoten ein Kandidat gewählt, so lässt sich der noch bestmögliche Circuit-Kandidat schnell errechnen, da für jeden Knoten nur eine Klasse mit einer Tradeoffkurve vorhanden ist.\\
+
+\LinesNumbered
 \begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{Heuristik f\"ur das TM mit Konvexkombination}
- \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$ mit finalem Output $o$, Library $L$, $\lambda \in [0,1], \epsilon >0$}
- \ForEach{Knoten $v \in V(C)$}
- {
-  berechne Matche für $v$\;
-  lösche alle konstante Kanten überdeckende Matche für $v$\;
-  berechne alle nicht dominierten Kandidaten auf $v$\;
-  \If{$v$ ist Highfanoutknoten}
+\DontPrintSemicolon
+\caption{Heuristik f\"ur das TM mit Konvexkombination}
+\SetKwInOut{Task}{Task}
+\KwIn{Circuit $C$ ohne vollständig überflüssige Subcircuits und mit finalem Output $o$, Library $L$,$ \epsilon > 0$, Tradeoff $\lambda \in [0,1]$}
+
+   $M \gets$ finde\_alle\_matchings($C$)\;
+   lösche\_konst\_Kanten\_überdeckende\_Matche($M, C$)\;
+   \ForEach{Knoten $g \in V(C)$ }
+        {
+			berechne\_offene\_Knoten($g$)\;	 
+        }
+  \ForEach{Knoten $g \in V(C)$ in topologischer Reihenfolge}
+  {
+    g.tradeoff\_curves[] $\gets [\emptyset]$\;
+    \ForEach{ Match $m \in M[g]$ auf $g$}
+    {
+      \ForEach{ m\"ogliche Klasse $A$ auf $g$ }
+      {
+        \ForEach{Kandidaten $k$ auf $g$ mit $m$  der $A$ respektiert}
+        {
+		 \If{ $k$ ist nicht dominiert in $g$.tradeoff\_curves[$A$] }
+        	 {
+			$g$.tradeoff\_curves[$A$].push\_back($k$)\;      	 
+        	 }  
+        }
+      }
+    }
+   \If{$g$ ist Highfanoutknoten}
   {
     $guess \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \}$\;
-    \ForEach{Kandidat $k$ auf $v$}
+    \ForEach{Kandidat $k$ auf $g$}
     {
       \If{$k \neq guess$}
       {
 	l\"osche $k$\;
       }
     }
+  }    
+    filter\_mit\_buckets(g.tradeoff\_curves, $\epsilon$)\;    
   }
-  filter\_kandidaten\_mit\_buckets$(v,\epsilon)$\;
- }
- Baue $C'$, ohne Buffer, entsprechend des besten Kandidaten auf $o$ \; 
+  $C' \gets $ circuit(bester\_kandidat($o, \lambda$))\;
+  \Return entferne\_buffer($C'$)\;
 \end{algorithm}\ \\
 
+
+\textcolor{red}{algorithmus wurde aktualisiert also muss der folgenden texxt überarbeitet werden nutze die oben festgelegten schranken um eine Laufzeitbeschreibung zu geben viell.:pol ohne teilweise überflüssige subcircuits oder so also \begin{itemize}
+\item beschreiben 
+\item laufzeitlemma
+\end{itemize}}
 Schritt 2 berechnet evtl. nicht alle möglichen Matche. Die Routine zur Matching Suche, geht von einem Knoten aus und zieht solange Gates mit in das Match, bis $fanin_{max}$ überschritten wird \textcolor{red}{ach scheiße mach mal eine vernünftige laufzeit für das Suchen der Matche pack das aber in Das kapitel oben drüber rein}
 Schritt 5-9 beschreibt ein einfaches Verfahren zur Auswahl eines Kandidaten für einen Highfanoutknoten. Angelehnt an den Kernalgorithmus wird nur der Kandidat behalten, welcher den Tradeoff minimiert. Dies garantiert keine optimale Lösung. Weitere Informationen befinden sich in Kapitel \ref{sec:premapping} und \ref{sec:analyse}. \\
 {\bf Laufzeit: } Die Schleife aus Schritt 1 läuft durch alle Knoten. Die Laufzeit für Schritt 2 wurde bereits erläutert und Schritt 3 ist linear in der Anzahl der gefundenen Matche implementierbar. \\
@@ -646,21 +714,77 @@ Im Folgenden werden drei verschiedene Routinen vorgestellt und auf deren Eigensc
 Diese Methode des Premappings wurde bereits in Kapitel \ref{subsubsec:heuristik} angewandt. Hierbei wird für jeden Knoten folgender Kandidat ausgewählt: \[ guess \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \} \]
 Diese Methode bietet sich an, lässt sich jedoch noch wie im Folgenden beschrieben weiter verbessern. \\
 
-
-\textcolor{red}{STIMMT NICHT!!!}
-Die garantiert optimale Lösung findet das triviale Premapping jedoch nur mit Tradeoff $\lambda \in \{ 0,1 \}$ 
- 
- 
-\subsection{Erweitertes Premapping}
-\label{subsec:erweitertes_premapping}
-\textcolor{red}{gilt es noch zu entwickeln} 
- 
+Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen. Nähere Informationen darüber, wie weit eine solche Lösung von der optimalen entfernt ist, siehe Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen}.\\ 
  
 \subsection{Premapping durch Schätzen}
-\label{subsec:neinhierfrnochkeinlabel}
+\label{subsec:premapping_duch_schaetzen}
  Beim Premapping durch Schätzen wird versucht, eine Vermutung für die Kosten eines geeigneten Kandidaten aufzustellen. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
- Die Schätzung erfolgt durch zwei \TM Läufe. Das \TM wird mit demselben Circuit  und den Tradeoff Parametern $0,1$ gestartet.\textcolor{red}{das ist eine gute abschätzung weil man durch die langsame implementierung des kleinen circuits kosten in der Rat bekommt plus die Methode aus Lukas heuristik entnehmen und dazupacken}
+Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Folgender Algorithmus wird für die Schrankenberechnung benutzt. 
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{Untere Schranke Arrivaltime}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit $C$ mit finalem Output $o$, Library $L$}
 
+ schnellster\_kandidat[] $\gets \emptyset$\;
+ schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne alle (invertierten) Matches auf $v$\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      berechne schnellsten Kandidaten mit $m$ auf $v$\;
+      Update schnellster\_(inv)\_kandidat\;
+   }
+   \If{ $v$ ist Highfanoutknoten }
+   {
+      
+      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
+      {
+	l\"osche schnellster\_inv\_kandidat[v]\;
+      }
+      \Else
+      {
+	l\"osche schnellster\_kandidat[v]\;
+      }
+   }
+ }
+ Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
+ \ForEach{Knoten $v \in V(C')$}
+ {
+    \ForEach{Vorg\"anger $p$}
+    {
+      \If{ $p$ ist Highfanoutknoten }
+      {
+	inv($v$,$p$) $\gets$ keine Invertierung\;
+      }
+    }
+ }
+ \Return $C'$\;
+\end{algorithm}\ \\
+
+ Dieser Algorithmus führt das \TM auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
+ Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
+ \textcolor{red}{dieser algo stammt von Lukas (wie das tradeoff kurven bild und der folgende algo wie speichere nehme ich das am besten mit rein ?}\\
+
+\begin{cor}
+Der Untere Schranke Arrivaltime Agorithmus lässt sich in $\mathcal{O}($\textcolor{red}{...}) implementieren.
+\end{cor}
+ \begin{proof}
+ \textcolor{red}{...}
+ \end{proof}
+ Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
+ \textcolor{red}{hier so was hin wie in der presi}\\
+ 
+ \textcolor{red}{kurze Erklärung}\\
+ 
+ \textcolor{red}{das ist eine gute abschätzung weil man durch die langsame implementierung des kleinen circuits kosten in der Rat bekommt plus die Methode aus Lukas heuristik entnehmen und dazupacken}
+
+
+\subsection{Erweitertes Premapping durch Schätzen}
+\label{subsec:erweitertes_premapping_durch_schaetzen}
+\textcolor{red}{gilt es noch zu entwickeln} 
 
 \section{Preprocessing}
 Die Möglichkeiten durch das Matching sind im Allgemeinen vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
@@ -767,6 +891,7 @@ Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im
 \subsubsection{Bucket filetering $\epsilon$ im vergleich }
 
 \subsubsection{Gütevergleich kleiner "optimal " gel instanzen}
+\label{subsubsec:guetevgl_kleiner_opt_instanzen}
 
 
 \subsubsection{Verhalten weiterer Kosten}
@@ -781,10 +906,10 @@ Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im
 Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Highfanoutknoten abhängt. Andere Faktoren wie das Aufteilen von Gates, die Größe der Library oder die Wahl der Premapping subroutine spielen ebenfalls eine wichtige Rolle. Dies verdeutlicht die Übersicht \textcolor{red}{??}.\\
  Bezüglich der Größe der Library lassen sich die Chips, mit Ausnahme weniger Unterschiede in zwei Gruppen einteilen. Die markierte Teilmenge der Abbildung \textcolor{red}{??} entspricht der Menge der (so genannten) komplexen Gates. Ein Chip lässt sich in der Praxis, abhängig davon, ob er die komplexen Gates grundsätzlich erlaubt, einer der zwei Gruppen zuordnen. Diese Unterscheidung findet sich ebenfalls in Abbildung \textcolor{red}{??}.
  
-\subsubsection{globale Laufzeitanalyse}
+\subsubsection{Globale Laufzeitanalyse}
 \textcolor{red}{welche größenordnungen sind überhaupt lösbar}
 
-\subsubsection{locale Laufzeitanalyse}
+\subsubsection{Lokale Laufzeitanalyse}
 \textcolor{red}{wie unterscheiden sich die einzelnen Varianten in der Laufzeit? \\ oder lässt sich beides gut in einem bild erkennen ?} \\
 
 \textcolor{red}{hier auch die decompose laufzeit vgl mit rein ?}
@@ -795,9 +920,9 @@ Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt,
 
 
 \subsection{Güte laufzeit vergleich}
-\subsubsection{kleine Instanzen}
+\subsubsection{Kleine Instanzen}
 
-\subsubsection{allgemein}
+\subsubsection{Allgemein}
 \textcolor{red}{wahrscheinlich ist der unterschied bei decompose und ohne am größten den mit der besten premapping methode durchführen}
 
 \subsubsection{Güte Bucket filetering $\epsilon$ }
@@ -806,8 +931,10 @@ Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt,
 \label{sec:fazit_und_ausblick}
 	
 
-\section{Literaturverzeichnis}
+\newpage
+\addcontentsline{toc}{section}{\protect\numberline{11}{Literaturverzeichnis}}
 \nocite{*}
+\renewcommand{\refname}{11 \,\, Literaturverzeichnis}
 \bibliography{HeuristikenTM.bib}
 \bibliographystyle{alpha}
 
