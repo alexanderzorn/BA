@@ -1,4 +1,4 @@
-\begin{thebibliography}{Keu87}
+\begin{thebibliography}{Moo65}
 
 \bibitem[Elb17]{Elbert}
 Lucas Elbert.
@@ -14,6 +14,11 @@ K.~Keutzer.
 Keutzer and Richards.
 \newblock Computational complexity of logic synthesis and optimization.
 \newblock In {\em International Workshop on Logic Synthesis}, 1989.
+
+\bibitem[Moo65]{Moore}
+Gordon~Earle Moore.
+\newblock Cramming more components onto integrated circuits.
+\newblock {\em Electronics Magazine}, 38, April 1965.
 
 \bibitem[Pos41]{Post}
 Emil~Leon Post.
