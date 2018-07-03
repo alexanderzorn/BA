@@ -37,21 +37,21 @@
 \contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{34}{subsection.9.1}
 \contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{36}{subsection.9.2}
 \contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{36}{subsubsection.9.2.1}
-\contentsline {subsubsection}{\numberline {9.2.2}Premapping}{36}{subsubsection.9.2.2}
-\contentsline {subsubsection}{\numberline {9.2.3}Preprozessing}{36}{subsubsection.9.2.3}
-\contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{36}{subsubsection.9.2.4}
-\contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{36}{subsubsection.9.2.5}
-\contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{36}{subsubsection.9.2.6}
-\contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{36}{subsubsection.9.2.7}
-\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{36}{subsubsection.9.2.8}
+\contentsline {subsubsection}{\numberline {9.2.2}Premapping}{37}{subsubsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.3}Preprozessing}{37}{subsubsection.9.2.3}
+\contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{37}{subsubsection.9.2.4}
+\contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{37}{subsubsection.9.2.5}
+\contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{37}{subsubsection.9.2.6}
+\contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{37}{subsubsection.9.2.7}
+\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{37}{subsubsection.9.2.8}
 \contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{37}{subsection.9.3}
 \contentsline {subsubsection}{\numberline {9.3.1}Globale Laufzeitanalyse}{37}{subsubsection.9.3.1}
 \contentsline {subsubsection}{\numberline {9.3.2}Lokale Laufzeitanalyse}{37}{subsubsection.9.3.2}
-\contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{37}{subsubsection.9.3.3}
-\contentsline {subsubsection}{\numberline {9.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{37}{subsubsection.9.3.4}
-\contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{37}{subsection.9.4}
-\contentsline {subsubsection}{\numberline {9.4.1}Kleine Instanzen}{37}{subsubsection.9.4.1}
-\contentsline {subsubsection}{\numberline {9.4.2}Allgemein}{37}{subsubsection.9.4.2}
-\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{37}{subsubsection.9.4.3}
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{37}{section.10}
-\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{38}{section.10}
+\contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.9.3.3}
+\contentsline {subsubsection}{\numberline {9.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{38}{subsubsection.9.3.4}
+\contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{38}{subsection.9.4}
+\contentsline {subsubsection}{\numberline {9.4.1}Kleine Instanzen}{38}{subsubsection.9.4.1}
+\contentsline {subsubsection}{\numberline {9.4.2}Allgemein}{38}{subsubsection.9.4.2}
+\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{38}{subsubsection.9.4.3}
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{38}{section.10}
+\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{39}{section.10}

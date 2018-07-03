@@ -1,0 +1,15 @@
+\documentclass[paper=a4,12pt,version=last,landscape]{scrartcl}
+ 
+\usepackage{pgfplots}
+ 
+\begin{document}
+\centering
+	\begin{tikzpicture}
+		\begin{axis}[ymin=0]
+			\pgfplotstableread{tradeoff_area_slack_analysis}
+			\datatable
+			\addplot table[y index = 1]from \datatable;
+			\addplot table[y index = 2]from \datatable;
+		\end{axis}
+	\end{tikzpicture}
+\end{document}
