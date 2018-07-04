@@ -19,39 +19,39 @@
 \contentsline {subsubsection}{\numberline {3.6.2}Verkn\IeC {\"u}pfen von Kandidaten}{21}{subsubsection.3.6.2}
 \contentsline {subsubsection}{\numberline {3.6.3}Finden von Kandidaten}{22}{subsubsection.3.6.3}
 \contentsline {subsection}{\numberline {3.7}FPTAS}{22}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Heuristik}{23}{subsection.3.8}
-\contentsline {section}{\numberline {4}DAGs mit mehreren Outputs}{25}{section.4}
-\contentsline {subsection}{\numberline {4.1}Required Arrivaltimes}{25}{subsection.4.1}
+\contentsline {subsection}{\numberline {3.8}Heuristik}{24}{subsection.3.8}
+\contentsline {section}{\numberline {4}DAGs mit mehreren Outputs}{26}{section.4}
+\contentsline {subsection}{\numberline {4.1}Required Arrivaltimes}{26}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Implementierung mehrerer Outputs}{27}{subsection.4.2}
 \contentsline {section}{\numberline {5}Premapping von Highfanoutknoten}{28}{section.5}
-\contentsline {subsection}{\numberline {5.1}Triviales Premapping}{28}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Triviales Premapping}{29}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Premapping durch Sch\IeC {\"a}tzen}{29}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{30}{subsection.5.3}
-\contentsline {section}{\numberline {6}Preprocessing}{30}{section.6}
-\contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{31}{section.7}
-\contentsline {subsection}{\numberline {7.1}pinabh\IeC {\"a}ngiges Delay}{31}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Power Optimierung}{32}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Layer Assignment}{33}{subsection.7.3}
-\contentsline {section}{\numberline {8}Ressource Sharing}{33}{section.8}
-\contentsline {section}{\numberline {9}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{34}{section.9}
-\contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{34}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{36}{subsection.9.2}
-\contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{36}{subsubsection.9.2.1}
-\contentsline {subsubsection}{\numberline {9.2.2}Premapping}{37}{subsubsection.9.2.2}
-\contentsline {subsubsection}{\numberline {9.2.3}Preprozessing}{37}{subsubsection.9.2.3}
-\contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{37}{subsubsection.9.2.4}
-\contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{37}{subsubsection.9.2.5}
-\contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{37}{subsubsection.9.2.6}
-\contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{37}{subsubsection.9.2.7}
-\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{37}{subsubsection.9.2.8}
-\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{37}{subsection.9.3}
-\contentsline {subsubsection}{\numberline {9.3.1}Globale Laufzeitanalyse}{37}{subsubsection.9.3.1}
-\contentsline {subsubsection}{\numberline {9.3.2}Lokale Laufzeitanalyse}{37}{subsubsection.9.3.2}
-\contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.9.3.3}
-\contentsline {subsubsection}{\numberline {9.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{38}{subsubsection.9.3.4}
-\contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{38}{subsection.9.4}
-\contentsline {subsubsection}{\numberline {9.4.1}Kleine Instanzen}{38}{subsubsection.9.4.1}
-\contentsline {subsubsection}{\numberline {9.4.2}Allgemein}{38}{subsubsection.9.4.2}
-\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{38}{subsubsection.9.4.3}
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{38}{section.10}
-\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{39}{section.10}
+\contentsline {subsection}{\numberline {5.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{32}{subsection.5.3}
+\contentsline {section}{\numberline {6}Preprocessing}{32}{section.6}
+\contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{32}{section.7}
+\contentsline {subsection}{\numberline {7.1}pinabh\IeC {\"a}ngiges Delay}{33}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Power Optimierung}{33}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Layer Assignment}{34}{subsection.7.3}
+\contentsline {section}{\numberline {8}Ressource Sharing}{35}{section.8}
+\contentsline {section}{\numberline {9}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{36}{section.9}
+\contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{36}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{37}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{37}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Premapping}{38}{subsubsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.3}Preprozessing}{38}{subsubsection.9.2.3}
+\contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{38}{subsubsection.9.2.4}
+\contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.9.2.5}
+\contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{38}{subsubsection.9.2.6}
+\contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{38}{subsubsection.9.2.7}
+\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{39}{subsubsection.9.2.8}
+\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{39}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Globale Laufzeitanalyse}{39}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Lokale Laufzeitanalyse}{39}{subsubsection.9.3.2}
+\contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{39}{subsubsection.9.3.3}
+\contentsline {subsubsection}{\numberline {9.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{39}{subsubsection.9.3.4}
+\contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{39}{subsection.9.4}
+\contentsline {subsubsection}{\numberline {9.4.1}Kleine Instanzen}{39}{subsubsection.9.4.1}
+\contentsline {subsubsection}{\numberline {9.4.2}Allgemein}{39}{subsubsection.9.4.2}
+\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{39}{subsubsection.9.4.3}
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{39}{section.10}
+\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{40}{section.10}

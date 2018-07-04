@@ -398,13 +398,14 @@ Sei $\mathcal{M}:= |V(C)|^{fanin_{max}} fanin_{max}^22^{fanin_{max}+1}2^{fanout_
 \end{definition}
 
 \subsubsection{Matching Suche in polynomieller Zeit}
+\label{subsubsec:pol_match_suche}
 Der Kernalgorithmus aus Kapitel \ref{subsec:kern_algorithmus} findet alle möglichen Matche eines beliebigen Knotens in polynomieller Zeit. Dies ist dort möglich, da in dem Circuit keine Highfanoutknoten existieren. Aus Korollar \ref{cor:anz_matche_einfach_genauer} folgt, dass potenzielle Matche aller Knoten  in $\mathcal{O}(2^{2fanin_{max} +1}fanin_{max} |V(C)|)$ errechnet werden können. Da $fanin_{max}$ als Konstante deklariert wurde, entspricht dies linearer Laufzeit. Es bleibt zu prüfen, ob  ein solcher Prototyp einem Match in $C$ entspricht, also ob die logische Funktion des Subcircuits einem Match der Library gleicht. Für jede der maximal $2^{fanin_{max}}$ möglichen Wahrheitsbelegungen der Inputs wird der Wahrheitsgehalt des Outputs errechnet. Dies ist linear in $|V(C)|$ möglich. Die dadurch errechnete Tabelle wir mit den $|L|$ Gates der Library verglichen. \\
 Daraus folgt, dass das Finden aller Matche in $\mathcal{O}(|V(C)|^2|L|)$ erfolgt und somit polynomiell möglich ist.
 
 Bei Circuits mit beliebig vielen Highfanoutknoten aber beschränktem $fanout_{max}$, lassen sich nach Korollar \ref{cor:anzahl_matche_bel} und gleichem Vorgehen wie soeben beschrieben alle Matche ebenfalls in polynomieller Zeit finden. Dabei beträgt die Laufzeit $\mathcal{O}(|V(C)|^{fanin_{max}+2}|L|)$.
 
 \subsubsection{Heuristische Matching Suche}
-In der Praxis, ähnlich dem oben beschriebenen Fall ohne Highfanoutknoten, wird von dem Gate eines Knoten ausgehend überprüft ob dieser, oder eine Mögliche Invertierung, einem Gate der Library entspricht. Daraufhin wird jede der maximal $2^{fanin_{max}}$ Möglichkeiten die an den Input liegenden Gates mit in das potenzielle Match hinzuzufügen inclusive möglicher Invertierungen überprüft. Dieser Vorgang wird für jede der Möglichkeiten so lange wiederholt, bis die Anzahl der Inputs des durch das potenzielle Match,  beschriebenen Subcircuit größer als $fanin_{max}$ ist. Ab diesem Punkt wird das vorliegende Potenzielle Match nicht mehr erweitert. \\
+In der Praxis, ähnlich dem oben beschriebenen Fall ohne Highfanoutknoten, wird von dem Gate eines Knoten ausgehend überprüft ob dieser, oder eine Mögliche Invertierung, einem Gate der Library entspricht. Daraufhin wird jede der maximal $2^{fanin_{max}}$ Möglichkeiten die an den Input liegenden Gates mit in das potenzielle Match hinzuzufügen inclusive möglicher Invertierungen überprüft. Dieser Vorgang wird für jede der Möglichkeiten so lange wiederholt, bis die Anzahl der Inputs des durch das potenzielle Match,  beschriebenen Subcircuit größer als $fanin_{max}$ ist. Ab diesem Punkt wird das vorliegende potenzielle Match nicht mehr erweitert. \\
 Dies garantiert, bei einem Circuit mit Highfanoutknoten, nicht das Finden aller möglicher Matche, da sobald ein potenzielles Match einen Highfanoutknoten mit einschließt die Zahl der Inputs sinken kann. \\
 In der Praxis werden so jedoch die überwiegende Mehrheit der Matche gefunden. Der Verlust einiger weniger Matche spiegelt bringt einen enormen Laufzeitgewinn mit sich.
 \textcolor{red}{die dissertation für den fall ohne highfanoutknoten erwähnen ? und nochmal genau durchsehen ob die teilweise überflüssigen Subcircuits überall rausgehalten wurden }
@@ -515,10 +516,14 @@ Hierbei wurde der Kern-Algorithmus um die in diesem Kapitel beschriebenen Routin
 Für jeden Knoten werden vorbereitend alle, keine konstanten Kanten überdeckenden, Matche berechnet und seine offenen Knoten ermittelt. Daraufhin werden für alle Knoten, in topologischer Reihenfolge, und deren Klassen  jegliche nicht dominierten Kandidaten hinzugefügt und die Tradeoffkurven daraufhin gefiltert. Es bleiben für jeden Knoten, aufgrund der Beschränkung auf $k$ Highfanoutknoten, polynomiel beschränkt viele Kandidaten übrig. So auch für den Output $o$. Anschließend wird aus $o$'s einziger Tradeoffkurve der beste Kandidat $k*$ ausgewählt und der zu $C$ äquivalente Circuit $C'$ anhand von $k^*$ gebaut und zurückgegeben.
 
 \begin{lemma}
-	FPTAS ist in polynomieller Laufzeit implementierbar.
+	FPTAS ist polynomiell in $\mathcal{O}(|V(C)|^2 + |V(C)|\mathcal{MBK}^2)$ implementierbar.
 \end{lemma}
 \begin{proof}
-\textcolor{red}{...}
+Schritt 1 lässt sich nach Kapitel \ref{subsubsec:pol_match_suche} in polynomieller Zeit implementieren. Schritt 2 ist linear in der polynomiell beschränkten Anzahl an Matches im gesamten Circuit.  Schritt 3 und  4 lässt sich in $\mathcal{O}(|V(C)|^2)$ errechnen, da von einem Knoten $v$ ausgehend durch iterieren über die Inputs alle Knoten der Cone hinzugefügt werden.  Highfanoutknoten, welche Inputs eines offenen Knoten sind, werden als offen deklariert und Highfanoutknoten, welche einen Output außerhalb der $cone(v)$ besitzen werden ebenfalls als offen markiert. Da $fanout_{max}$ beschränkt ist, folgt eine lineare Laufzeit in $|V(C)|$ für die Berechnung der offenen Knoten von $v$. Dies wird für jeden Knoten aus $C$ wiederholt. \\
+Die  Schleifendurchläufe der Schritte 5, 6, 7, 8,  und 9 sind beschränkt durch $|V(C)|$, $\mathcal{M}$,  $\mathcal{K}$, $\mathcal{B}$. Schritt 10 und 11 sind in $\mathcal{O}(\mathcal{K})$ implementierbar.\\
+Die Menge der Kandidaten in den Tradeoffkurven sind beschränkt durch die Anzahl der Schleifendurchläufe der Schritte 7-11.  Somit liegt die Laufzeit polynomiell in der der Schleifendurchläufe. \\
+Schritt 13 ist durch die maximale Anzahl der Kandidaten einer Tradeoffkurve und $|V(C)|$ beschränkt.\\
+Daraus folgt eine Gesamtlaufzeit von $\mathcal{O}(|V(C)|^2 + |V(C)|\mathcal{MBK}^2)$
 \end{proof}
 
 \subsection{Heuristik}
@@ -574,17 +579,12 @@ Ist an jedem Highfanoutknoten ein Kandidat gewählt, so lässt sich der noch bes
   \Return entferne\_buffer($C'$)\;
 \end{algorithm}\ \\
 
+Dieser Algorithmus unterscheidet sich nur in den Schritten 12-16 und 19 von dem FPTAS.\\
+Diese beschreiben ein einfaches Verfahren zur Auswahl eines Kandidaten für einen Highfanoutknoten. Angelehnt an den Kernalgorithmus wird nur der Kandidat behalten, welcher den Tradeoff minimiert. Dies garantiert keine optimale Lösung. Weitere Informationen befinden sich in Kapitel \ref{sec:premapping} und \ref{sec:analyse}. \\
+Schritt 19 entfehrnt die durch teilweise überfüssige Subcircuits evtl. hinzugekommenen Buffer.\\
 
-\textcolor{red}{algorithmus wurde aktualisiert also muss der folgenden texxt überarbeitet werden nutze die oben festgelegten schranken um eine Laufzeitbeschreibung zu geben viell.:pol ohne teilweise überflüssige subcircuits oder so also \begin{itemize}
-\item beschreiben 
-\item laufzeitlemma
-\end{itemize}}
-Schritt 2 berechnet evtl. nicht alle möglichen Matche. Die Routine zur Matching Suche, geht von einem Knoten aus und zieht solange Gates mit in das Match, bis $fanin_{max}$ überschritten wird \textcolor{red}{ach scheiße mach mal eine vernünftige laufzeit für das Suchen der Matche pack das aber in Das kapitel oben drüber rein}
-Schritt 5-9 beschreibt ein einfaches Verfahren zur Auswahl eines Kandidaten für einen Highfanoutknoten. Angelehnt an den Kernalgorithmus wird nur der Kandidat behalten, welcher den Tradeoff minimiert. Dies garantiert keine optimale Lösung. Weitere Informationen befinden sich in Kapitel \ref{sec:premapping} und \ref{sec:analyse}. \\
-{\bf Laufzeit: } Die Schleife aus Schritt 1 läuft durch alle Knoten. Die Laufzeit für Schritt 2 wurde bereits erläutert und Schritt 3 ist linear in der Anzahl der gefundenen Matche implementierbar. \\
-Schritt 4 hat einen Laufzeit von \textcolor{red}{auch hier eine Laufzeit angeben!!! kümmere dich mal um die maximale Anzahl Matches, Kandidaten und die Laufzeiten um diese zu finden und mach ein kapitel draus }\\
-Schritt 10 ist linear in der Anzahl der Kandidaten pro Knoten und Schritt 11 linear in der Menge Kandidaten pro Knoten und $|V(C)|$.\\
-Daraus folgt eine Laufzeit von \textcolor{red}{hier hin damit!}
+{\bf Laufzeit: } Stellt man die gleichen Voraussetzungen an die Circuits wie der FPTAS, so lässt sich diese Heuristik in der selben polynomiellen Laufzeit implementieren.\\
+In allgemeinen Circuits ist dies wahrscheinlich nicht mehr möglich, denn die Anzahl möglicher Matche steigt exponentiell  (siehe Kapitel \ref{subsec:match_kandidaten}).
 
 
 
@@ -615,7 +615,7 @@ Letzterer ist in der Praxis gefragter, da eine sehr gute Verbesserung der SNS ei
 
 Angenommen man betrachtet einen Chip, dann lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird.\\
 Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einem Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
-Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquivalenten Circuit C', mit geringerer Tiefe(\textcolor{red}{schon definiert(wenn nein nötig?)}, umformen. Diese umgebauten Instanzen besitzen nur einen Output, wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Laufzeit des Algorithmus. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
+Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquivalenten Circuit C', mit geringerer Tiefe(Anzahl Kanten eines bzgl. Kantenenge längsten  Weges in $C$), umformen. Diese umgebauten Instanzen besitzen nur einen Output, wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Laufzeit des Algorithmus. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
 
 Eine weitere Herangehensweise für das \TM ist es, einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach AT, da nur Instanzen mit einem Output betrachtet wurden und RAT für diesen eine Konstante ist.
 
@@ -712,20 +712,21 @@ Im Folgenden werden drei verschiedene Routinen vorgestellt und auf deren Eigensc
 \subsection{Triviales Premapping}
 \label{subsec:triviales_premapping}
 Diese Methode des Premappings wurde bereits in Kapitel \ref{subsubsec:heuristik} angewandt. Hierbei wird für jeden Knoten folgender Kandidat ausgewählt: \[ guess \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \} \]
-Diese Methode bietet sich an, lässt sich jedoch noch wie im Folgenden beschrieben weiter verbessern. \\
+Diese Methode bietet sich an, lässt sich jedoch noch wie im Folgenden beschrieben weiter verbessern.\\
 
-Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen. Nähere Informationen darüber, wie weit eine solche Lösung von der optimalen entfernt ist, siehe Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen}.\\ 
+Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen. Nähere Informationen darüber, wie weit eine solche Lösung von der optimalen entfernt ist, siehe Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen}.
  
 \subsection{Premapping durch Schätzen}
 \label{subsec:premapping_duch_schaetzen}
  Beim Premapping durch Schätzen wird versucht, eine Vermutung für die Kosten eines geeigneten Kandidaten aufzustellen. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
-Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Folgender Algorithmus wird für die Schrankenberechnung benutzt. 
+Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Folgender Algorithmus wird für die Schrankenberechnung benutzt.\\
+ 
 \begin{algorithm}[H]
  \LinesNumbered
  \DontPrintSemicolon
  \caption{Untere Schranke Arrivaltime}
  \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$ mit finalem Output $o$, Library $L$}
+ \KwIn{Circuit $C$, Library $L$}
 
  schnellster\_kandidat[] $\gets \emptyset$\;
  schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
@@ -775,7 +776,63 @@ Der Untere Schranke Arrivaltime Agorithmus lässt sich in $\mathcal{O}($\textcol
  \textcolor{red}{...}
  \end{proof}
  Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
- \textcolor{red}{hier so was hin wie in der presi}\\
+\textcolor{red}{\large auf mehrere Outputs/slack erweitern genauso im obigen algo \\
+des weiteren noch $\epsilon = 0$ erwähnen und $\mathcal{KB}$ weiter pol einschränken für eine bessere Laufzeit des FPTAS .. kann sein dass man areamax noch beschränlken muss} 
+ 
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{Premapping durch Schätzen}
+ \SetKwInOut{Task}{Task}
+ $C'_{SNS} \gets untere\_schranke\_SNS(C)$\;
+$C'_{Area} \gets untere\_schranke\_Area(C)$\; 
+ $\AT^- \gets $ $\AT(C_{\AT}')$\;
+ $\AT^+ \gets $ $\AT(C_{Area}')$\;
+ $\alpha \gets \lambda \cdot \AT^- + (1-\lambda)\cdot AT^+$ //Finale AT Sch\"atzung \;
+ \ForEach{Highfanoutknoten $v \in V(C)$}
+ {
+  estim\_small$(v) \gets $required\_AT$(v,C_{\area}',\alpha)$\;
+  estim\_fast$(v) \gets $required\_AT$(v,C_{\AT}',\alpha)$\;
+  AT\_sch\"atzung$(v) \gets \lambda \cdot $rats\_fast$(v) + (1-\lambda)\cdot$rats\_small$(v)$\;
+ }
+ 
+ 
+ schnellster\_kandidat[] $\gets \emptyset$\;
+ schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne alle (invertierten) Matches auf $v$\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      berechne schnellsten Kandidaten mit $m$ auf $v$\;
+      Update schnellster\_(inv)\_kandidat\;
+   }
+   \If{ $v$ ist Highfanoutknoten }
+   {
+      
+      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
+      {
+	l\"osche schnellster\_inv\_kandidat[v]\;
+      }
+      \Else
+      {
+	l\"osche schnellster\_kandidat[v]\;
+      }
+   }
+ }
+ Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
+ \ForEach{Knoten $v \in V(C')$}
+ {
+    \ForEach{Vorg\"anger $p$}
+    {
+      \If{ $p$ ist Highfanoutknoten }
+      {
+	inv($v$,$p$) $\gets$ keine Invertierung\;
+      }
+    }
+ }
+ \Return $C'$\;
+\end{algorithm}\ \\
  
  \textcolor{red}{kurze Erklärung}\\
  

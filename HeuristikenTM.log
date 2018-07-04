@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  4 JUL 2018 16:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  4 JUL 2018 22:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1734,7 +1734,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
  (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 ...radeoffparameter}{36}{subsubsection.9.2.1}
+l.39 ...radeoffparameter}{38}{subsubsection.9.2.1}
                                                    [1
 
 ])
@@ -1963,7 +1963,7 @@ Underfull \hbox (badness 1173) in paragraph at lines 371--374
  []
 
 [17 <./pictures/compiled/mux_match.pdf>] [18]
-Overfull \hbox (21.82967pt too wide) in paragraph at lines 404--405
+Overfull \hbox (21.82967pt too wide) in paragraph at lines 405--406
 []\OT1/lmr/m/n/10.95 Bei Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten 
 aber be-schr[]anktem $\OML/lmm/m/it/10.95 fanout[]$\OT1/lmr/m/n/10.95 ,
  []
@@ -1974,7 +1974,7 @@ t>
 File: pictures/compiled/tradeoff_kurve_buckets.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_buckets.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_buckets.pdf used on i
-nput line 431.
+nput line 432.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
 <pictures/compiled/tradeoff_kurve_filtered.pdf, id=552, 171.51678pt x 171.51678
@@ -1982,20 +1982,20 @@ pt>
 File: pictures/compiled/tradeoff_kurve_filtered.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_filtered.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_filtered.pdf used on 
-input line 435.
+input line 436.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--451
+Underfull \hbox (badness 10000) in paragraph at lines 450--452
 
  []
 
 [20] [21 <./pictures/compiled/tradeoff_kurve_buckets.pdf> <./pictures/compiled/
 tradeoff_kurve_filtered.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
 
@@ -2003,39 +2003,44 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.482 ...FPTAS f\"ur das TM mit Konvexkombination}
+l.483 ...FPTAS f\"ur das TM mit Konvexkombination}
                                                    [22]
-Underfull \hbox (badness 10000) in paragraph at lines 512--513
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
 
  []
 
 
-Overfull \hbox (38.21715pt too wide) in paragraph at lines 514--516
+Overfull \hbox (38.21715pt too wide) in paragraph at lines 515--517
 \OT1/lmr/m/n/10.95 F[]ur je-den Kno-ten wer-den vor-be-rei-tend al-le, kei-ne k
 on-stan-ten Kan-ten []uberdeckenden,
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 526--530
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
 
  []
 
-[23]pdfTeX warning (ext4): destination with the same identifier (name{algocf.})
- has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.534 ...istik f\"ur das TM mit Konvexkombination}
-                                                  
-Underfull \hbox (badness 10000) in paragraph at lines 575--576
+l.539 ...istik f\"ur das TM mit Konvexkombination}
+                                                   [24]
+Underfull \hbox (badness 10000) in paragraph at lines 580--581
 
  []
 
-[24]
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--585
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 593--594
 
  []
 
-
+[25]
 Overfull \hbox (2.84163pt too wide) in paragraph at lines 595--596
 []\OT1/lmr/m/n/10.95 Da Si-gna-le von Out-put-kno-ten mit Fa-nout in $\OML/lmm/
 m/it/10.95 C$ \OT1/lmr/m/n/10.95 aus der Co-ne dar[]uberliegender
@@ -2046,17 +2051,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 598--601
 
  []
 
-[25]
+
 Underfull \hbox (badness 10000) in paragraph at lines 614--615
 
  []
 
-
+[26]
 Underfull \hbox (badness 10000) in paragraph at lines 616--619
 
  []
 
-[26]
+
 Underfull \hbox (badness 10000) in paragraph at lines 624--625
 
  []
@@ -2066,7 +2071,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 626--628
 
  []
 
-
+[27]
 Overfull \hbox (9.34868pt too wide) in paragraph at lines 629--634
 \OT1/lmr/m/n/10.95 Also muss aus den Kan-di-da-ten-men-gen der Out-puts der-je-
 ni-ge Circuit-Kandidat
@@ -2077,13 +2082,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 629--634
 
  []
 
-[27]
+
 Underfull \hbox (badness 10000) in paragraph at lines 705--706
 
  []
 
+[28]
 
-LaTeX Warning: Reference `subsubsec:heuristik' on page 28 undefined on input li
+LaTeX Warning: Reference `subsubsec:heuristik' on page 29 undefined on input li
 ne 714.
 
 
@@ -2091,8 +2097,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 714--716
 
  []
 
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 717--718
+
+Underfull \hbox (badness 10000) in paragraph at lines 721--723
 
  []
 
@@ -2100,160 +2106,179 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.726  \caption{Untere Schranke Arrivaltime}
-                                            
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+l.727  \caption{Untere Schranke Arrivaltime}
+                                             [29]
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--770
+Underfull \hbox (badness 10000) in paragraph at lines 768--771
 
  []
 
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 777--779
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 780.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 780.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 780.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 780.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 780.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 780.
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.785  \caption{Premapping durch Schätzen}
+                                            [30]
+Underfull \hbox (badness 10000) in paragraph at lines 835--836
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 780--781
+Underfull \hbox (badness 10000) in paragraph at lines 837--838
 
  []
 
-[30] [31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 833--835
+[31] [32] [33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 890--892
 
  []
 
-[33]
-Overfull \hbox (1.68488pt too wide) in paragraph at lines 853--857
+[35]
+Overfull \hbox (1.68488pt too wide) in paragraph at lines 910--914
 \OT1/lmr/m/n/10.95 den, mit Tech-no-lo-gy Map-ping vollst[]andig be-ar-beit-ba-
 ren Cir-cuits ei-nes Chips.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 853--857
+Underfull \hbox (badness 10000) in paragraph at lines 910--914
 
  []
 
-[34]
-<pictures/compiled/instance_sizes_distribution_table.pdf, id=718, 155.84724pt x
+
+<pictures/compiled/instance_sizes_distribution_table.pdf, id=754, 155.84724pt x
  97.20013pt>
 File: pictures/compiled/instance_sizes_distribution_table.pdf Graphic file (typ
 e pdf)
  <use pictures/compiled/instance_sizes_distribution_table.pdf>
 Package pdftex.def Info: pictures/compiled/instance_sizes_distribution_table.pd
-f used on input line 860.
+f used on input line 917.
 (pdftex.def)             Requested size: 170.71652pt x 106.47551pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 858--863
+Underfull \hbox (badness 10000) in paragraph at lines 915--920
 
  []
 
-
-Underfull \hbox (badness 1776) in paragraph at lines 863--867
+[36]
+Underfull \hbox (badness 1776) in paragraph at lines 920--924
 \OT1/lmr/m/n/10.95 liegt bei $15\OML/lmm/m/it/10.95 ; \OT1/lmr/m/n/10.95 26%$. 
 Von al-len Out-
  []
 
-[35 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
-<pictures/tex_files/analysis/tradeoff_curve.pdf, id=748, 237.97708pt x 191.0096
+
+<pictures/tex_files/analysis/tradeoff_curve.pdf, id=761, 237.97708pt x 191.0096
 1pt>
 File: pictures/tex_files/analysis/tradeoff_curve.pdf Graphic file (type pdf)
  <use pictures/tex_files/analysis/tradeoff_curve.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/tradeoff_curve.pdf used on
- input line 877.
+ input line 934.
 (pdftex.def)             Requested size: 170.71652pt x 137.0255pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 874--880
+Underfull \hbox (badness 10000) in paragraph at lines 931--937
 
  []
 
-
-Overfull \hbox (4.00717pt too wide) in paragraph at lines 880--883
+[37 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
+Overfull \hbox (4.00717pt too wide) in paragraph at lines 937--940
 []\OT1/lmr/m/n/10.95 Hier ist nur ei-ne schwa-che abh[]angigkeit
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 880--883
+Underfull \hbox (badness 1694) in paragraph at lines 937--940
 \OT1/lmr/m/n/10.95 ten des []aquicalenten Cir-cuits sich
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 880--883
+Underfull \hbox (badness 1824) in paragraph at lines 937--940
 \OT1/lmr/m/n/10.95 in abh[]angigkeit des $\OML/lmm/m/it/10.95 ^^U$ \OT1/lmr/m/n
 /10.95 nur ge-ring
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 880--883
-
- []
-
-[36 <./pictures/tex_files/analysis/tradeoff_curve.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 895.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 895.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 895.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 917--918
+Underfull \hbox (badness 10000) in paragraph at lines 937--940
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 921.
+(hyperref)                removing `math shift' on input line 952.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 921.
+(hyperref)                removing `\varepsilon' on input line 952.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 921.
+(hyperref)                removing `math shift' on input line 952.
 
-[37]
+[38 <./pictures/tex_files/analysis/tradeoff_curve.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 974--975
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 932.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 932.
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 932.
+(hyperref)                removing `math shift' on input line 978.
 
-[38] (./HeuristikenTM.bbl) [39]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 947.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\varepsilon' on input line 978.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 978.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 989.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\varepsilon' on input line 989.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 989.
+
+[39] (./HeuristikenTM.bbl) [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1004.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1004.
  (./HeuristikenTM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 947.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1004.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1004.
+
 Package rerunfilecheck Info: File `HeuristikenTM.out' has not changed.
 (rerunfilecheck)             Checksum: 0A9503EB10F9331B3CDE629A1AD0C879;4093.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 947.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1004.
  ) 
 Here is how much of TeX's memory you used:
- 43416 strings out of 493089
- 1020736 string characters out of 6134843
- 1465874 words of memory out of 5000000
- 45778 multiletter control sequences out of 15000+600000
- 68479 words of font info for 69 fonts, out of 8000000 for 9000
+ 43493 strings out of 493089
+ 1021653 string characters out of 6134843
+ 1470948 words of memory out of 5000000
+ 45814 multiletter control sequences out of 15000+600000
+ 82495 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,24n,100p,951b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -2271,20 +2296,21 @@ mbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb>
 /texlive/2015/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi
-8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmri1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on HeuristikenTM.pdf (41 pages, 494665 bytes).
+s/type1/public/lm/lmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmm
+i7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr
+8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmri10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on HeuristikenTM.pdf (42 pages, 503798 bytes).
 PDF statistics:
- 878 PDF objects out of 1000 (max. 8388607)
- 789 compressed objects within 8 object streams
- 204 named destinations out of 1000 (max. 500000)
+ 925 PDF objects out of 1000 (max. 8388607)
+ 833 compressed objects within 9 object streams
+ 233 named destinations out of 1000 (max. 500000)
  528 words of extra memory for PDF output out of 10000 (max. 10000000)
 
