@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  4 JUN 2018 23:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  4 JUL 2018 16:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1746,6 +1746,10 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 96.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 96.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -1758,21 +1762,21 @@ Package rerunfilecheck Info: File `expo_kand.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 51198 strings out of 493089
- 1227083 string characters out of 6134843
- 1513702 words of memory out of 5000000
- 53795 multiletter control sequences out of 15000+600000
- 26159 words of font info for 42 fonts, out of 8000000 for 9000
+ 51226 strings out of 493089
+ 1227383 string characters out of 6134843
+ 1514702 words of memory out of 5000000
+ 53815 multiletter control sequences out of 15000+600000
+ 41022 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,8n,100p,10397b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,8n,100p,10397b,766s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
 cal/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
 e/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/lm/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr5.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy5.pfb>
-Output written on expo_kand.pdf (1 page, 60152 bytes).
+ist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
+/lm/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on expo_kand.pdf (1 page, 61556 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream

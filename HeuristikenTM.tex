@@ -52,7 +52,7 @@ Die sich hieraus ergebenden Anforderungen an die Chipentwicklung wurden bereits 
 		\label{bild:einfbsp}
 \end{wrapfigure}
 Mithilfe von, aus wenigen Transistoren konstruierten, Bauteilen (genannt Gates, z.B.: AND, OR, INV, OAI ...) lässt sich eine logische Funktion nachbilden. Abbildung \ref{bild:einfbsp} (linker Teil) zeigt dies an einem kleinen Beispiel.  Die Realisierung einer solchen Funktion ist jedoch nicht eindeutig, wie Abbildung \ref{bild:einfbsp}  beweist. \\
-Die Größe der Menge aller möglichen Baupläne (später Circuit) für eine logische Funktion hängt maßgeblich von der auf dem Chip zur Verfügung stehenden Bauteilen, sowie von dem Aufbau der Funktion, ab. Hierdurch bedingt ergeben sich eine Vielzahl Möglichkeiten eine logische Funktion zu realisieren.\\
+Die Größe der Menge aller möglichen Baupläne (später Circuits) für eine logische Funktion hängt maßgeblich von der auf dem Chip zur Verfügung stehenden Bauteilen, sowie von dem Aufbau der Funktion, ab. Hierdurch bedingt ergeben sich eine Vielzahl Möglichkeiten eine logische Funktion zu realisieren.\\
  Jedes Bauteil hat spezifische physikalische Eigenschaften an Größe, Geschwindigkeit (Delay) etc.. Demnach hat auch jeder Circuit entsprechende Eigenschaften. \\
 Ziel des Technology Mappings ist es, für eine logische Funktion eine Realisierung zu finden, welche eine Kostenfunktion (bestehend aus den physikalischen Eigenschaften) optimiert. Die Wahl der Lösung hat direkte Auswirkungen auf die  Schnelligkeit, Größe und den Stromverbrauch des fertigen Chips. Hierbei geht das \TM von einer bereits realisierten logischen Funktion aus und baut diese zu einer möglichst kostengünstigen Variante um. \\
 Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in kurzer Zeit finden. Die Lösung dieses Problems für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP-vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in möglichst kurzer Zeit einen kostenoptimierten Umbau ermöglicht.\\
@@ -64,7 +64,7 @@ Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegeb
 \label{sec:terminologie&grundl}
 \subsection{Grundlegende Definitionen}
 \label{subsec:grundlegende_definitionen}
-Es folgen ein paar grundlegende Definitionen für diecs Beschreibung des Problems.
+Es folgen ein paar grundlegende Definitionen für die Beschreibung des Problems.
 
 \begin{definition}{Boolesche Variable und Funktion: } \\
 Eine boolesche Variable ist eine Variable mit Werten in $ \{ 0 , 1 \} $.
@@ -72,7 +72,7 @@ Sei $ n, m \in \mathbb{N}$. Eine boolesche Funktion ist eine Funktion $ f : \{ 0
 \end{definition}
 
 \begin{definition}{Gate und Library:}\label{def:gate}\\
-Ein Gate $g$ mit Eingangsgrad $ n \in \mathbb{N}$ ist ein Tripel $(f_g, d_g, area_g)$. Hierbei sind $d_g, area_g \in \mathbb{R}_{\geq 0}$. Des Weiteren gilt $f_g$ ist eine boolesche Funktion mit $ f_g : \{0,1\}^n \rightarrow \{0, 1\} $. \\
+Ein Gate $g$ mit Eingangsgrad (arity) $ n \in \mathbb{N}$ ist ein Tripel $(f_g, d_g, area_g)$. Hierbei sind $d_g, area_g \in \mathbb{R}_{\geq 0}$. Des Weiteren ist $f_g$ eine boolesche Funktion mit $ f_g : \{0,1\}^n \rightarrow \{0, 1\} $. \\
 Eine Library L ist eine Menge von Gates und sei \\ 
 $fanin_{max} := max\{ arity(g) | g \in L \}$.
 \end{definition}
@@ -102,44 +102,44 @@ Zwei Circuits heißen äquivalent, wenn sie die gleiche boolesche Funktion reali
 In einem Circuit lassen sich Teilgraphen durch ein Gate der Library austauschen. Voraussetzung für einen solchen Tausch ist, dass der veränderte Circuit äquivalent zu dem Original ist. Dies wird in den folgenden Definitionen formalisiert. 
 
 \begin{definition}{Match und Kandidat:}\\
-Sei g ein Gate in einem Circuit $C$. Ein (invertiertes) Match m ist ein Tupel $(p_m, I_m, f_m, inv_m)$ welches folgendes enthält:
+Sei $g$ ein Gate in einem Circuit $C$. Ein (invertiertes) Match $m$ ist ein Tupel $(p_m, I_m, f_m, inv_m)$ welches folgendes enthält:
 \begin{itemize}
-\item Ein Gate p der Library
-\item Eine Menge X von Knoten aus der Circuit und eine Bijektion $ f: X \rightarrow inputs(p)$
+\item Ein Gate $p$ der Library
+\item Eine Menge $X$ von Knoten aus dem Circuit und eine Bijektion $ f: X \rightarrow inputs(p)$
 \item Eine Funktion $ inv : inputs(p) \rightarrow \{not\_inv , inv \}$
 \end{itemize}
-So dass der Circuit $C'$, welcher durch den Austausch des Sub-Circuits von X bis g durch das Match (mit den durch inv definierten Invertern an den Inputs) entsteht, äquivalent zu C ist.
-Ein invertiertes Match auf g ist ein Match auf g mit einem Inverter an jedem seiner Outputs.\\
-Ein (invertierter) Kandidat auf g besteht aus einem (invertierten) Match auf g und einem Kandidaten für jeden Input Knoten von g (welcher kein Input von C ist).
+So dass der Circuit $C'$, welcher durch den Austausch des Subcircuits von $X$ bis $g$ durch das Match (mit den durch $inv$ definierten Invertern an den Inputs) entsteht, äquivalent zu C ist.
+Ein invertiertes Match auf $g$ ist ein Match auf $g$ mit einem Inverter an jedem seiner Outputs.\\
+Ein (invertierter) Kandidat auf $g$ besteht aus einem (invertierten) Match auf $g$ und einem Kandidaten für jeden Input Knoten von $g$ (welcher kein Input von $C$ ist).
 \end{definition}
 
 \begin{definition}{Circuit-Kandidat:}\\
-Sei C ein Circuit mit Outputknoten Menge O. Eine Circuit-Kandidat K von C ist eine Menge von Kandidaten, so dass $\forall o \in O \, \exists!  h  \in K : h$ ist Kandidat von $ o$ und an jedem Knoten von C an dem sich mehrere Kandidaten überschneiden ist dasselbe Match gewählt.
+Sei $C$ ein Circuit mit Outputknoten-Menge $O$. Eine Circuit-Kandidat $K$ von $C$ ist eine Menge von Kandidaten, so dass $\forall o \in O \, \exists!  h  \in K : h$ ist Kandidat von $ o$ und an jedem Knoten von $C$ an dem sich mehrere Kandidaten überschneiden ist dasselbe Match gewählt.
 \end{definition}
 \newpage
 Abbildung \ref{bild:grundl_definitionen} visualisiert die vorherigen Definitionen.\\
 \begin{figure}[h]
 \begin{center}
  \includegraphics[width = 250pt]{./pictures/compiled/grundl_def_veransch.pdf}
- \caption{Beispiel eines  Kandidaten}
+ \caption{Beispiel eines  Kandidaten und eines Matches}
  \label{bild:grundl_definitionen}
 \end{center}
 \end{figure}
 
-Ein Circuit-Kandidat auf einem Circuit $C$ beschreibt eine mögliche Realisierung der $C$ zugrunde liegenden Funktion.  Wie bereits in der Einleitung dargestellt gilt es nun den besten Circuit-Kandidaten auf $C$ zu finden. Dafür ist eine Maß notwendig, durch welche diese Kandidaten bewertet werden. Es folgen zwei praxisrelevante Beispiele einer solchen Funktion. In der Praxis und in dieser Arbeit wird hauptsächlich eine convex-Kombination aus beiden verwendet.
+Ein Circuit-Kandidat auf einem Circuit $C$ beschreibt eine mögliche Realisierung der $C$ zugrunde liegenden Funktion.  Wie bereits in der Einleitung dargestellt gilt es nun den besten Circuit-Kandidaten auf $C$ zu finden. Dafür ist eine Maß notwendig, durch welche diese Kandidaten bewertet werden. Es folgen zwei praxisrelevante Beispiele einer solchen Funktion. In der Praxis und in dieser Arbeit wird hauptsächlich eine konvex-Kombination aus beiden verwendet.
 
 \begin{definition}{Area und Delay eines Kandidaten:}\\
 \label{def:area_delay}
 Sei $C$ ein Circuit und $K$ ein Circuit-Kandidat auf $C$, dann gilt: \\
 \begin{itemize}
-\item $area(K) = \sum_{g \in gates(C)} (a_g + \sum_{i \in inputs(g)} \mathbb{1}_{inv_g(i)} area_{inv})$ 
+\item $area(K) = \sum_{g \in gates(C)} (area_g + \sum_{i \in inputs(g)} \mathbb{1}_{inv_g(i)} area_{inv})$ 
 \item $AT(K) = $\\$  \max\limits_{k \in can(K)} \{\max\limits_{i \in inputs(k)} \{   d_{gate(k)} + \mathbb{1}_{inv_g(i)} d_{i} + AT(inp\_can(k,i)) + d_{w(k,i)} \} \}$ 
 \end{itemize}
-Wobei $can(K)$ die Menge der Kandidaten von $K$ ist, $area_{inv}$ die Größe eines Inverters und $inputs(k)$ die Inputknoten des Outputknoten des Kandidaten $k$ sind. Des Weiteren ist $d_i$ das Delay eines Inverters und $d_{w(k,i)} $ das Delay der Kante zwischen den Knoten $k$ und $i$. $inp\_can(k,i)$ gibt den Kandidaten des $i$'ten Inputs von k zurück. 
+Wobei $can(K)$ die Menge der Kandidaten von $K$ ist, $area_{inv}$ die Größe eines Inverters und $inputs(k)$ die Inputknoten des Outputknoten des Kandidaten $k$ sind. Des Weiteren ist $d_i$ das Delay eines Inverters und $d_{w(k,i)} $ das Delay der Kante zwischen den Knoten $k$ und $i$. $inp\_can(k,i)$ gibt den Kandidaten des $i$'ten Inputs von $k$ zurück. 
 
 \end{definition}
 
-Das Delay (AT) gibt an, wann das letzte Signal aus einem der Outputs des Circuit kommt.
+Das Delay ($AT$) gibt an, wann das letzte Signal aus einem der Outputs des Circuit kommt.
 
 \subsection{Kern Algorithmus}
 \label{subsec:kern_algorithmus}
@@ -184,7 +184,7 @@ Ein \TM Algorithmus liefert in der Regel nicht die bestmögliche Implementierung
 \end{cor}
 \begin{proof} \ \\
 	Der Algorithmus geht in topologischer Reihenfolge durch die Knoten $v$ des Graphen und berechnet alle Matche auf $v$. Diese werden dann zu einem Kandidaten ergänzt. 
- Ohne Highfanoutknoten überschneiden sich diese nicht. Für jeden Knoten und jedes Match gibt es nur einen Kandidaten zur Auswahl, da für die Inputs des Matche jeweils nur ein Kandidat gespeichert wurde. An jedem Knoten wird nur das Match (mit dem dazugehörigen Kandidaten) gespeichert, welches die Kosten optimiert. \\
+ Ohne Highfanoutknoten überschneiden sich diese nicht. Für jeden Knoten und jedes Match gibt es nur einen Kandidaten zur Auswahl, da für die Inputs des Matches jeweils nur ein Kandidat gespeichert wurde. An jedem Knoten wird nur das Match (mit dem dazugehörigen Kandidaten) gespeichert, welches die Kosten optimiert. \\
  Es bleibt zu zeigen, dass, angenommen, dass für alle Knoten mit kleinerem topologischen Rang als $rang(v)$ der bestmögliche Kandidat bereits gespeichert ist, so wird, wie soeben dargestellt, auch für $v$ der schnellste bzw. kleinste Kandidat $k$ gespeichert. \\
  Angenommen es gibt einen besseren Kandidaten $k'$, als $k$, welcher von dem Algorithmus gespeichert wurde. Sei $k''$ der Kandidat, welcher dasselbe Match wie $k'$ benutzt und die besten Input Kandidaten. Da $k''$ die besten Input Kandidaten benutzt ist er mindestens so schnell (bzw. klein) wie $k'$. $k$ ist jedoch ebenfalls mindestens so kostengünstig wie $k''$ (andernfalls hätte der Algorithmus $k''$, $k$ vorgezogen). Dies ist ein Widerspruch zur Annahme. 
 \end{proof}
@@ -202,18 +202,18 @@ Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)|^3|L|^2)$.
 \newpage
 \section{FPTAS und Heuristik}
 \label{sec:allg_algorithmus}
-In diesem Kapitel wird eine Approximationsalgorithmus für allgemeinere Instanzen und Zielfunktionen des \TM vorgestellt. Da auch dieser noch einige Einschränkungen vorgibt, welche für reale Instanzen eines Chips nicht gelten und   das exakte Problem bereits NP-vollständig ist, wird auf Basis des Approximationsalgorithmus eine Heuristik entworfen.
+In diesem Kapitel wird ein Approximationsalgorithmus für allgemeinere Instanzen und Zielfunktionen des \TM vorgestellt. Da auch dieser noch einige Einschränkungen vorgibt, welche für reale Instanzen eines Chips nicht gelten und   das exakte Problem bereits NP-vollständig ist, wird auf Basis des Approximationsalgorithmus eine Heuristik entworfen.
 
 \subsection{Tradeoffprobleme}
 \label{subsec:tradeoffprobleme}
 Der oben vorgestellte Algorithmus ist in der Lage den bestmöglichen Umbau eines eingeschränkten Circuits bezüglich Area oder Delay zu errechnen. \\
 Es existiert  ein Tradeoff zwischen Area und Delay. Dies hat zur Folge, dass ein möglichst kleiner Circuit in der Regel sehr langsam ist und  bei einem schnellen Circuit ein großer Platzverbrauch zu erwarten ist. 
 Bei der Lösungsentwicklung mittels \TM  ist jedoch weder ein sehr langsamer noch ein besonders großer Circuit akzeptabel.\\
-Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist Circuits  bezüglich einer Konvexkombination oder einer Schranke zu verbessern. Hierbei ergeben sich die beiden folgenden Optimierungs-Probleme: \\
+Daraus folgt die Nachfrage nach einem Algorithmus, welcher in der Lage ist Circuits  bezüglich einer Konvexkombination oder einer Schranke zu verbessern. Hierbei ergeben sich die beiden folgenden Optimierungsprobleme: 
 
  \begin{problem}[framed]{\TM mit Konvexkombination}
   Instanz:  & Circuit $C$,mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$,
-  $|L|$ beschränkt und  Tradeoff-Parameter $\lambda \in [0,1]$ .\\
+  $|L|$ beschränkt und  Tradeoffparameter $\lambda \in [0,1]$ .\\
   Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, welcher $\lambda AT(K) +(1-\lambda )area(K) $ minimiert.
 \end{problem}
  \begin{problem}[framed]{\TM mit Arrivaltimeschranke}
@@ -294,13 +294,13 @@ Zur Lösung des ersten Problems helfen die folgenden Definitionen:\\
 		\label{bild:cone}
 \end{wrapfigure}
 Somit ist die Menge der offenen Knoten eines Circuit Knoten $v$, die Menge aller Highfanoutknoten $w$, von welchen aus man sowohl $v$ als auch einen Knoten außerhalb der Cone von $v$ erreichen kann. In dieser Menge ist $v$ selber nicht enthalten. Die offenen Knoten von $v$ sind gerade die Highfanoutknoten, welche durch die Kandidaten eines Knoten außerhalb von $cone(v)$ verändert werden können. Alle Kandidaten von  Knoten mit Ausgangsgrad 1 und dieser Eigenschaft, sind durch den Nachfolger-Kandidaten (welcher auch zu einem offenen Knoten gehören muss), bereits eindeutig definiert. \\
-Abbildung \ref{bild:cone} visualisiert die vorangegangenen Definitionen.\\
+Abbildung \ref{bild:cone} visualisiert die vorangegangenen Definitionen.
 
 \begin{definition}{Klasse eines Kandidaten:}\\
-	Sei $k$ ein Kandidat auf einem Knoten $v$ und $O$ die Menge der offenen Knoten von $v$. Die Klasse $class(k)$ ist eine Abbildung, welche jedem Element $w \in O$ den durch $k$ festgelegten Kandidaten auf $w$ zuordnet.\\
+	Sei $k$ ein Kandidat auf einem Knoten $v$ und $O$ die Menge der offenen Knoten von $v$. Die Klasse $class(k)$ ist eine Abbildung, welche jedem Element $w \in O$ den durch $k$ festgelegten Kandidaten auf $w$ zuordnet.
 \end{definition}
 Hiernach lassen sich zwei Kandidaten $k_1,k_2$ eines Knoten $v$ mit $class(k_1) \neq class(k_2)$ nicht miteinander vergleichen. Dies gilt auch für den Fall, wenn $k_2$ von  $k_1$ dominiert wird, denn es ist möglich, dass dies zwar an der Stelle $v$ gilt, jedoch nicht an allen offenen Knoten von $v$. Daraus folgt, würde man $k_2$ löschen, so löscht man evtl. den besten Kandidaten des Outputs von $C$. \\
-Um daher mit Highfanoutknoten arbeiten zu können, werden für jeden Knoten $v$ und jede Klasse von $v$ alle nicht dominierten Kandidaten gespeichert. Dann ist der noch verbleibende beste Kandidat des Outputs die beste Lösung. Dies führt jedoch zu einer nur exponentiell beschränkten Speicheraufwand\\
+Um daher mit Highfanoutknoten arbeiten zu können, werden für jeden Knoten $v$ und jede Klasse von $v$ alle nicht dominierten Kandidaten gespeichert. Dann ist der noch verbleibende beste Kandidat des Outputs die beste Lösung. Dies führt jedoch zu einem nur exponentiell beschränkten Speicheraufwand.\\
 Zur Speicherung der Kandidaten wird für jede Klasse eines Knotens eine Tradeoff-Kurve angelegt.
 
 \subsubsection{Klonen}
@@ -316,15 +316,15 @@ Angenommen dies ist nicht der Fall dann werden offene Knoten evtl. mehrere Male 
 		\caption{Visualisierung eines Matches über eine lange Kante}
 		\label{bild:zu_lange_kanten}
 \end{wrapfigure}
-Abbildung \ref{bild:zu_lange_kanten} veranschaulicht eine häufig auftretende Situation. Es handelt sich um das Matchen über eine auf dem Chip sehr lange Kante. Dadurch verbessert sich evtl. die Größe des Circuits, jedoch sind nach dem Match nun zwei sehr lange Kanten auf dem Chip vorhanden, was   einen großen Routing Aufwand und weitere Kosten mit sich bringt und somit eine zu vermeidende Situation ist. \\
+Abbildung \ref{bild:zu_lange_kanten} veranschaulicht eine häufig auftretende Situation. Es handelt sich um das Matchen über eine auf dem Chip sehr lange Kante. Dadurch verbessert sich evtl. die Größe des Circuits, jedoch sind nach dem Match nun zwei sehr lange Kanten auf dem Chip vorhanden, was   einen großen routing Aufwand und weitere Kosten mit sich bringt und somit eine zu vermeidende Situation ist. \\
 In Kapitel \ref{subsec:mehrere_outputs} wird eine zusätzliche Klasse von Kanten eingeführt, über welche man nicht matchen darf.
 Diese Kanten bezeichnet man als konstant.
-UDeshalb wird bei der Bildung eines jeden Matches darauf geachtet, über keine konstante Kante zu matchen.\\
+Deshalb wird bei der Bildung eines jeden Matches darauf geachtet, über keine konstante Kante zu matchen.\\
 Durch das Hinzufügen der zu langen Kanten zu den konstanten Kanten, kann keine optimale Lösung mehr im Kern Algorithmus garantiert werden, denn es ist möglich, dass die zusätzlichen Routing-Kosten unerwarteterweise vernachlässigbar sind und ein Match über diese Kante für eine optimale Lösung notwendig ist. \\
 
  \subsection{Teilweise überflüssige Subcircuits}
  \label{subsec:teilweise_ueberfkl_subcircuits}
- Abbildung 4 beweist, dass nicht unbedingt alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition:\\
+ Abbildung 4 beweist, dass nicht unbedingt alle Inputs eines Circuits relevant sind für die Outputs. Zur genaueren Einordnung folgt eine Definition:
  
  \begin{definition}{Vollständig überflüssiger und teilweise überflüssiger Circuit }
  	Sei $C$ ein Circuit mit logischer Funktion $ f : \{ 0 , 1 \}^n \rightarrow \{ 0 , 1 \}^m $.\\
