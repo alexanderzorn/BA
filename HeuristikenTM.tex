@@ -438,14 +438,23 @@ Die Kandidaten eines beliebigen Knotens sind in Tradeoffkurven, nach Klassen sor
 \caption{Einteilen und Filtern mit Buckets}
 \label{bild:tradeoff_kurven_filtern}
 \end{figure}
-Man wählt die Bucketgrößen $\delta_{area} = \frac{\epsilon}{2(1-\lambda)}, \delta_{delay} = \frac{\epsilon}{2\lambda}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket.\\
-Dadurch ist die maximale Anzahl an Kandidaten in einer Tradeoffkurve polynomiell beschränkt. 
+Man wählt die Bucketgrößen $\delta_{delay} = \frac{\epsilon}{2\lambda}, \delta_{area} = \frac{\epsilon}{2(1-\lambda)}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket.\\
+Für $\lambda \in \{ 0,1 \}$ ist jeweils eine der Bucketgrößen nicht definiert. In diesem Fall wird für den nicht definierten Fall nur der beste Kandidat (schnellster bzw. kleinster) behalten. Mit anderen Worten wir im nicht definierten Fall die Tradeoffkurve in nur ein Bucket unterteilt.\\
+Die maximale Anzahl an Kandidaten in einer Tradeoffkurve ist nach dem Filtern polynomiell beschränkt. 
 \begin{definition}
 Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve, nachdem sie gefiltert wurde.\\
 Des Weiteren sei $\mathcal{K}$ die maximale Kardinalität von Klassen eines Knoten.
 \end{definition}
-\textcolor{red}{B genauer einschränen und die Schranken irgendwo mit hineinbringen bzw beweisen, dass B pol. beschränkt ist. }
-\textcolor{red}{was ist mit dem beweis ? kann ich lukas verlinken oder verlinkt der auf irgendwen ?}
+\begin{cor}
+Für Circuits $C$ mit beschränkter Anzahl $k$ an Highfanoutknoten sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
+\end{cor}
+\begin{proof}
+$\mathcal{B}$ ist beschränkt durch die Größe den größtmöglichen äquivalenten Circuit $C_A$ von $C$ geteilt durch $\delta_{area}$. Es gilt $area(C_A )\leq area_{max}\cdot |V(C)|$, wobei $area_{max}$ die Größte des größten Elements der Library angibt. Daraus folgt $\mathcal{B} \in \mathcal{O}(area_{max} |V(C)|\frac{2(1-\lambda)}{\epsilon})$. \\
+Sei $v \in V(C)$ und $K_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Highfanoutknoten mit $i$ weiteren Highfanoutknoten in seiner Cone. 
+$\mathcal{K_v}$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglicher Kombinationen von Kandidaten aller möglicher Klassen der Highfanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$, da $v$ maximal $k$ Highfanoutknoten in seiner Cone besitzt, welche jeweils maximal $k-1$ Highfanoutknoten in Ihrer Cone besitzen. Des Weiteren gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$ mit der gerade genannten Begründung.\\
+Es gilt $\mathcal{K}_{h,0} \leq 1$ da der Highfanoutknoten keine offenen Knoten besitzen kann. \\
+Daraus folgt $\mathcal{K}_v \leq \mathcal{B}^{k!}$ Da $k$ beschränkt ist folgt, dass $\mathcal{K}$ polynomiell beschränkt ist.\\
+\end{proof}
 
 Beschränkt man die maximale Anzahl von Highfanoutknoten in $C$, so folgt aus dem obigen Korollar, dass die Anzahl der Klassen eines jeden Knoten und die Menge der sich darin befindlichen Kandidaten, polynomiell beschränkt ist. \\
 Aus diesem Grund geht der im Folgenden vorgestellte polynomielle Algorithmus von einer beschränkten Anzahl von Highfanoutknoten aus.\\ 
@@ -538,7 +547,7 @@ Ist an jedem Highfanoutknoten ein Kandidat gewählt, so lässt sich der noch bes
 \DontPrintSemicolon
 \caption{Heuristik f\"ur das TM mit Konvexkombination}
 \SetKwInOut{Task}{Task}
-\KwIn{Circuit $C$ ohne vollständig überflüssige Subcircuits und mit finalem Output $o$, Library $L$,$ \epsilon > 0$, Tradeoff $\lambda \in [0,1]$}
+\KwIn{Circuit $C$ ohne vollständig überflüssige Subcircuits und mit finalem Output $o$, Library $L$, Tradeoff $\lambda \in [0,1]$}
 
    $M \gets$ finde\_alle\_matchings($C$)\;
    lösche\_konst\_Kanten\_überdeckende\_Matche($M, C$)\;
@@ -573,18 +582,20 @@ Ist an jedem Highfanoutknoten ein Kandidat gewählt, so lässt sich der noch bes
       }
     }
   }    
-    filter\_mit\_buckets(g.tradeoff\_curves, $\epsilon$)\;    
+    filter\_mit\_buckets(g.tradeoff\_curves, 0)\;    
   }
   $C' \gets $ circuit(bester\_kandidat($o, \lambda$))\;
   \Return entferne\_buffer($C'$)\;
 \end{algorithm}\ \\
 
-Dieser Algorithmus unterscheidet sich nur in den Schritten 12-16 und 19 von dem FPTAS.\\
-Diese beschreiben ein einfaches Verfahren zur Auswahl eines Kandidaten für einen Highfanoutknoten. Angelehnt an den Kernalgorithmus wird nur der Kandidat behalten, welcher den Tradeoff minimiert. Dies garantiert keine optimale Lösung. Weitere Informationen befinden sich in Kapitel \ref{sec:premapping} und \ref{sec:analyse}. \\
+Dieser Algorithmus unterscheidet sich nur in den Schritten 12-17 und 19 von dem FPTAS.\\
+Diese beschreiben ein einfaches Verfahren zur Auswahl eines Kandidaten für einen Highfanoutknoten. Angelehnt an den Kernalgorithmus wird nur der Kandidat behalten, welcher den Tradeoff minimiert. Dies garantiert keine optimale Lösung. \\
+Die Menge an Kandidaten in einer Tradeoffkurve ist in der Praxis, durch die Einschränkung auf einen Kandidaten für Highfanoutknoten, deutlich geringer als im FPTAS. Aus diesem Grund lässt sich in der Praxis ohne Laufzeiteinbußen mit $\epsilon = 0$ filtern.\\ 
+Weitere Informationen und Erweiterungen dieser Heuristik befinden sich in Kapitel \ref{sec:premapping} und \ref{sec:analyse}. \\
 Schritt 19 entfehrnt die durch teilweise überfüssige Subcircuits evtl. hinzugekommenen Buffer.\\
 
-{\bf Laufzeit: } Stellt man die gleichen Voraussetzungen an die Circuits wie der FPTAS, so lässt sich diese Heuristik in der selben polynomiellen Laufzeit implementieren.\\
-In allgemeinen Circuits ist dies wahrscheinlich nicht mehr möglich, denn die Anzahl möglicher Matche steigt exponentiell  (siehe Kapitel \ref{subsec:match_kandidaten}).
+{\bf Laufzeit: } Stellt man die gleichen Voraussetzungen an die Circuits wie der FPTAS und filtert mit einem $\epsilon  > 0$, so lässt sich diese Heuristik in der selben polynomiellen Laufzeit implementieren.\\
+In allgemeinen Circuits ist dies wahrscheinlich nicht mehr möglich, denn die Anzahl möglicher Matche steigt, durch die teilweise überflüssigen Circuits, exponentiell  (siehe Kapitel \ref{subsec:match_kandidaten}).
 
 
 
@@ -767,17 +778,12 @@ Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst sch
 
  Dieser Algorithmus führt das \TM auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
  Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
- \textcolor{red}{dieser algo stammt von Lukas (wie das tradeoff kurven bild und der folgende algo wie speichere nehme ich das am besten mit rein ?}\\
+ \textcolor{red}{dieser algo stammt von Lukas (wie das tradeoff kurven bild und der folgende algo wie nehme ich das am besten mit rein ?}\\
 
-\begin{cor}
-Der Untere Schranke Arrivaltime Agorithmus lässt sich in $\mathcal{O}($\textcolor{red}{...}) implementieren.
-\end{cor}
- \begin{proof}
- \textcolor{red}{...}
- \end{proof}
+Der Untere Schranke Arrivaltime Agorithmus lässt sich in der gleichen Laufzeit wie die Heuristik aus Kapitel \ref{subsec:heuristik} implementieren, ist jedoch in der Praxis, da nur ein Kandidat für jeden Knoten gespeichert wird, deutlich schneller.\\
+
  Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
-\textcolor{red}{\large auf mehrere Outputs/slack erweitern genauso im obigen algo \\
-des weiteren noch $\epsilon = 0$ erwähnen und $\mathcal{KB}$ weiter pol einschränken für eine bessere Laufzeit des FPTAS .. kann sein dass man areamax noch beschränlken muss} 
+\textcolor{red}{algo nochmal genau ansehen und fragen klären} 
  
 \begin{algorithm}[H]
  \LinesNumbered
@@ -786,58 +792,34 @@ des weiteren noch $\epsilon = 0$ erwähnen und $\mathcal{KB}$ weiter pol einschr
  \SetKwInOut{Task}{Task}
  $C'_{SNS} \gets untere\_schranke\_SNS(C)$\;
 $C'_{Area} \gets untere\_schranke\_Area(C)$\; 
- $\AT^- \gets $ $\AT(C_{\AT}')$\;
- $\AT^+ \gets $ $\AT(C_{Area}')$\;
- $\alpha \gets \lambda \cdot \AT^- + (1-\lambda)\cdot AT^+$ //Finale AT Sch\"atzung \;
+ $SNS^- \gets $ $sum\_of\_negative\_slacks(C_{SNS}')$\;
+ $SNS^+ \gets $ $sum\_of\_negative\_slacks(C_{Area}')$\;
+ $\alpha \gets \lambda \cdot SNS^- + (1-\lambda)\cdot SNS^+$ //Finale SNS Sch\"atzung \;
  \ForEach{Highfanoutknoten $v \in V(C)$}
  {
-  estim\_small$(v) \gets $required\_AT$(v,C_{\area}',\alpha)$\;
-  estim\_fast$(v) \gets $required\_AT$(v,C_{\AT}',\alpha)$\;
-  AT\_sch\"atzung$(v) \gets \lambda \cdot $rats\_fast$(v) + (1-\lambda)\cdot$rats\_small$(v)$\;
+  estim\_small$(v) \gets $neg\_slack$(v,C_{Area}',\alpha)$\;
+  estim\_fast$(v) \gets $neg\_slack$(v,C_{SNS}',\alpha)$\;
+  neg\_slack\_sch\"atzung$(v) \gets \lambda \cdot $estim\_fast$(v) + (1-\lambda)\cdot$estim\_small$(v)$\;
  }
  
+\ \\...\\ \;
  
- schnellster\_kandidat[] $\gets \emptyset$\;
- schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
- {
-   berechne alle (invertierten) Matches auf $v$\;
-   \ForEach{ Match $m$ auf $v$ }
-   {
-      berechne schnellsten Kandidaten mit $m$ auf $v$\;
-      Update schnellster\_(inv)\_kandidat\;
-   }
-   \If{ $v$ ist Highfanoutknoten }
-   {
-      
-      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
-      {
-	l\"osche schnellster\_inv\_kandidat[v]\;
-      }
-      \Else
-      {
-	l\"osche schnellster\_kandidat[v]\;
-      }
-   }
- }
- Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
- \ForEach{Knoten $v \in V(C')$}
- {
-    \ForEach{Vorg\"anger $p$}
+  \If{$v$ ist Highfanoutknoten}
+  {
+    $min \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{|neg\_slack(k)-\text{neg\_slack\_sch\"atzung}(v)|\}$\;
+    \ForEach{Kandidat $k$ auf $v$}
     {
-      \If{ $p$ ist Highfanoutknoten }
+      \If{$|$neg\_slack($k$)-neg\_slack\_sch\"atzung$(v)| \neq min$}
       {
-	inv($v$,$p$) $\gets$ keine Invertierung\;
+	l\"osche $k$\;
       }
     }
- }
- \Return $C'$\;
+   }
 \end{algorithm}\ \\
  
- \textcolor{red}{kurze Erklärung}\\
- 
- \textcolor{red}{das ist eine gute abschätzung weil man durch die langsame implementierung des kleinen circuits kosten in der Rat bekommt plus die Methode aus Lukas heuristik entnehmen und dazupacken}
-
+Die Schritte 1-9 werden an den Anfang der Heuristik für das TM mit Konvexkombination gesetzt. Die Schritte 13-17 ersetzen die Schritte 12-16 der Heuristik.\\ 
+Es ist ausreichend alle möglichen Matche der Knoten nur einmal zu errechnen und diese Werte sowhl für die untere Schranke als auch für die Heuristik selber zu nutzen. Mit diesem Trick lassen sich beide Schranken in kurzer Zeit errechnen. Genauere Informationen zur Laufzeit und Güte der Premapping Routinen befindet sich in Kapitel \ref{sec:analyse}.\\
+Diese Routine liefert sehr gut Ergebnisse, da durch die Berechnung der Schranken das Potenzial eines Knoten errechnet wird, wie klein oder schnell Kandidaten dieses Knotens werden können. Mithilfe des Tradeoffparameter errechnet sich hieraus ein geschätzter Kostenwert. Es wird nur der Kandidat ausgewählt, welcher die Differenz zu dieser Schätzung minimiert.
 
 \subsection{Erweitertes Premapping durch Schätzen}
 \label{subsec:erweitertes_premapping_durch_schaetzen}
