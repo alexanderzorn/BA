@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  5 JUL 2018 13:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  5 JUL 2018 13:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1747,255 +1747,255 @@ been already used, duplicate ignored
                    \relax 
 l.41 \newpage
               [2]
-Underfull \hbox (badness 10000) in paragraph at lines 44--46
+Underfull \hbox (badness 10000) in paragraph at lines 44--47
 
  []
 
-<pictures/compiled/einfBsp.pdf, id=305, 168.75546pt x 120.4771pt>
+<pictures/compiled/einfBsp.pdf, id=306, 168.75546pt x 120.4771pt>
 File: pictures/compiled/einfBsp.pdf Graphic file (type pdf)
 
 <use pictures/compiled/einfBsp.pdf>
-Package pdftex.def Info: pictures/compiled/einfBsp.pdf used on input line 50.
+Package pdftex.def Info: pictures/compiled/einfBsp.pdf used on input line 51.
 (pdftex.def)             Requested size: 168.75504pt x 120.47679pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 51.
+(Font)              <5> on input line 52.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
  [3 <./pictures/compiled/einfBsp.pdf>]
 [4]
-LaTeX Font Info:    Try loading font information for U+bbold on input line 71.
+LaTeX Font Info:    Try loading font information for U+bbold on input line 72.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd)
-<./pictures/compiled/new_library.pdf, id=322, 276.23903pt x 109.23611pt>
+<./pictures/compiled/new_library.pdf, id=324, 276.23903pt x 109.23611pt>
 File: ./pictures/compiled/new_library.pdf Graphic file (type pdf)
 
 <use ./pictures/compiled/new_library.pdf>
 Package pdftex.def Info: ./pictures/compiled/new_library.pdf used on input line
- 81.
+ 82.
 (pdftex.def)             Requested size: 202.30614pt x 80.0pt.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 92.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 93.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 92.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 93.
  [5 <./pictures/compiled/new_library.pdf>] [6]
-<./pictures/compiled/grundl_def_veransch.pdf, id=355, 245.1007pt x 182.14749pt>
+<./pictures/compiled/grundl_def_veransch.pdf, id=357, 245.1007pt x 182.14749pt>
 File: ./pictures/compiled/grundl_def_veransch.pdf Graphic file (type pdf)
 <use ./pictures/compiled/grundl_def_veransch.pdf>
 Package pdftex.def Info: ./pictures/compiled/grundl_def_veransch.pdf used on in
-put line 123.
+put line 124.
 (pdftex.def)             Requested size: 250.0pt x 185.79074pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
 
  []
 
 [7 <./pictures/compiled/grundl_def_veransch.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
-<pictures/compiled/compl_redundant.pdf, id=393, 46.05305pt x 71.8384pt>
+<pictures/compiled/compl_redundant.pdf, id=395, 46.05305pt x 71.8384pt>
 File: pictures/compiled/compl_redundant.pdf Graphic file (type pdf)
 
 <use pictures/compiled/compl_redundant.pdf>
 Package pdftex.def Info: pictures/compiled/compl_redundant.pdf used on input li
-ne 176.
+ne 177.
 (pdftex.def)             Requested size: 79.6678pt x 124.28966pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
 [8 <./pictures/compiled/compl_redundant.pdf>] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
 
  []
 
-<pictures/compiled/tradeoff_kurve.pdf, id=427, 171.51678pt x 171.51678pt>
+<pictures/compiled/tradeoff_kurve.pdf, id=429, 171.51678pt x 171.51678pt>
 File: pictures/compiled/tradeoff_kurve.pdf Graphic file (type pdf)
 
 <use pictures/compiled/tradeoff_kurve.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve.pdf used on input lin
-e 244.
+e 245.
 (pdftex.def)             Requested size: 170.71652pt x 170.7155pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--250
+Underfull \hbox (badness 10000) in paragraph at lines 249--251
 
  []
 
 [11 <./pictures/compiled/tradeoff_kurve.pdf>]
-<pictures/compiled/ohne_highfanout_heu.pdf, id=443, 330.58005pt x 214.10188pt>
+<pictures/compiled/ohne_highfanout_heu.pdf, id=445, 330.58005pt x 214.10188pt>
 File: pictures/compiled/ohne_highfanout_heu.pdf Graphic file (type pdf)
 
 <use pictures/compiled/ohne_highfanout_heu.pdf>
 Package pdftex.def Info: pictures/compiled/ohne_highfanout_heu.pdf used on inpu
-t line 259.
+t line 260.
 (pdftex.def)             Requested size: 170.71652pt x 110.5626pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 262--265
+Underfull \hbox (badness 1917) in paragraph at lines 263--266
 \OT1/lmr/m/n/10.95 che sol-che High-fa-nout-kno-ten nicht
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 262--265
+Underfull \hbox (badness 1163) in paragraph at lines 263--266
 \OT1/lmr/m/n/10.95 satz ei-ner Heu-ris-tik dar. Der An-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--265
+Underfull \hbox (badness 10000) in paragraph at lines 263--266
 
  []
 
-<pictures/compiled/expo_kand.pdf, id=446, 239.75471pt x 219.50507pt>
+<pictures/compiled/expo_kand.pdf, id=448, 239.75471pt x 219.50507pt>
 File: pictures/compiled/expo_kand.pdf Graphic file (type pdf)
 
 <use pictures/compiled/expo_kand.pdf>
-Package pdftex.def Info: pictures/compiled/expo_kand.pdf used on input line 268
+Package pdftex.def Info: pictures/compiled/expo_kand.pdf used on input line 269
 .
 (pdftex.def)             Requested size: 199.16928pt x 182.34991pt.
 
-Underfull \hbox (badness 1360) in paragraph at lines 273--276
+Underfull \hbox (badness 1360) in paragraph at lines 274--277
 \OT1/lmr/m/n/10.95 High-fa-nout-kno-ten be-steht die
  []
 
 
-Underfull \hbox (badness 6542) in paragraph at lines 273--276
+Underfull \hbox (badness 6542) in paragraph at lines 274--277
 \OT1/lmr/m/n/10.95 ei-nes Kan-di-da-ten f[]ur einen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--276
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 
  []
 
 [12 <./pictures/compiled/ohne_highfanout_heu.pdf> <./pictures/compiled/expo_kan
-d.pdf>] <pictures/compiled/cone.pdf, id=476, 137.03696pt x 216.05116pt>
+d.pdf>] <pictures/compiled/cone.pdf, id=478, 137.03696pt x 216.05116pt>
 File: pictures/compiled/cone.pdf Graphic file (type pdf)
 
 <use pictures/compiled/cone.pdf>
-Package pdftex.def Info: pictures/compiled/cone.pdf used on input line 292.
+Package pdftex.def Info: pictures/compiled/cone.pdf used on input line 293.
 (pdftex.def)             Requested size: 126.33061pt x 199.16928pt.
  [13 <./pictures/compiled/cone.pdf>] [14]
-<pictures/compiled/zu_lange_kante.pdf, id=494, 91.53197pt x 160.93022pt>
+<pictures/compiled/zu_lange_kante.pdf, id=496, 91.53197pt x 160.93022pt>
 File: pictures/compiled/zu_lange_kante.pdf Graphic file (type pdf)
 
 <use pictures/compiled/zu_lange_kante.pdf>
 Package pdftex.def Info: pictures/compiled/zu_lange_kante.pdf used on input lin
-e 315.
+e 316.
 (pdftex.def)             Requested size: 129.46928pt x 227.62204pt.
 
-Underfull \hbox (badness 1152) in paragraph at lines 316--316
+Underfull \hbox (badness 1152) in paragraph at lines 317--317
 []\OT1/lmr/m/n/8 Abbildung 9: |Vi-sua-li-sie-rung ei-nes Mat-ches
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 319--324
+Underfull \hbox (badness 5175) in paragraph at lines 320--325
 []\OT1/lmr/m/n/10.95 Abbildung []9[] ver-an-schau-licht ei-ne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 319--324
+Underfull \hbox (badness 10000) in paragraph at lines 320--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 
  []
 
 [15 <./pictures/compiled/zu_lange_kante.pdf>]
-<pictures/compiled/partly_redundant.pdf, id=504, 85.8417pt x 92.94624pt>
+<pictures/compiled/partly_redundant.pdf, id=506, 85.8417pt x 92.94624pt>
 File: pictures/compiled/partly_redundant.pdf Graphic file (type pdf)
 
 <use pictures/compiled/partly_redundant.pdf>
 Package pdftex.def Info: pictures/compiled/partly_redundant.pdf used on input l
-ine 340.
+ine 341.
 (pdftex.def)             Requested size: 131.40154pt x 142.26378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--343
+Underfull \hbox (badness 10000) in paragraph at lines 339--344
 
  []
 
 
-Overfull \hbox (16.13155pt too wide) in paragraph at lines 351--353
+Overfull \hbox (16.13155pt too wide) in paragraph at lines 352--354
 \OT1/lmr/m/n/10.95 In Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten ste
 igt die An-zahl der m[]oglichen
  []
 
 [16 <./pictures/compiled/partly_redundant.pdf>]
-<pictures/compiled/mux_match.pdf, id=517, 94.66768pt x 66.90495pt>
+<pictures/compiled/mux_match.pdf, id=519, 94.66768pt x 66.90495pt>
 File: pictures/compiled/mux_match.pdf Graphic file (type pdf)
 
 <use pictures/compiled/mux_match.pdf>
-Package pdftex.def Info: pictures/compiled/mux_match.pdf used on input line 367
+Package pdftex.def Info: pictures/compiled/mux_match.pdf used on input line 368
 .
 (pdftex.def)             Requested size: 170.71652pt x 120.66463pt.
 
-Underfull \hbox (badness 1173) in paragraph at lines 371--374
+Underfull \hbox (badness 1173) in paragraph at lines 372--375
 \OT1/lmr/m/n/10.95 trenn-te In-put-kan-ten ei-nes Mat-ches
  []
 
 [17 <./pictures/compiled/mux_match.pdf>] [18]
-Overfull \hbox (21.82967pt too wide) in paragraph at lines 405--406
+Overfull \hbox (21.82967pt too wide) in paragraph at lines 406--407
 []\OT1/lmr/m/n/10.95 Bei Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten 
 aber be-schr[]anktem $\OML/lmm/m/it/10.95 fanout[]$\OT1/lmr/m/n/10.95 ,
  []
 
 [19]
-<pictures/compiled/tradeoff_kurve_buckets.pdf, id=551, 171.51678pt x 171.51678p
+<pictures/compiled/tradeoff_kurve_buckets.pdf, id=553, 171.51678pt x 171.51678p
 t>
 File: pictures/compiled/tradeoff_kurve_buckets.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_buckets.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_buckets.pdf used on i
-nput line 432.
+nput line 433.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
-<pictures/compiled/tradeoff_kurve_filtered.pdf, id=552, 171.51678pt x 171.51678
+<pictures/compiled/tradeoff_kurve_filtered.pdf, id=554, 171.51678pt x 171.51678
 pt>
 File: pictures/compiled/tradeoff_kurve_filtered.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_filtered.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_filtered.pdf used on 
-input line 436.
+input line 437.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 459--461
+Underfull \hbox (badness 10000) in paragraph at lines 460--462
 
  []
 
 [21 <./pictures/compiled/tradeoff_kurve_buckets.pdf> <./pictures/compiled/trade
 off_kurve_filtered.pdf>] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 487--488
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
 
  []
 
@@ -2003,20 +2003,20 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.492 ...FPTAS f\"ur das TM mit Konvexkombination}
+l.493 ...FPTAS f\"ur das TM mit Konvexkombination}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 522--523
+Underfull \hbox (badness 10000) in paragraph at lines 523--524
 
  []
 
 
-Overfull \hbox (38.21715pt too wide) in paragraph at lines 524--526
+Overfull \hbox (38.21715pt too wide) in paragraph at lines 525--527
 \OT1/lmr/m/n/10.95 F[]ur je-den Kno-ten wer-den vor-be-rei-tend al-le, kei-ne k
 on-stan-ten Kan-ten []uberdeckenden,
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 540--544
+Underfull \hbox (badness 10000) in paragraph at lines 541--545
 
  []
 
@@ -2024,81 +2024,81 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.548 ...istik f\"ur das TM mit Konvexkombination}
+l.549 ...istik f\"ur das TM mit Konvexkombination}
                                                    [24]
-Underfull \hbox (badness 10000) in paragraph at lines 589--590
+Underfull \hbox (badness 10000) in paragraph at lines 590--591
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--596
+Underfull \hbox (badness 10000) in paragraph at lines 592--597
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 604--605
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 
  []
 
 
-Overfull \hbox (2.84163pt too wide) in paragraph at lines 606--607
+Overfull \hbox (2.84163pt too wide) in paragraph at lines 607--608
 []\OT1/lmr/m/n/10.95 Da Si-gna-le von Out-put-kno-ten mit Fa-nout in $\OML/lmm/
 m/it/10.95 C$ \OT1/lmr/m/n/10.95 aus der Co-ne dar[]uberliegender
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 609--612
+Underfull \hbox (badness 10000) in paragraph at lines 610--613
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 625--626
+Underfull \hbox (badness 10000) in paragraph at lines 626--627
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--630
+Underfull \hbox (badness 10000) in paragraph at lines 628--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--636
+Underfull \hbox (badness 10000) in paragraph at lines 636--637
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 637--639
+Underfull \hbox (badness 10000) in paragraph at lines 638--640
 
  []
 
 
-Overfull \hbox (9.34868pt too wide) in paragraph at lines 640--645
+Overfull \hbox (9.34868pt too wide) in paragraph at lines 641--646
 \OT1/lmr/m/n/10.95 Also muss aus den Kan-di-da-ten-men-gen der Out-puts der-je-
 ni-ge Circuit-Kandidat
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 640--645
+Underfull \hbox (badness 10000) in paragraph at lines 641--646
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--717
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
 
  []
 
 [28]
 
 LaTeX Warning: Reference `subsubsec:heuristik' on page 29 undefined on input li
-ne 725.
+ne 726.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--727
+Underfull \hbox (badness 10000) in paragraph at lines 726--728
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--734
+Underfull \hbox (badness 10000) in paragraph at lines 733--735
 
  []
 
@@ -2106,19 +2106,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 732--734
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.738  \caption{Untere Schranke Arrivaltime}
+l.739  \caption{Untere Schranke Arrivaltime}
                                             
-Underfull \hbox (badness 10000) in paragraph at lines 777--778
+Underfull \hbox (badness 10000) in paragraph at lines 778--779
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 779--782
+Underfull \hbox (badness 10000) in paragraph at lines 780--783
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 783--784
+Underfull \hbox (badness 10000) in paragraph at lines 784--785
 
  []
 
@@ -2126,143 +2126,143 @@ Underfull \hbox (badness 10000) in paragraph at lines 783--784
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.791  \caption{Premapping durch Schätzen}
+l.792  \caption{Premapping durch Schätzen}
                                            
-Underfull \hbox (badness 10000) in paragraph at lines 818--819
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
 
  []
 
 [31] [32] [33] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 872--874
+Underfull \hbox (badness 10000) in paragraph at lines 873--875
 
  []
 
 [35]
-Overfull \hbox (1.68488pt too wide) in paragraph at lines 892--896
+Overfull \hbox (1.68488pt too wide) in paragraph at lines 893--897
 \OT1/lmr/m/n/10.95 den, mit Tech-no-lo-gy Map-ping vollst[]andig be-ar-beit-ba-
 ren Cir-cuits ei-nes Chips.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 892--896
+Underfull \hbox (badness 10000) in paragraph at lines 893--897
 
  []
 
 
-<pictures/compiled/instance_sizes_distribution_table.pdf, id=745, 155.84724pt x
+<pictures/compiled/instance_sizes_distribution_table.pdf, id=747, 155.84724pt x
  97.20013pt>
 File: pictures/compiled/instance_sizes_distribution_table.pdf Graphic file (typ
 e pdf)
  <use pictures/compiled/instance_sizes_distribution_table.pdf>
 Package pdftex.def Info: pictures/compiled/instance_sizes_distribution_table.pd
-f used on input line 899.
+f used on input line 900.
 (pdftex.def)             Requested size: 170.71652pt x 106.47551pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 897--902
+Underfull \hbox (badness 10000) in paragraph at lines 898--903
 
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 902--906
+Underfull \hbox (badness 1776) in paragraph at lines 903--907
 \OT1/lmr/m/n/10.95 liegt bei $15\OML/lmm/m/it/10.95 ; \OT1/lmr/m/n/10.95 26%$. 
 Von al-len Out-
  []
 
 [36 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
-<pictures/tex_files/analysis/tradeoff_curve.pdf, id=774, 237.97708pt x 191.0096
+<pictures/tex_files/analysis/tradeoff_curve.pdf, id=776, 237.97708pt x 191.0096
 1pt>
 File: pictures/tex_files/analysis/tradeoff_curve.pdf Graphic file (type pdf)
  <use pictures/tex_files/analysis/tradeoff_curve.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/tradeoff_curve.pdf used on
- input line 916.
+ input line 917.
 (pdftex.def)             Requested size: 170.71652pt x 137.0255pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 913--919
+Underfull \hbox (badness 10000) in paragraph at lines 914--920
 
  []
 
 
-Overfull \hbox (4.00717pt too wide) in paragraph at lines 919--922
+Overfull \hbox (4.00717pt too wide) in paragraph at lines 920--923
 []\OT1/lmr/m/n/10.95 Hier ist nur ei-ne schwa-che abh[]angigkeit
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 919--922
+Underfull \hbox (badness 1694) in paragraph at lines 920--923
 \OT1/lmr/m/n/10.95 ten des []aquicalenten Cir-cuits sich
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 919--922
+Underfull \hbox (badness 1824) in paragraph at lines 920--923
 \OT1/lmr/m/n/10.95 in abh[]angigkeit des $\OML/lmm/m/it/10.95 ^^U$ \OT1/lmr/m/n
 /10.95 nur ge-ring
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--922
+Underfull \hbox (badness 10000) in paragraph at lines 920--923
 
  []
 
 [37 <./pictures/tex_files/analysis/tradeoff_curve.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 934.
+(hyperref)                removing `math shift' on input line 935.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 934.
+(hyperref)                removing `\varepsilon' on input line 935.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 934.
+(hyperref)                removing `math shift' on input line 935.
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 956--957
+Underfull \hbox (badness 10000) in paragraph at lines 957--958
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 960.
+(hyperref)                removing `math shift' on input line 961.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 960.
+(hyperref)                removing `\varepsilon' on input line 961.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 960.
+(hyperref)                removing `math shift' on input line 961.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 971.
+(hyperref)                removing `math shift' on input line 972.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 971.
+(hyperref)                removing `\varepsilon' on input line 972.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 971.
+(hyperref)                removing `math shift' on input line 972.
 
 [39] (./HeuristikenTM.bbl) [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 986.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 986.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 987.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 987.
  (./HeuristikenTM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 986.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 986.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 987.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 987.
 Package rerunfilecheck Info: File `HeuristikenTM.out' has not changed.
 (rerunfilecheck)             Checksum: 0A9503EB10F9331B3CDE629A1AD0C879;4093.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 986.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 987.
  ) 
 Here is how much of TeX's memory you used:
- 43436 strings out of 493089
- 1020995 string characters out of 6134843
- 1467948 words of memory out of 5000000
- 45779 multiletter control sequences out of 15000+600000
+ 43440 strings out of 493089
+ 1021040 string characters out of 6134843
+ 1467968 words of memory out of 5000000
+ 45782 multiletter control sequences out of 15000+600000
  68479 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,24n,100p,951b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2291,10 +2291,10 @@ ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on HeuristikenTM.pdf (42 pages, 502188 bytes).
+Output written on HeuristikenTM.pdf (42 pages, 502932 bytes).
 PDF statistics:
- 912 PDF objects out of 1000 (max. 8388607)
- 821 compressed objects within 9 object streams
- 223 named destinations out of 1000 (max. 500000)
+ 914 PDF objects out of 1000 (max. 8388607)
+ 823 compressed objects within 9 object streams
+ 224 named destinations out of 1000 (max. 500000)
  528 words of extra memory for PDF output out of 10000 (max. 10000000)
 

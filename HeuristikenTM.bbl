@@ -1,8 +1,13 @@
-\begin{thebibliography}{Moo65}
+\begin{thebibliography}{HNKF18}
 
 \bibitem[Elb17]{Elbert}
 Lucas Elbert.
 \newblock Approximationsalgorithmen f\"ur das {T}echnology-{M}apping, 2017.
+
+\bibitem[HNKF18]{Khan}
+David A.~Hounshell Hassan N.~Khan and Erica R.~H. Fuchs.
+\newblock Science and research policy at the end of moore’s law.
+\newblock {\em Nature Electronics}, 1, January 2018.
 
 \bibitem[Keu87]{DAGON}
 K.~Keutzer.
