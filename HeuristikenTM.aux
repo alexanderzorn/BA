@@ -33,8 +33,8 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Zwei Realisierungen der logischen Funktion $\neg ((w\lor x) \land (y \lor z))$\relax }}{3}{figure.caption.2}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{bild:einfbsp}{{1}{3}{Zwei Realisierungen der logischen Funktion $\neg ((w\lor x) \land (y \lor z))$\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Terminologie und grundlegender Algorithmus}{5}{section.2}}
-\newlabel{sec:terminologie&grundl}{{2}{5}{Terminologie und grundlegender Algorithmus}{section.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Terminologie und Kern Algorithmus}{5}{section.2}}
+\newlabel{sec:terminologie&grundl}{{2}{5}{Terminologie und Kern Algorithmus}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Grundlegende Definitionen}{5}{subsection.2.1}}
 \newlabel{subsec:grundlegende_definitionen}{{2.1}{5}{Grundlegende Definitionen}{subsection.2.1}{}}
 \newlabel{def:gate}{{2.2}{5}{}{theorem.2.2}{}}
@@ -49,8 +49,8 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ein Circuit desen boolesche Funktion $f = 0 $ ist\relax }}{8}{figure.caption.5}}
 \newlabel{bild:compl_redundant}{{4}{8}{Ein Circuit desen boolesche Funktion $f = 0 $ ist\relax }{figure.caption.5}{}}
 \citation{Elbert}
-\@writefile{toc}{\contentsline {section}{\numberline {3}FPTAS und Heuristik}{10}{section.3}}
-\newlabel{sec:allg_algorithmus}{{3}{10}{FPTAS und Heuristik}{section.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Entwicklung von FPTAS und Heuristik}{10}{section.3}}
+\newlabel{sec:allg_algorithmus}{{3}{10}{Entwicklung von FPTAS und Heuristik}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{10}{subsection.3.1}}
 \newlabel{subsec:tradeoffprobleme}{{3.1}{10}{Tradeoffprobleme}{subsection.3.1}{}}
 \citation{ComplexitySynthesis}
@@ -93,6 +93,7 @@
 \newlabel{subsubsec:filtern}{{3.6.1}{20}{Filtern mit Buckets}{subsubsection.3.6.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Einteilen und Filtern mit Buckets\relax }}{21}{figure.caption.13}}
 \newlabel{bild:tradeoff_kurven_filtern}{{12}{21}{Einteilen und Filtern mit Buckets\relax }{figure.caption.13}{}}
+\newlabel{cor:anzahl_klassen}{{3.13}{21}{}{theorem.3.13}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.2}Verkn\IeC {\"u}pfen von Kandidaten}{22}{subsubsection.3.6.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.6.3}Finden von Kandidaten}{22}{subsubsection.3.6.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.7}FPTAS}{22}{subsection.3.7}}
@@ -101,62 +102,63 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Heuristik}{24}{subsection.3.8}}
 \newlabel{subsec:heuristik}{{3.8}{24}{Heuristik}{subsection.3.8}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {}{\ignorespaces Heuristik f\"ur das TM mit Konvexkombination\relax }}{25}{algocf.}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}DAGs mit mehreren Outputs}{26}{section.4}}
-\newlabel{sec:outputs}{{4}{26}{DAGs mit mehreren Outputs}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Required Arrivaltimes}{26}{subsection.4.1}}
-\newlabel{subsec:rat}{{4.1}{26}{Required Arrivaltimes}{subsection.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Implementierung mehrerer Outputs}{27}{subsection.4.2}}
-\newlabel{subsec:mehrere_outputs}{{4.2}{27}{Implementierung mehrerer Outputs}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Premapping von Highfanoutknoten}{29}{section.5}}
-\newlabel{sec:premapping}{{5}{29}{Premapping von Highfanoutknoten}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Triviales Premapping}{29}{subsection.5.1}}
-\newlabel{subsec:triviales_premapping}{{5.1}{29}{Triviales Premapping}{subsection.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Premapping durch Sch\IeC {\"a}tzen}{30}{subsection.5.2}}
-\newlabel{subsec:premapping_duch_schaetzen}{{5.2}{30}{Premapping durch Schätzen}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Erweiterungen der Heuristik}{26}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}DAGs mit mehreren Outputs}{26}{subsection.4.1}}
+\newlabel{sec:outputs}{{4.1}{26}{DAGs mit mehreren Outputs}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Required Arrivaltimes}{26}{subsubsection.4.1.1}}
+\newlabel{subsec:rat}{{4.1.1}{26}{Required Arrivaltimes}{subsubsection.4.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Implementierung mehrerer Outputs}{27}{subsubsection.4.1.2}}
+\newlabel{subsec:mehrere_outputs}{{4.1.2}{27}{Implementierung mehrerer Outputs}{subsubsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Premapping von Highfanoutknoten}{29}{subsection.4.2}}
+\newlabel{sec:premapping}{{4.2}{29}{Premapping von Highfanoutknoten}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Triviales Premapping}{29}{subsubsection.4.2.1}}
+\newlabel{subsec:triviales_premapping}{{4.2.1}{29}{Triviales Premapping}{subsubsection.4.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Premapping durch Sch\IeC {\"a}tzen}{30}{subsubsection.4.2.2}}
+\newlabel{subsec:premapping_duch_schaetzen}{{4.2.2}{30}{Premapping durch Schätzen}{subsubsection.4.2.2}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {}{\ignorespaces Untere Schranke Arrivaltime\relax }}{30}{algocf.}}
 \citation{Post}
 \@writefile{loa}{\contentsline {algocf}{\numberline {}{\ignorespaces Premapping durch Sch\IeC {\"a}tzen\relax }}{31}{algocf.}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{31}{subsection.5.3}}
-\newlabel{subsec:erweitertes_premapping_durch_schaetzen}{{5.3}{31}{Erweitertes Premapping durch Schätzen}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Preprocessing}{32}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Weitere Optimierungskriterien}{32}{section.7}}
-\newlabel{sec:weitere_opt_krit}{{7}{32}{Weitere Optimierungskriterien}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}pinabh\IeC {\"a}ngiges Delay}{32}{subsection.7.1}}
-\newlabel{subsec:pinabh_delay}{{7.1}{32}{pinabhängiges Delay}{subsection.7.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Power Optimierung}{33}{subsection.7.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Layer Assignment}{34}{subsection.7.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Ressource Sharing}{35}{section.8}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{36}{section.9}}
-\newlabel{sec:analyse}{{9}{36}{Qualitäts- und Laufzeit-Analyse}{section.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Struktur realer Instanzen}{36}{subsection.9.1}}
-\newlabel{subsec:struktur_realer_instanzen}{{9.1}{36}{Struktur realer Instanzen}{subsection.9.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{31}{subsubsection.4.2.3}}
+\newlabel{subsec:erweitertes_premapping_durch_schaetzen}{{4.2.3}{31}{Erweitertes Premapping durch Schätzen}{subsubsection.4.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Preprocessing}{32}{subsection.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Weitere Optimierungskriterien}{32}{subsection.4.4}}
+\newlabel{sec:weitere_opt_krit}{{4.4}{32}{Weitere Optimierungskriterien}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Pinabh\IeC {\"a}ngiges Delay}{32}{subsubsection.4.4.1}}
+\newlabel{subsec:pinabh_delay}{{4.4.1}{32}{Pinabhängiges Delay}{subsubsection.4.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Power Optimierung}{33}{subsubsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Layer Assignment}{34}{subsubsection.4.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Ressource Sharing}{35}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{36}{section.6}}
+\newlabel{sec:analyse}{{6}{36}{Qualitäts- und Laufzeit-Analyse}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{36}{subsection.6.1}}
+\newlabel{subsec:struktur_realer_instanzen}{{6.1}{36}{Struktur realer Instanzen}{subsection.6.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Gr\"o\ss verteilung der getesteten Instanzen\relax }}{36}{figure.caption.14}}
 \newlabel{bild:sizes_table}{{13}{36}{Gr\"o\ss verteilung der getesteten Instanzen\relax }{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Analyse der Ergebnisse}{37}{subsection.9.2}}
-\newlabel{subsec:analyse_der_ergebnisse}{{9.2}{37}{Analyse der Ergebnisse}{subsection.9.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.1}Tradeoffparameter}{37}{subsubsection.9.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{37}{subsection.6.2}}
+\newlabel{subsec:analyse_der_ergebnisse}{{6.2}{37}{Analyse der Ergebnisse}{subsection.6.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{37}{subsubsection.6.2.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Einfluss von $\lambda $ auf SNS Area und Power\relax }}{38}{figure.caption.15}}
 \newlabel{bild:area_slack_tradeoff}{{14}{38}{Einfluss von $\lambda $ auf SNS Area und Power\relax }{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.2}Premapping}{38}{subsubsection.9.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.3}Preprozessing}{38}{subsubsection.9.2.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.4}Power und Area Vergleich}{38}{subsubsection.9.2.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.9.2.5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{38}{subsubsection.9.2.6}}
-\newlabel{subsubsec:guetevgl_kleiner_opt_instanzen}{{9.2.6}{38}{Gütevergleich kleiner "optimal " gel instanzen}{subsubsection.9.2.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{38}{subsubsection.9.2.7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{39}{subsubsection.9.2.8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{39}{subsection.9.3}}
-\newlabel{subsec:laufzeitanalyse}{{9.3}{39}{Laufzeitanalyse}{subsection.9.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.1}Globale Laufzeitanalyse}{39}{subsubsection.9.3.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.2}Lokale Laufzeitanalyse}{39}{subsubsection.9.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{39}{subsubsection.9.3.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{39}{subsubsection.9.3.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}G\IeC {\"u}te laufzeit vergleich}{39}{subsection.9.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.4.1}Kleine Instanzen}{39}{subsubsection.9.4.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.4.2}Allgemein}{39}{subsubsection.9.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{39}{subsubsection.9.4.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {10}Fazit und Ausblick}{39}{section.10}}
-\newlabel{sec:fazit_und_ausblick}{{10}{39}{Fazit und Ausblick}{section.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{38}{subsubsection.6.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{38}{subsubsection.6.2.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{38}{subsubsection.6.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.5}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.6.2.5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{38}{subsubsection.6.2.6}}
+\newlabel{subsubsec:guetevgl_kleiner_opt_instanzen}{{6.2.6}{38}{Gütevergleich kleiner "optimal " gel instanzen}{subsubsection.6.2.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.7}Verhalten weiterer Kosten}{38}{subsubsection.6.2.7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.8}Zusammenfassung?}{39}{subsubsection.6.2.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{39}{subsection.6.3}}
+\newlabel{subsec:laufzeitanalyse}{{6.3}{39}{Laufzeitanalyse}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{39}{subsubsection.6.3.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{39}{subsubsection.6.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.3}Bucket filetering $\varepsilon $ im vergleich }{39}{subsubsection.6.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{39}{subsubsection.6.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{39}{subsection.6.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{39}{subsubsection.6.4.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{39}{subsubsection.6.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{39}{subsubsection.6.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Fazit und Ausblick}{39}{section.7}}
+\newlabel{sec:fazit_und_ausblick}{{7}{39}{Fazit und Ausblick}{section.7}{}}
 \citation{*}
 \bibdata{HeuristikenTM.bib}
 \bibcite{Elbert}{{Elb17}{}{{}}{{}}}
@@ -168,4 +170,4 @@
 \bibcite{Tran}{{Tra15}{}{{}}{{}}}
 \bibstyle{alpha}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{40}{section.10}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{40}{section.7}}

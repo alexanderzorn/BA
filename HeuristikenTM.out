@@ -1,8 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.2}{Terminologie und grundlegender Algorithmus}{}% 2
+\BOOKMARK [1][-]{section.2}{Terminologie und Kern Algorithmus}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Grundlegende Definitionen}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Kern Algorithmus}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{FPTAS und Heuristik}{}% 5
+\BOOKMARK [1][-]{section.3}{Entwicklung von FPTAS und Heuristik}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Klonen}{subsection.3.2}% 8
@@ -18,38 +18,39 @@
 \BOOKMARK [3][-]{subsubsection.3.6.3}{Finden von Kandidaten}{subsection.3.6}% 18
 \BOOKMARK [2][-]{subsection.3.7}{FPTAS}{section.3}% 19
 \BOOKMARK [2][-]{subsection.3.8}{Heuristik}{section.3}% 20
-\BOOKMARK [1][-]{section.4}{DAGs mit mehreren Outputs}{}% 21
-\BOOKMARK [2][-]{subsection.4.1}{Required Arrivaltimes}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.2}{Implementierung mehrerer Outputs}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Premapping von Highfanoutknoten}{}% 24
-\BOOKMARK [2][-]{subsection.5.1}{Triviales Premapping}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{Premapping durch Sch\344tzen}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.3}{Erweitertes Premapping durch Sch\344tzen}{section.5}% 27
-\BOOKMARK [1][-]{section.6}{Preprocessing}{}% 28
-\BOOKMARK [1][-]{section.7}{Weitere Optimierungskriterien}{}% 29
-\BOOKMARK [2][-]{subsection.7.1}{pinabh\344ngiges Delay}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.2}{Power Optimierung}{section.7}% 31
-\BOOKMARK [2][-]{subsection.7.3}{Layer Assignment}{section.7}% 32
-\BOOKMARK [1][-]{section.8}{Ressource Sharing}{}% 33
-\BOOKMARK [1][-]{section.9}{Qualit\344ts- und Laufzeit-Analyse}{}% 34
-\BOOKMARK [2][-]{subsection.9.1}{Struktur realer Instanzen}{section.9}% 35
-\BOOKMARK [2][-]{subsection.9.2}{Analyse der Ergebnisse}{section.9}% 36
-\BOOKMARK [3][-]{subsubsection.9.2.1}{Tradeoffparameter}{subsection.9.2}% 37
-\BOOKMARK [3][-]{subsubsection.9.2.2}{Premapping}{subsection.9.2}% 38
-\BOOKMARK [3][-]{subsubsection.9.2.3}{Preprozessing}{subsection.9.2}% 39
-\BOOKMARK [3][-]{subsubsection.9.2.4}{Power und Area Vergleich}{subsection.9.2}% 40
-\BOOKMARK [3][-]{subsubsection.9.2.5}{Bucket filetering \040im vergleich }{subsection.9.2}% 41
-\BOOKMARK [3][-]{subsubsection.9.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.9.2}% 42
-\BOOKMARK [3][-]{subsubsection.9.2.7}{Verhalten weiterer Kosten}{subsection.9.2}% 43
-\BOOKMARK [3][-]{subsubsection.9.2.8}{Zusammenfassung?}{subsection.9.2}% 44
-\BOOKMARK [2][-]{subsection.9.3}{Laufzeitanalyse}{section.9}% 45
-\BOOKMARK [3][-]{subsubsection.9.3.1}{Globale Laufzeitanalyse}{subsection.9.3}% 46
-\BOOKMARK [3][-]{subsubsection.9.3.2}{Lokale Laufzeitanalyse}{subsection.9.3}% 47
-\BOOKMARK [3][-]{subsubsection.9.3.3}{Bucket filetering \040im vergleich }{subsection.9.3}% 48
-\BOOKMARK [3][-]{subsubsection.9.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.9.3}% 49
-\BOOKMARK [2][-]{subsection.9.4}{G\374te laufzeit vergleich}{section.9}% 50
-\BOOKMARK [3][-]{subsubsection.9.4.1}{Kleine Instanzen}{subsection.9.4}% 51
-\BOOKMARK [3][-]{subsubsection.9.4.2}{Allgemein}{subsection.9.4}% 52
-\BOOKMARK [3][-]{subsubsection.9.4.3}{G\374te Bucket filetering \040}{subsection.9.4}% 53
-\BOOKMARK [1][-]{section.10}{Fazit und Ausblick}{}% 54
-\BOOKMARK [1][-]{section.10}{Literaturverzeichnis}{}% 55
+\BOOKMARK [1][-]{section.4}{Erweiterungen der Heuristik}{}% 21
+\BOOKMARK [2][-]{subsection.4.1}{DAGs mit mehreren Outputs}{section.4}% 22
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Required Arrivaltimes}{subsection.4.1}% 23
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Implementierung mehrerer Outputs}{subsection.4.1}% 24
+\BOOKMARK [2][-]{subsection.4.2}{Premapping von Highfanoutknoten}{section.4}% 25
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Triviales Premapping}{subsection.4.2}% 26
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Premapping durch Sch\344tzen}{subsection.4.2}% 27
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Erweitertes Premapping durch Sch\344tzen}{subsection.4.2}% 28
+\BOOKMARK [2][-]{subsection.4.3}{Preprocessing}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.4}{Weitere Optimierungskriterien}{section.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Pinabh\344ngiges Delay}{subsection.4.4}% 31
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Power Optimierung}{subsection.4.4}% 32
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Layer Assignment}{subsection.4.4}% 33
+\BOOKMARK [1][-]{section.5}{Ressource Sharing}{}% 34
+\BOOKMARK [1][-]{section.6}{Qualit\344ts- und Laufzeit-Analyse}{}% 35
+\BOOKMARK [2][-]{subsection.6.1}{Struktur realer Instanzen}{section.6}% 36
+\BOOKMARK [2][-]{subsection.6.2}{Analyse der Ergebnisse}{section.6}% 37
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Tradeoffparameter}{subsection.6.2}% 38
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Premapping}{subsection.6.2}% 39
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Preprozessing}{subsection.6.2}% 40
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Power und Area Vergleich}{subsection.6.2}% 41
+\BOOKMARK [3][-]{subsubsection.6.2.5}{Bucket filetering \040im vergleich }{subsection.6.2}% 42
+\BOOKMARK [3][-]{subsubsection.6.2.6}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.6.2}% 43
+\BOOKMARK [3][-]{subsubsection.6.2.7}{Verhalten weiterer Kosten}{subsection.6.2}% 44
+\BOOKMARK [3][-]{subsubsection.6.2.8}{Zusammenfassung?}{subsection.6.2}% 45
+\BOOKMARK [2][-]{subsection.6.3}{Laufzeitanalyse}{section.6}% 46
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Globale Laufzeitanalyse}{subsection.6.3}% 47
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Lokale Laufzeitanalyse}{subsection.6.3}% 48
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Bucket filetering \040im vergleich }{subsection.6.3}% 49
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.6.3}% 50
+\BOOKMARK [2][-]{subsection.6.4}{G\374te laufzeit vergleich}{section.6}% 51
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Kleine Instanzen}{subsection.6.4}% 52
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Allgemein}{subsection.6.4}% 53
+\BOOKMARK [3][-]{subsubsection.6.4.3}{G\374te Bucket filetering \040}{subsection.6.4}% 54
+\BOOKMARK [1][-]{section.7}{Fazit und Ausblick}{}% 55
+\BOOKMARK [1][-]{section.7}{Literaturverzeichnis}{}% 56
