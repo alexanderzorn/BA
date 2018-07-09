@@ -911,19 +911,31 @@ Sei $H_C$ die Menge Highfanouknoten, welche keine Inputs sind, eines Circuits $C
  \label{subsec:analyse_der_ergebnisse}
  Es folgt eine Anlayse der Ergebnisse des Algorithmus hinsichtlich der verschiedenen, oben vorgestellten Variationen.
 \subsubsection{Tradeoffparameter}
-Area, SNS, WS oder Energieverbrauch eines Circuits liegen nicht unbedingt in derselben Größenordnung. \textcolor{red}{<- rauslassen?}Im Folgenden wird ausgehend von der \TM Heuristik ohne Präpozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach \textcolor{red}{kommt das noch? ->}Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
+Area, SNS, WS oder Energieverbrauch eines Circuits liegen nicht unbedingt in derselben Größenordnung. Dies hat zur Folge, dass selbst ein vielfacher Verbrauch einer Ressource sich in den Kosten des Circuits-Kandidaten evtl. nicht bemerkbar macht. In der Praxis liegen Power, Area oder Arrivaltime \"ublicherweise um mehrere Zehnerpotenzen auseinander. Der Unterschied des Verbrauchs einer Ressource von dem Gate welches den geringsten Verbrauch in Anspruch nimmt zu dem gr\"o{\ss}ten Verbrauche liegt in der Regel bei maximal einem Faktor 10. Der Ressourcenverbrauch eines Gates wird nun durch teilen durch den Verbrauch eines sparsamen Gates normalisiert. Daraufhin liegen die Verbr\"ache aller Ressourcen in derselben Gr\"o{\ss}enordnung. \\
+Im Folgenden wird ausgehend von der \TM Heuristik ohne Präpozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
 Abbildung \ref{bild:area_slack_tradeoff} veranschaulicht die durchschnittliche prozentuale Verbesserung der Kosten abhängig von $\lambda$.\\
-   \begin{wrapfigure}{r}{6cm}
-		\includegraphics[width = 6cm]{pictures/tex_files/analysis/tradeoff_curve}
-		\caption{Einfluss von $\lambda$}
-		\label{bild:area_slack_tradeoff}
-	\end{wrapfigure}
+	\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{pictures/tex_files/analysis/tradeoff_curve}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{pictures/tex_files/analysis/tradeoff_curve_vt}
+\end{subfigure}
+\caption{Einfluss von $\lambda$ auf SNS Area und Power}
+\label{bild:area_slack_tradeoff}
+\end{figure}
+
 Hier ist nur eine schwache abh\"angigkeit bez\"uglich des Tradeoffparameters zu beobachten. Dies liegt daran, dass im Schnitt f\"ur jeden dritten Knoten ein Kandidat gesch\"atzt wird. Des Weiteren liegen $SNS$ und $Area$ oft in derselben Gr\"o\ss enordnung wodurch ein schnellerer Kanidat mit nahezu dengleichen Kosten gesch\"atzt wird wie ein kleinerer und somit unabhängig des $\lambda$ sehr kosten\"ahnliche Kandidaten gew\"ahlt werden, wodurch die Kosten des \"aquicalenten Circuits sich in abh\"angigkeit des $\lambda$ nur gering ver\"andern.\\
-Unabh\"angig von $\lambda$ zeigt die Abbildung jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$ und $Area$. In folgenden Tests wird $\lambda = $ \textcolor{red}{?} gesetzt, da dies in den getesteten Instanzen die gr\"o\ss te Verbessung im Schnitt gebracht hat.\\
+Unabh\"angig von $\lambda$ zeigt die Abbildung jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$, $Area$ und besonder $Power$.\\
+In folgenden Tests wird $\lambda = $ \textcolor{red}{?} gesetzt, da dies in den getesteten Instanzen die gr\"o\ss te Verbessung im Schnitt gebracht hat.\\
 
 Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im Folgenen sei $\lambda$ durch diese Werte vorgegeben. 
 
-\textcolor{red}{was ist mit lambda abh. von diesem verhätnis wählen ?}
+\textcolor{red}{genauer daruauf eingehen warum das lambda egal ist und auf Lukas schonere Bilder verweisen\\
+\Large heute noch premapping laufe starten und code entspr. umbauen und diese unterkapitel fertig schreiben}
 
 \subsubsection{Premapping}
 

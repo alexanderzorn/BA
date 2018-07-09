@@ -43,8 +43,8 @@
 \contentsline {subsubsection}{\numberline {9.2.5}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.9.2.5}
 \contentsline {subsubsection}{\numberline {9.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{38}{subsubsection.9.2.6}
 \contentsline {subsubsection}{\numberline {9.2.7}Verhalten weiterer Kosten}{38}{subsubsection.9.2.7}
-\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{38}{subsubsection.9.2.8}
-\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{38}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.2.8}Zusammenfassung?}{39}{subsubsection.9.2.8}
+\contentsline {subsection}{\numberline {9.3}Laufzeitanalyse}{39}{subsection.9.3}
 \contentsline {subsubsection}{\numberline {9.3.1}Globale Laufzeitanalyse}{39}{subsubsection.9.3.1}
 \contentsline {subsubsection}{\numberline {9.3.2}Lokale Laufzeitanalyse}{39}{subsubsection.9.3.2}
 \contentsline {subsubsection}{\numberline {9.3.3}Bucket filetering $\varepsilon $ im vergleich }{39}{subsubsection.9.3.3}
