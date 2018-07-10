@@ -59,6 +59,8 @@ Ziel des Technology Mappings ist es, für eine logische Funktion eine Realisieru
 Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in kurzer Zeit finden. Die Lösung dieses Problems für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP-vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in möglichst kurzer Zeit einen kostenoptimierten Umbau ermöglicht.\\
 \textcolor{red}{am ende hier noch eine kurze Quellenübersicht geben an lukas orientiert}
 
+Dieser wurde im Rahmen eines IBM Projekts mit dem Institut für Diskrete Mathematik in Bonn implementiert und am Ende dieser Arbeit getestet.
+
 \newpage
 
 \section{Terminologie und Kern Algorithmus}
@@ -468,6 +470,7 @@ Deshalb geht der im Folgenden vorgestellte polynomielle Algorithmus von einer be
 Es folgt ein kurze Beschreibung, wie die Kandidatemenge eines Knotens gebildet wird.
 
 \subsubsection{Verknüpfen von Kandidaten}
+\label{subsubsec:verknuepfen_kandidaten}
 Ohne Highfanoutknoten lassen sich bei der Konstruktion eines Kandidaten für einen Knoten $x$, die Kandidaten $k_i$ der Inputs $i$ unabhängig voneinander wählen.
 Da das Klonen ausgeschlossen wurde, ist dies bei Circuits mit Knoten höheren Fanouts nicht möglich.\\
 Die folgenden Bedingungen stellen sicher, dass Klonen verhindert wird. \\
@@ -623,32 +626,32 @@ Der Vollständigkeit wegen folgt die genaue Definition der RAT:\\
 	Die RAT der Outputs wird hierbei (wie das Delay der Inputknoten) als gegeben angenommen. 
 \end{definition}
 
-In der Praxis kommen die Signale oft später an als gewünscht. Der Betrag des Slack $slack(v) := RAT(v) - AT(v)$ gibt, wenn $slack(v) \leq 0 $, an, um wie viel Zeit sich das letzte Signal an $v$ verspätet. Somit ist es viel sinnvoller einen gegebenen Circuit hinsichtlich des negativen Slacks zu verbessern. \\
+In der Praxis kommen die Signale oft später an als erwartet. Der Betrag des Slack $slack(v) := RAT(v) - AT(v)$ gibt, wenn $slack(v) \leq 0 $, an, um wie viel Zeit sich das letzte Signal an $v$ verspätet. Somit ist es viel sinnvoller einen gegebenen Circuit hinsichtlich des negativen Slacks zu verbessern. \\
 Hieraus ergeben sich für einen Circuit die beiden folgenden Werte: 
 \begin{itemize}
 	\item Worst-Slack (WS): Wert des kleinsten Slacks für einen Knoten auf dem Circuit.
 	\item Sum-of-Negative-Slacks (SNS): Summe aller negativer Slacks der Outputs eines Circuits.
 \end{itemize}
-Letzterer ist in der Praxis gefragter, da eine sehr gute Verbesserung der SNS eine Verbesserung des WS in der Regel mit einschließt. \\
+Letzterer hat in der Praxis mehr Bedeutung, da eine sehr gute Verbesserung der SNS eine Verbesserung des WS in der Regel mit einschließt. \\
 
-Angenommen man betrachtet einen Chip, dann lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird.\\
+Bei der Analyse eines Chips, lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird.\\
 Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einem Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
-Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquivalenten Circuit C', mit geringerer Tiefe(Anzahl Kanten eines bzgl. Kantenenge längsten  Weges in $C$), umformen. Diese umgebauten Instanzen besitzen nur einen Output, wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips in sehr schneller Laufzeit des Algorithmus. Der Nachteil jedoch ist, dass ein Chip oft sehr viele Wege besitzt, welche einen schlechten Slack realisieren und man somit den Chip nur inkrementell beschleunigt.\\
+Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquivalenten Circuit C', mit geringerer Tiefe(Anzahl Kanten eines bzgl. Kantenenge längsten  Weges in $C$), umformen. Diese umgebauten Instanzen besitzen nur einen Output und wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips durch eine geringe Laufzeit des Algorithmus. Der Nachteil ist jedoch, dass ein Chip oft sehr viele Wege mit einem schlechten negativen Slack hat und man somit den Chip nur inkrementell beschleunigt.\\
 
-Eine weitere Herangehensweise für das \TM ist es, einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach AT, da nur Instanzen mit einem Output betrachtet wurden und RAT für diesen eine Konstante ist.
+Eine alternative Herangehensweise an das \TM ist, einen Circuit dahingehend zu optimieren, dass die SNS des Outputs minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach $AT$, da nur Instanzen mit einem Output betrachtet wurden und $RAT$ für diesen eine Konstante ist. Deshalb wird dieser Weg hier nicht weiter verfolgt.
 
 \subsubsection{Implementierung mehrerer Outputs}
 \label{subsec:mehrere_outputs}
-Wie in der Einleitung beschrieben, ist es das Ziel dieser Arbeit eine Heuristik für das \TM zu entwickeln, welche auf großen Teilen eines Chips lauffähig (bezüglich Laufzeit) ist. Da ein solcher Chip mehr als nur einen Output-Pin hat, lässt er sich in zusammenhängende Circuits unterteilen, welche mehr als einen Output-Knoten besitzen. Folgende Umbauten sind notwendig, um mit dem Kern-Algorithmus auch diese Instanzen verbessern zu können.\\
+Wie in der Einleitung beschrieben, ist es das Ziel dieser Arbeit eine Heuristik für das \TM zu entwickeln, welche auf großen Teilen eines Chips lauffähig (bezüglich Laufzeit) ist. Da ein solcher Chip mehr als nur einen Output-Pin hat, lässt er sich in zusammenhängende Circuits unterteilen, welche mehr als einen Output-Knoten haben. Folgende Umbauten sind notwendig, um mit dem Kern-Algorithmus auch diese Instanzen zu verbessern.\\
 
 Als erstes fällt auf, dass sich, wenn der Algorithmus für jeden Knoten die Kandidatenmenge errechnet hat, nicht einfach der beste Kandidat für den Output aus seiner Tradeoff-Kurve auswählen lässt. Dieser besitzt bei mehreren Outputs nämlich in der Regel offene Knoten. 
-Jedoch ist bereits bekannt, wie man mehrere Kandidaten auswählt, so dass diese sich an den sich überschneidenden Knoten übereinstimmen. Somit lässt sich ein Circuit mit den bekannten Mitteln realisieren, welcher eine Kostenfunktion hinsichtlich Größe und WS optimiert. \\
+Es wurde bereits dargestellt, wie man mehrere Kandidaten auswählt, so dass diese an allen offenen Knoten übereinstimmen. Somit lässt sich ein Circuit mit den Mitteln aus Kapitel \ref{subsubsec:verknuepfen_kandidaten} realisieren, welcher eine Kostenfunktion hinsichtlich Größe und WS optimiert. \\
 
 Hieraus ergibt sich eine zweite Änderung. Bisher wurde das Delay eines Circuits C optimiert, indem das Signal des einen Outputs nach dem Umbau früher ankommt. Dies lässt sich auf einen Circuit mit mehreren Outputs übertragen. Da es mehrere Signale gibt, wählt man den Kandidaten des Outputs mit dem größten negativen Slack zuerst und die anderen folgen sortiert der Größe ihres Slacks nach (absteigend). Dies garantiert jedoch nicht, dass der WS des Circuits nach dem Umbau besser ist als vorher, da evtl. der Knoten der vorher den WS bildete, besser wird. Ein anderer Output könnte jedoch durch diesen Umbau schlechter werden. \\
-Um dieses Problem zu umgehen, verändert man $C$ vor dem \TM durch das Verbinden aller Outputs mit einem virtuellen Gate, mit nur einem möglichen Match (dem Gate an sich). Der veränderte Circuit lässt sich nun wie im Kern-Algorithmus optimieren und es wird automatisch das gerade dargestellte Problem gelöst.\\ 
+Um dieses Problem zu umgehen, verändert man $C$ vor dem \TM durch das Verbinden aller Outputs mit einem virtuellen Gate, mit nur einem möglichen Match (dem Gate an sich). Der veränderte Circuit lässt sich nun wie im Kern-Algorithmus optimieren und es wird automatisch das gerade aufgezeigte Problem gelöst.\\ 
 Wie bereits in Kapitel \ref{subsec:rat}  erläutert ist es in der Praxis profitabler die SNS des Circuits zu verbessern, anstatt den WS.\\
-Also muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut werden, welcher die SNS minimiert.\\
- Dieses Kriterium ersetzt, von diesem Punkt an,  das der Delay-Optimierung in der Kostenfunktion.\\
+Dementsprechend muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut werden, welcher die SNS minimiert.\\
+Dieses Kriterium ersetzt, von diesem Punkt an,  das Kriterium der Delay-Optimierung in der Kostenfunktion.\\
  
  Des Weiteren müssen nach dem \TM noch alle Outputs mit der bis zu ihnen berechneten logischen Funktion, vorhanden sein. Daraus folgt, dass über einen Output-Knoten, welcher in dem Circuit noch mindestens einen Nachfolger hat, nicht gematcht werden darf, weil sonst ein nicht erlaubter Seitenoutput entstehen würde.\\
  Dies lässt sich dadurch sicherstellen, dass man eine seiner ausgehenden Kanten als konstant deklariert, wie das bereits bei den zu langen Kanten geschehen ist. 
@@ -724,19 +727,20 @@ Der exponentielle Anstieg der Kandidatenmenge wird, wie in Kapitel \ref{subsec:k
 
  Die Kandidatenmenge eines jeden Highfanoutknotens wird, wie bereits in Kapitel \ref{subsec:heuristik} dargestellt, auf eins reduziert. Diese Routine wird auch das Premapping der Highfanoutknoten genannt. Hieraus folgt, dass jeder Knoten des Circuits $C$ nur noch eine Klasse an Kandidaten besitzt, denn alle offenen Knoten seiner Cone sind Highfanoutknoten und somit festgelegt.  Die Kandidatenmenge der Outputs, welche noch Nachfolger $o \in C$ haben, wird ebenfalls auf einen Kandidaten reduziert. Dies verhindert das Klonen in $cone(o)$, da  auch die nicht offenen Knoten von $o$ von allen Knoten der Menge $O := \{ v \in Outputs(C): o \in cone(v) \}$ mit einem Kandidaten belegt werden.\\
 Nun lässt sich der bestmögliche Kandidat eines jeden Outputs ohne Nachfolger finden, indem in der einzig verbleibenden Tradeoffkurve nach dem Kandidaten mit den geringsten Kosten gesucht wird. Dadurch ist das Finden des  bestmöglichen Circuit Kandidaten,  welcher keine der gelöschten Kandidaten benutzt, ohne Laufzeiteinbußen möglich. \\
-Daraus folgt, dass der zu wählende Circuit-Kandidat eindeutig ist, sobald jedem Highfanoutknoten ein Kandidat zugewiesen wurde. Dadurch hat die Wahl der Premapping Routine eine zentrale Bedeutung in der Heuristik.\\
-Im Folgenden werden drei verschiedene Routinen vorgestellt und auf deren Eigenschaften eingegangen. Genauere Informationen über die Unterschiede zwischen den Resultaten dieser Routinen sind in Kapitel \ref{sec:analyse} dargestellt.
+Daraus folgt, dass der zu wählende Circuit-Kandidat eindeutig ist, sobald jedem Highfanoutknoten ein Kandidat zugewiesen wurde. Aus diesem Grund hat die Wahl der Premapping Routine eine zentrale Bedeutung in der Heuristik.\\
+
+Im Folgenden werden drei verschiedene Routinen vorgestellt und auf deren Eigenschaften eingegangen. Weitergehende Analysen bezüglich der Unterschiede zwischen den Resultaten dieser Routinen sind in Kapitel \ref{sec:analyse} dargestellt.
 
 \subsubsection{Triviales Premapping}
 \label{subsec:triviales_premapping}
-Diese Methode des Premappings wurde bereits in Kapitel \ref{subsubsec:heuristik} angewandt. Hierbei wird für jeden Knoten folgender Kandidat ausgewählt: \[ guess \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \} \]
-Diese Methode bietet sich an, lässt sich jedoch noch wie im Folgenden beschrieben weiter verbessern.\\
+Diese Methode des Premappings wurde bereits in Kapitel \ref{subsec:heuristik} angewandt. Hierbei wird für jeden Knoten folgender Kandidat ausgewählt: \[ guess \gets \min\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \} \]
+Diese Methode lässt sich jedoch noch wie folgt verbessern.\\
 
-Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen. Nähere Informationen darüber, wie weit eine solche Lösung von der optimalen entfernt ist, siehe Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen}.
+Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der Optimalen. Die Analyse, wie weit eine solche Lösung von der Optimalen entfernt ist, ist in Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen} dargestellt.
  
 \subsubsection{Premapping durch Schätzen}
 \label{subsec:premapping_duch_schaetzen}
- Beim Premapping durch Schätzen wird versucht, eine Vermutung für die Kosten eines geeigneten Kandidaten aufzustellen. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
+Beim Premapping durch Schätzen wird eine Vermutung für die Kosten des Kandidaten eines jeden Highfanoutknoten in einer optimalen Lösung des \TM aufgestellt. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
 Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Folgender Algorithmus wird für die Schrankenberechnung benutzt.\\
  
 \begin{algorithm}[H]
@@ -825,15 +829,15 @@ $C'_{Area} \gets untere\_schranke\_Area(C)$\;
 \end{algorithm}\ \\
  
 Die Schritte 1-9 werden an den Anfang der Heuristik für das TM mit Konvexkombination gesetzt. Die Schritte 13-17 ersetzen die Schritte 12-16 der Heuristik.\\ 
-Es ist ausreichend alle möglichen Matche der Knoten nur einmal zu errechnen und diese Werte sowhl für die untere Schranke als auch für die Heuristik selber zu nutzen. Mit diesem Trick lassen sich beide Schranken in kurzer Zeit errechnen. Genauere Informationen zur Laufzeit und Güte der Premapping Routinen befindet sich in Kapitel \ref{sec:analyse}.\\
-Diese Routine liefert sehr gut Ergebnisse, da durch die Berechnung der Schranken das Potenzial eines Knoten errechnet wird, wie klein oder schnell Kandidaten dieses Knotens werden können. Mithilfe des Tradeoffparameter errechnet sich hieraus ein geschätzter Kostenwert. Es wird nur der Kandidat ausgewählt, welcher die Differenz zu dieser Schätzung minimiert.
+Es ist ausreichend, alle möglichen Matche der Knoten nur einmal zu errechnen und diese Werte sowohl für die untere Schranke als auch für die Heuristik zu nutzen. Mit diesem Trick lassen sich beide Schranken in kurzer Zeit errechnen. Genauere Informationen zur Laufzeit und Güte der Premapping Routinen befindet sich in Kapitel \ref{sec:analyse}.\\
+Diese Routine liefert sehr gute Ergebnisse, da durch die Berechnung der Schranken das Potenzial eines Knotens errechnet wird (wie klein oder schnell Kandidaten dieses Knotens werden können). Mithilfe des Tradeoffparameters errechnet sich hieraus ein geschätzter Kostenwert. Es wird nur der Kandidat ausgewählt, welcher die Differenz zu dieser Schätzung minimiert.
 
 \subsubsection{Erweitertes Premapping durch Schätzen}
 \label{subsec:erweitertes_premapping_durch_schaetzen}
 \textcolor{red}{gilt es noch zu entwickeln} 
 
 \subsection{Preprocessing}
-Die Möglichkeiten durch das Matching sind im Allgemeinen vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
+Die Möglichkeiten durch das Matching sind prinzipiell vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
 Um diesem Problem aus dem Weg zu gehen, ist es sinnvoll vor dem \TM Algorithmus jedes Gate mit mehr als zwei eingehenden Kanten durch einen kleinen Subcircuit, bestehend aus zwei Input Gates, zu ersetzen. Dies ist immer möglich, da jede logische Funktion nur mithilfe von NAND2 und INV Gates realisierbar ist (\cite{Post}) und auf jedem realen Chip standardmäßig ein AND oder NAND sowie ein OR oder NOR in der Library vorhanden sind. INV Gates sind fester Bestandteil jeder realen Library.\\
 Dabei werden die Gates nach folgender Routine zerlegt. \textcolor{red}{hier das huffman coding und ein Beispiel mit einbringen und decomposing begriff einführen}\\
 Der Vorteil des Decompose ist, dass die Möglichkeiten des \TM deutlich erweitert werden. Jedoch werden für ein AND4 Gate Beispielsweise 3 AND2 Gates eingesetzt, was dazu führt, dass sich meist die Kosten des Ausgangscircuits verschlechtern.\\
@@ -842,11 +846,11 @@ Eine ausführliche Analyse der Vor- und Nachteile des Decomposen finden sich in 
 
 \subsection{Weitere Optimierungskriterien}
 \label{sec:weitere_opt_krit}
-Das \TM arbeitet im Chip-Design auf realen Instanzen. Dadurch kommen zu den bereits vorgestellten weitere mögliche Optimierungskriterien hinzu. Es handelt sich hierbei einmal um Kriterien, welche in die Kostenfunktion mit eingebracht werden können und somit während des \TM optimiert werden. Des Weiteren verursacht der neu implementierte Circuit Kosten, welche im \TM nicht beachtet wurden, für die es jedoch einen übermäßigen Anstieg zu vermeiden gilt. Ein Beispiel hierfür sind die bereits erwähnten zu langen Kanten. Weitere Kriterien folgen.\\
-Des Weiteren sind viele Gates, zumindest teilweise, symmetrisch aufgebaut (Bsp.: AND, OR ...) und die Signale der Inputs brauchen unterschiedlich lange zum Output des Gates. Daraus folgt, dass durch Permutierung von Teilmengen der Inputs Geschwindigleitsvorteile geschaffen werden können.  
+Das \TM arbeitet im Chip-Design auf realen Instanzen. Dadurch kommen zu den bereits vorgestellten weitere mögliche Optimierungskriterien hinzu. Es handelt sich hierbei um Kriterien, welche in die Kostenfunktion mit eingebracht werden können und somit während des \TM optimiert werden. Des Weiteren verursacht der neu implementierte Circuit Kosten, welche im \TM nicht beachtet wurden, für die es jedoch einen übermäßigen Anstieg zu vermeiden gilt. Ein Beispiel hierfür sind die bereits erwähnten zu langen Kanten.\\
+Darüber hinaus sind viele Gates, zumindest teilweise, symmetrisch aufgebaut (Bsp.: AND, OR ...) und die Signale der Inputs brauchen unterschiedlich lange zum Output des Gates. Daraus folgt, dass durch Permutierung von Teilmengen der Inputs Geschwindigkeitsvorteile geschaffen werden können.  
 \subsubsection{Pinabhängiges Delay}
 \label{subsec:pinabh_delay}
-Bis hierhin war das Delay eines Gates als eine nicht negative reelle Zahl definiert. Die meisten Gates besitzen mehr als einen Input. Die Signale der Inputs brauchen nicht alle dieselbe Zeit um zum Output zu gelangen. Logisch werden die Signale der Inputs zwar alle miteinander verrechnet, jedoch geschieht dies physikalisch nicht gleichzeitig und somit müssen nicht alle Signale zur selben Zeit an den Inputs anliegen.\\
+Bis hierhin war das Delay eines Gates als eine nicht negative reelle Zahl definiert. Die meisten Gates besitzen jedoch mehr als nur einen Input. Die Signale der Inputs brauchen nicht alle dieselbe Zeit um zum Output zu gelangen. Logisch werden die Signale der Inputs zwar alle miteinander verrechnet, jedoch geschieht dies physikalisch nicht gleichzeitig und somit müssen nicht alle Signale zur selben Zeit an den Inputs anliegen.\\
 Die Möglichkeit eines Signals später an einem Input des Gates ankommen zu können lässt sich durch einen kleineren Delaywert, spezifisch für diesen Input, realisieren. Denn wenn das Signal schneller durch das Gate gelangen kann, so braucht es auch nicht so früh vorhanden zu sein, wie die anderen. \\
 Von nun an ist das Delay eines Gates $g$: $d_g \in \mathbb{R}_{\geq 0}^{arity(g)}$. Für das \TM ist dies eine weitere Möglichkeit der Verbesserung, denn viele Gates der Library besitzen mindestens eine Teilmenge von Inputs welche logisch symmetrisch aufgebaut sind. Diese lassen sich beliebig permutieren. Durch die unterschiedlichen Delay-Eigenschaften der Inputs kann eine solche Permutierung das Dealy des Outputs verbessern. Aus diesem Grund ändert sich die AT eines Knotens wie folgt: 
 \begin{definition}{AT mit pinabhängigen Delay:}\\
@@ -855,31 +859,32 @@ Von nun an ist das Delay eines Gates $g$: $d_g \in \mathbb{R}_{\geq 0}^{arity(g)
 \end{definition}
 Im Folgenden sei mit AT immer das pinabhängige Delay gemeint.
 
-In einem Match ist diese Information bereits abgespeichert, da die Inputs eines Matches mit einer Bijektion an Knoten des Circuits geknüpft werden. Um die Optimilität des, noch vorzustellenden, allgemeinen Algorithmus zu wahren, wird ein Kandidat für jede mögliche Permutation der Inputs gespeichert, falls dieser nicht dominiert ist.\\
+In einem Match ist diese Information bereits abgespeichert, da die Inputs eines Matches mit einer Bijektion an Knoten des Circuits geknüpft werden. Es wird ein  Kandidat für jede mögliche Permutation der Inputs gespeichert, falls dieser nicht dominiert ist.\\
 Nach aktuellen Stand gilt $fanin_{max} \leq 4$. Das ist klein genug, um auch bei der Heuristik die max $fanin_{max}$ Permutation bei der Wahl eines Matches in Betracht zu ziehen. 
 
 \subsubsection{Power Optimierung}
 Jedes Gate besitzt neben seinen spezifischen Eigenschaften bezüglich Area und AT noch weitere physikalische Eigenschaften.\\
 An einem Transistor liegt immer eine Spannung an. Daraus folgt, dass dieser auch ohne zu schalten Energie (power) verbraucht. Diese lässt sich einteilen in static power und dynamic power. Hierbei bezeichnet static power den Energieverbrauch unabhängig von der Benutzung des Transistors. Ein Transistor verbraucht jedoch mehr Energie, wenn er schaltet. Daraus folgt, dass der Energiebedarf abhängig vom Grad der Nutzung dieses Transistors ist. Dieser variable Energieverbrauch wird auch als dynamic power bezeichnet.\\
-Da ein Gate aus einer logischen Verknüpfung von Transistoren besteht, besitzt es ebenfalls einen static power Wert. Da der dynamic Power Wert eines Gates abhängig von der aktuellen Implementierung des Chip ist, ist es schwer, diesen unabhängig von einem Circuit zu errechnen. Aus diesem Grund beschränke ich mich im Folgenden auf die static Power. \\
-Die static Power eines Gates korreliert sehr stark mit der physikalischen Größe dieses Bauteils. Aus diesem Grund lassen sich in den oben vorgestellten Algorithmen die Area Daten durch die static power Werte ersetzen. Der Circuit wird dadurch hinsichtlich Geschwindigkeit und Energiebedarf optimiert. \\
-Static power lässt sich natürlich auch zusätzlich zu Area in die Kostenfunktion einbauen. Dies würde bedeuten, dass die Kosten eines Kandidaten $k$ das Tripel $area(k), AT(k), static_power(k)$ sind, wobei $static_power(k)$ ähnlich wie $area(k)$ errechnet wird. Dies führt jedoch zu einer noch schlechteren Vergleichbarkeit von Kandidaten gleicher und verschiedener Knoten. Aus diesem Grund wird auf die Optimierung aller drei Kriterien zusammen verzichtet. \\
+Da ein Gate aus einer logischen Verknüpfung von Transistoren besteht, besitzt es ebenfalls einen static power Wert. Da der dynamic power Wert eines Gates abhängig von der aktuellen Implementierung des Chip ist, ist es schwer, diesen unabhängig von einem Circuit zu errechnen. Aus diesem Grund beschränke ich mich im Folgenden auf die static power. \\
+Die static power eines Gates korreliert sehr stark mit der physikalischen Größe dieses Bauteils. Aus diesem Grund lassen sich in den oben vorgestellten Algorithmen die Area Daten durch die static power Werte ersetzen. Der Circuit wird dadurch hinsichtlich Geschwindigkeit und Energiebedarf optimiert. \\
+Static power lässt sich auch zusätzlich zu Area in die Kostenfunktion einbauen. Dies würde bedeuten, dass die Kosten eines Kandidaten $k$ das Tripel $area(k), AT(k), static_power(k)$ sind, wobei $static_power(k)$ ähnlich wie $area(k)$ errechnet wird. Dies führt jedoch zu einer noch schlechteren Vergleichbarkeit von Kandidaten gleicher und verschiedener Knoten. Aus diesem Grund wird auf die Optimierung aller drei Kriterien zusammen verzichtet. \\
 In Kapitel \ref{sec:analyse} finden sich weitere Ausführungen über die Auswirkungen von diesem Austausch in der Kostenfunktion.
 	
 \subsubsection{Layer Assignment}
 Die Knoten eines Circuits sind durch Kanten miteinander verbunden.  Die ausgehenden Kanten eines Knotens bilden ein Netz und  die Endknoten der Kanten dessen Menge von Terminalen. Diese werden auf dem Chip zu einem Steinerbaum verbunden. Des Weiteren ist ein Chip in mehrere Schichten (Layers) unterteilt, in welche die Kanten physikalisch eingebettet werden. Das Verlegen einer Kante in einem Layer bringt Kosten mit sich, welche abhängig von der Wahl des Layers sind. Jedem Netz ist nun eine Menge von Schichten zugeordnet, in welche die Kanten des Steinerbaumes gelegt werden dürfen. \\
-Durch die vorgestellten \TM Algorithmen  werden in dem umgebauten Circuit $C'$ Netze von Knoten, über die gematcht wurde, nicht mehr benötigt. Für Gates, über deren Nachfolger gematcht wurde, verändert sich jedoch die Terminalmenge des dazugehörigen Netzes. Den Netzen aus $C'$ muss nun wieder eine Menge von Layern zugeordnet werden, so dass die  Terminalmengen untereinander auf dem Chip verbunden werden können und die zusätzlichen Kosten nicht übermäßig groß werden. \\
+Durch die vorgestellten \TM Algorithmen  werden in dem umgebauten Circuit $C'$ Netze von Knoten, über die gematcht wurde, nicht mehr benötigt. Für Gates, über deren Nachfolger gematcht wurde, verändert sich jedoch die Terminalmenge des dazugehörigen Netzes. Den Netzen aus $C'$ muss nun wieder eine Menge von Layern zugeordnet werden, so dass die  Terminalmengen untereinander auf dem Chip verbunden werden können und die zusätzlichen Kosten nicht übermäßig hoch werden. \\
 Wenn sich ein Terminal eines Netzes $N$ mit Layermenge $L$ ändert, wurde über den darüberliegenden Knoten gematcht und dessen Netz $N'$ mit Layermenge $L'$ ist verschwunden. Um sicherzustellen, dass in $N$ jedes Terminal über die Layer erreichbar ist, wird aktuell $L := L \cup L'$ gesetzt. Dies geschieht für jedes Netz $M$ aus $C'$ und dessen geänderte Terminale und garantiert die Existenz eines Steinerbaums in $M$. \\
 Es muss noch überprüft werden, ob durch eine geänderte Zuweisung der Layermenge der Netze von $C'$ geringere Kosten bei der Realisierung der Netze garantiert werden können.
-Da dies bisher die beste Methode ist das Problem an dieser Stelle zu lösen,  und in den getesteten Instanzen die zusätzlichen Kosten durch die Zuteilung der Kanten nicht übermäßig hoch sind, werden weder diese Kosten noch das Layer Assignment in dieser Arbeit weiter behandelt.
+Da dies bisher die beste Methode ist, das Problem an dieser Stelle zu lösen,  und in den getesteten Instanzen die zusätzlichen Kosten durch die Zuteilung der Kanten nicht übermäßig hoch sind, werden weder diese Kosten noch das Layer Assignment in dieser Arbeit weiter behandelt.
 	
 	
 %\section{Version der Heuristik, welche obige Kriterien beherzigt}
 \section{Ressource Sharing}
-In diesem letzten theoretischen \textcolor{red}{?} Kapitel wird ein anderer Ansatz für eine Heuristik vorgestellt. Da dieser Ansatz noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht darauf eingegangen.\\
+In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dies noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht weiter darauf eingegangen.\\
 Es folgt die allgemeine Definition des Problems und daraufhin eine Heuristik, welche sich dieses Problem zunutze macht.\\
 
-Es handelt um das Ressource Sharing Problem. Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$, von denen jeder eine Aufgabe erledigen möchte.  Jeder Kunde $c \in \mathcal{C}$ besitzt ein Spektrum an Vorgehensweisen $\mathcal{B}_c$ um seine Aufgabe zu meistern. Hierbei ist $\mathcal{B}_c$ (Block genannt) eine konvexe Menge. Jede Vorgehensweise benötigt Ressourcen für ihre Umsetzung. \\
+Es handelt sich um das Ressource Sharing Problem.\\
+Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$, von denen jeder eine Aufgabe erledigen möchte.  Jeder Kunde $c \in \mathcal{C}$ besitzt ein Spektrum an Vorgehensweisen $\mathcal{B}_c$ um seine Aufgabe zu erledigen. Hierbei ist $\mathcal{B}_c$ (Block genannt) eine konvexe Menge. Jede Vorgehensweise benötigt Ressourcen für ihre Umsetzung. \\
 Sei $\mathcal{R}$ die endliche  Menge aller verschiedener Ressourcen.  Des Weiteren sei $g$ die Funktion, welche für jeden Kunden $c$ und $b_c \in \mathcal{B}_c$, die benötigte Menge einer jeden Ressource $r \in \mathcal{R}$ angibt. Es gilt also $\forall c \in \mathcal{C}: \, g_c:\mathcal{B}_c \rightarrow \mathbb{R}^{\mathcal{R}_+}$. \\
 Ziel des Ressource Sharing ist es nun, jedem Kunden eine Vorgehensweise zuzuordnen, mit welcher er seine Aufgabe erledigt. Dabei wird über den Verbrauch der am meisten genutzten Ressource minimiert. \\
 Es folgt die formale Definition des Problems. \\
@@ -892,7 +897,7 @@ Es folgt die formale Definition des Problems. \\
 
 \section{Qualitäts- und Laufzeit-Analyse}
 \label{sec:analyse}
-In diesem Kapitel werden die vorgestellten Algorithmen bezüglich Laufzeit und Güte analysiert. Vorher ist es jedoch Notwendig ein paar Angaben zu den bearbeiteten Instanzen, um die Ergebnisse der Algorithmen besser einordnen zu können.
+In diesem Kapitel werden die vorgestellten Heuristiken bezüglich Laufzeit und Güte analysiert. Vor dieser Analyse ist es jedoch Notwendig ein paar Angaben zur Struktur realer Instanzen zu machen, um die Ergebnisse der Algorithmen besser einordnen zu können.
 
  \subsection{Struktur realer Instanzen}
 \label{subsec:struktur_realer_instanzen} 
@@ -901,24 +906,24 @@ In diesem Kapitel werden die vorgestellten Algorithmen bezüglich Laufzeit und G
  Die folgenden Angaben betrachten alle Instanzen zusammengesetzt zu einem Circuit.
  Insgesamt wurden $1107$ Instanzen getestet. \\
 
-Sei $H_C$ die Menge Highfanouknoten, welche keine Inputs sind, eines Circuits $C$ und $NI_C$ die Menge aller Knoten abz\"uglich der Inputknoten von $C$. Der durchschnittliche Anteil von $H_C$ an $NI_C$ betr\"agt $30,95\%$. Die Menge der Highfanouknoten, welche ebenfalls Inputs sind wurde hier nicht beachtet, da nur einen m\"oglichen Kandidaten besitzen und somit nicht zu dem Problem des exponentiellen Klassenwachstums beitragen. Diese Werte besitzen bei den gr\"o{\ss}eren Instanzen eine kleine Varianz. Aus diesem Grund werden die Circuits im Folgenden nur anhand ihrer Knotenzahl analysiert.\\
+Sei $H_C$ die Menge Highfanouknoten, welche keine Inputs sind, eines Circuits $C$ und $NI_C$ die Menge aller Knoten abz\"uglich der Inputknoten von $C$. Der durchschnittliche Anteil von $H_C$ an $NI_C$ betr\"agt $30,95\%$. Die Menge der Highfanouknoten, welche ebenfalls Inputs sind, wurde hier nicht beachtet, da diese nur einen m\"oglichen Kandidaten besitzen, und somit nicht zu dem Problem des exponentiellen Klassenwachstums beitragen. Diese Werte besitzen bei den gr\"o{\ss}eren Instanzen eine kleine Varianz. Aus diesem Grund werden die Circuits im Folgenden nur anhand ihrer Knotenzahl analysiert.\\
    \begin{wrapfigure}{r}{6cm}
 		\includegraphics[width = 6cm]{pictures/compiled/instance_sizes_distribution_table}
 		\caption{Gr\"o\ss verteilung der getesteten Instanzen}
 		\label{bild:sizes_table}
 	\end{wrapfigure}
  Der Anteil von Outputs an der Gesamtzahl von Knoten eines Circuits liegt bei $15,26\%$. Von allen Outputs haben $4,13\%$ noch weitere Nachfolger im gleichen Circuit. Outputs mit Nachfolgern werden werden ebenfalls auf einen Kandidaten beschr\"ankt \textcolor{red}{oben erw\"ahnt ?}, da Sie zu den offenen Knoten darauffolgender Knoten gehören. Da diese nur einen solch geringen Anteil an allen Outputs besitzen werden nur wenige Outputs so fr\"uh festgelegt. Auch hier wurden Outputs, welche auch Inputs sind, aus den gleich Gr\"unden wie oben, nicht betrachtet.\\
- Die Inputs eines Circuits machen durchschnittlich $16,73\%$ an der Gesamtzahl der Knoten aus. Daraus folgt, dass etwa jeder Achte Knoten nur einen Kandidaten tr\"agt. Dies ist bei der Interpretation der folgenden Analysen zu beachten.\\
+ Die Inputs eines Circuits machen durchschnittlich $16,73\%$ an der Gesamtzahl der Knoten aus. Daraus folgt, dass etwa jeder achte Knoten nur einen Kandidaten tr\"agt. Dies ist bei der Interpretation der folgenden Analysen zu beachten.\\
  Abbildung \ref{bild:sizes_table} zeigt die Verteilung der getesteten Instanzen hinsichtlich der Größe  ihrer Knotenmenge.
  
 \textcolor{red}{ Kandidaten menge kann hier noch hin also menge der Kandidaten abh von Knotenmenge bzw anzahl highfanoutknoten  und abh von den oben genannten zusatzfeatures (zb pinabh. delay, Library )  \\  und dass vielleicht die varianz (anhand eines bildes beweisen?) des hoghfanout anteil ziemlich klein ist und somit Knotenmenge und highfanoutmenge ansich ausreichend aussagekräftig sind} 
  
  \subsection{Analyse der Ergebnisse}
  \label{subsec:analyse_der_ergebnisse}
- Es folgt eine Anlayse der Ergebnisse des Algorithmus hinsichtlich der verschiedenen, oben vorgestellten Variationen.
+
 \subsubsection{Tradeoffparameter}
-Area, SNS, WS oder Energieverbrauch eines Circuits liegen nicht unbedingt in derselben Größenordnung. Dies hat zur Folge, dass selbst ein vielfacher Verbrauch einer Ressource sich in den Kosten des Circuits-Kandidaten evtl. nicht bemerkbar macht. In der Praxis liegen Power, Area oder Arrivaltime \"ublicherweise um mehrere Zehnerpotenzen auseinander. Der Unterschied des Verbrauchs einer Ressource von dem Gate welches den geringsten Verbrauch in Anspruch nimmt zu dem gr\"o{\ss}ten Verbrauche liegt in der Regel bei maximal einem Faktor 10. Der Ressourcenverbrauch eines Gates wird nun durch teilen durch den Verbrauch eines sparsamen Gates normalisiert. Daraufhin liegen die Verbr\"ache aller Ressourcen in derselben Gr\"o{\ss}enordnung. \\
-Im Folgenden wird ausgehend von der \TM Heuristik ohne Präpozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
+Die Werte von Area, SNS, WS und Energieverbrauch eines Circuits liegen nicht unbedingt in derselben Größenordnung. Dies kann zur Folge haben, dass selbst ein vielfacher Verbrauch einer Ressource sich in den Kosten des Circuits-Kandidaten nicht bemerkbar macht. In der Praxis liegen Power, Area oder Arrivaltime \"ublicherweise um mehrere Zehnerpotenzen auseinander. Der Unterschied des Verbrauchs einer Ressource von dem Gate welches den geringsten Verbrauch in Anspruch nimmt zu dem mit dem gr\"o{\ss}ten Verbrauch liegt in der Regel bei maximal einem Faktor 10. Der Ressourcenverbrauch eines Gates wird nun durch teilen durch den Verbrauch eines sparsamen Gates normalisiert; dann liegen die Verbr\"ache aller Ressourcen in derselben Gr\"o{\ss}enordnung. \\
+Im Folgenden wird ausgehend von der \TM Heuristik ohne Präprozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
 Abbildung \ref{bild:area_slack_tradeoff} veranschaulicht die durchschnittliche prozentuale Verbesserung der Kosten abhängig von $\lambda$.\\
 	\begin{figure}[h]
 \centering
@@ -934,8 +939,8 @@ Abbildung \ref{bild:area_slack_tradeoff} veranschaulicht die durchschnittliche p
 \label{bild:area_slack_tradeoff}
 \end{figure}
 
-Hier ist nur eine schwache abh\"angigkeit bez\"uglich des Tradeoffparameters zu beobachten. Dies liegt daran, dass im Schnitt f\"ur jeden dritten Knoten ein Kandidat gesch\"atzt wird. Des Weiteren liegen $SNS$ und $Area$ oft in derselben Gr\"o\ss enordnung wodurch ein schnellerer Kanidat mit nahezu dengleichen Kosten gesch\"atzt wird wie ein kleinerer und somit unabhängig des $\lambda$ sehr kosten\"ahnliche Kandidaten gew\"ahlt werden, wodurch die Kosten des \"aquicalenten Circuits sich in abh\"angigkeit des $\lambda$ nur gering ver\"andern.\\
-Unabh\"angig von $\lambda$ zeigt die Abbildung jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$, $Area$ und besonder $Power$.\\
+Hier ist nur eine schwache Abh\"angigkeit bez\"uglich des Tradeoffparameters zu beobachten. Dies liegt daran, dass im Schnitt f\"ur jeden dritten Knoten ein Kandidat gesch\"atzt wird. Des Weiteren liegen $SNS$ und $Area$ oft in derselben Gr\"o\ss enordnung wodurch ein schnellerer Kanidat mit nahezu dengleichen Kosten gesch\"atzt wird wie ein kleinerer und somit unabhängig des $\lambda$ sehr kosten\"ahnliche Kandidaten gew\"ahlt werden, wodurch die Kosten des \"aquicalenten Circuits sich in Abh\"angigkeit des $\lambda$ nur gering ver\"andern.\\
+Unabh\"angig von $\lambda$ zeigt die Abbildung jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$, $Area$ und besonders $Power$.\\
 In folgenden Tests wird $\lambda = $ \textcolor{red}{?} gesetzt, da dies in den getesteten Instanzen die gr\"o\ss te Verbessung im Schnitt gebracht hat.\\
 
 Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im Folgenen sei $\lambda$ durch diese Werte vorgegeben. 
