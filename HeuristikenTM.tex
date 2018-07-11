@@ -57,9 +57,9 @@ Die Größe der Menge aller möglichen Baupläne (später Circuits) für eine lo
  Jedes Bauteil hat spezifische physikalische Eigenschaften an Größe, Geschwindigkeit (Delay) etc.. Demnach hat auch jeder Circuit entsprechende Eigenschaften. \\
 Ziel des Technology Mappings ist es, für eine logische Funktion eine Realisierung zu finden, welche eine Kostenfunktion (bestehend aus den physikalischen Eigenschaften) optimiert. Die Wahl der Lösung hat direkte Auswirkungen auf die  Schnelligkeit, Größe und den Stromverbrauch des fertigen Chips. Hierbei geht das \TM von einer bereits realisierten logischen Funktion aus und baut diese zu einer möglichst kostengünstigen Variante um. \\
 Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in kurzer Zeit finden. Die Lösung dieses Problems für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP-vollständiges Problem. Aus diesem Grund entwickelt die folgende Arbeit eine Heuristik, welche für sehr (mehrere 10.000 Bauteile) große Baupläne in möglichst kurzer Zeit einen kostenoptimierten Umbau ermöglicht.\\
-\textcolor{red}{am ende hier noch eine kurze Quellenübersicht geben an lukas orientiert}
 
-Dieser wurde im Rahmen eines IBM Projekts mit dem Institut für Diskrete Mathematik in Bonn implementiert und am Ende dieser Arbeit getestet.
+Aufbauen auf den Arbeiten von Keutzer \cite{DAGON} und  \cite{Elbert} wird ausgehend von einem Kern Algorithmus auf eingeschränkten Instanzen in Kapitel \ref{sec:terminologie&grundl} ein polynomielles Approximationsschema und daraus eine Heuristik in Kapitel \ref{sec:allg_algorithmus} entwickelt. Anschließend wird diese Heuristik  in Kapitel \ref{sec:erw_der_heuristik} an möglichst allgemeine Instanzen und weitere reale Gegenbenheiten angepasst. Mithilfe des Resource Sharing Algorithmus wird in Kapitel \ref{sec:resource_sh} die entwickelte Heuristik Teil einer Allgemeinen Logik Optimierung von Circuits. Abschließend wird in Kapitel \ref{sec:analyse} die Implementierung der vorgestellten Heuristik ausführlich analysiert. Die Implementierung erfolgte im Rahmen eines IBM Projekts mit dem Institut für Diskrete Mathematik in Bonn.
+
 
 \newpage
 
@@ -269,14 +269,16 @@ Der beschriebene Kern Algorithmus arbeitet nur auf Circuits, in denen keine High
  Es ist möglich, einen Circuit, in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht beinhalten. Diese Subcircuits werden einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquivalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \cite{DAGON} wieder. Abbildung \ref{bild:ohne_highfanout_heu} stellt diesen Ansatz einer Heuristik dar. 
   Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine Vielzahl sehr kleiner Subcircuits entstehen, woraus folgt, dass die Möglichkeiten des \TM sehr eingeschränkt werden. Aus diesem Grund werde ich diesen Weg einer Heuristik nicht weiter verfolgen.\\
 
+Bei der Implementierung von Highfanoutknoten besteht die größte Herausforderung darin, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen.\\
+\newpage
+ 
 \begin{wrapfigure}{r}{7cm}%[htb]
 %\centering
 \includegraphics[width= 7cm]{pictures/compiled/expo_kand}
 \caption{Exponentiell viele Kandidaten bereits bei sehr eingeschränkter Library}
 \label{bild:expo_kan}
 \end{wrapfigure}
-
-Bei der Implementierung von Highfanoutknoten besteht die größte Herausforderung darin, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen. Daraus folgt, dass bei der Wahl eines Kandidaten für einen Knoten $w$ die Wahl der Kandidaten der Input-Kandidaten von $w$ nicht unabhängig von einander sein muss. \\
+ Daraus folgt, dass bei der Wahl eines Kandidaten für einen Knoten $w$ die Wahl der Kandidaten der Input-Kandidaten von $w$ nicht unabhängig von einander sein muss. \\
 Abbildung \ref{bild:expo_kan} zeigt zudem ein weitere Herausforderung für die Implementierung auf. Die Anzahl der zu speichernden Kandidaten kann  exponentiell bezüglich $|V(C)|$ sein. \\
 Zur Lösung des ersten Herausforderung helfen die folgenden Definitionen:\\
 
@@ -430,6 +432,55 @@ Sei $C$ ein Circuit und $v \in C$. Die Anzahl der Klassen von $v$ ist exponentie
 Sei $K$ die größte Kardinalität einer Kandidatenmenge von einem Knoten $w\in offene\_Knoten(v)$. Jede Kombination von Kandidaten der offenen Knoten entspricht, solange sich diese nicht gegenseitig ausschließen, einer Klasse von $v$. Die Anzahl dieser Kombinationen ist durch $K^k$ beschränkt. Daraus folgt die Aussage.
 \end{proof}
 
+\subsubsection{Schranken für Arrivaltime und Größe}
+\label{subsubsec:schrankenalgo}
+Zur Vorbereitung auf das Filtern mit Buckets wird noch folgender Algorithmus eingeführt.\\
+Für die Bearbeitung einer Tradeoffkurve ist es sehr nützlich Schranken angeben zu können, zwischen welchen sich alle Werte der Kurve befinden. \\
+Durch den vorhandenen Tradeoff befindet sich die $AT$ eines Circuits $C$ zwischen der der schnellsten und der kleinsten Implementierung von $C$. Dementsprechend befindet sich $Area$ von $C$ zwischen der kleinsten und schnellten Lösung. Folgender Algorithmus nähert die entsprechenden Circuit-Kandidaten an.\\
+
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{Untere Schranke Arrivaltime}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit $C$, Library $L$}
+
+ schnellster\_kandidat[] $\gets \emptyset$\;
+ schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne alle (invertierten) Matche auf $v$\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      berechne schnellsten Kandidaten mit $m$ auf $v$\;
+      Update schnellster\_(inv)\_kandidat\;
+   }
+   \If{ $v$ ist Highfanoutknoten }
+   {
+      
+      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
+      {
+	l\"osche schnellster\_inv\_kandidat[v]\;
+      }
+      \Else
+      {
+	l\"osche schnellster\_kandidat[v]\;
+      }
+   }
+ }
+ Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
+ \Return $C'$\;
+\end{algorithm}\ \\
+
+ Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
+ Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
+Im Gegensatz zu dem Kern Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit Invertiertem Output von $i$ evtl. in Schritt 10 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern Algorithmus liegt darin, dass für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Highfanoutknoten würde dies wahrscheinlich zu einem Verlust der Polynomialität führen.\\
+\textcolor{red}{korollar aus dieser aussage ? }\\
+
+Unter welchen Bedingungen sich dieser Algorithmus polynomiell implementieren lässt, wird in Kapitel \ref{subsec:heuristik} weiter ausgeführt.Dort wird dieser Algorithmus mit der Laufzeit der Heuristik ohne diese Routine beschrieben. Da jedoch nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heristik mit der Hinzunahme dieses Algorithmus nur inkrementell beeinflusst.\\
+
+ \textcolor{red}{dieser algo stammt von Lukas (wie das tradeoff kurven bild und der folgende algo wie nehme ich das am besten mit rein ?}\\
+
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}
 Die Kandidaten eines beliebigen Knotens sind in Tradeoffkurven, nach Klassen sortiert, gespeichert. Die Werte einer solchen Kurve lassen sich in Abschnitte (Buckets) fester Größe einteilen. Dabei lässt sich eine Kurve sowohl in Delay-Buckets  der Größe $\delta_{delay}$, als auch in Area-Buckets der Größe $\delta_{area}$ unterteilen. Dies wird in Abbildung \ref{bild:tradeoff_kurven_filtern} veranschaulicht.\\
@@ -446,9 +497,11 @@ Die Kandidaten eines beliebigen Knotens sind in Tradeoffkurven, nach Klassen sor
 \caption{Einteilen und Filtern mit Buckets}
 \label{bild:tradeoff_kurven_filtern}
 \end{figure}
-Man wählt die Bucketgrößen $\delta_{delay} = \frac{\epsilon}{2\lambda}, \delta_{area} = \frac{\epsilon}{2(1-\lambda)}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket.\\
+
+Man wählt die Bucketgrößen $\delta_{delay} = \frac{\epsilon X^{-}}{2n\lambda}, \delta_{area} = \frac{\epsilon X^{-}}{2n(1-\lambda)}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket. Hierbei entspricht $X^-$ der mit dem Untere Schranke Area Algorithmus errechneten Schranke und $n$ der Anzahl der Knoten des Circuits. \\
 Für $\lambda \in \{ 0,1 \}$ ist jeweils eine der Bucketgrößen nicht definiert. In diesem Fall wird für den nicht definierten Fall nur der beste Kandidat (schnellster bzw. kleinster) behalten; d.h. im nicht definierten Fall die Tradeoffkurve in nur ein Bucket unterteilt.\\
 Die maximale Anzahl an Kandidaten in einer Tradeoffkurve ist nach dem Filtern polynomiell beschränkt. 
+Filtert man jede Tradeoffkurve wie beschrieben, so ist der noch bestmögliche Circuit Kandidat nur um den Faktor $\epsilon$ von der optimalen Lösung entfernt. Ein Beweis dieser Aussage befindet sich in \cite{Elbert}.
 \begin{definition}
 Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve, nachdem sie gefiltert wurde.\\
 Des Weiteren sei $\mathcal{K}$ die maximale Kardinalität von Klassen eines Knoten.
@@ -457,9 +510,9 @@ Des Weiteren sei $\mathcal{K}$ die maximale Kardinalität von Klassen eines Knot
 Für Circuits $C$ mit beschränkter Anzahl $k$ an Highfanoutknoten sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
 \end{cor}
 \begin{proof}
-$\mathcal{B}$ ist beschränkt durch die Größe des größtmöglichen äquivalenten Circuit $C_A$ von $C$ geteilt durch $\delta_{area}$. Es gilt $area(C_A )\leq area_{max}\cdot |V(C)|$, wobei $area_{max}$ die Größe des größten Elements der Library angibt. Daraus folgt $\mathcal{B} \in \mathcal{O}(area_{max} |V(C)|\frac{2(1-\lambda)}{\epsilon})$. \\
-Sei $v \in V(C)$ und $K_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Highfanoutknoten mit $i$ weiteren Highfanoutknoten in seiner Cone. 
-$\mathcal{K_v}$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglicher Kombinationen von Kandidaten aller möglicher Klassen der Highfanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$, da $v$ maximal $k$ Highfanoutknoten in seiner Cone hat, welche jeweils maximal $k-1$ Highfanoutknoten in Ihrer Cone haben. Deshalb gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$.\\
+$\mathcal{B}$ ist beschränkt durch die Größe des größtmöglichen äquivalenten Circuit $C_A$ von $C$ geteilt durch $\delta_{area}$. Sei $X^+$ eine mit dem Untere Schranke Arrivaltime errechnete obere Schrank für die Größe von $C$. Daraus folgt $\mathcal{B} \in \mathcal{O}(X^+ \cdot \frac{2n(1-\lambda)}{X^- \epsilon})$. $\mathcal{B} $ ist somit polynomiell in $\frac{X^+ n}{X^- \epsilon}$. Aufgrund der mir vorliegenden Library ist $\frac{X^+ n}{X^- \epsilon}$ polynomiell beschränkt. Für den Allgemeinen Fall findet sich in \cite{Elbert} eine Lösung zur Erhaltung der Polynomialität.\\
+Sei $v \in V(C)$ und $\mathcal{K}_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Highfanoutknoten mit $i$ weiteren Highfanoutknoten in seiner Cone. 
+$\mathcal{K}_v$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglicher Kombinationen von Kandidaten aller möglicher Klassen der Highfanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$, da $v$ maximal $k$ Highfanoutknoten in seiner Cone hat, welche jeweils maximal $k-1$ Highfanoutknoten in Ihrer Cone haben. Deshalb gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$.\\
 Es gilt $\mathcal{K}_{h,0} \leq 1$, da der Highfanoutknoten keine offenen Knoten besitzen kann. \\
 Daraus folgt $\mathcal{K}_v \leq \mathcal{B}^{k!}$; da $k$ beschränkt ist folgt, dass $\mathcal{K}$ polynomiell beschränkt ist.\\
 \end{proof}
@@ -609,6 +662,7 @@ In allgemeinen Circuits ist dies wahrscheinlich nicht mehr möglich, denn die An
 
 
 \section{Erweiterungen der Heuristik}
+\label{sec:erw_der_heuristik}
 \subsection{DAGs mit mehreren Outputs}
 \label{sec:outputs}
 Bisher wurde auf Circuits $C$ mit nur einem Output gearbeitet. Reale Instanzen eines Chips sind jedoch mit beliebig vielen Outputs ausgestattet. Outputs können auch zusätzlich noch Nachfolger in $C$ besitzen. \\
@@ -655,71 +709,6 @@ Dieses Kriterium ersetzt, von diesem Punkt an,  das Kriterium der Delay-Optimier
  
  Des Weiteren müssen nach dem \TM noch alle Outputs mit der bis zu ihnen berechneten logischen Funktion, vorhanden sein. Daraus folgt, dass über einen Output-Knoten, welcher in dem Circuit noch mindestens einen Nachfolger hat, nicht gematcht werden darf, weil sonst ein nicht erlaubter Seitenoutput entstehen würde.\\
  Dies lässt sich dadurch sicherstellen, dass man eine seiner ausgehenden Kanten als konstant deklariert, wie das bereits bei den zu langen Kanten geschehen ist. 
- 
-\begin{comment}
- \subsubsection{Allgemeiner Algorithmus}
- \label{subsec:allg_algorithmus}
- 
-\textcolor{red}{\huge das kommt weg bzw in ein Kapitel was die Heuristik erweitert und eine neue Laufzeit angibt} 
- 
- 
- 
- \textcolor{red}{beschreibe hier evtl nur die Veränderungen der Implementierung die hier vorgenommen werden müssen um Multiple otuputs zu integrieren also reichen eigentlich wenige sätze des weiteren muss der quatsch mit dem optimalen TM zum als konkreter Algo mit laufzeit verschwinden, da nicht interessant}
- Es folgt ein optimaler  \TM Algorithmus welcher auf allgemeinen Circuits arbeitet. 
- \textcolor{red}{TODO Laufzeit  und Korrektheitsbeweis? was ist mit dem faninmax ? vielleicht nett zur laufzeit berechnung aber eig hier noch nicht relevant   erwähnen woraus die kostenfunktion besteht bzw nur tradeoffparameter nehmen!!!!}\\
- \textcolor{red}{hab ich schon erwähnt wie man Kandidaten auswählt ?}
- 
- \begin{problem}[framed]{(allgemeines) Technology Mapping}
-  Instanz:  & Circuit $C$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
-  Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, welcher die Kostenfunktion c minimiert.
-\end{problem}
-
-\begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{(allgemeines) \TM}
- \SetKwInOut{Task}{Task}
-  \KwIn{Circuit $C$,  Library $L$, $fanin_{max}$}
- \ForEach{Knoten $v \in V(C)$ in topologischer Reihenfolge}
- {
- 	$tradeoff\_curves[v][] \gets \emptyset$ \;
- 	berechne die offenen Knoten $O$ von $v$\; 
- 	$classes[v] \gets get\_all\_classes(v,C,  O, tradeoff\_curves)$\;
- 	berechne alle (invertierten) Matche auf $v$\;
-	\ForEach{ Match $m$ auf $v$ }
-  	 {
-   		\ForEach {$A \in classes[v]$}
-   		{
-   				\ForEach {Kandidat $k$ von $v$ mit $m$, der A respektiert}
-   				{
-   					$ dom \gets k.is\_dominated(tradeoff\_curves[v][A])$\;
-					\If {$!dom$}
-						{$tradeoff\_curves[v][A].push\_back(k)$}
-   				}
-   		}
-   	}
- }
- $K \gets best\_circuit\_candidate(tradeoff\_curves, C.outputs, c)$\;
-\Return K
-\end{algorithm}\ \\
- 
-{\bf Korrektheit:} \\
-Es gilt zu zeigen, dass dies ein optimaler Algorithmus ist. \\
-Der Algorithmus speichert für jeden Knoten alle, bis auf die dominierten, möglichen Kandidaten. Daraus folgt, dass in Schritt 12 zur Auswahl des besten Circuit-Kandidaten, jeder mögliche nicht dominierte Umbau zur Verfügung steht und dort nur der kostengünstigste, bezüglich c, ausgewählt wird. 
- 
- 
- \textcolor{red}{ TODO vergleich mit Lukas und geeignete Quellen einfügen!! besonders für den Hautalgorithmus wie bei Lukas nach welchem Vorbeild der entstanden ist}\\
- 
- {\bf Laufzeit:} \\
-Da, wie bereits oben erwähnt, das \TM auf allgemeinen Circuits ein NP-vollständiges Problem ist, folgt, dass es unwahrscheinlich ist mit diesem Algorithmus größere Instanzen, in aktzeptabler Zeit, lösen zu können. \\
-Die Anzahl der Durchläufe der ersten Schleife sind $|V(C)|$. Die Schritte 2,3 und 5 sind ebenfalls in $\mathcal{O}(|V(C)|)$ errechenbar. \textcolor{red}{genaue werte und begründung angeben angeben!} \\ 
-Des Weiteren gilt, dass die Schleife aus Zeile 6 für jeden Knoten maximal $2|L|$ mal aufgerufen wird. \\
-Die Anzahl der Kandidaten steigt, dank der beliebigen Anzahl an Highfanoutknoten exponentiell, weshalb die Größe von $classes$ und die somit auch die Schleifendurchläufe in Zeile 7 nur polynomiell begrenzt sind. Daraus folgt sowohl eine nicht polynomielle Laufzeit als auch eine nur exponentiell beschränkte Größe des verbrauchte Speichers. \textcolor{red}{genauer?}.\\
-
-Folgende Abbildung veranschaulicht das exponentielle Wachstum der Kandidatenmenge, indem für jeden Knoten die Anzahl der Kandidaten in Verbindung mit seinem topologischen Index angibt. \textcolor{red}{hier Beispielbild mit beschriebenen eigenschaften} \\
-
-\end{comment}
-
 
  \subsection{Premapping von Highfanoutknoten}
  \label{sec:premapping}
@@ -741,57 +730,7 @@ Im Gegensatz zu dem Kern Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} k
 \subsubsection{Premapping durch Schätzen}
 \label{subsec:premapping_duch_schaetzen}
 Beim Premapping durch Schätzen wird eine Vermutung für die Kosten des Kandidaten eines jeden Highfanoutknoten in einer optimalen Lösung des \TM aufgestellt. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
-Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Folgender Algorithmus wird für die Schrankenberechnung benutzt.\\
- 
-\begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{Untere Schranke Arrivaltime}
- \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$, Library $L$}
-
- schnellster\_kandidat[] $\gets \emptyset$\;
- schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
- {
-   berechne alle (invertierten) Matches auf $v$\;
-   \ForEach{ Match $m$ auf $v$ }
-   {
-      berechne schnellsten Kandidaten mit $m$ auf $v$\;
-      Update schnellster\_(inv)\_kandidat\;
-   }
-   \If{ $v$ ist Highfanoutknoten }
-   {
-      
-      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
-      {
-	l\"osche schnellster\_inv\_kandidat[v]\;
-      }
-      \Else
-      {
-	l\"osche schnellster\_kandidat[v]\;
-      }
-   }
- }
- Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
- \ForEach{Knoten $v \in V(C')$}
- {
-    \ForEach{Vorg\"anger $p$}
-    {
-      \If{ $p$ ist Highfanoutknoten }
-      {
-	inv($v$,$p$) $\gets$ keine Invertierung\;
-      }
-    }
- }
- \Return $C'$\;
-\end{algorithm}\ \\
-
- Dieser Algorithmus führt das \TM auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
- Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
- \textcolor{red}{dieser algo stammt von Lukas (wie das tradeoff kurven bild und der folgende algo wie nehme ich das am besten mit rein ?}\\
-
-Der Untere Schranke Arrivaltime Agorithmus lässt sich in der gleichen Laufzeit wie die Heuristik aus Kapitel \ref{subsec:heuristik} implementieren, ist jedoch in der Praxis, da nur ein Kandidat für jeden Knoten gespeichert wird, deutlich schneller.\\
+Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Der Algorithmus aus Kapitel \ref{subsubsec:schrankenalgo} wird für die Schrankenberechnung benutzt.\\
 
  Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
 \textcolor{red}{algo nochmal genau ansehen und fragen klären} 
@@ -879,20 +818,60 @@ Da dies bisher die beste Methode ist, das Problem an dieser Stelle zu lösen,  u
 	
 	
 %\section{Version der Heuristik, welche obige Kriterien beherzigt}
-\section{Ressource Sharing}
+\section{Resource Sharing}
+\label{sec:resource_sh}
 In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dies noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht weiter darauf eingegangen.\\
 Es folgt die allgemeine Definition des Problems und daraufhin eine Heuristik, welche sich dieses Problem zunutze macht.\\
 
-Es handelt sich um das Ressource Sharing Problem.\\
+Es handelt sich um das Resource Sharing Problem.\\
 Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$, von denen jeder eine Aufgabe erledigen möchte.  Jeder Kunde $c \in \mathcal{C}$ besitzt ein Spektrum an Vorgehensweisen $\mathcal{B}_c$ um seine Aufgabe zu erledigen. Hierbei ist $\mathcal{B}_c$ (Block genannt) eine konvexe Menge. Jede Vorgehensweise benötigt Ressourcen für ihre Umsetzung. \\
 Sei $\mathcal{R}$ die endliche  Menge aller verschiedener Ressourcen.  Des Weiteren sei $g$ die Funktion, welche für jeden Kunden $c$ und $b_c \in \mathcal{B}_c$, die benötigte Menge einer jeden Ressource $r \in \mathcal{R}$ angibt. Es gilt also $\forall c \in \mathcal{C}: \, g_c:\mathcal{B}_c \rightarrow \mathbb{R}^{\mathcal{R}_+}$. \\
-Ziel des Ressource Sharing ist es nun, jedem Kunden eine Vorgehensweise zuzuordnen, mit welcher er seine Aufgabe erledigt. Dabei wird über den Verbrauch der am meisten genutzten Ressource minimiert. \\
+Ziel des Resource Sharing ist es nun, jedem Kunden eine Vorgehensweise zuzuordnen, mit welcher er seine Aufgabe erledigt. Dabei wird über den Verbrauch der am meisten genutzten Ressource minimiert. \\
 Es folgt die formale Definition des Problems. \\
-\begin{problem}[framed]{Ressource Sharing Problem}
+\begin{problem}[framed]{Resource Sharing Problem}
   Instanz:  & Endliche Mengen $\mathcal{R}$ von Ressourcen und $\mathcal{C}$ von Kunden. Einen, durch eine endliche Menge repräsentierten,  konvexen Block $\mathcal{B}_c \, \forall c \in \mathcal{C}$ und eine konvexe Funktion $g_c: \mathcal{B}_c \rightarrow \mathbb{R}^{\mathcal{R}}_+ \, \forall c \in \mathcal{C}$.\\
-  Aufgabe: & Finde $\forall c \in \mathcal{C} b_ \in \mathcal{B}_c$, welche $\lambda ^*$ so nah wie möglich kommen. Dabei gilt: \[\lambda^* := \inf \{ \max\limits_{r \in \mathcal{R}} \sum\limits_{c \in \mathcal{C}}  (g_c(b_c))_r | b_c \in \mathcal{B}_c \forall c \in \mathcal{C} \}\]
+  Aufgabe: & Finde $\forall c \in \mathcal{C}$ ein $ b_c \in \mathcal{B}_c$, welche $\lambda ^*$ so nah wie möglich kommen. Dabei gilt: \[\lambda^* := \inf \{ \max\limits_{r \in \mathcal{R}} \sum\limits_{c \in \mathcal{C}}  (g_c(b_c))_r | b_c \in \mathcal{B}_c \forall c \in \mathcal{C} \}\]
 \end{problem}
 \textcolor{red}{hier vielleicht noch ein einfaches beispiel (evtl) und auf jeden fall der Verweis zum paper und ein Vermerk auf die Benutzung im Chipdesign \\ daraufhin der \TM ansatz! theoretische Beweise?}
+
+Eine exakte und ausführliche Lösung dieses Problems liefert \cite{Vygen}.\\
+
+\textcolor{red}{einteilung vorgehensweise anhand des papers zuerst lösen des allgemeinen resource problems dann der ansatz des Technology mappings mit flusserhalteung und dann kurz warum das so toll ist}
+
+
+
+Neben den Gegebenheiten der Problemdefinition wird davon ausgegangen, dass ein Blocklöser $f_c: \mathbb{R}_+^{\mathcal{R}} \rightarrow \mathcal{B}_c$ für jedes $c\in \mathcal{C}$ mit einer Konstante $\sigma \geq 1$ und Laufzeit $\theta$ gegeben ist. Hierbei $f_c$ ein Orakel, welches, gegeben einen Kostenvektor $y \in \mathbb{R}_+^{\mathcal{R}}$ der Ressourcen, ein Element $b_c \in \mathcal{B}_c$ errechnet für das $ y^T g_c(b_c) \leq \sigma \inf \{ y^T g_c(b) | b \in \mathcal{B}_c \}$ gilt \textcolor{red}{wofür das $\mu$?}. Mit anderen Worten errechnet ein solches Orakel für gegebene Kosten auf den Ressourcen ein Element des Blocks, welches den gewichteten Ressourcen Verbrauch, bis auf das $\sigma$-Fache, minimiert. \\
+
+Mit diesen Voraussetzungen lässt sich das Resource Sharing Problem mit einem FPTAS, bezüglich $\sigma$ lösen. Das bedeutet, dass sich in polynomieller Zeit für alle $\epsilon >0$ für alle $c \in \mathcal{C}$ eine Lösung $b_c\in \mathcal{B}_c$ finden lässt sodass gilt: 
+\[\max\limits_{r\in \mathcal{R}} \sum\limits_{c\in \mathcal{C}}(g_c(b_c))_r \leq \sigma (1+\epsilon)\lambda^*\]
+\textcolor{red}{reicht das für diesen Ansatz oder soll ich den Algo ohne erklärung angeben oder (favorit) den algo nur in Verbindung mit dem TM angeben und ausführlich erklären oder unterkapitel weglassen und den teil unter die Problemsdefinition packen ?}
+\subsection{Resource Sharing und \TM}
+Das vorliegende Kapitel beschreibt einen Ansatz zur Lösung des \TM mithilfe des Ressource Sharing Algorithmus. Der Im Folgenden vorgestellte Lösungsansatz und Algorithmus orientiert sich an der Lösung des Gate Sizing Problems mit Ressource Sharing. Ausführliche Informatinonen hierzu befinden sich in \cite{GateSizing}.\\
+
+Ziel dieses Algorithmus ist es eine Lösung für das \TM zu finden, welche $RAT$'s an den Outputs einhält und unter dieser Voraussetzung $Power$ (bzw. $Area$) optimiert.
+
+Sei $G$ ein Circuit ohne teilweise überflüssige Subcircuits. Dieser Circuit bildet das einzige  Element in der Kundenmenge $\mathcal{C}$. Das Optimierungsprblem lässt sich nun wiefolgt darstellen:
+\[ \]
+\textcolor{red}{timing graph mit reinbringen damit klar ist was das delay ist / wie es berechnet wird inkl. passenden Bild}
+Diese Formulierung ist äuivalent zu: 
+
+\[\]
+Im Folgenden wird mittels der zweiten Formulierung optimiert. Dies erscheint, da die Formulierung komplexer ist, nicht rational, bringt im späteren Verlauf jedoch einen deutlichen Vorteil gegenüber der ersten Formulierung.\\
+
+Die zu optimierenden Ressourcen sind somit $Power(G)$ (bzw. $Area(G)$) und das $Delay$ eines jeden Weges von einem Input- zu einem Output-Knoten von $G$. \\
+Der zu lösende einzige Block $\mathcal{B}_G$ besteht aus allen möglichen, nicht dominierten, Circuit-Kandidaten auf $G$. Im Folgenden wird ein $Power$ optimierender Algorithmus beschrieben. Ein $Area$ optimierender Algorithmus verhält sich analog.\\
+Das Optimierungsproblem lässt sich nun wiefolgt darstellen:
+\[ \]
+
+
+Es bleibt der Blocklöser für $\mathcal{B}_G$ ordnet nun jedem Circuit-Kandidaten von $G$ den entsprechenden Ressourcenverbrauch mit $Power(G)$ und  \\ $Delay(P) \ \forall \text{inklusionsmaximalen Wege } P$ zu. \\
+
+\textcolor{red}{als nächstes: lösen des Problems der exponentiell vielen Wege \\ \ \\
+continues \TM ? oder erst nach dem algo darauf eingehen direkt mit einer rounding Funktion.}\\
+
+
+\subsection{\textcolor{red}{Kommentar?}}
+
 
 
 \section{Qualitäts- und Laufzeit-Analyse}
@@ -945,8 +924,8 @@ In folgenden Tests wird $\lambda = $ \textcolor{red}{?} gesetzt, da dies in den 
 
 Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im Folgenen sei $\lambda$ durch diese Werte vorgegeben. 
 
-\textcolor{red}{genauer daruauf eingehen warum das lambda egal ist und auf Lukas schonere Bilder verweisen\\
-\Large heute noch premapping laufe starten und code entspr. umbauen und diese unterkapitel fertig schreiben}
+\textcolor{red}{genauer daruauf eingehen warum das lambda egal ist und auf Lukas schonere Bilder verweisen\\}
+
 
 \subsubsection{Premapping}
 
@@ -955,7 +934,6 @@ Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im
 
 \subsubsection{Power und Area Vergleich}
 
-\subsubsection{Bucket filetering $\epsilon$ im vergleich }
 
 \subsubsection{Gütevergleich kleiner "optimal " gel instanzen}
 \label{subsubsec:guetevgl_kleiner_opt_instanzen}
@@ -980,8 +958,6 @@ Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt,
 \textcolor{red}{wie unterscheiden sich die einzelnen Varianten in der Laufzeit? \\ oder lässt sich beides gut in einem bild erkennen ?} \\
 
 \textcolor{red}{hier auch die decompose laufzeit vgl mit rein ?}
-
-\subsubsection{Bucket filetering $\epsilon$ im vergleich } 
  
 \subsubsection{Laufzeitverlgeich kleiner "optimal " gel instanzen}
 

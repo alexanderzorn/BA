@@ -15,44 +15,45 @@
 \contentsline {subsubsection}{\numberline {3.5.2}Matching Suche in polynomieller Zeit}{19}{subsubsection.3.5.2}
 \contentsline {subsubsection}{\numberline {3.5.3}Heuristische Matching Suche}{19}{subsubsection.3.5.3}
 \contentsline {subsection}{\numberline {3.6}Kandidaten-Probleme}{20}{subsection.3.6}
-\contentsline {subsubsection}{\numberline {3.6.1}Filtern mit Buckets}{20}{subsubsection.3.6.1}
-\contentsline {subsubsection}{\numberline {3.6.2}Verkn\IeC {\"u}pfen von Kandidaten}{22}{subsubsection.3.6.2}
-\contentsline {subsubsection}{\numberline {3.6.3}Finden von Kandidaten}{22}{subsubsection.3.6.3}
-\contentsline {subsection}{\numberline {3.7}FPTAS}{22}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Heuristik}{24}{subsection.3.8}
-\contentsline {section}{\numberline {4}Erweiterungen der Heuristik}{26}{section.4}
-\contentsline {subsection}{\numberline {4.1}DAGs mit mehreren Outputs}{26}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Required Arrivaltimes}{26}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Implementierung mehrerer Outputs}{27}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Premapping von Highfanoutknoten}{29}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Triviales Premapping}{29}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Premapping durch Sch\IeC {\"a}tzen}{30}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{32}{subsubsection.4.2.3}
-\contentsline {subsection}{\numberline {4.3}Preprocessing}{32}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Weitere Optimierungskriterien}{32}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Pinabh\IeC {\"a}ngiges Delay}{32}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Power Optimierung}{33}{subsubsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.3}Layer Assignment}{34}{subsubsection.4.4.3}
-\contentsline {section}{\numberline {5}Ressource Sharing}{35}{section.5}
-\contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{36}{section.6}
-\contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{36}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{37}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{37}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{38}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{38}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{38}{subsubsection.6.2.4}
-\contentsline {subsubsection}{\numberline {6.2.5}Bucket filetering $\varepsilon $ im vergleich }{38}{subsubsection.6.2.5}
-\contentsline {subsubsection}{\numberline {6.2.6}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{38}{subsubsection.6.2.6}
-\contentsline {subsubsection}{\numberline {6.2.7}Verhalten weiterer Kosten}{38}{subsubsection.6.2.7}
-\contentsline {subsubsection}{\numberline {6.2.8}Zusammenfassung?}{38}{subsubsection.6.2.8}
-\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{39}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{39}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{39}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Bucket filetering $\varepsilon $ im vergleich }{39}{subsubsection.6.3.3}
-\contentsline {subsubsection}{\numberline {6.3.4}Laufzeitverlgeich kleiner "optimal " gel instanzen}{39}{subsubsection.6.3.4}
-\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{39}{subsection.6.4}
-\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{39}{subsubsection.6.4.1}
-\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{39}{subsubsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{39}{subsubsection.6.4.3}
-\contentsline {section}{\numberline {7}Fazit und Ausblick}{39}{section.7}
-\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{40}{section.7}
+\contentsline {subsubsection}{\numberline {3.6.1}Schranken f\IeC {\"u}r Arrivaltime und Gr\IeC {\"o}\IeC {\ss }e}{20}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Filtern mit Buckets}{22}{subsubsection.3.6.2}
+\contentsline {subsubsection}{\numberline {3.6.3}Verkn\IeC {\"u}pfen von Kandidaten}{23}{subsubsection.3.6.3}
+\contentsline {subsubsection}{\numberline {3.6.4}Finden von Kandidaten}{24}{subsubsection.3.6.4}
+\contentsline {subsection}{\numberline {3.7}FPTAS}{24}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Heuristik}{26}{subsection.3.8}
+\contentsline {section}{\numberline {4}Erweiterungen der Heuristik}{28}{section.4}
+\contentsline {subsection}{\numberline {4.1}DAGs mit mehreren Outputs}{28}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Required Arrivaltimes}{28}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Implementierung mehrerer Outputs}{29}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Premapping von Highfanoutknoten}{31}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Triviales Premapping}{31}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Premapping durch Sch\IeC {\"a}tzen}{32}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Erweitertes Premapping durch Sch\IeC {\"a}tzen}{33}{subsubsection.4.2.3}
+\contentsline {subsection}{\numberline {4.3}Preprocessing}{33}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Weitere Optimierungskriterien}{33}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Pinabh\IeC {\"a}ngiges Delay}{34}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Power Optimierung}{34}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Layer Assignment}{35}{subsubsection.4.4.3}
+\contentsline {section}{\numberline {5}Resource Sharing}{36}{section.5}
+\contentsline {subsection}{\numberline {5.1}Resource Sharing und Technology Mapping }{37}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}\leavevmode {\color {red}Kommentar?}}{39}{subsection.5.2}
+\contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{39}{section.6}
+\contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{39}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{40}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{40}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{41}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{41}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{41}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{41}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{41}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{41}{subsubsection.6.2.7}
+\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{42}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{42}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{42}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{42}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{42}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{42}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{42}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{42}{subsubsection.6.4.3}
+\contentsline {section}{\numberline {7}Fazit und Ausblick}{42}{section.7}
+\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{43}{section.7}
