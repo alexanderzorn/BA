@@ -879,6 +879,61 @@ continues \TM ? oder erst nach dem algo darauf eingehen direkt mit einer roundin
 
 
 
+
+\section{Resource Sharing}
+In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dies noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht weiter darauf eingegangen.\\
+Es folgt die allgemeine Definition des Problems und daraufhin eine Heuristik, welche sich dieses Problem zunutze macht. Es handelt sich um das Resource Sharing Problem.\\
+
+\subsection{Definition und Lösungsansatz des Resource Sharing Problems}
+
+Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$ und einer konvexen Menge $\mathcal{B}_c$ für jeden Kunden $c\in \mathcal{C}$. Diese wird auch Block genannt. Des Weiteren sei $\mathcal{R}$ eine endliche Menge von Ressourcen. Gegeben sei des Weiteren Funktionen $g_c : \mathcal{B}_ c \rightarrow \mathbb{R}^{\mathcal{R}_+}$, welche für jeden Kunden und jedes Element des entsprechenden Blocks einen Ressourcenverbrauch angeben.
+
+Ziel Des Resource Sharing ist es nun jedem Kunden $c \in \mathcal{C}$ ein Element $b_c \in \mathcal{B}_c$ zuzuordnen so dass 
+\[ \lambda^* := \inf \{ \max\limits_{r \in \mathcal{R}} \sum\limits_{c \in \mathcal{C}}  (g_c(b_c))_r | b_c \in \mathcal{B}_c \forall c \in \mathcal{C} \} \]
+möglichst nah erreicht wird. Mit anderen Worten ist es das Ziel den maximalen Ressourcenverbrauch zu minimieren. 
+
+\subsubsection{Lösungsansatz}
+Der in \textcolor{red}{??} ausführlich beschriebene Lösungsansatz für das Resource Sharing iteriert über die Kundenmenge und errechnet in jeder Iteration mit einem Orakel und Preisen $\omega _r$ für alle Ressourcen $r \in \mathcal{R}$ ein Block Element für jeden Kunden, so dass der durch die Preise gewichtete maximale Ressourcenverbrauch minimiert wird.\\
+Das Orakel $f_c : \mathbb{R}^\mathcal{R}_+ \rightarrow \mathcal{B}_c$, auch Blocklöser genannt, wird als gegeben betrachtet und errechnet für gegebene Preise $\omega$ für jedes Element $c \in C$ ein $b_c \in \mathcal{B}_c$ so dass gilt: $ \omega ^T g_c(b_c) \leq \sigma \inf \{ \omega ^T g_c(b) | b \in \mathcal{B}_c \}$ mit einem Approximationsfaktor $\sigma \geq 1$. \textcolor{red}{$\mu$ ?} \\
+Nachdem der Blocklöser aufgerufen wurde, wird geprüft ob verknüpfte Ergebnis der bisherigen Iterationen eine zulässige Lösung der Resource Sharing Instanz liefert. Ist dies nicht der Fall so werden die Preise angepasst die nächste Iteration mit den neuen Preisen gestartet. Sei $y_r$ die Summe des Ressourcenverbrauchs der Ressource $r$ der vorangegangenen Iterationen. Die Preise werden am Ende einer Iteration multiplikativ durch $\omega _r \rightarrow \omega _r \cdot e^{\gamma \cdot y_r}$ aktualisiert. Hierbei ist $\gamma > 0 $ beliebig, hat jedoch Einfluss auf die Güte der Lösung des Algorithmus.\\
+
+Ist der Algorithmus fertig so liegt das Ergebnis für jeden Kunden in Form einer Konvexkombination von Elementen des zugehörigen Blocks vor. Da jeder Block konvex ist repräsentiert diese Kombination wieder ein Element des Blocks. \\
+Angenommen ein Block ist nicht konvex, so muss eine Lösung des Resource Sharing noch zu einem geeigneten Element des zugehörigen Blocks gerundet werden.\\
+
+Es stellt sich heraus, dass sich das Ressource Sharing Problem mit einem FPTAS lösen lässt. Ein Beweis hierzu befindet sich in \textcolor{red}{??}.
+
+\subsection{Resource Sharing und \TM}
+Der folgende Algorithmus wurde angelehnt an \textcolor{red}{??} entwickelt.\\
+Das \TM Problem wird wie folgt durch eine Instanz des Resource Sharing modelliert.\\
+Die \TM Instanz bestehe aus einem Circuit $G$ ohne teilweise überflüssige Subcircuits und gegebenen $RAT$'s an den Outputs von $G$. \\
+Gesucht sei ein zu $G$ äquivalenter Graph $G*$, dessen Outputsignale vor der entsprechenden $RAT$ ankommen und $Power(G*) \leq B$. Sei $B$ vorerst gegeben. \\
+Sei $T_G$ der Timing Graph von $G$. \textcolor{red}{muss ich den erklären?}Dieser modelliert alle Delays der Knoten und Kanten von $G$. Eine Beispiel eines solchen Graphen befindet sich in Abbildung \textcolor{red}{??}.\\
+Sei nun $\mathcal{C} := \{G\} $, $\mathcal{B}_G$ die Menge der nicht dominierten Circuit Kandidaten auf $G$ und $\mathcal{P}_G$ die Menge der inklusionsmaximalen Wege im Timing Graphen von $G$. Die Signale der Outputs eines Graphen kommen genau dann vor der $RAT$ an, wenn  alle $P \in \mathcal{P}$  vor der $RAT$ des zu $P$ gehörenden Outputs ankommen.\\
+Somit lässt sich wie folgt festlegen: $\mathcal{R} = \{Power\} \cup \mathcal{P_G}$. \\
+Die Orakel in jeder Iteration wird durch eine noch zu beschreibende \TM Heuristik ersetzt. \\
+
+Durch diese Modellierung des Resource Sharing ergeben sich die folgenden Probleme, welche in den folgenden Unterkapiteln gelöst werden: \\
+\begin{itemize}
+	\item $|\mathcal{P}|$ ist nur exponentiell beschränkt. Daraus folgt, dass die explizite Speicherung jedes Ressource Preises zu einem nicht polynomiellen Algorithmus führen würde. 
+	\item Die \TM Heuristik liefert einen zu $G$ äquivalenten Circuit $G'$. Im Allgemeinen gilt jedoch $\mathcal{P}_G \neq \mathcal{P}_{G'}$. Somit lässt sich keine Ressourcenverbräuche von $G'$ auf den Ressourcen vor dem \TM angeben.
+	\item Der Block $\mathcal{B}_G$ ist nicht konvex, wodurch noch eine geeignete Routine zur Rundung anzugeben ist.
+\end{itemize}
+
+\subsubsection{Kantenpreise}
+Die Menge $\mathcal{P}_G$ für einen Circuit $G$ ist nur exponentiell beschränkt. \textcolor{red}{bsp ? }. Dadurch ist es nicht praktikabel Preise für jede Pfad Ressource zu speichern. Es ist jedoch möglich die Preise aller Pfade durch Gewichte auf den Kanten von $T_G$ zu repräsentieren. \\
+Seien $(\omega _P)_{P \in \mathcal{P}_G}$ Preise für die Pfad-Ressourcen von $G$.
+
+\textcolor{red}{damit das so weiter klappt muss ich möglchst schnell von den Kantengewichten wieder auf die pfad gewichte kommen!! dann im ein schritt verfahren die gew get nicht für jeden pfad muss entweder auf dem neuen graphen die gesamt verbrauche herausfinden oder das einschrittige zeiug vereinfachen}
+\subsubsection{Ressourcenproblem}
+\textcolor{red}{hier der teilweise überflüssige Subcuruits grund}
+
+\textcolor{red}{doppeltes umformen: erst die kanten gewichte auf den neuen Graphen transformieren mit den neuen Ressource usages erneuern und aktualisierung vom held nutzen und wieder zurpck formen!}
+\subsubsection{Rounding}
+
+\subsubsection{sonstiges? zusammenfassung}
+\textcolor{red}{binäre suche über B und kein FPTAS}
+
+
 \section{Qualitäts- und Laufzeit-Analyse}
 \label{sec:analyse}
 In diesem Kapitel werden die vorgestellten Heuristiken bezüglich Laufzeit und Güte analysiert. Vor dieser Analyse ist es jedoch Notwendig ein paar Angaben zur Struktur realer Instanzen zu machen, um die Ergebnisse der Algorithmen besser einordnen zu können.
