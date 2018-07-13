@@ -846,25 +846,30 @@ Mit diesen Voraussetzungen lässt sich das Resource Sharing Problem mit einem FP
 \[\max\limits_{r\in \mathcal{R}} \sum\limits_{c\in \mathcal{C}}(g_c(b_c))_r \leq \sigma (1+\epsilon)\lambda^*\]
 \textcolor{red}{reicht das für diesen Ansatz oder soll ich den Algo ohne erklärung angeben oder (favorit) den algo nur in Verbindung mit dem TM angeben und ausführlich erklären oder unterkapitel weglassen und den teil unter die Problemsdefinition packen ?}
 \subsection{Resource Sharing und \TM}
-Das vorliegende Kapitel beschreibt einen Ansatz zur Lösung des \TM mithilfe des Ressource Sharing Algorithmus. Der Im Folgenden vorgestellte Lösungsansatz und Algorithmus orientiert sich an der Lösung des Gate Sizing Problems mit Ressource Sharing. Ausführliche Informatinonen hierzu befinden sich in \cite{GateSizing}.\\
+Das vorliegende Kapitel beschreibt einen Ansatz zur Lösung des \TM mithilfe des Resource Sharing Algorithmus. Der Im Folgenden vorgestellte Lösungsansatz und Algorithmus orientiert sich an der Lösung des Gate Sizing Problems mit Resource Sharing. Ausführliche Informatinonen hierzu befinden sich in \cite{GateSizing}.\\
 
 Ziel dieses Algorithmus ist es eine Lösung für das \TM zu finden, welche $RAT$'s an den Outputs einhält und unter dieser Voraussetzung $Power$ (bzw. $Area$) optimiert.
 
-Sei $G$ ein Circuit ohne teilweise überflüssige Subcircuits. Dieser Circuit bildet das einzige  Element in der Kundenmenge $\mathcal{C}$. Das Optimierungsprblem lässt sich nun wiefolgt darstellen:
-\[ \]
-\textcolor{red}{timing graph mit reinbringen damit klar ist was das delay ist / wie es berechnet wird inkl. passenden Bild}
-Diese Formulierung ist äuivalent zu: 
+Sei $G$ ein Circuit ohne teilweise überflüssige Subcircuits. Dieser Circuit bildet das einzige  Element in der Kundenmenge $\mathcal{C}$. Das Optimierungsproblem lässt sich nun wiefolgt darstellen:
+\[ \min\limits_{ k \text{ Kandidat auf } G} Power(k) := \sum\limits_{g \in V(G)} Power_{gate}(gate(g)) \]
+ \[ \text {so dasss: } \, \, AT_k(v) \leq RAT(v) \text{ } \forall v \in Outputs(G)\]
+ $AT_k(v)$ entpricht der $AT(v)$ in dem mit $k$ konstruierten aquivalenten Circuit zu $G$. \\
+ Alle Delay Werte lassen sich in einem so genannten Timing Graphen $T$ modellieren. Dieser entsteht aus $G$ indem alle Gate Knoten $g$von $G$ durch $fanin(gate(g)) +1$ Knoten ersetzt werden. Jede der Input Kanten von $g$ wird durch einen Knoten unterteilt.  Alle Delay Werte von $G$ lassen sich nun auf $T$ modellieren, indem für jede Kante aus $G$ der entsprechenden Kante in $T$ das Delay dieser Kante zugewiesen wird. Für jeden Gate Knoten $g$ aus $G$ werden den entsprechenden Kanten das pinabhängige Delay zugeordnet. Ein Timing Graph wird durch Abbildung \textcolor{red}{??} veranschaulicht.\\
+ Die Arrivaltime eines Outputs $o$ von $G$ entspricht nun der Länge eines längsten  in $o$ endenden Weges in $T$. Beachte, dass $T$ abhängig von der Implementierung von $G$ ist.\\ 
+ Das Optimierungsproblem lässt sich auch anhand aller inklusionsmaximaler Wege darstellen: 
+ \[ \min\limits_{ k \text{ Kandidat auf } G} Power(k) := \sum\limits_{g \in V(G)} Power_{gate}(gate(g)) \]
+ \[ \text {so dasss: } \, \, \sum\limits_{e\in E(P)} delay_{T_k}(e) \leq RAT(Output(P)) \text{ }\forall P \in \mathbb{P}_k \]
+ Hierbei ist $T_k$ der $k$ entsprechende Timing Graph und $\mathbb{P}_k$ ist die Menge aller inklusionsmaximaler Wege in $T_k$.\\
 
-\[\]
-Im Folgenden wird mittels der zweiten Formulierung optimiert. Dies erscheint, da die Formulierung komplexer ist, nicht rational, bringt im späteren Verlauf jedoch einen deutlichen Vorteil gegenüber der ersten Formulierung.\\
+Im Folgenden wird mittels der zweiten Formulierung optimiert. Dies erscheint, da diese Formulierung komplexer ist, nicht rational, bringt im späteren Verlauf jedoch einen deutlichen Vorteil gegenüber der ersten Formulierung.\\
 
 Die zu optimierenden Ressourcen sind somit $Power(G)$ (bzw. $Area(G)$) und das $Delay$ eines jeden Weges von einem Input- zu einem Output-Knoten von $G$. \\
 Der zu lösende einzige Block $\mathcal{B}_G$ besteht aus allen möglichen, nicht dominierten, Circuit-Kandidaten auf $G$. Im Folgenden wird ein $Power$ optimierender Algorithmus beschrieben. Ein $Area$ optimierender Algorithmus verhält sich analog.\\
-Das Optimierungsproblem lässt sich nun wiefolgt darstellen:
-\[ \]
 
+Der Blocklöser für $\mathcal{B}_G$ ordnet nun jedem Circuit-Kandidaten von $G$ den entsprechenden Ressourcenverbrauch mit $Power(G)$ und  \\ $Delay(P) \ \forall P \in \mathbb{P}$ (alle inklusionsmaximalen Wege im Timing Graphen von $G$) zu. \\
 
-Es bleibt der Blocklöser für $\mathcal{B}_G$ ordnet nun jedem Circuit-Kandidaten von $G$ den entsprechenden Ressourcenverbrauch mit $Power(G)$ und  \\ $Delay(P) \ \forall \text{inklusionsmaximalen Wege } P$ zu. \\
+Die bekannten \TM Algorithmen kommen im Resource Sharing Algorithmus als Orakel zum Einsatz. Daraus folgt, dass die Aufgabe des \TM hier darin besteht einen Kandidat auf $G$ zu finden, welcher den gewichteten Ressourcenverbrauch minimiert. Für jede Ressource $r$ gibt somit ein Gewicht $\omega _r$. Sei $\omega$| der Kostenvektor dann soll das \TM einen Circuit Kandidaten liefern für welchen $(\omega_{Power} , \omega_{\mathbb{P}_k}) \left(\begin{array}{c} Power(G_k) \\ Delay_{\mathbb{P}}(G_k)\end{array}\right)  \leq (\omega_{Power} , \omega_{\mathbb{P_k}}) \left(\begin{array}{c} Power(G_k) \\ Delay_{\mathbb{P}}(G_k)\end{array}\right)$ gilt.  \textcolor{red}{der wird noch beschrieben }\\
+$|\mathbb{P}|$ ist, aufgrund der möglichen Anzahl an Wegen in einem Graphen, nur exponentiell beschränkt. Daraus folgt, dass die explizite Speicherung des Gewichts für alle Ressourcen zu einer nur exponentiell beschränkten Laufzeit führt. 
 
 \textcolor{red}{als nächstes: lösen des Problems der exponentiell vielen Wege \\ \ \\
 continues \TM ? oder erst nach dem algo darauf eingehen direkt mit einer rounding Funktion.}\\

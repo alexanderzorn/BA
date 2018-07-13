@@ -39,21 +39,21 @@
 \contentsline {subsection}{\numberline {5.2}\leavevmode {\color {red}Kommentar?}}{39}{subsection.5.2}
 \contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{39}{section.6}
 \contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{39}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{40}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{40}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{41}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{41}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{41}{subsubsection.6.2.4}
-\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{41}{subsubsection.6.2.5}
-\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{41}{subsubsection.6.2.6}
-\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{41}{subsubsection.6.2.7}
+\contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{41}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{41}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{42}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{42}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{42}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{42}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{42}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{42}{subsubsection.6.2.7}
 \contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{42}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{42}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{42}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{42}{subsubsection.6.3.3}
-\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{42}{subsection.6.4}
-\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{42}{subsubsection.6.4.1}
-\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{42}{subsubsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{42}{subsubsection.6.4.3}
-\contentsline {section}{\numberline {7}Fazit und Ausblick}{42}{section.7}
-\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{43}{section.7}
+\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{43}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{43}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{43}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{43}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{43}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{43}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{43}{subsubsection.6.4.3}
+\contentsline {section}{\numberline {7}Fazit und Ausblick}{43}{section.7}
+\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{44}{section.7}

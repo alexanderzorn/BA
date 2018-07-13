@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  11 JUL 2018 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  13 JUL 2018 11:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1734,7 +1734,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
  (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 ...nalyse der Ergebnisse}{40}{subsection.6.2}
+l.42 ...nalyse der Ergebnisse}{41}{subsection.6.2}
                                                    [1
 
 ])
@@ -2210,117 +2210,136 @@ Underfull \hbox (badness 10000) in paragraph at lines 849--850
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 858--860
+Underfull \hbox (badness 10000) in paragraph at lines 861--863
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 867--868
+Overfull \hbox (8.0142pt too wide) in paragraph at lines 864--865
+\OT1/lmr/m/n/10.95 scheint, da die-se For-mu-lie-rung kom-ple-xer ist, nicht ra
+-tio-nal, bringt im sp[]ateren
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 864--865
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 870--871
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 870--871
+Underfull \hbox (badness 10000) in paragraph at lines 866--868
 
  []
 
 [38]
-Overfull \hbox (1.68488pt too wide) in paragraph at lines 883--887
+Underfull \hbox (badness 10000) in paragraph at lines 869--870
+
+ []
+
+
+Overfull \hbox (8.19218pt too wide) in paragraph at lines 871--873
+\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 ![]; ![]\OT1/lmr/m/n/10.95 ) [] \OMS/lm
+sy/m/n/10.95 ^^T \OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 ![]; ![]\OT1/lmr/m/n/1
+0.95 ) []$ gilt. []der wird
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+
+Overfull \hbox (1.68488pt too wide) in paragraph at lines 888--892
 \OT1/lmr/m/n/10.95 den, mit Tech-no-lo-gy Map-ping vollst[]andig be-ar-beit-ba-
 ren Cir-cuits ei-nes Chips.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 883--887
+Underfull \hbox (badness 10000) in paragraph at lines 888--892
 
  []
 
-
-<pictures/compiled/instance_sizes_distribution_table.pdf, id=780, 155.84724pt x
+[39]
+<pictures/compiled/instance_sizes_distribution_table.pdf, id=786, 155.84724pt x
  97.20013pt>
 File: pictures/compiled/instance_sizes_distribution_table.pdf Graphic file (typ
 e pdf)
  <use pictures/compiled/instance_sizes_distribution_table.pdf>
 Package pdftex.def Info: pictures/compiled/instance_sizes_distribution_table.pd
-f used on input line 890.
+f used on input line 895.
 (pdftex.def)             Requested size: 170.71652pt x 106.47551pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 888--893
+Underfull \hbox (badness 10000) in paragraph at lines 893--898
 
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 893--897
+Underfull \hbox (badness 1776) in paragraph at lines 898--902
 \OT1/lmr/m/n/10.95 liegt bei $15\OML/lmm/m/it/10.95 ; \OT1/lmr/m/n/10.95 26%$. 
 Von al-len Out-
  []
 
-[39 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
-<pictures/tex_files/analysis/tradeoff_curve.pdf, id=810, 237.97708pt x 191.0096
+[40 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
+<pictures/tex_files/analysis/tradeoff_curve.pdf, id=816, 237.97708pt x 191.0096
 1pt>
 File: pictures/tex_files/analysis/tradeoff_curve.pdf Graphic file (type pdf)
  <use pictures/tex_files/analysis/tradeoff_curve.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/tradeoff_curve.pdf used on
- input line 911.
+ input line 916.
 (pdftex.def)             Requested size: 144.00055pt x 115.58302pt.
 
-<pictures/tex_files/analysis/tradeoff_curve_vt.pdf, id=811, 237.97708pt x 193.5
+<pictures/tex_files/analysis/tradeoff_curve_vt.pdf, id=817, 237.97708pt x 193.5
 3806pt>
 File: pictures/tex_files/analysis/tradeoff_curve_vt.pdf Graphic file (type pdf)
 
  <use pictures/tex_files/analysis/tradeoff_curve_vt.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/tradeoff_curve_vt.pdf used
- on input line 915.
+ on input line 920.
 (pdftex.def)             Requested size: 144.00055pt x 117.11302pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--924
+Underfull \hbox (badness 10000) in paragraph at lines 926--929
 
  []
 
-[40] [41 <./pictures/tex_files/analysis/tradeoff_curve.pdf> <./pictures/tex_fil
-es/analysis/tradeoff_curve_vt.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 958--959
+[41 <./pictures/tex_files/analysis/tradeoff_curve.pdf> <./pictures/tex_files/an
+alysis/tradeoff_curve_vt.pdf>] [42]
+Underfull \hbox (badness 10000) in paragraph at lines 963--964
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 971.
+(hyperref)                removing `math shift' on input line 976.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\varepsilon' on input line 971.
+(hyperref)                removing `\varepsilon' on input line 976.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 971.
+(hyperref)                removing `math shift' on input line 976.
 
-[42] (./HeuristikenTM.bbl)
+[43] (./HeuristikenTM.bbl)
 
 Package natbib Warning: There were undefined citations.
 
-[43]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 986.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 986.
+[44]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 991.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 991.
  (./HeuristikenTM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 986.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 986.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 991.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 991.
 Package rerunfilecheck Info: File `HeuristikenTM.out' has not changed.
 (rerunfilecheck)             Checksum: DA6B5A222AEEF7FC6AF1A40A8D2F056A;4360.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 986.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 991.
  ) 
 Here is how much of TeX's memory you used:
- 43454 strings out of 493089
- 1021520 string characters out of 6134843
+ 43455 strings out of 493089
+ 1021527 string characters out of 6134843
  1467325 words of memory out of 5000000
  45794 multiletter control sequences out of 15000+600000
  68479 words of font info for 69 fonts, out of 8000000 for 9000
@@ -2332,30 +2351,32 @@ texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/20
 ist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
 enc/dvips/lm/lm-rmsc.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /bbold-type1/bbold10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/l
-mbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi
-8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmri1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on HeuristikenTM.pdf (45 pages, 519666 bytes).
+/bbold-type1/bbold5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+bbold-type1/bbold7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmb
+x10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi8.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmri10.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on HeuristikenTM.pdf (46 pages, 527539 bytes).
 PDF statistics:
- 959 PDF objects out of 1000 (max. 8388607)
- 863 compressed objects within 9 object streams
- 225 named destinations out of 1000 (max. 500000)
+ 971 PDF objects out of 1000 (max. 8388607)
+ 872 compressed objects within 9 object streams
+ 226 named destinations out of 1000 (max. 500000)
  549 words of extra memory for PDF output out of 10000 (max. 10000000)
 
