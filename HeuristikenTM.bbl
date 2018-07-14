@@ -1,5 +1,11 @@
 \begin{thebibliography}{HNKF18}
 
+\bibitem[DHHS18]{Daboul2018}
+S.~Daboul, N.~H{\"a}hnle, S.~Held, and U.~Schorr.
+\newblock Provably fast and near-optimum gate sizing.
+\newblock {\em IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, February 2018.
+
 \bibitem[Elb17]{Elbert}
 Lucas Elbert.
 \newblock Approximationsalgorithmen f\"ur das {T}echnology-{M}apping, 2017.
@@ -24,6 +30,11 @@ Keutzer and Richards.
 Gordon~Earle Moore.
 \newblock Cramming more components onto integrated circuits.
 \newblock {\em Electronics Magazine}, 38, April 1965.
+
+\bibitem[MRV11]{Vygen2011}
+Dirk M{\"u}ller, Klaus Radke, and Jens Vygen.
+\newblock Faster min--max resource sharing in theory and practice.
+\newblock {\em Mathematical Programming Computation}, 3(1):1--35, Mar 2011.
 
 \bibitem[Pos41]{Post}
 Emil~Leon Post.

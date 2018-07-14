@@ -31,35 +31,32 @@
 \BOOKMARK [2][-]{subsection.4.4}{Weitere Optimierungskriterien}{section.4}% 31
 \BOOKMARK [3][-]{subsubsection.4.4.1}{Pinabh\344ngiges Delay}{subsection.4.4}% 32
 \BOOKMARK [3][-]{subsubsection.4.4.2}{Power Optimierung}{subsection.4.4}% 33
-\BOOKMARK [3][-]{subsubsection.4.4.3}{Layer Assignment}{subsection.4.4}% 34
-\BOOKMARK [1][-]{section.5}{Resource Sharing}{}% 35
-\BOOKMARK [2][-]{subsection.5.1}{Resource Sharing und Technology Mapping }{section.5}% 36
-\BOOKMARK [2][-]{subsection.5.2}{Kommentar?}{section.5}% 37
-\BOOKMARK [1][-]{section.6}{Resource Sharing}{}% 38
-\BOOKMARK [2][-]{subsection.6.1}{Definition und L\366sungsansatz des Resource Sharing Problems}{section.6}% 39
-\BOOKMARK [3][-]{subsubsection.6.1.1}{L\366sungsansatz}{subsection.6.1}% 40
-\BOOKMARK [2][-]{subsection.6.2}{Resource Sharing und Technology Mapping }{section.6}% 41
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Kantenpreise}{subsection.6.2}% 42
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Ressourcenproblem}{subsection.6.2}% 43
-\BOOKMARK [3][-]{subsubsection.6.2.3}{Rounding}{subsection.6.2}% 44
-\BOOKMARK [3][-]{subsubsection.6.2.4}{sonstiges? zusammenfassung}{subsection.6.2}% 45
-\BOOKMARK [1][-]{section.7}{Qualit\344ts- und Laufzeit-Analyse}{}% 46
-\BOOKMARK [2][-]{subsection.7.1}{Struktur realer Instanzen}{section.7}% 47
-\BOOKMARK [2][-]{subsection.7.2}{Analyse der Ergebnisse}{section.7}% 48
-\BOOKMARK [3][-]{subsubsection.7.2.1}{Tradeoffparameter}{subsection.7.2}% 49
-\BOOKMARK [3][-]{subsubsection.7.2.2}{Premapping}{subsection.7.2}% 50
-\BOOKMARK [3][-]{subsubsection.7.2.3}{Preprozessing}{subsection.7.2}% 51
-\BOOKMARK [3][-]{subsubsection.7.2.4}{Power und Area Vergleich}{subsection.7.2}% 52
-\BOOKMARK [3][-]{subsubsection.7.2.5}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.7.2}% 53
-\BOOKMARK [3][-]{subsubsection.7.2.6}{Verhalten weiterer Kosten}{subsection.7.2}% 54
-\BOOKMARK [3][-]{subsubsection.7.2.7}{Zusammenfassung?}{subsection.7.2}% 55
-\BOOKMARK [2][-]{subsection.7.3}{Laufzeitanalyse}{section.7}% 56
-\BOOKMARK [3][-]{subsubsection.7.3.1}{Globale Laufzeitanalyse}{subsection.7.3}% 57
-\BOOKMARK [3][-]{subsubsection.7.3.2}{Lokale Laufzeitanalyse}{subsection.7.3}% 58
-\BOOKMARK [3][-]{subsubsection.7.3.3}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.7.3}% 59
-\BOOKMARK [2][-]{subsection.7.4}{G\374te laufzeit vergleich}{section.7}% 60
-\BOOKMARK [3][-]{subsubsection.7.4.1}{Kleine Instanzen}{subsection.7.4}% 61
-\BOOKMARK [3][-]{subsubsection.7.4.2}{Allgemein}{subsection.7.4}% 62
-\BOOKMARK [3][-]{subsubsection.7.4.3}{G\374te Bucket filetering \040}{subsection.7.4}% 63
-\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 64
-\BOOKMARK [1][-]{section.8}{Literaturverzeichnis}{}% 65
+\BOOKMARK [1][-]{section.5}{Resource Sharing}{}% 34
+\BOOKMARK [2][-]{subsection.5.1}{Definition und L\366sungsansatz des Resource Sharing Problems}{section.5}% 35
+\BOOKMARK [3][-]{subsubsection.5.1.1}{L\366sungsansatz}{subsection.5.1}% 36
+\BOOKMARK [2][-]{subsection.5.2}{Resource Sharing und Technology Mapping }{section.5}% 37
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Kantenpreise}{subsection.5.2}% 38
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Ressourcenproblem}{subsection.5.2}% 39
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Technology Mapping Orakel}{subsection.5.2}% 40
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Algorithmus}{subsection.5.2}% 41
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Abschlie\337ende Bemerkungen}{subsection.5.2}% 42
+\BOOKMARK [1][-]{section.6}{Qualit\344ts- und Laufzeit-Analyse}{}% 43
+\BOOKMARK [2][-]{subsection.6.1}{Struktur realer Instanzen}{section.6}% 44
+\BOOKMARK [2][-]{subsection.6.2}{Analyse der Ergebnisse}{section.6}% 45
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Tradeoffparameter}{subsection.6.2}% 46
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Premapping}{subsection.6.2}% 47
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Preprozessing}{subsection.6.2}% 48
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Power und Area Vergleich}{subsection.6.2}% 49
+\BOOKMARK [3][-]{subsubsection.6.2.5}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.6.2}% 50
+\BOOKMARK [3][-]{subsubsection.6.2.6}{Verhalten weiterer Kosten}{subsection.6.2}% 51
+\BOOKMARK [3][-]{subsubsection.6.2.7}{Zusammenfassung?}{subsection.6.2}% 52
+\BOOKMARK [2][-]{subsection.6.3}{Laufzeitanalyse}{section.6}% 53
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Globale Laufzeitanalyse}{subsection.6.3}% 54
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Lokale Laufzeitanalyse}{subsection.6.3}% 55
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.6.3}% 56
+\BOOKMARK [2][-]{subsection.6.4}{G\374te laufzeit vergleich}{section.6}% 57
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Kleine Instanzen}{subsection.6.4}% 58
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Allgemein}{subsection.6.4}% 59
+\BOOKMARK [3][-]{subsubsection.6.4.3}{G\374te Bucket filetering \040}{subsection.6.4}% 60
+\BOOKMARK [1][-]{section.7}{Fazit und Ausblick}{}% 61
+\BOOKMARK [1][-]{section.7}{Literaturverzeichnis}{}% 62

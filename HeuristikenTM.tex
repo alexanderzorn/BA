@@ -809,15 +809,16 @@ Die static power eines Gates korreliert sehr stark mit der physikalischen Größ
 Static power lässt sich auch zusätzlich zu Area in die Kostenfunktion einbauen. Dies würde bedeuten, dass die Kosten eines Kandidaten $k$ das Tripel $area(k), AT(k), static_power(k)$ sind, wobei $static_power(k)$ ähnlich wie $area(k)$ errechnet wird. Dies führt jedoch zu einer noch schlechteren Vergleichbarkeit von Kandidaten gleicher und verschiedener Knoten. Aus diesem Grund wird auf die Optimierung aller drei Kriterien zusammen verzichtet. \\
 In Kapitel \ref{sec:analyse} finden sich weitere Ausführungen über die Auswirkungen von diesem Austausch in der Kostenfunktion.
 	
+\begin{comment}
 \subsubsection{Layer Assignment}
 Die Knoten eines Circuits sind durch Kanten miteinander verbunden.  Die ausgehenden Kanten eines Knotens bilden ein Netz und  die Endknoten der Kanten dessen Menge von Terminalen. Diese werden auf dem Chip zu einem Steinerbaum verbunden. Des Weiteren ist ein Chip in mehrere Schichten (Layers) unterteilt, in welche die Kanten physikalisch eingebettet werden. Das Verlegen einer Kante in einem Layer bringt Kosten mit sich, welche abhängig von der Wahl des Layers sind. Jedem Netz ist nun eine Menge von Schichten zugeordnet, in welche die Kanten des Steinerbaumes gelegt werden dürfen. \\
 Durch die vorgestellten \TM Algorithmen  werden in dem umgebauten Circuit $C'$ Netze von Knoten, über die gematcht wurde, nicht mehr benötigt. Für Gates, über deren Nachfolger gematcht wurde, verändert sich jedoch die Terminalmenge des dazugehörigen Netzes. Den Netzen aus $C'$ muss nun wieder eine Menge von Layern zugeordnet werden, so dass die  Terminalmengen untereinander auf dem Chip verbunden werden können und die zusätzlichen Kosten nicht übermäßig hoch werden. \\
 Wenn sich ein Terminal eines Netzes $N$ mit Layermenge $L$ ändert, wurde über den darüberliegenden Knoten gematcht und dessen Netz $N'$ mit Layermenge $L'$ ist verschwunden. Um sicherzustellen, dass in $N$ jedes Terminal über die Layer erreichbar ist, wird aktuell $L := L \cup L'$ gesetzt. Dies geschieht für jedes Netz $M$ aus $C'$ und dessen geänderte Terminale und garantiert die Existenz eines Steinerbaums in $M$. \\
 Es muss noch überprüft werden, ob durch eine geänderte Zuweisung der Layermenge der Netze von $C'$ geringere Kosten bei der Realisierung der Netze garantiert werden können.
 Da dies bisher die beste Methode ist, das Problem an dieser Stelle zu lösen,  und in den getesteten Instanzen die zusätzlichen Kosten durch die Zuteilung der Kanten nicht übermäßig hoch sind, werden weder diese Kosten noch das Layer Assignment in dieser Arbeit weiter behandelt.
+\end{comment}
 	
-	
-%\section{Version der Heuristik, welche obige Kriterien beherzigt}
+\begin{comment}
 \section{Resource Sharing}
 \label{sec:resource_sh}
 In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dies noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht weiter darauf eingegangen.\\
@@ -876,7 +877,7 @@ continues \TM ? oder erst nach dem algo darauf eingehen direkt mit einer roundin
 
 
 \subsection{\textcolor{red}{Kommentar?}}
-
+\end{comment}
 
 
 
@@ -893,7 +894,7 @@ Ziel Des Resource Sharing ist es nun jedem Kunden $c \in \mathcal{C}$ ein Elemen
 möglichst nah erreicht wird. Mit anderen Worten ist es das Ziel den maximalen Ressourcenverbrauch zu minimieren. 
 
 \subsubsection{Lösungsansatz}
-Der in \textcolor{red}{??} ausführlich beschriebene Lösungsansatz für das Resource Sharing iteriert über die Kundenmenge und errechnet in jeder Iteration mit einem Orakel und Preisen $\omega _r$ für alle Ressourcen $r \in \mathcal{R}$ ein Block Element für jeden Kunden, so dass der durch die Preise gewichtete maximale Ressourcenverbrauch minimiert wird.\\
+Der in \cite{Vygen2011} ausführlich beschriebene Lösungsansatz für das Resource Sharing iteriert über die Kundenmenge und errechnet in jeder Iteration mit einem Orakel und Preisen $\omega _r$ für alle Ressourcen $r \in \mathcal{R}$ ein Block Element für jeden Kunden, so dass der durch die Preise gewichtete maximale Ressourcenverbrauch minimiert wird.\\
 Das Orakel $f_c : \mathbb{R}^\mathcal{R}_+ \rightarrow \mathcal{B}_c$, auch Blocklöser genannt, wird als gegeben betrachtet und errechnet für gegebene Preise $\omega$ für jedes Element $c \in C$ ein $b_c \in \mathcal{B}_c$ so dass gilt: $ \omega ^T g_c(b_c) \leq \sigma \inf \{ \omega ^T g_c(b) | b \in \mathcal{B}_c \}$ mit einem Approximationsfaktor $\sigma \geq 1$. \textcolor{red}{$\mu$ ?} \\
 Nachdem der Blocklöser aufgerufen wurde, wird geprüft ob verknüpfte Ergebnis der bisherigen Iterationen eine zulässige Lösung der Resource Sharing Instanz liefert. Ist dies nicht der Fall so werden die Preise angepasst die nächste Iteration mit den neuen Preisen gestartet. Sei $y_r$ die Summe des Ressourcenverbrauchs der Ressource $r$ der vorangegangenen Iterationen. Die Preise werden am Ende einer Iteration multiplikativ durch $\omega _r \rightarrow \omega _r \cdot e^{\gamma \cdot y_r}$ aktualisiert. Hierbei ist $\gamma > 0 $ beliebig, hat jedoch Einfluss auf die Güte der Lösung des Algorithmus.\\
 
@@ -903,7 +904,7 @@ Angenommen ein Block ist nicht konvex, so muss eine Lösung des Resource Sharing
 Es stellt sich heraus, dass sich das Ressource Sharing Problem mit einem FPTAS lösen lässt. Ein Beweis hierzu befindet sich in \textcolor{red}{??}.
 
 \subsection{Resource Sharing und \TM}
-Der folgende Algorithmus wurde angelehnt an \textcolor{red}{??} entwickelt.\\
+Der folgende Algorithmus wurde angelehnt an \cite{Daboul2018} entwickelt.\\
 Das \TM Problem wird wie folgt durch eine Instanz des Resource Sharing modelliert.\\
 Die \TM Instanz bestehe aus einem Circuit $G$ ohne teilweise überflüssige Subcircuits und gegebenen $RAT$'s an den Outputs von $G$. \\
 Gesucht sei ein zu $G$ äquivalenter Graph $G*$, dessen Outputsignale vor der entsprechenden $RAT$ ankommen und $Power(G*) \leq B$. Sei $B$ vorerst gegeben. \\
@@ -911,6 +912,11 @@ Sei $T_G$ der Timing Graph von $G$. \textcolor{red}{muss ich den erklären?}Dies
 Sei nun $\mathcal{C} := \{G\} $, $\mathcal{B}_G$ die Menge der nicht dominierten Circuit Kandidaten auf $G$ und $\mathcal{P}_G$ die Menge der inklusionsmaximalen Wege im Timing Graphen von $G$. Die Signale der Outputs eines Graphen kommen genau dann vor der $RAT$ an, wenn  alle $P \in \mathcal{P}$  vor der $RAT$ des zu $P$ gehörenden Outputs ankommen.\\
 Somit lässt sich wie folgt festlegen: $\mathcal{R} = \{Power\} \cup \mathcal{P_G}$. \\
 Die Orakel in jeder Iteration wird durch eine noch zu beschreibende \TM Heuristik ersetzt. \\
+Die Aufgabe dieses Orakels besteht darin den gewichteten Ressourcenverbrauch
+\begin{equation}\label{eq:ressourcen_verbrauch_1}
+\omega _{Power} \frac{Power(G)}{B} + \sum\limits_{P \in \mathcal{P}} \omega _P \frac{\sum_{e \in E(P)}Delay_e(G)}{RAT_P}
+\end{equation}
+ zu minimieren. Hierbei ist $RAT_P$ die $RAT$ des Outputs von $P$.
 
 Durch diese Modellierung des Resource Sharing ergeben sich die folgenden Probleme, welche in den folgenden Unterkapiteln gelöst werden: \\
 \begin{itemize}
@@ -921,18 +927,67 @@ Durch diese Modellierung des Resource Sharing ergeben sich die folgenden Problem
 
 \subsubsection{Kantenpreise}
 Die Menge $\mathcal{P}_G$ für einen Circuit $G$ ist nur exponentiell beschränkt. \textcolor{red}{bsp ? }. Dadurch ist es nicht praktikabel Preise für jede Pfad Ressource zu speichern. Es ist jedoch möglich die Preise aller Pfade durch Gewichte auf den Kanten von $T_G$ zu repräsentieren. \\
-Seien $(\omega _P)_{P \in \mathcal{P}_G}$ Preise für die Pfad-Ressourcen von $G$.
+Seien $(\omega _P)_{P \in \mathcal{P}_G}$ Preise für die Pfad-Ressourcen von $G$. Setze $\omega _e := \sum\limits_{P \in \mathcal{P} : e \in P} \omega _P$.  Die Minimierung von (\ref{eq:ressourcen_verbrauch_1}) durch das Orakel ist nun äquivalent der Minimierung von 
+\begin{equation}\label{eq:ressourcen_verbrauch_2}
+\omega _{Power} \frac{Power(G)}{B} + \sum\limits_{e \in E(T_G)} \frac{Delay_e(G)}{RAT_P}.
+\end{equation}
+Des Weiteren gilt, dass nun für $(\omega_e)_{e \in T_G}$ die Flusserhaltung $\sum_{e \in  \delta^- (v)} \omega_e = \sum_{e \in  \delta^+ (v)} \omega_e $.\\
+Der Preis eines Pfades lässt sich nun in linearer Zeit errechnen. Ein Beweis dieser Aussage befindet sich in \textcolor{red}{??}.
 
-\textcolor{red}{damit das so weiter klappt muss ich möglchst schnell von den Kantengewichten wieder auf die pfad gewichte kommen!! dann im ein schritt verfahren die gew get nicht für jeden pfad muss entweder auf dem neuen graphen die gesamt verbrauche herausfinden oder das einschrittige zeiug vereinfachen}
 \subsubsection{Ressourcenproblem}
-\textcolor{red}{hier der teilweise überflüssige Subcuruits grund}
+Das \TM Orakel  gibt einen optimierten zu $G$ äquivalenten Circuit $G'$ zurück. Dieser besitzt jedoch neue Pfade und somit eine andere Ressourcenmenge als $G$. Da für die Kantengewichte die Flusserhaltung gilt und die Preise der eingehenden und der ausgehenden Kanten von $G$ \textcolor{red}{oben erklären} gleich bleibt lassen sich durch folgenden Algorithmus entsprechende Kantenpreise auf $G'$ definieren. 
 
-\textcolor{red}{doppeltes umformen: erst die kanten gewichte auf den neuen Graphen transformieren mit den neuen Ressource usages erneuern und aktualisierung vom held nutzen und wieder zurpck formen!}
-\subsubsection{Rounding}
+\textcolor{red}{kleinen algo einfügen}
 
-\subsubsection{sonstiges? zusammenfassung}
-\textcolor{red}{binäre suche über B und kein FPTAS}
+Anhand dieses Algorithmus wird deutlich weshalb $G$ keine teilweise überflüssigen Subcircuits enthalten darf. Mit den teilweise überflüssigen Subcircuits ist es möglich, dass  in $G'$ Inputs ohne ausgehende Kanten existieren. Deren Fluss ließe sich nicht mehr  verteilen. \\
 
+Um das Problem mit der Ressourcenverteilung zu lösen, werden erst mit vorangegangenem Algorithmus Preise für die Kanten von $T_{G'}$ errechnet. Daraufhin werden diese Preise aufgrund der Ressourcenverbräuche in $G'$ aktualisiert. Nach diesem Schritt werden die neuen Kanten Preise von $G'$ wieder in Kantenpreise von $G$ umgewandelt und mit den aktualisierten Preisen wird die nächste Iteration gestartet.\\
+
+Angenommen $G$ besitzt beschränkt viele Highfanoutknoten. In dem Fall ist die Anzahl der Pfade polynomiell beschränkt und die Preise von $G'$ lassen sich in polynomieller Zeit aktualisieren. 
+Es bleibt offen zu zeigen, wie Preise von $G'$ ohne diese Einschränkung in polynomieller Laufzeit aktualisiert werde können.\\
+\textcolor{red}{oder nur die ye herausfinden!}
+
+\subsubsection{\TM Orakel}
+Das Orakel ist ein \TM Algorithmus mit den folgenden Besonderheiten: \\
+Genutzt wird die \TM Heuristik aus Kapitel \ref{subsec:heuristik} mit dem Premapping durch Schätzen und erweitert für Circuits mit mehreren Outputs. \\
+Damit dieser Algorithmus in der Lage eine bezüglich der Kantenpreise optimierter Lösung zu liefern, werden diese wie folgt in den Algorithmus integriert: \\
+Das Delay einer Kante von $G$ wird multipliziert mit dem entsprechenden Preis dieser Kante. Dies gilt ebenfalls für das pinabhägige Delay eines Gates. Das Delay jedes Inputpins eines Gates in $G$ zu seinem Output lässt sich ebenfalls eindeutig einer Kante aus $T_G$ zurordnen. Mit deren Preis wird auch dieses Delay multipliziert. Des Weiteren werden die Powerwerte der Gates mit $\omega_{Power}$ multipliziert. \\
+Mit diesen Änderungen orientiert minimiert das Orakel heuristisch die Kostenfunktion (\ref{eq:ressourcen_verbrauch_2}).
+
+
+\subsubsection{Algorithmus}
+Im Folgenden wird ein Resource Sharing Algorithmus zur Lösung des \TM vorgestellt. \\
+
+\LinesNumbered
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\caption{Resource Sharing Algorithmus für das TM}
+\SetKwInOut{Task}{Task}
+\KwIn{Instanz $G$ des TM Problems ohne teilweise überflüssige Subcircuits, Ein Power-Budget $B$, $\gamma > 0, \, I \in \mathbb{N}$}
+\KwOut{Konvexkombination von Kandidaten auf der \TM Instanz}
+
+   $k[\,] \gets \emptyset, \quad \phi[\,] \gets \emptyset $\;
+  $y_e \gets 0 \quad \forall e \in E(T_G), \quad y_{Power} \gets 0$\;
+  \For{$i = 1,...,I$}
+     {
+        $\omega_{Power} \gets e^{\gamma \cdot y_{Power}}$\;
+        $(\omega_e)_{e \in E(T_G)} \gets Edge\_Weights(\gamma, (y_e)_{e \in E(T_G)})$\;
+        $k[i] \gets TM\_Oracle(\omega)$\;
+        $\xi \gets \min \{ \frac{B}{Power(k[i])}, \frac{RAT_P}{Delay(P)} \forall P \in \mathcal{P}_{k[i}] \}$\;
+        \If{$\xi \leq 1$}{\Return $k[i]$}
+        $(y_e)_{e \in E(T_G)} \gets Edge\_Resources(k[i], (y_e)_{e \in E(T_G)}, \xi)$\;
+        $\phi[i] \gets \xi$
+     }
+     \Return $k,\phi$
+\end{algorithm}\ \\
+
+\textcolor{red}{rounding mit rein}
+
+\subsubsection{Abschließende Bemerkungen}
+Im bisherigen Verlauf dieses Kapitels wurde $B$ als gegeben vorausgesetzt. Es lässt sich jedoch $B$ durch eine binäre Suche und einem Aufruf des Resource Sharing Algorithmus für jede Iteration der Suche ersetzen. Die gibt eine, wenn möglich $RAT$ einhaltenden Lösung mit möglichst kleinem Power-Verbrauch. \\
+Des Weiteren lässt sich auch mit einem durch \TM umgebauten Circuit in der nächsten Iteration des Resource Sharing weiterrechnen, jedoch müssen dann die Preise und Ressourcen an die entsprechend angepasst werden. Dies ist für den gesamten Circuit nicht interessant, da sonst alle Preise evtl. ihre Gültigkeit verlieren. Sehr kritische Subcircuits lassen mit jedoch durchaus mit entsprechenden Veränderungen an Ressourcen und Preisen austauschen. \\
+Die Definition der Ressourcen und Kunden wurde so allgemein gehalten, dass in einer Iteration des Resource Sharing Algorithmus das \TM sehr einfach durch einen andere die Logik optimierende Routine ausgetauscht werden kann. Abhängig von den aktuellen Preisen und den bisher errechneten Kandidaten, ist es möglich zum Beispiel das \TM Orakel mit  dem  in \cite{Daboul2018} beschriebenen  Gate Sizing Algorithmus zu ersetzen.  Dadurch ist eine deutlich höhere Flexibilität bei der Logik Optimierung eines Ciruits. \\
+Ob der Resource Sharing Algorithmus für das \TM polynomiell implementierbar ist hängt nur von dem gewählten \TM Algorithmus ab, denn alle anderen Schritte sind wie bereits beschrieben polynomiell implementierbar. \textcolor{red}{müssten noch beschrieben werden}
 
 \section{Qualitäts- und Laufzeit-Analyse}
 \label{sec:analyse}
