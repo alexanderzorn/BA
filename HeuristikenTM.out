@@ -1,17 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.2}{Terminologie und Kern Algorithmus}{}% 2
+\BOOKMARK [1][-]{section.2}{Terminologie und Kernalgorithmus}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Grundlegende Definitionen}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Kern Algorithmus}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Kernalgorithmus}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Entwicklung von FPTAS und Heuristik}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Klonen}{subsection.3.2}% 8
 \BOOKMARK [2][-]{subsection.3.3}{Zu lange Kanten}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.5}{Matchingprobleme}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.5}{Matchprobleme}{section.3}% 11
 \BOOKMARK [3][-]{subsubsection.3.5.1}{Obere Schranke f\374r die Anzahl Matche eines Knoten}{subsection.3.5}% 12
-\BOOKMARK [3][-]{subsubsection.3.5.2}{Matching Suche in polynomieller Zeit}{subsection.3.5}% 13
-\BOOKMARK [3][-]{subsubsection.3.5.3}{Heuristische Matching Suche}{subsection.3.5}% 14
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Match-Suche in polynomieller Zeit}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Heuristische Match-Suche}{subsection.3.5}% 14
 \BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 15
 \BOOKMARK [3][-]{subsubsection.3.6.1}{Schranken f\374r Arrivaltime und Gr\366\337e}{subsection.3.6}% 16
 \BOOKMARK [3][-]{subsubsection.3.6.2}{Filtern mit Buckets}{subsection.3.6}% 17
@@ -30,7 +30,7 @@
 \BOOKMARK [2][-]{subsection.4.3}{Preprocessing}{section.4}% 30
 \BOOKMARK [2][-]{subsection.4.4}{Weitere Optimierungskriterien}{section.4}% 31
 \BOOKMARK [3][-]{subsubsection.4.4.1}{Pinabh\344ngiges Delay}{subsection.4.4}% 32
-\BOOKMARK [3][-]{subsubsection.4.4.2}{Power Optimierung}{subsection.4.4}% 33
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Power-Optimierung}{subsection.4.4}% 33
 \BOOKMARK [1][-]{section.5}{Resource Sharing}{}% 34
 \BOOKMARK [2][-]{subsection.5.1}{Definition und L\366sungsansatz des Resource Sharing Problems}{section.5}% 35
 \BOOKMARK [3][-]{subsubsection.5.1.1}{L\366sungsansatz}{subsection.5.1}% 36
@@ -46,7 +46,7 @@
 \BOOKMARK [3][-]{subsubsection.6.2.1}{Tradeoffparameter}{subsection.6.2}% 46
 \BOOKMARK [3][-]{subsubsection.6.2.2}{Premapping}{subsection.6.2}% 47
 \BOOKMARK [3][-]{subsubsection.6.2.3}{Preprozessing}{subsection.6.2}% 48
-\BOOKMARK [3][-]{subsubsection.6.2.4}{Power und Area Vergleich}{subsection.6.2}% 49
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Vergleich von Power und Area}{subsection.6.2}% 49
 \BOOKMARK [3][-]{subsubsection.6.2.5}{G\374tevergleich kleiner \366ptimal "gel instanzen}{subsection.6.2}% 50
 \BOOKMARK [3][-]{subsubsection.6.2.6}{Verhalten weiterer Kosten}{subsection.6.2}% 51
 \BOOKMARK [3][-]{subsubsection.6.2.7}{Zusammenfassung?}{subsection.6.2}% 52
@@ -54,9 +54,8 @@
 \BOOKMARK [3][-]{subsubsection.6.3.1}{Globale Laufzeitanalyse}{subsection.6.3}% 54
 \BOOKMARK [3][-]{subsubsection.6.3.2}{Lokale Laufzeitanalyse}{subsection.6.3}% 55
 \BOOKMARK [3][-]{subsubsection.6.3.3}{Laufzeitverlgeich kleiner \366ptimal "gel instanzen}{subsection.6.3}% 56
-\BOOKMARK [2][-]{subsection.6.4}{G\374te laufzeit vergleich}{section.6}% 57
+\BOOKMARK [2][-]{subsection.6.4}{Vergleich von G\374te und Laufzeit}{section.6}% 57
 \BOOKMARK [3][-]{subsubsection.6.4.1}{Kleine Instanzen}{subsection.6.4}% 58
 \BOOKMARK [3][-]{subsubsection.6.4.2}{Allgemein}{subsection.6.4}% 59
-\BOOKMARK [3][-]{subsubsection.6.4.3}{G\374te Bucket filetering \040}{subsection.6.4}% 60
-\BOOKMARK [1][-]{section.7}{Fazit und Ausblick}{}% 61
-\BOOKMARK [1][-]{section.7}{Literaturverzeichnis}{}% 62
+\BOOKMARK [1][-]{section.7}{Fazit und Ausblick}{}% 60
+\BOOKMARK [1][-]{section.7}{Literaturverzeichnis}{}% 61

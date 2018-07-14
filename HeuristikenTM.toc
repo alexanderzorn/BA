@@ -1,19 +1,19 @@
 \select@language {ngerman}
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
-\contentsline {section}{\numberline {2}Terminologie und Kern Algorithmus}{5}{section.2}
+\contentsline {section}{\numberline {2}Terminologie und Kernalgorithmus}{5}{section.2}
 \contentsline {subsection}{\numberline {2.1}Grundlegende Definitionen}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Kern Algorithmus}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Kernalgorithmus}{8}{subsection.2.2}
 \contentsline {section}{\numberline {3}Entwicklung von FPTAS und Heuristik}{10}{section.3}
 \contentsline {subsection}{\numberline {3.1}Tradeoffprobleme}{10}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Highfanoutknoten}{12}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Klonen}{14}{subsubsection.3.2.1}
 \contentsline {subsection}{\numberline {3.3}Zu lange Kanten}{15}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Teilweise \IeC {\"u}berfl\IeC {\"u}ssige Subcircuits}{15}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Matchingprobleme}{17}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}Matchprobleme}{17}{subsection.3.5}
 \contentsline {subsubsection}{\numberline {3.5.1}Obere Schranke f\IeC {\"u}r die Anzahl Matche eines Knoten}{17}{subsubsection.3.5.1}
-\contentsline {subsubsection}{\numberline {3.5.2}Matching Suche in polynomieller Zeit}{19}{subsubsection.3.5.2}
-\contentsline {subsubsection}{\numberline {3.5.3}Heuristische Matching Suche}{19}{subsubsection.3.5.3}
+\contentsline {subsubsection}{\numberline {3.5.2}Match-Suche in polynomieller Zeit}{19}{subsubsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.3}Heuristische Match-Suche}{19}{subsubsection.3.5.3}
 \contentsline {subsection}{\numberline {3.6}Kandidaten-Probleme}{20}{subsection.3.6}
 \contentsline {subsubsection}{\numberline {3.6.1}Schranken f\IeC {\"u}r Arrivaltime und Gr\IeC {\"o}\IeC {\ss }e}{20}{subsubsection.3.6.1}
 \contentsline {subsubsection}{\numberline {3.6.2}Filtern mit Buckets}{22}{subsubsection.3.6.2}
@@ -32,7 +32,7 @@
 \contentsline {subsection}{\numberline {4.3}Preprocessing}{33}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Weitere Optimierungskriterien}{33}{subsection.4.4}
 \contentsline {subsubsection}{\numberline {4.4.1}Pinabh\IeC {\"a}ngiges Delay}{34}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Power Optimierung}{34}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.2}Power-Optimierung}{34}{subsubsection.4.4.2}
 \contentsline {section}{\numberline {5}Resource Sharing}{35}{section.5}
 \contentsline {subsection}{\numberline {5.1}Definition und L\IeC {\"o}sungsansatz des Resource Sharing Problems}{35}{subsection.5.1}
 \contentsline {subsubsection}{\numberline {5.1.1}L\IeC {\"o}sungsansatz}{36}{subsubsection.5.1.1}
@@ -48,7 +48,7 @@
 \contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{42}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2}Premapping}{43}{subsubsection.6.2.2}
 \contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{43}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Power und Area Vergleich}{43}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.4}Vergleich von Power und Area}{43}{subsubsection.6.2.4}
 \contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{43}{subsubsection.6.2.5}
 \contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{43}{subsubsection.6.2.6}
 \contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{43}{subsubsection.6.2.7}
@@ -56,9 +56,8 @@
 \contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{43}{subsubsection.6.3.1}
 \contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{44}{subsubsection.6.3.2}
 \contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{44}{subsubsection.6.3.3}
-\contentsline {subsection}{\numberline {6.4}G\IeC {\"u}te laufzeit vergleich}{44}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.4}Vergleich von G\IeC {\"u}te und Laufzeit}{44}{subsection.6.4}
 \contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{44}{subsubsection.6.4.1}
 \contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{44}{subsubsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.3}G\IeC {\"u}te Bucket filetering $\varepsilon $ }{44}{subsubsection.6.4.3}
 \contentsline {section}{\numberline {7}Fazit und Ausblick}{44}{section.7}
 \contentsline {section}{\numberline {11}{Literaturverzeichnis}}{45}{section.7}
