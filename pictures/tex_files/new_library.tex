@@ -83,15 +83,50 @@
 \node[fill=red, outer sep=0pt, xor gate US, draw, logic gate inputs=nn, rotate=270, thick, scale=.8] at (\x * 9, \y) (xor){};
 
 \draw [thick] (0,-0.7) -- (8, -0.7);
-\node at (-0.7, .8) {\Large Library:};
+\node at (-0.8, .8) {\Large Library:};
 \node at (-0.7,-1) {\Large Arity:};
+\node [ align=center] at (-1.4,-2) {\Large Boolesche \\ \Large Funktionen:};
 \node at (0.7, -1){2,3,4};
 \node at (1.6, -1){2};
 \node at (2.5, -1){2,3,4};
 \node at (3.6, -1){3,4};
 \node at (4.8, -1){3,4};
-\node at (6, -1){3};
+\node at (6.1, -1){3};
 \node at (7.3, -1){2,3,4};
+
+\node at (0.7, -1.8){\small $[1000]$};
+\node at (1.6, -1.8){\small $[0100]$};
+\node at (2.45, -1.8){\small $[1110]$};
+\node at (3.58, -1.8){\small $\left[{1111,1000}\atop{1000,1000}\right]$};
+\node at (5, -1.8){\small $\left[{1110,1110}\atop{1110,0000}\right]$};
+\node at (6.15, -1.8){\small $\left[{1011}\atop{1000}\right]$};
+\node at (7.2, -1.8){\small $[0110]$};
+
+\node at (0.7, -2.4){\small $[0111]$};
+\node at (1.6, -2.4){\small $[1011]$};
+\node at (2.45, -2.4){\small $[0001]$};
+\node at (3.58, -2.4){\small $\left[{0000,0111}\atop{0111,0111}\right]$};
+\node at (5, -2.4){\small $\left[{0001, 0001}\atop{0001, 1111}\right]$};
+\node at (6.15, -2.4){\small $\left[{0100}\atop{0111}\right]$};
+\node at (7.2, -2.4){\small $[1001]$};
+
+\node [ align=right] at (-1.55,-3.2) {\Large Bezeichnung:};
+\node at (0.65, -3){\footnotesize AND};
+\node at (1.7, -3){\footnotesize ANDN};
+\node at (2.58, -3){\footnotesize OR};
+\node at (3.6, -3){\footnotesize AO};
+\node at (4.9, -3){\footnotesize OA};
+\node at (6.1, -3){\footnotesize MUX};
+\node at (7.3, -3){\footnotesize XOR};
+
+\node at (0.55, -3.4){\footnotesize NAND};
+\node at (1.7, -3.4){\footnotesize NANDN};
+\node at (2.7, -3.4){\footnotesize NOR};
+\node at (3.6, -3.4){\footnotesize AOI};
+\node at (4.9, -3.4){\footnotesize OAI};
+\node at (6.1, -3.4){\footnotesize MUXI};
+\node at (7.3, -3.4){\footnotesize XNOR};
+
 
 \end{tikzpicture}
 \end{document}

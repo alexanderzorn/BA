@@ -39,25 +39,25 @@
 \contentsline {subsection}{\numberline {5.2}Resource Sharing und Technology Mapping }{36}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Kantenpreise}{37}{subsubsection.5.2.1}
 \contentsline {subsubsection}{\numberline {5.2.2}Ressourcenproblem}{38}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Technology Mapping Orakel}{38}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Algorithmus}{39}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Abschlie\IeC {\ss }ende Bemerkungen}{39}{subsubsection.5.2.5}
-\contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{40}{section.6}
-\contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{40}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {5.2.3}Technology Mapping Orakel}{39}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Algorithmus}{40}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Abschlie\IeC {\ss }ende Bemerkungen}{40}{subsubsection.5.2.5}
+\contentsline {section}{\numberline {6}Qualit\IeC {\"a}ts- und Laufzeit-Analyse}{41}{section.6}
+\contentsline {subsection}{\numberline {6.1}Struktur realer Instanzen}{41}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{42}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{42}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{43}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{43}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Vergleich von Power und Area}{43}{subsubsection.6.2.4}
-\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{43}{subsubsection.6.2.5}
-\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{43}{subsubsection.6.2.6}
-\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{43}{subsubsection.6.2.7}
-\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{43}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{43}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{44}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{44}{subsubsection.6.3.3}
-\contentsline {subsection}{\numberline {6.4}Vergleich von G\IeC {\"u}te und Laufzeit}{44}{subsection.6.4}
-\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{44}{subsubsection.6.4.1}
-\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{44}{subsubsection.6.4.2}
-\contentsline {section}{\numberline {7}Fazit und Ausblick}{44}{section.7}
-\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{45}{section.7}
+\contentsline {subsubsection}{\numberline {6.2.2}Premapping}{44}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{44}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Vergleich von Power und Area}{44}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{44}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{44}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{44}{subsubsection.6.2.7}
+\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{44}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{44}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{45}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{45}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}Vergleich von G\IeC {\"u}te und Laufzeit}{45}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{45}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{45}{subsubsection.6.4.2}
+\contentsline {section}{\numberline {7}Fazit und Ausblick}{45}{section.7}
+\contentsline {section}{\numberline {11}{Literaturverzeichnis}}{46}{section.7}

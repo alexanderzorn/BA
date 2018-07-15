@@ -10,6 +10,13 @@ S.~Daboul, N.~H{\"a}hnle, S.~Held, and U.~Schorr.
 Lucas Elbert.
 \newblock Approximationsalgorithmen f\"ur das {T}echnology-{M}apping, 2017.
 
+\bibitem[H{\"a}h15]{Haehnle2015}
+N.~H{\"a}hnle.
+\newblock Time-cost tradeoff and steiner tree packing with multiplikative
+  weights.
+\newblock {\em Technical report no. 1511115, Research Institute for Discrete
+  Mathematics, University of Bonn}, 2015.
+
 \bibitem[HNKF18]{Khan}
 David A.~Hounshell Hassan N.~Khan and Erica R.~H. Fuchs.
 \newblock Science and research policy at the end of moore’s law.

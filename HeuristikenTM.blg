@@ -3,46 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: HeuristikenTM.aux
 The style file: alpha.bst
 Database file #1: HeuristikenTM.bib.bib
-Warning--I didn't find a database entry for "Daboul2011"
-You've used 9 entries,
+You've used 10 entries,
             2543 wiz_defined-function locations,
-            616 strings with 5649 characters,
-and the built_in function-call counts, 3058 in all, are:
-= -- 294
-> -- 134
-< -- 6
-+ -- 44
-- -- 43
-* -- 192
-:= -- 513
-add.period$ -- 25
-call.type$ -- 9
-change.case$ -- 52
-chr.to.int$ -- 9
-cite$ -- 9
-duplicate$ -- 134
-empty$ -- 233
-format.name$ -- 57
-if$ -- 622
+            619 strings with 5829 characters,
+and the built_in function-call counts, 3321 in all, are:
+= -- 320
+> -- 142
+< -- 7
++ -- 46
+- -- 45
+* -- 205
+:= -- 559
+add.period$ -- 28
+call.type$ -- 10
+change.case$ -- 57
+chr.to.int$ -- 10
+cite$ -- 10
+duplicate$ -- 148
+empty$ -- 253
+format.name$ -- 61
+if$ -- 674
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 46
-num.names$ -- 27
-pop$ -- 57
+missing$ -- 8
+newline$ -- 51
+num.names$ -- 30
+pop$ -- 62
 preamble$ -- 1
-purify$ -- 61
+purify$ -- 67
 quote$ -- 0
-skip$ -- 122
+skip$ -- 133
 stack$ -- 0
-substring$ -- 108
-swap$ -- 20
-text.length$ -- 6
-text.prefix$ -- 5
+substring$ -- 115
+swap$ -- 21
+text.length$ -- 7
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 72
+type$ -- 80
 warning$ -- 0
-while$ -- 26
-width$ -- 12
-write$ -- 111
-(There was 1 warning)
+while$ -- 28
+width$ -- 13
+write$ -- 123
