@@ -118,9 +118,9 @@ Sei $g$ ein Gate in einem Circuit $C$. Ein (invertiertes) Match $m$ ist ein Tupe
 \end{itemize}
 sodass der Circuit $C'$, welcher durch den Austausch des Subcircuits von $X$ bis $g$ durch das Match (mit den durch $inv$ definierten Invertern an den Inputs) entsteht, äquivalent zu C ist.
 Ein invertiertes Match auf $g$ ist ein Match auf $g$ mit einem Inverter an jedem seiner Outputs.\\
+Ein Tupel, welches die Äquivalenbedingung evtl. nicht erfüllt wird potenzielles Match genannt.\\
 Ein (invertierter) Kandidat auf $g$ besteht aus einem (invertierten) Match auf $g$ und einem Kandidaten für jeden Input Knoten von $g$ (welcher kein Input von $C$ ist).
 \end{definition}
-
 \begin{definition}{Circuit-Kandidat:}\\
 Sei $C$ ein Circuit mit Outputknoten-Menge $O$. Ein Circuit-Kandidat $K$ von $C$ ist eine Menge von Kandidaten, sodass für jeden Output aus $C$ genau ein Kandidat in $O$ vorhanden ist und je zwei Kandidaten aus $O$ bilden an überschneidenden Knoten das selbe Match.
 \end{definition}
@@ -169,7 +169,7 @@ Es folgt ein grundlegender Algorithmus, welcher auf nachfolgend dargestellten ei
  bester\_inv\_kandidat[]$ \gets \emptyset$\;
  \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
  {
-   berechne alle (invertierten) Matches auf $v$\;
+   berechne alle (invertierten) Matche auf $v$\;
    \ForEach{ Match $m$ auf $v$ }
    {
       Berechne besten Kandidaten mit $m$ auf $v$\;
@@ -360,7 +360,7 @@ Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen irre
 \subsection{Matchprobleme}
 \label{subsec:match_kandidaten}
 In Circuits mit beliebig vielen Highfanoutknoten steigt die Anzahl der möglichen Matche eines Knoten sehr stark an, was eine direkte Auswirkung auf die Größe der Menge der möglichen Kandidaten hat. \\
-Es folgt eine weitere Betrachtung von Matchings und daraus ableitend ein Algorithmus, der auf realen Instanzen fast alle möglichen Matche findet und in polynomieller Zeit implementierbar ist.
+Es folgt eine weitere Betrachtung von Matches und daraus ableitend ein Algorithmus, der auf realen Instanzen fast alle möglichen Matche findet und in polynomieller Zeit implementierbar ist.
 
 \subsubsection{Obere Schranke für die Anzahl Matche eines Knoten}
 \label{subsubsec:anzahl_matchings}
@@ -382,7 +382,7 @@ Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, de
 
 Die Korrespondenz ist nicht eindeutig; da anhand des Schnitts nicht eindeutig hergeleitet werden kann, ob mehrere Kanten eines Outputs zusammengefasst oder getrennte Inputkanten eines Matches sind. Dies wird ebenfalls durch Abbildung \ref{bild:mux_match} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eindeutig, wenn es keine zwei Gates der Library gibt, welche diegleiche  logische Funktion realisieren.\\
 In einem Graphen ohne Highfanoutknoten gilt somit: \\
-Die Menge der Matchings von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inklusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph die logische Funktion eines Gates der Library realisieren.
+Die Menge der Matche von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inklusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph die logische Funktion eines Gates der Library realisieren.
 \begin{cor}\label{cor:anz_matche_einfach}
 Sei $C$ ein Circuit. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Highfanoutknoten enthält, ist durch $n_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
 \end{cor}
@@ -567,7 +567,7 @@ Diese Problemstellung lässt sich mit folgendem Algorithmus lösen.\\
 \SetKwInOut{Task}{Task}
 \KwIn{Circuit $C$ ohne teilweise überflüssige Subcircuits und mit finalem Output $o$, Library $L$ mit beschränktem $fanout_{max}$,$ \epsilon > 0$, $k$ Highfanoutknoten mit beschränktem $fanout_{max}$, Tradeoff $\lambda \in [0,1]$}
 
-   $M \gets$ finde\_alle\_matchings($C$)\;
+   $M \gets$ finde\_alle\_matche($C$)\;
    lösche\_konst\_Kanten\_überdeckende\_Matche($M, C$)\;
    \ForEach{Knoten $g \in V(C)$ }
         {
@@ -623,7 +623,7 @@ Ist an jedem Highfanoutknoten ein Kandidat gewählt, so lässt sich der noch bes
 \SetKwInOut{Task}{Task}
 \KwIn{Circuit $C$ ohne vollständig überflüssige Subcircuits und mit finalem Output $o$, Library $L$, Tradeoff $\lambda \in [0,1]$}
 
-   $M \gets$ finde\_alle\_matchings($C$)\;
+   $M \gets$ finde\_alle\_matche($C$)\;
    lösche\_konst\_Kanten\_überdeckende\_Matche($M, C$)\;
    \ForEach{Knoten $g \in V(C)$ }
         {
@@ -784,10 +784,38 @@ Diese Routine liefert sehr gute Ergebnisse, da durch die Berechnung der Schranke
 
 \subsubsection{Erweitertes Premapping durch Schätzen}
 \label{subsec:erweitertes_premapping_durch_schaetzen}
-\textcolor{red}{gilt es noch zu entwickeln} 
+Dieses Kapitel beschäftigt sich damit, die gerade beschriebene Premapping Methode zu erweitern. \\
+Das Premappping durch Schätzen errechnet einen kleinen und einen schnellen Circuit und daraus das Potenzial eines jeden Knoten bezüglich der Verbesserung hinsichtlich Größe und Geschwindigkeit. Der folgende Ansatz findet besonders Delay kritische Pfade in dem Circuit und ordnet dessen Knoten eine Kritikalität zu. Diese gibt Auskunft über den Einfluss eines Knoten bezüglich des Delays seiner Nachfolger. Das Erweiterte Premapping durch Schätzen verknüpft das Potenzial und die Kritikalität eines jeden Knoten bei der Auswahl eines geeigneten Kandidaten. \\
+
+Jeder Knoten $g$ in $C$ erhält eine Kritikalität $krit_g$. Diese wird für jeden Knoten mit Null initialisiert. \\
+Die Kritikalität wird mit Hilfe von Dijkstras Algorithmus errechnet. Dieser ist, da ein Circuit $C$ ein kreisfreier gerichteter Graph ist, in der Lage längste Wege, bezüglich Kantengewichte,  in $C$ zu finden. Hierbei ist das Gewicht einer Kante das Delay dieser inklusive des Gate-Delay des Ende dieser Kante liegenden Gates (zuzüglich des evtl. am Input liegenden Inverters). Das Gewicht der, von einem Input von $C$, ausgehenden Kanten, wird noch um die Arrivaltime des entsprechenden Inputs erhöht. \\
+Dijkstra wird nun für jeden Output $o$ aufgerufen und $krit_g$ wir für jeden Knoten, welches auf einem längsten Weg zu $o$ liegt, um eins erhöht.\\
+
+Für jeden Knoten ist nun gespeichert für wie viele Outputs, dieser auf einem kritischen Pfad liegt. Jeder Kritikalitätwert wird nun durch die Anzahl der Outputs dividiert, wodurch diese Werte in $[0,1]$ liegen.\\
+
+Ziel ist es nun auf Grund von der Information der Kritikalität an jedem Highfanoutknoten $v$ einen Faktor $\mu_v$ zu berechnen, mit welchen im \TM Algorithmus der Folgende Kandidat $k$ für $v$  gewählt wird: 
+\[\min\limits_{\text{Kandidat }k\text{ auf }v}\{|neg\_slack(k)-(1+\mu_v)\text{neg\_slack\_sch\"atzung}(v)|\}\]
+Für den Fall, dass die Slack-Schätzung Null ist, wird auch hier der kleinste Kandidat mit Slack Null gewählt.\\
+
+Der restliche Teil dieses Kapitel beschreibt eine Funktion für die Berechnung von $\mu_v$.\\
+Im Folgenden sei $f: [0,1] \rightarrow[-\mu_{max}, \mu_{max}]$ die $\mu_v$ für jeden Knoten $v$, gegeben $krit_v$, berechnende Funktion. Hierbei sei  $\mu_{max}$ eine obere Schranke für den Betrag von $\mu_v$. Diese wird heuristisch festgelegt. \\
+Um die Auswahl des Kandidaten sinnvoll zu beeinflussen gilt für $f$ und zwei Kritikalitäten $krit_1$ und $krit_2$:
+\[f(krit_1) > f(krit_2) \Leftrightarrow krit_1 < krit_2\].
+Anderweitig würde für einen bereits Delay kritischen Knoten ein langsamer Kandidat gewählt als das Premapping durch Schätzen vorschlägt. Dies führt sehr wahrscheinlich zu äquivalenten Circuit mit schlechterer Güte.\\
+Sei $krit_{av} \in \mathbb{R}$ das arithmetische Mittel aller errechneter Kritikalitäten. \\
+
+Sei $f$ wie folgt definiert:
+\[f(x) := \begin{cases} \frac{\mu_{max}}{krit_{av}-1}\cdot x + \mu_{max}(\frac{1}{1-krit_{av}}-1) \text{ wenn } x \geq krit_{av}
+ \\ \frac{-\mu_{max}}{1-krit_{av}}\cdot x + \mu_{max}(\frac{1}{1+krit_{av}}-1) \end{cases} \text{ wenn }x < krit_{av}\]
+Somit ist $f$ aus zwei linearen Funktionen aufgebaut und lässt sich dadurch in konstanter Laufzeit errechnen. Abbildung \textcolor{red}{??} visualisiert $f$.\\
+
+Das Erweiterte Premapping durch Schätzen ist in der Lage die Lösungen, welche mit dem Premapping durch Schätzen errechnet wurden, zu verbessern, jedoch geschieht dies nicht regelmäßig. Des Weiteren verursacht der Dijkstra Algorithmus einen nicht zu vernachlässigen Anstieg der Laufzeit. \\
+Somit bleibt es offen $f, \mu_{max}$ und $krit_{av}$ so zu wählen, dass eine regelmäßige Verbesserung eintritt. Des Weiteren würde ein Dijkstra Aufruf für jeden Knoten oder eine Beachtung von allen nahezu längsten Wegen eine größere Fülle an Informationen liefern. Da es jedoch nur exponentiell beschränkt viele Wege in $C$ gibt führt dies wahrscheinlich zu markanten Laufzeiteinbußen. \\
+
+Diese Premapping Methode wird in Kapitel \ref{sec:analyse}, aufgrund der nur unregelmäßig auftretenden Verbesserung, nicht behandelt.
 
 \subsection{Preprocessing}
-Die Möglichkeiten durch das Matching sind prinzipiell vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
+Die Möglichkeiten durch das Matchen sind prinzipiell vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
 Um diesem Problem aus dem Weg zu gehen, ist es sinnvoll, vor dem \TM Algorithmus jedes Gate mit mehr als zwei eingehenden Kanten durch einen kleinen Subcircuit, bestehend aus zwei Input Gates, zu ersetzen. Dies ist immer möglich, da jede logische Funktion nur mit Hilfe von NAND2 und INV Gates realisierbar ist (\cite{Post}) und auf jedem realen Chip standardmäßig ein AND oder NAND sowie ein OR oder NOR in der Library vorhanden sind. INV Gates sind fester Bestandteil jeder realen Library.\\
 Dabei werden die Gates nach folgender Routine zerlegt. \textcolor{red}{hier das huffman coding und ein Beispiel mit einbringen und decomposing begriff einführen}\\
 Der Vorteil des Decompose ist, dass die Möglichkeiten des Technology Mappings deutlich erweitert werden. Jedoch werden für ein AND4 Gate beispielsweise 3 AND2 Gates eingesetzt, was dazu führt, dass sich meist die Kosten des Ausgangscircuits verschlechtern.\\
