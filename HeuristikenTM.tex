@@ -46,7 +46,7 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 \label{sec:einleitung}
 Die ständig komplexer werdenden Anforderungen an die Informationstechnologie verlangen nach immer leistungsfähigeren Computerchips. \\
 Die sich hieraus ergebenden Anforderungen an die Chipentwicklung wurden bereits 1965 von Gordon Moore in "Moore's law"  \cite{Moore} beschrieben; hiernach ist regelmäßig eine Verdopplung der Integrationsdichte, der Anzahl von Transistoren pro Flächeneinheit, erforderlich und auch bisher technisch realisierbar. Nach \cite{Khan} wird dies jedoch in absehbarer Zeit nicht mehr möglich sein, wodurch das Thema dieser Arbeit weiter an Bedeutung gewinnt. \\
-Derzeit beträgt die Dichte an Transistoren, die zu einem integrierten Schaltkreis auf einem Chip miteinander verbunden sind, bis zu acht Milliarden. Diese sind so angeordnet, dass sie gemeinsam eine vorgegebene logische Funktion errechnen können. Die Aufgabe des Chip-Designs ist es, einen herstellbaren Chip zu entwerfen, der eine vorgegebene logische Funktion realisiert.\\
+Derzeit beträgt die Dichte an Transistoren, die zu einem integrierten Schaltkreis auf einem Chip miteinander verbunden sind, bis zu mehrere Milliarden. Diese sind so angeordnet, dass sie gemeinsam eine vorgegebene logische Funktion errechnen können. Die Aufgabe des Chip-Designs ist es, einen herstellbaren Chip zu entwerfen, der eine vorgegebene logische Funktion realisiert.\\
 
 \begin{wrapfigure}{r}{6.2cm}
 	\scalebox{1}[-1]{
@@ -86,6 +86,7 @@ $fanin_{max} := max\{ arity(g) | g \in L \}$.
  \label{bild:new_library}
 \end{center}
 \end{figure}
+Es wird davon ausgegangen, dass die Elemente ein Library paarweise verschiedene logische Funktionen realisieren. \\
 Abbildung \ref{bild:new_library} gibt einen Überblick über eine praktisch genutzte Library. Jedes dieser Gates liegt, in diesem Beispiel, auch in einer invertierten Version vor (zweite Reihe der Library). Des Weiteren ist es für gewöhnlich der Fall dass von einem Gatetyp mehrere Varianten bezüglich der Anzahl seiner Inputs vorhanden sind. Die Zeile mit dem Titel Arity gibt einen Überblick, darüber welche Variationen auf Chips üblich sind.\\
 Wie gerade definiert realisiert jedes Gate eine boolesche Funktion. In der entsprechenden Abbildung auf Zeile der Abbildung ist für jedes Gate (einmal nicht invertiert und einmal invertiert) die diese Funktion, für 2, 3 oder 4 Inputs, abbildet. Die geschieht in Folgendem Format: $[1,...,2^{arity(g)} ]$ gibt für ein Gate $g$ an der Stelle $i \in \{1,...,2^{arity(g)}\}$ die Wahrheitsbelegung des Outputs bei Inputbelegung $i_2$ (dargestellt im Binärschreibweise). Es ist üblich an den Namen eines Gates die Arity zu knüpen. Beispiel: AND2. \\
 
@@ -104,6 +105,9 @@ Ein Gate mit mehr als einer ausgehenden Kante wird auch Highfanoutgate genannt.\
 Ein Circuit realisiert durch Verschachtelung der booleschen Funktionen seiner Gates ebenfalls eine boolesche Funktion. \\
 Zwei Circuits heißen äquivalent, wenn sie die gleiche boolesche Funktion realisieren.
 \end{definition}
+
+In den Abbildungen dieser Arbeit werden die Outputs eines Circuits nicht mit angegeben, da eindeutig ist, welches Gate Vorgänger eines Outputs ist. Diese Knoten sind gemeint wenn von den Outputs des Graphen gesprochen wird. 
+
 Hierbei ist es möglich, dass das Signal eines Gates sowohl direkt in einen Output-Knoten sowie noch weiter verarbeitet wird. Weitere Informationen über den Umgang mit mehreren Outputs befindet sich in Kapitel \ref{sec:outputs}.\\
 In einem Circuit lassen sich Teilgraphen durch ein Gate der Library austauschen. Voraussetzung für einen solchen Tausch ist, dass der veränderte Circuit äquivalent zu dem Original ist. Dies wird in den folgenden Definitionen formalisiert. 
 
@@ -133,7 +137,7 @@ Abbildung \ref{bild:grundl_definitionen} visualisiert die vorherigen Definitione
 
 Ein Circuit-Kandidat auf einem Circuit $C$ beschreibt eine mögliche Realisierung der $C$ zugrunde liegenden Funktion.  Wie bereits in der Einleitung dargestellt gilt es nun den besten Circuit-Kandidaten auf $C$ zu finden. Dafür ist ein Maß notwendig, durch welches diese Kandidaten bewertet werden. Es folgen zwei praxisrelevante Beispiele einer solchen Funktion. In der Praxis und in dieser Arbeit wird hauptsächlich eine Konvexkombination aus beiden verwendet.
 
-Wie bereits in der Gate Definition erwähnt, braucht ein Signale eine gewisse Zeit (Delay) um das Gate zu passieren. Die gilt ebenfalls für jede Kante eines Circuits. Ahängig von dem Ort der Endknoten und der Lage auf dem Chip, besitzt jede Kante einen Delay-Wert, welcher angibt, wie lange ein Signal benötigt um die Kante zu passieren. \\
+Wie bereits in der Gate Definition erwähnt, braucht ein Signale eine gewisse Zeit (Delay) um das Gate zu passieren. Dies gilt ebenfalls für jede Kante eines Circuits. Abhängig von dem Ort der Endknoten und der Lage auf dem Chip, besitzt jede Kante einen Delay-Wert, welcher angibt, wie lange ein Signal benötigt um die Kante zu passieren. \\
 Des Weiteren ist für die Inputs des Circuits eine Arrivaltime (AT) gegeben, welche angibt zu welchem Zeitpunkt das Signal an diesem Input ankommt. Von den Inputs ausgehend, lässt sich die Arrivaltime, mit Hilfe der Delay-Werte, durch den gesamten Circuit propagieren und entsprechende Werte für die Outputs angeben. Hierbei gilt, dass die Arrivaltime eines Knotens die Ankunftszeit des letzten Signals der Inputs am Output des Knotens. Dies lässt sich auch auf einen Kandidaten übertragen. Dazu folgende Definition:
 
 \begin{definition}{Area und Delay eines Kandidaten:}\\
@@ -177,7 +181,6 @@ Es folgt ein grundlegender Algorithmus, welcher auf nachfolgend dargestellten ei
  }
  Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
 \end{algorithm}\ \\
-
 \begin{wrapfigure}{r}{2.8cm}
 		\includegraphics[width = 2.8cm]{pictures/compiled/compl_redundant}
 		\caption{Ein Circuit, dessen boolesche Funktion $f = 0 $ ist}
@@ -199,8 +202,8 @@ Ein \TM (TM) Algorithmus liefert in der Regel nicht die bestmögliche Implementi
 \end{cor}
 \begin{proof}
 Schritt 1 und 2 besitzen Laufzeit $\mathcal{O}(1)$. Schritt 4 lässt sich, aufgrund von einem beschränkten $fanin_{max}$ und ohne Highfanoutgates, in $\mathcal{O}(|V(C)|^2|L|)$ errechnen. Der Beweis dieser Aussage befindet sich in Kapitel \ref{subsec:match_kandidaten}.\\
-Der Schritt 6 ist schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs der beste Kandidat bereits errechnet wurde und somit nur verlinkt werden muss. Ein invertiertes Match wird nur gebraucht, wenn der korrespondierende Input des darüber liegenden Gates invertiert ist. Schritt 6 lässt sich somit in  $\mathcal{O}(fanin_{max})$ realisieren. Schritt 3 und 5 sind zwei verschachtelte Schleifen mit  $|V(C)|$ und max $|L|$ Durchläufen. \\
-Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)|^3|L|^2)$.
+Der Schritt 6 ist schnell implementierbar, da für jeden der max $fanin_{max}$ Inputs der beste Kandidat bereits errechnet wurde und somit nur verlinkt werden muss. Ein invertiertes Match wird nur gebraucht, wenn der korrespondierende Input des darüber liegenden Gates invertiert ist. Schritt 6 lässt sich somit in  $\mathcal{O}(fanin_{max})$ realisieren. Schritt 3 und 5 sind zwei verschachtelte Schleifen mit  $|V(C)|$ und $\mathcal{O}(|V(C)|^2|L|)$ Durchläufen. \\
+Daraus folgt eine Laufzeit von $\mathcal{O}(  |V(C)|^3|L|)$.
 \end{proof}
 
 
@@ -228,7 +231,7 @@ Daraus folgt die Suche nach einem Algorithmus, welcher in der Lage ist, Circuits
 \end{problem}
 In Kapitel \ref{sec:outputs}, werden diese Problemstellungen auf Circuits mit mehreren Outputs erweitert. \\
 
-Beide Probleme sind gleich schwer und lassen sich mit dem noch vorzustellenden FPTAS lösen. Eine Beschreibung, wie sich das \TM mit Arrivaltimeschranke mit dem FPTAS lösen lässt, findet sich in \cite{Elbert}.  Da wie im weiteren Verlauf dieser Arbeit dargestellt, die Arrivaltime nicht der einzige zu beachtende Faktor bei der Geschwindigkeitsoptimierung ist, wird im Folgenden nur noch die Konvexkombination behandelt.\\
+Beide Probleme lassen sich mit dem noch vorzustellenden FPTAS lösen. Eine Beschreibung, wie sich das \TM mit Arrivaltimeschranke mit dem FPTAS lösen lässt, findet sich in \cite{Elbert}.  Da wie im weiteren Verlauf dieser Arbeit dargestellt, die Arrivaltime nicht der einzige zu beachtende Faktor bei der Geschwindigkeitsoptimierung ist, wird im Folgenden nur noch die Konvexkombination behandelt.\\
 
 
 Bei der Implementierung eines Algorithmus für die beiden Optimierungsprobleme ergibt sich folgende Herausforderung:\\
@@ -236,7 +239,7 @@ Bei der Implementierung eines Algorithmus für die beiden Optimierungsprobleme e
 Angenommen, an jedem Knoten $v$ würde, wie im Kern-Algorithmus, nur derjenige Kandidat gespeichert werden, welcher die Kostenfunktion an $v$ optimiert; dann kann nicht mehr garantiert werden, dass beim Errechnen der Kandidaten für den Output, der für ihn optimale Kandidat noch vorhanden ist. Beide Inputs getrennt nach der Kostenfunktion zu optimieren, garantiert also nicht das optimale Ergebnis.\\
 
 Die Kosten eines Kandidaten k sind somit nicht $\lambda AT(k) +(1-\lambda )area(k)$,  sondern das Tupel $(AT(k), area(k))$.
-Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss; hierzu die folgende Definition.\\
+Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert muss; hierzu die folgende Definition.
 
 \begin{definition}{(dominierte Kandidaten)}\\
 	Seien $k_1, k_2$ Kandidaten desselben Knotens. Dann wird $k_1$ von $k_2$ dominiert, wenn mindestens eine der folgenden Bedingungen erfüllt ist:
@@ -258,30 +261,32 @@ Die Menge der noch bleibenden Kandidaten lassen sich in sogenannten Tradeoff-Kur
 
 Die beiden vorgestellten Probleme sind NP-Vollständig. Ein Beweis dieser Aussage und genauere Informationen zur Einordnung der Schwere dieser Probleme finden sich in \cite{ComplexitySynthesis} und \citep{Elbert}. \\
 Daraus folgt, dass sich ab diesem Punkt wahrscheinlich  kein polynomieller Algorithmus für das \TM finden lässt, welcher, hinsichtlich der vorgestellten Operationen des Technology Mappings, den kostengünstigsten Circuit-Kandidaten liefert.\\
-Da bei zwei nicht dominierenden Kandidaten nicht eindeutig ist, welcher der Bessere ist,  wird eine Vielzahl von Kandidaten an jedem Knoten gespeichert. Dies zeigt sich in einem exponentiell großen Speicherbedarf. \\
+Da bei zwei nicht dominierenden Kandidaten nicht eindeutig ist, welcher der Bessere ist,  wird eine Vielzahl von Kandidaten an jedem Knoten gespeichert. Dies zeigt sich in einem exponentiell großen Speicherbedarf. 
 
 \subsection{Highfanoutknoten}
 \label{subsec:highfanout}
-Der beschriebene Kern-Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese kommen auf einem realen Chip jedoch sehr häufig vor; ca. $30\%$ der Knoten sind Highfanoutknoten. Eine Analyse über die Auswirkungen von der Anzahl der Highfanoutknoten auf die Laufzeit des Algorithmus befindet sich Kapitel \ref{sec:analyse}.\\
+Der beschriebene Kern-Algorithmus arbeitet nur auf Circuits, in denen keine Highfanoutknoten existieren. Diese kommen auf einem realen Chip jedoch sehr häufig vor; ca. $30\%$ der Knoten sind Highfanoutknoten. 
  \begin{wrapfigure}{r}{6cm}
 		\includegraphics[width = 6cm]{pictures/compiled/ohne_highfanout_heu}
 		\caption{Unterteilen eines Circuit in Highfanoutfreie Subcircuits}
 		\label{bild:ohne_highfanout_heu}
 \end{wrapfigure}
+Eine Analyse über die Auswirkungen von der Anzahl der Highfanoutknoten auf die Laufzeit des Algorithmus befindet sich Kapitel \ref{sec:analyse}.\\
+
  Es ist möglich, einen Circuit in kleinere Subcircuits zu unterteilen, welche solche Highfanoutknoten nicht beinhalten. Diese Subcircuits werden einzeln mit dem Algorithmus (sehr schnell) optimiert und daraufhin zu einem C äquivalenten Circuit C' zusammengesetzt. Diese Vorgehensweise findet sich ausführlich in \cite{DAGON} wieder. Abbildung \ref{bild:ohne_highfanout_heu} stellt diesen Ansatz einer Heuristik dar. 
-  Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine Vielzahl sehr kleiner Subcircuits entstehen, woraus folgt, dass die Möglichkeiten des Technology Mappings sehr eingeschränkt werden. Aus diesem Grund werde ich diesen Weg einer Heuristik nicht weiter verfolgen.\\
-
-
-\begin{wrapfigure}{r}{7cm}%[htb]
+   \begin{wrapfigure}{r}{7cm}%[htb]
 %\centering
 \includegraphics[width= 7cm]{pictures/compiled/expo_kand}
 \caption{Exponentiell viele Kandidaten bereits bei sehr eingeschränkter Library}
 \label{bild:expo_kan}
 \end{wrapfigure}
-Bei der Implementierung von Highfanoutknoten besteht die größte Herausforderung darin, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen.\\
+  Der Anteil an Highfanoutknoten ist auf den mir vorliegenden Chips so groß, dass eine Vielzahl sehr kleiner Subcircuits entstehen, woraus folgt, dass die Möglichkeiten des Technology Mappings sehr eingeschränkt werden. 
 
- Daraus folgt, dass bei der Wahl eines Kandidaten für einen Knoten $w$, die  Input-Kandidaten von $w$, nicht unabhängig voneinander gewählt werden können. \\
-Abbildung \ref{bild:expo_kan} zeigt zudem eine weitere Herausforderung für die Implementierung auf. Die Anzahl der zu speichernden Kandidaten kann  exponentiell bezüglich $|V(C)|$ sein. \\
+Aus diesem Grund werde ich diesen Weg einer Heuristik nicht weiter verfolgen.
+
+Bei der Implementierung von Highfanoutknoten besteht die größte Herausforderung darin, dass bei der Konstruktion des äquivalenten Circuits die eingebauten Kandidaten aller Nachfolger eines Highfanoutknoten $v$ an $v$ übereinstimmen müssen. Daraus folgt, dass bei der Wahl eines Kandidaten für einen Knoten $w$, die  Input-Kandidaten von $w$, nicht unabhängig voneinander gewählt werden können. \\
+
+Abbildung \ref{bild:expo_kan} zeigt zudem eine weitere Herausforderung für die Implementierung auf. Die Anzahl der zu speichernden Kandidaten kann  exponentiell bezüglich $|V(C)|$ sein. Zum Beispiel liegen am Output des Citcuits dieser Abbildung mindesten $2^n$ verschiedene Kandidaten vor, da am Output des gepunkteten Subcircuits  2 Kandidaten vorhanden sind und dieser Subcircuit $n$ mal in dem Graphen vorkommt. Die Anzahl der Knoten in dem Graphen ist polynomiell in $n$.  \\
 Zur Lösung der ersten Herausforderung helfen die folgenden Definitionen:\\
 
 \begin{definition}{Cone eines Knoten:}\\
@@ -342,7 +347,7 @@ Durch das Hinzufügen der zu langen Kanten zu den konstanten Kanten, kann keine 
  	$C$ wird teilweise überflüssig genannt, wenn es eine Teilmenge der Inputs gibt, von denen die Signale der Outputs nicht abhängen.
  \end{definition}
  
-Die Berücksichtigung von vollständig überflüssigen Subcircuits würde bedeuten, dass Teile des Circuits entfernt werden und die Outputs der Inputs der nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden müssen. Dies lässt sich jedoch weiter optimieren. Da die Information an den nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch bedingt es ebenfalls einen großen Aufwand zur Implementierung in die aktuelle Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssigen Subcircuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits in dieser Arbeit nicht weiter behandelt und kommen in der Implementierung der noch folgenden Algorithmen nicht vor. \\
+Die Berücksichtigung von vollständig überflüssigen Subcircuits würde bedeuten, dass Teile des Circuits entfernt werden und die nun freien Pins der nachfolgenden Knoten an permanenten Strom gelegt oder mit der Erdung des Chips verbunden werden müssen. Dies lässt sich jedoch weiter optimieren. Da die Information an den nachfolgenden Gates vorhersagbar ist, muss sie auch nicht verarbeitet werden. Daraus folgt eine hohe Einsparung von Kosten, jedoch bedingt es ebenfalls einen großen Aufwand zur Implementierung in die aktuelle Architektur des \TM Algorithmus. In der Praxis ist das Vorkommen von  vollständig überflüssigen Subcircuits verschwindend gering. Von daher werden die vollständig überflüssigen Subcircuits in dieser Arbeit nicht weiter behandelt und kommen in der Implementierung der noch folgenden Algorithmen nicht vor. \\
  
 Im Gegensatz dazu kommen die teilweise überflüssigen Circuits durchaus vor. Bei der Konstruktion eines Chips geschieht dies durch das Zusammensetzen unterschiedlicher Circuits.\\
  \begin{wrapfigure}{r}{6cm}
@@ -351,26 +356,26 @@ Im Gegensatz dazu kommen die teilweise überflüssigen Circuits durchaus vor. Be
 		\label{bild:partly_redundant}
 \end{wrapfigure}
 In den meisten Fällen werden die teilweise überflüssigen Circuits automatisch bei der  Suche der Matche gefunden, da die irrelevanten Inputs nicht mehr unter den Inputs des Match auftauchen und somit beim Bau des äquivalenten Graphen verschwinden. Dies veranschaulicht Abbildung \ref{bild:partly_redundant}. \\
-Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library für das \TM vorhanden und kann vermieden werden, indem kein Buffer, sondern nur die Kanten vom Input des Buffers zu seinen Outputs gebaut werden. Dies verhindert den Einbau eines nicht nötigen Gates. Da $fanout_{max}$ und $fanin_{max}$ im weiteren Verlauf dieser Arbeit beschränkt werden, lässt sich dies in linearer Laufzeit implementieren. Diese zusätzliche Bearbeitung läuft dann in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr. \textcolor{red}{oder doch ?}\\
+Es gibt dabei jedoch noch eine Besonderheit. Wenn alle Inputs bis auf einen irrelevant sind, so ist das resultierende Gate des Matches entweder ein Inverter(INV) oder ein Buffer(BUFF). Ersteres lässt sich als Input-Invertierung des darüberliegenden Input-Pins speichern. Ein Buffer ist jedoch nicht unbedingt in der Library für das \TM vorhanden und kann vermieden werden, indem kein Buffer, sondern nur die Kanten vom Input des Buffers zu seinen Outputs gebaut werden. Dies verhindert den Einbau eines nicht nötigen Gates. Da $fanout_{max}$ und $fanin_{max}$ im weiteren Verlauf dieser Arbeit beschränkt werden, lässt sich dies in linearer Laufzeit implementieren. Diese zusätzliche Bearbeitung läuft dann in jedem folgenden Algorithmus automatisch im Hintergrund und findet keine Erwähnung mehr.\\
  Obwohl nun das Gegenbeispiel aus Kapitel \ref{subsec:kern_algorithmus} nicht mehr gültig ist, lässt sich mit den Möglichkeiten des Technology Mappings in der Regel keine optimale Realisierung der des Circuits zugrunde liegenden logischen Funktion finden.
  
  
 \subsection{Match-Probleme}
 \label{subsec:match_kandidaten}
 In Circuits mit beliebig vielen Highfanoutknoten steigt die Anzahl der möglichen Matche eines Knoten sehr stark an, was eine direkte Auswirkung auf die Größe der Menge der möglichen Kandidaten hat. \\
-Es folgt eine weitere Betrachtung von Matches und daraus ableitend ein Algorithmus, der auf realen Instanzen fast alle möglichen Matche findet und in polynomieller Zeit implementierbar ist.
+Es folgt eine weitere Betrachtung von Matches und daraus ableitend ein Algorithmus, der auf Instanzen von real existierenden Chips, fast alle möglichen Matche findet und in polynomieller Zeit implementierbar ist.
 
 \subsubsection{Obere Schranke für die Anzahl Matche eines Knoten}
 \label{subsubsec:anzahl_matchings}
 Folgendes Lemma legt eine äquivalente Definition für Matche nahe.
 Sei ein Circuit $C$ ohne teilweise überflüssige Subcircuits gegeben: \\$\bar{C}_v := (V(C[cone(v)]), \{ (u,w) | (w,u) \in E(C[cone(v)])\})$.
-\begin{lemma}{Die Inputs eines Matches auf $v$ korrespondieren zu den Kanten eines gerichteten $v$-Schnitts in $\bar{C}_v $}.
+\begin{lemma}{Die Inputs eines Matches auf $v$ lassen sich eindeutig zu den Kanten einem gerichteten $v$-Schnitts in $\bar{C}_v $} zuordnen.
 \end{lemma}
 \begin{proof}
 Zu jedem Inputpin eines Matches gehört eindeutig eine Kantemenge $K$ aus $C$. Es ist möglich, dass $|K| > 1$, denn ein Match kann mehrere ausgehende Kanten eines Knoten zu einer Kante zusammenfassen. Dies veranschaulicht Abbildung \ref{bild:mux_match} für ein Match eines MUX Gates.  Sei $I$ die Menge der mit den Inputs korrespondierenden Kantenmengen.\\
 Es genügt zu zeigen, dass alle Kanten $I'$ in $I$ gerade die Kantenmenge eines gerichteten $v$-Schnitts in $\bar{C}_v$ sind. \\
 Angenommen $I'$ bildet keinen gerichteten $v$-Schnitt, dann existiert in $\bar{C}_v\backslash I$ ein Weg von einem Input von $cone(v)$ zu $v$, welcher keine Kante aus $I$ benutzt. \\
-Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, denn sonst hätte das Match einen Seiteninput, was nicht erlaubt ist, oder es existiert ein teilweise überflüssiger Subcircuit.  
+Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, denn sonst hätte das Match einen Seiteninput, was nicht erlaubt ist, oder es existiert ein teilweise überflüssiger Subcircuit. 
 \end{proof}
 
 \begin{wrapfigure}{r}{6cm}
@@ -379,23 +384,23 @@ Eine Kante dieses Weges muss jedoch zu einem der Inputs des Matches gehören, de
 		\label{bild:mux_match}
 \end{wrapfigure}
 
-Die Korrespondenz ist nicht eindeutig; da anhand des Schnitts nicht eindeutig hergeleitet werden kann, ob mehrere Kanten eines Outputs zusammengefasst oder getrennte Input-Kanten eines Matches sind. Dies wird ebenfalls durch Abbildung \ref{bild:mux_match} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eindeutig, wenn es keine zwei Gates der Library gibt, welche diegleiche  logische Funktion realisieren.\\
+Anhand eines Schnitts kann nicht eindeutig hergeleitet werden kann, ob mehrere Kanten eines Outputs zusammengefasst oder getrennte Input-Kanten eines Matches sind. Dies wird ebenfalls durch Abbildung \ref{bild:mux_match} veranschaulicht. Ohne Highfanoutknoten ist diese Zuweisung jedoch, abgesehen von den möglichen Invertierungen der Inputs und des Outputs, eineindeutig, wenn es keine zwei Gates der Library gibt, welche die gleiche  logische Funktion realisieren.\\
 In einem Graphen ohne Highfanoutknoten gilt somit: \\
 Die Menge der Matche von $v$ ist somit gerade die Menge aller, maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inklusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph die logische Funktion eines Gates der Library realisieren.
 \begin{cor}\label{cor:anz_matche_einfach}
-Sei $C$ ein Circuit. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Highfanoutknoten enthält, ist durch $n_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
+Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Highfanoutknoten enthält, ist durch $m_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
 \end{cor}
 \begin{proof}
 Sei  $X_v:= \{ E \subseteq E(C[cone(v)]) | |E|\leq fanin_{max}  \}$. Die Menge der maximal $fanin_{max}$ großen $v$-Schnitte ist in $C[cone(v)]$ durch $ |X_v|$ beschränkt. Es gilt hierbei:
-\[ |X_v| = \sum\limits_{i \leq fanin_{max}} \binom{n}{i} \leq  \sum\limits_{i \leq fanin_{max}}\frac{n!}{i!(n-fanin_{max})!} \leq n^{fanin_{max}} fanin_{max} \]
+\[ |X_v| = \sum\limits_{i \leq fanin_{max}} \binom{m_v}{i} \leq  \sum\limits_{i \leq fanin_{max}}\frac{m_v!}{i!(m_v-fanin_{max})!} \leq m_v^{fanin_{max}} fanin_{max} \]
 Für jeden Schnitt gibt es zwei verschiedene mögliche Output-Invertierungen und maximal  $2^{fanin_{max}}$ viele Möglichkeiten die Inputs zu invertieren. Jedes mögliche Match ist nun durch ein Element aus $X_v$ und eine Wahl von Invertierungen eindeutig charakterisiert.
 \end{proof}
 Für allgemeinere Circuits lässt sich folgende Schranke angeben: 
 \begin{cor}\label{cor:anzahl_matche_bel}
-Sei $C$ ein Circuit. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $n_v := |E(C[cone(v)]|$ mit $\Delta C[cone(v)] \leq fanout_{max}$, enthält, ist durch $n_v^{fanin_{max}} fanin_{max}^22^{fanin_{max}+1}2^{fanout_{max}}$ beschränkt.
+Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, ist durch \\ $m_v^{fanin_{max}} fanin_{max}^22^{fanin_{max}+1}2^{fanout_{max}}$ beschränkt.
 \end{cor}
 \begin{proof}
-Korollar \ref{cor:anz_matche_einfach} gibt eine obere Schranke für die Anzahl aller Matche inklusive der möglichen Invertierungen an. Sei $u \in x \in X_v$ (Definition siehe oben) ausgehende Kante eines Highfanoutknoten $w$, so gibt es bis zu $2^{fanout_{max}-1}$ Möglichkeiten, weitere Kanten von $w$ der korrespondierenden Kantemenge von $u$ hinzuzufügen.  Diese Möglichkeit besteht für alle maximal $fanin_{max}$ Kanten von $x$. Durch Multiplikation mit der oberen Schranke aus Korollar \ref{cor:anz_matche_einfach} folgt die Aussage.
+Korollar \ref{cor:anz_matche_einfach} gibt eine obere Schranke für die Anzahl aller Matche inklusive der möglichen Invertierungen, für einen Circuit ohne Highfanoutknoten, an. Sei $u \in x \in X_v$ (Definition siehe oben) ausgehende Kante eines Highfanoutknoten $w$, so gibt es bis zu $2^{fanout_{max}-1}$ Möglichkeiten, weitere Kanten von $w$ der korrespondierenden Kantemenge von $u$ hinzuzufügen.  Diese Möglichkeit besteht für alle maximal $fanin_{max}$ Kanten von $x$. Durch Multiplikation mit der oberen Schranke aus Korollar \ref{cor:anz_matche_einfach} folgt die Aussage.
 \end{proof}
 In einem Circuit ohne Highfanoutknoten lässt sich die Schranke noch genauer angeben. 
 \begin{cor}\label{cor:anz_matche_einfach_genauer}
@@ -422,9 +427,7 @@ Daraufhin wird für jede der maximal $2^{fanin_{max}}$ Möglichkeiten, die an de
 Daraufhin wird jede der maximal $2^{fanin_{max}}$ Möglichkeiten, die an den Inputs liegenden Gates mit in das potenzielle Match hinzuzufügen, inklusive möglicher Invertierungen überprüft. Dieser Vorgang wird für jede der Möglichkeiten so lange wiederholt, bis die Anzahl der Inputs des durch das potenzielle Match,  beschriebenen Subcircuit größer als $fanin_{max}$ ist. Ab diesem Punkt wird das vorliegende potenzielle Match nicht mehr erweitert. \\
 Dies garantiert, bei einem Circuit mit Highfanoutknoten, nicht das Finden aller möglicher Matche, da sobald ein potenzielles Match einen Highfanoutknoten mit einschließt, die Zahl der Inputs sinken kann. \\
 In der Praxis werden so jedoch die überwiegende Mehrheit der Matche gefunden. Der Verlust einiger weniger Matche ermöglicht jedoch einen enormen Laufzeitgewinn.
-\textcolor{red}{die dissertation für den fall ohne highfanoutknoten erwähnen ? und nochmal genau durchsehen ob die teilweise überflüssigen Subcircuits überall rausgehalten wurden }
-
-\textcolor{red}{boolean Matching hier erwähnen und sinnvolle quellen mit einbringen}
+Eine genaue Beschreibung dieser Routine findet sich in \cite{BooleanMatching}. Diese Routine wird auch Boolean Matching genannt.
 
 \subsection{Kandidaten-Probleme}
 \label{subsec:kand_prob}
@@ -481,6 +484,8 @@ Der Untere Schranke Arrivaltime Algorithmus wurde in \cite{Elbert} entwickelt.
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}
 Die Kandidaten eines beliebigen Knotens sind in Tradeoffkurven, nach Klassen sortiert, gespeichert. Die Werte einer solchen Kurve lassen sich in Abschnitte (Buckets) fester Größe einteilen. Dabei lässt sich eine Kurve sowohl in Delay-Buckets  der Größe $\delta_{delay}$, als auch in Area-Buckets der Größe $\delta_{area}$ unterteilen. Dies wird in Abbildung \ref{bild:tradeoff_kurven_filtern} veranschaulicht. Diese und Abbildung \ref{bild:tradeoff_kurve} wurden \cite{Elbert} entnommen. \\
+
+Ziel dieses Kapitels ist es, die maximale Anzahl von Kandidaten in jeder Kurve zu beschränken; unter der Voraussetzung, dass Güte des resultierenden Circuit-Kandidaten nur um einen Faktor $\epsilon > 0$ von der optimalen Lösung entfernt ist, mit dem Vorteil diese Lösung in polynomieller Zeit berechnen zu können. 
 \begin{figure}[h]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -495,7 +500,7 @@ Die Kandidaten eines beliebigen Knotens sind in Tradeoffkurven, nach Klassen sor
 \label{bild:tradeoff_kurven_filtern}
 \end{figure}
 
-Man wählt die Bucketgrößen $\delta_{delay} = \frac{\epsilon X^{-}}{2n\lambda}, \delta_{area} = \frac{\epsilon X^{-}}{2n(1-\lambda)}$ (mit Tradeoff $\lambda$), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket. Hierbei entspricht $X^-$ der mit dem Untere Schranke Area Algorithmus errechneten Schranke und $n$ der Anzahl der Knoten des Circuits. \\
+Man wählt die Bucketgrößen $\delta_{delay} = \frac{\epsilon X^{-}}{2n\lambda}, \delta_{area} = \frac{\epsilon X^{-}}{2n(1-\lambda)}$ (mit Tradeoff $\lambda$ und Approximationsfaktor $\epsilon$ ), und speichert erst nur den kleinsten Kandidaten in jeder Area-Bucket und von den verbleibenden nur den schnellsten in jeder Delay-Bucket. Hierbei entspricht $X^-$ der mit dem Untere Schranke Area Algorithmus errechneten Schranke und $n$ der Anzahl der Knoten des Circuits. \\
 Für $\lambda \in \{ 0,1 \}$ ist jeweils eine der Bucketgrößen nicht definiert. In diesem Fall wird für den nicht definierten Fall nur der beste Kandidat (schnellster bzw. kleinster) behalten; d.h. im nicht definierten Fall die Tradeoffkurve in nur ein Bucket unterteilt.\\
 Die maximale Anzahl an Kandidaten in einer Tradeoffkurve ist nach dem Filtern polynomiell beschränkt. 
 Filtert man jede Tradeoffkurve wie beschrieben, so ist der noch bestmögliche Circuit Kandidat nur um den Faktor $\epsilon$ von der optimalen Lösung entfernt. Ein Beweis dieser Aussage befindet sich in \cite{Elbert}.
@@ -516,7 +521,7 @@ Für eine allgemeine Library findet sich in \cite{Elbert} eine Lösung zur Erhal
 Sei $v \in V(C)$ und $\mathcal{K}_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Highfanoutknoten mit $i$ weiteren Highfanoutknoten in seiner Cone. 
 $\mathcal{K}_v$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglichen Kombinationen von Kandidaten aller möglicher Klassen der Highfanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$; da $v$ maximal $k$ Highfanoutknoten in seiner Cone hat, welche jeweils maximal $k-1$ Highfanoutknoten in ihrer Cone haben. Deshalb gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$.\\
 Es gilt $\mathcal{K}_{h,0} \leq 1$, da der Highfanoutknoten keine offenen Knoten besitzen kann. \\
-Daraus folgt $\mathcal{K}_v \leq \mathcal{B}^{k!}$; da $k$ beschränkt ist folgt, dass $\mathcal{K}$ polynomiell beschränkt ist.\\
+Daraus folgt $\mathcal{K}_v \leq \mathcal{B}^{k!}$; da $k$ beschränkt ist folgt, dass $\mathcal{K}$ polynomiell beschränkt ist. Hierbei ist sind $\mathcal{B}$ und $\mathcal{K}$ auch in $\epsilon$ polynomiell beschränkt. \\
 \end{proof}
 
 Beschränkt man die maximale Anzahl von Highfanoutknoten in $C$, so folgt aus Korollar \ref{cor:anzahl_klassen}, dass die Anzahl der Klassen eines jeden Knotens und die Menge der sich darin befindlichen Kandidaten, polynomiell beschränkt ist. \\
@@ -545,7 +550,7 @@ Die lässt sich in Laufzeit $\mathcal{O}(\mathcal{M}(\mathcal{KB})^{fanin_{max}}
  
 \subsection{FPTAS}
 \label{subsec:fptas}
-Für Circuits mit einem Output, beschränktem $fanin_{max}, fanout_{max}$ ohne teilweise überflüssige Subcircuits und mit maximal $k$ Highfanoutknoten gibt es für das folgende Problem einen FPTAS(fully polynomial time approximation scheme). Ein FPTAS ist ein Algorithmus, welcher, gegeben ein beliebiges $\epsilon > 0$, eine Lösung des Problems errechnet mit der Eigenschaft, dass für deren Kosten $c \leq (1+\epsilon)OPT$ gilt. Hierbei sind $OPT$ die Kosten einer optimalen Lösung des Technology Mappings, bezüglich der bisher eingeführten Operationen.\\
+Für Circuits mit einem Output, beschränktem $fanin_{max}, fanout_{max}$ ohne teilweise überflüssige Subcircuits und mit maximal $k$ Highfanoutknoten gibt es für das folgende Problem einen FPTAS(fully polynomial time approximation scheme). Ein FPTAS ist ein polynomieller Algorithmus, welcher, gegeben ein beliebiges $\epsilon > 0$, eine Lösung des Problems, in bezüglich $\epsilon$  polynomieller Laufzeit, errechnet mit der Eigenschaft, dass für deren Kosten $c \leq (1+\epsilon)OPT$ gilt. Hierbei sind $OPT$ die Kosten einer optimalen Lösung des Technology Mappings, bezüglich der bisher eingeführten Operationen.\\
  \begin{problem}[framed]{FPTAS für das \TM}
   Instanz:  & Circuit $C$ mit einem Output, Library $L$ mit beschr\"anktem $fanin_{max}$, maximal $k$ Highfanoutknoten mit beschränkten $fanout_{max}$, Tradeoffparameter $\lambda \in [0,1]$, Toleranz $\epsilon > 0$ .\\
   Aufgabe: &  Finde einen Circuit-Kandidaten $K$ auf $C$, mit Kosten $\lambda AT(K) + (1-\lambda)Area(K) \leq (1+\epsilon)OPT$.
@@ -592,7 +597,7 @@ Hierbei wurde der Kern-Algorithmus um die in diesem Kapitel beschriebenen Routin
 Für jeden Knoten werden zuerst alle, keine konstanten Kanten überdeckenden, Matche berechnet und seine offenen Knoten ermittelt. Dann werden für alle Knoten, in topologischer Reihenfolge, und deren Klassen alle nicht dominierten Kandidaten hinzugefügt und die Tradeoffkurven daraufhin gefiltert. Es bleiben für jeden Knoten, aufgrund der Beschränkung auf $k$ Highfanoutknoten, polynomiel beschränkt viele Kandidaten übrig. So auch für den Output $o$. Anschließend wird aus $o$'s einziger Tradeoffkurve der beste Kandidat $k*$ ausgewählt und der zu $C$ äquivalente Circuit $C'$ anhand von $k^*$ gebaut und zurückgegeben.
 
 \begin{lemma}
-	FPTAS ist polynomiell in $\mathcal{O}(|V(C)|^2 + |V(C)|\mathcal{MBK}^2)$ implementierbar.
+	FPTAS für das TM mit Konvexkombination ist polynomiell in $\mathcal{O}(|V(C)|^2 + |V(C)|\mathcal{MBK}^2)$ implementierbar.
 \end{lemma}
 \begin{proof}
 Schritt 1 lässt sich nach Kapitel \ref{subsubsec:pol_match_suche} in polynomieller Zeit implementieren. Schritt 2 ist linear in der polynomiell beschränkten Anzahl an Matches im gesamten Circuit.  Die Schritte 4 und  5 lassen sich in $\mathcal{O}(|V(C)|^2)$ errechnen, da von einem Knoten $v$ ausgehend durch iterieren über die Inputs alle Knoten der Cone hinzugefügt werden.  Highfanoutknoten, welche Inputs eines offenen Knoten sind, werden als offen deklariert und Highfanoutknoten, welche einen Output außerhalb der $cone(v)$ besitzen, werden ebenfalls als offen markiert. Da $fanout_{max}$ beschränkt ist, folgt eine lineare Laufzeit in $|V(C)|$ für die Berechnung der offenen Knoten von $v$. Dies wird für jeden Knoten aus $C$ wiederholt. \\
@@ -601,7 +606,7 @@ Die Menge der Kandidaten in den Tradeoffkurven sind beschränkt durch die Anzahl
 Schritt 14 ist durch die maximale Anzahl der Kandidaten einer Tradeoffkurve und $|V(C)|$ beschränkt. Schritt 3 liegt in der Summe der Laufzeit der bisher beschriebenen Schritte.\\
 Daraus folgt eine Gesamtlaufzeit von $\mathcal{O}(|V(C)|^2 + |V(C)|\mathcal{MBK}^2)$.
 \end{proof}
-
+Aus Korollar \ref{cor:anzahl_klassen} folgt, dass das FPTAS für das TM mit Konvexkombination  auch polynomiell in $\epsilon$, und somit ein FPTAS, ist. 
 \subsection{Heuristik}
 \label{subsec:heuristik}
 Im folgenden Algorithmus ist die Menge der Knoten mit $fanout > 1$ beliebig groß.
@@ -668,7 +673,7 @@ In allgemeinen Circuits ist dies wahrscheinlich nicht mehr möglich, denn die An
 \label{sec:erw_der_heuristik}
 \subsection{DAGs mit mehreren Outputs}
 \label{sec:outputs}
-Bisher wurde auf Circuits $C$ mit nur einem Output gearbeitet. Reale Instanzen eines Chips sind jedoch mit beliebig vielen Outputs ausgestattet. Outputs können auch zusätzlich noch Nachfolger in $C$ besitzen. \\
+Bisher wurde auf Circuits $C$ mit nur einem Output gearbeitet. Instanzen realer Chips sind jedoch mit beliebig vielen Outputs ausgestattet. Outputs können auch zusätzlich noch Nachfolger in $C$ besitzen. \\
 
  Da Signale von Output-Knoten mit Fanout in $C$ aus der Cone darüberliegender Knoten laufen können, werden sie ebenfalls als offene Knoten ihrer Nachfolger deklariert. In einem Circuit mit mehreren Outputs ist AT alleine ein unzureichendes Optimierungskriterium.
 \subsubsection{Required Arrivaltimes}
@@ -692,8 +697,10 @@ Hieraus ergeben sich für einen Circuit die beiden folgenden Werte:
 Letzterer hat in der Praxis mehr Bedeutung, da eine sehr gute Verbesserung der SNS eine Verbesserung des WS in der Regel mit einschließt. \\
 
 Bei der Analyse eines Chips lässt sich auf diesem ein Knoten $v$ finden, an welchem der WS angenommen wird.\\
-Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einen Input des Chips gelangt oder der Slack nicht mehr negativ ist. \\
-Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen \textcolor{red}{füge hier mal ein Beispiel oder einen Verweis an} zu einem äquivalenten Circuit C', mit geringerer Tiefe(Anzahl Kanten eines bzgl. Kantenenge längsten  Weges in $C$), umformen. Diese umgebauten Instanzen besitzen nur einen Output und wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips durch eine geringe Laufzeit des Algorithmus. Der Nachteil ist jedoch, dass ein Chip oft sehr viele Wege mit einem schlechten negativen Slack hat und man somit den Chip nur inkrementell beschleunigt.\\
+Sei $C$ der Circuit, welcher nur aus dem Gate von $v$ besteht. Füge nun zu $v$ in $C$ den Input von $v$ hinzu, welcher den größten negativen Slack besitzt. Dies wiederhole man für das neu hinzugefügte Gate, bis man an einen Input des Chips gelangt oder das am Input liegende Bauteil nicht in der Libray des Technology Mappings liegt. \\
+Hieraus entsteht ein Circuit $C$, welcher einen Output hat und aus einer hintereinander geschalteten Kette von Knoten besteht. Dieser lässt sich nun mit geeigneten Algorithmen zu einem Pfad, bestehend abwechselnd aus AND und OR Gates,  umbauen und  zu einem äquivalenten Circuit C', mit geringerer Tiefe(Anzahl Kanten eines bzgl. Kantenenge längsten  Weges in $C$), umformen. Ausführlich Informationen zu den hier zum Einsatz kommenden Algorithmen befinden sich in \cite{Werber} und \cite{Hermann}.\\
+
+Diese umgebauten Instanzen besitzen nur einen Output und wenige Highfanoutknoten mit geringem Ausgangsgrad. Dadurch sind diese Instanzen gut für den oben vorgestellten FPTAS geeignet. Der große Vorteil von diesem Vorgehen sind überschaubar große Instanzen und eine Beschleunigung des gesamten Chips durch eine geringe Laufzeit des Algorithmus. Der Nachteil ist jedoch, dass ein Chip oft sehr viele Wege mit einem schlechten negativen Slack hat und man somit den Chip nur inkrementell beschleunigt.\\
 
 Eine alternative Herangehensweise an das \TM ist, einen Circuit dahingehend zu optimieren, dass die SNS minimiert wird. Dies ist jedoch bei den bisher betrachteten Circuits äquivalent zur Optimierung nach $AT$, da nur Instanzen mit einem Output betrachtet wurden und $RAT$ für diesen eine Konstante ist.
 
@@ -703,10 +710,12 @@ Wie in der Einleitung beschrieben, ist es das Ziel dieser Arbeit eine Heuristik 
 
 Als erstes fällt auf, dass sich, wenn der Algorithmus für jeden Knoten die Kandidatenmenge errechnet hat, nicht einfach der beste Kandidat für den Output aus seiner Tradeoff-Kurve auswählen lässt. Dieser besitzt bei mehreren Outputs nämlich in der Regel offene Knoten. 
 Es wurde bereits dargestellt, wie man mehrere Kandidaten auswählt, sodass diese an allen offenen Knoten übereinstimmen. Somit lässt sich ein Circuit mit den Mitteln aus Kapitel \ref{subsubsec:verknuepfen_kandidaten} realisieren, welcher eine Kostenfunktion hinsichtlich Größe und WS optimiert. \\
-
-Hieraus ergibt sich eine zweite Änderung. Bisher wurde das Delay eines Circuits C optimiert, indem das Signal des einen Outputs nach dem Umbau früher ankommt. Dies lässt sich auf einen Circuit mit mehreren Outputs übertragen. Da es mehrere Signale gibt, wählt man den Kandidaten des Outputs mit dem größten negativen Slack zuerst und die anderen folgen sortiert der Größe ihres Slacks nach (absteigend). Dies garantiert jedoch nicht, dass der WS des Circuits nach dem Umbau besser ist als vorher, da evtl. der Knoten der vorher den WS bildete, besser wird. Ein anderer Output könnte jedoch durch diesen Umbau schlechter werden. \\
+\begin{comment}
+Hieraus ergibt sich eine zweite Änderung. Bisher wurde das Delay eines Circuits $C$ optimiert, indem das Signal des einen Outputs nach dem Umbau früher ankommt. Dies lässt sich auf einen Circuit mit mehreren Outputs übertragen. Da es mehrere Signale gibt, wählt man den Kandidaten des Outputs mit dem größten negativen Slack zuerst und die anderen folgen sortiert der Größe ihres Slacks nach (absteigend). Dies garantiert jedoch nicht, dass der WS des Circuits nach dem Umbau besser ist als vorher, da evtl. der Knoten der vorher den WS bildete, besser wird. Ein anderer Output könnte jedoch durch diesen Umbau schlechter werden. \\
 Um dieses Problem zu umgehen, verändert man $C$ vor dem \TM durch das Verbinden aller Outputs mit einem virtuellen Gate, mit nur einem möglichen Match (dem Gate an sich). Der veränderte Circuit lässt sich nun wie im Kern-Algorithmus optimieren und es wird automatisch das gerade aufgezeigte Problem gelöst.\\ 
-Wie bereits in Kapitel \ref{subsec:rat}  erläutert ist es in der Praxis profitabler die SNS des Circuits zu verbessern, anstatt den WS.\\
+\end{comment}
+
+Wie bereits in Kapitel \ref{subsec:rat}  erläutert, ist es in der Praxis profitabler die SNS des Circuits zu verbessern, anstatt den WS.\\
 Dementsprechend muss aus den Kandidatenmengen der Outputs derjenige Circuit-Kandidat gebaut werden, welcher die SNS minimiert.\\
 Dieses Kriterium ersetzt, von diesem Punkt an,  das Kriterium der Delay-Optimierung in der Kostenfunktion.\\
  
@@ -814,14 +823,14 @@ Diese Premapping Methode wird in Kapitel \ref{sec:analyse}, aufgrund der nur unr
 \subsection{Preprocessing}
 Die Möglichkeiten durch das Matchen sind prinzipiell vielfältig, jedoch bei Gates $p$ mit $|inputs(p)| = fanin_{max}$ auf das beliebige Invertieren der Inputs und des Outputs beschränkt. \\
 Um diesem Problem aus dem Weg zu gehen, ist es sinnvoll, vor dem \TM Algorithmus jedes Gate mit mehr als zwei eingehenden Kanten durch einen kleinen Subcircuit, bestehend aus zwei Input Gates, zu ersetzen. Dies ist immer möglich, da jede logische Funktion nur mit Hilfe von NAND2 und INV Gates realisierbar ist (\cite{Post}) und auf jedem realen Chip standardmäßig ein AND oder NAND sowie ein OR oder NOR in der Library vorhanden sind. INV Gates sind fester Bestandteil jeder realen Library.\\
-Dabei werden die Gates nach folgender Routine zerlegt. \textcolor{red}{hier das huffman coding und ein Beispiel mit einbringen und decomposing begriff einführen}\\
+Dabei werden die Gates nach folgender Routine zerlegt. Eine ausführliche Beschreibung wir Gates mit hohem Eingangsgrad zerlegt werden befindet sich in \cite{WerberDiss} in Kapitel 2. \\
 Der Vorteil des Decompose ist, dass die Möglichkeiten des Technology Mappings deutlich erweitert werden. Jedoch werden für ein AND4 Gate beispielsweise 3 AND2 Gates eingesetzt, was dazu führt, dass sich meist die Kosten des Ausgangscircuits verschlechtern.\\
 Eine ausführliche Analyse der Vor- und Nachteile des Decomposens finden sich in Kapitel \ref{sec:analyse}.
 	
 
 \subsection{Weitere Optimierungskriterien}
 \label{sec:weitere_opt_krit}
-Das \TM arbeitet im Chip-Design auf realen Instanzen. Dadurch kommen zu den bereits vorgestellten weitere mögliche Optimierungskriterien hinzu. Es handelt sich hierbei um Kriterien, welche in die Kostenfunktion mit eingebracht werden können und somit während des Technology Mappings optimiert werden. Des Weiteren verursacht der neu implementierte Circuit Kosten, welche im \TM nicht beachtet wurden, für die es jedoch einen übermäßigen Anstieg zu vermeiden gilt. Ein Beispiel hierfür sind die bereits erwähnten zu langen Kanten.\\
+Das \TM arbeitet im Chip-Design auf Instanzen realer Chips. Dadurch kommen zu den bereits vorgestellten weitere mögliche Optimierungskriterien hinzu. Es handelt sich hierbei um Kriterien, welche in die Kostenfunktion mit eingebracht werden können und somit während des Technology Mappings optimiert werden. Des Weiteren verursacht der neu implementierte Circuit Kosten, welche im \TM nicht beachtet wurden, für die es jedoch einen übermäßigen Anstieg zu vermeiden gilt. Ein Beispiel hierfür sind die bereits erwähnten zu langen Kanten.\\
 Darüber hinaus sind viele Gates teilweise symmetrisch aufgebaut (Bsp.: AND, OR ...) und die Signale der Inputs brauchen unterschiedlich lange zum Output des Gates. Daraus folgt, dass durch Permutierung von Teilmengen der Inputs, Geschwindigkeitsvorteile geschaffen werden können.  
 \subsubsection{Pinabhängiges Delay}
 \label{subsec:pinabh_delay}
@@ -843,6 +852,7 @@ An einem Transistor liegt immer eine Spannung an. Daraus folgt, dass dieser auch
 Da ein Gate aus einer logischen Verknüpfung von Transistoren besteht, besitzt es ebenfalls einen static power Wert. Da der dynamic power Wert eines Gates abhängig von der aktuellen Implementierung des Chip ist, ist es schwer, diesen unabhängig von einem Circuit zu errechnen. Aus diesem Grund beschränke ich mich im Folgenden auf die static power. \\
 Die static power eines Gates korreliert sehr stark mit der physikalischen Größe dieses Bauteils. Aus diesem Grund lassen sich in den oben vorgestellten Algorithmen die Area Daten durch die static power Werte ersetzen. Der Circuit wird dadurch hinsichtlich Geschwindigkeit und Energiebedarf optimiert. \\
 Static power lässt sich auch zusätzlich zu Area in die Kostenfunktion einbauen. Dies würde bedeuten, dass die Kosten eines Kandidaten $k$ das Tripel $area(k), AT(k), static\_power(k)$ sind, wobei $static\_power(k)$ ähnlich wie $area(k)$ errechnet wird. Dies führt jedoch zu einer noch schlechteren Vergleichbarkeit von Kandidaten gleicher und verschiedener Knoten. Aus diesem Grund wird auf die Optimierung aller drei Kriterien zusammen verzichtet. \\
+Weitere ausführliche Informationen über Power-Optimierung befinden sich in \cite{Daboul}.\\
 In Kapitel \ref{sec:analyse} finden sich weitere Ausführungen über die Auswirkungen von diesem Austausch in der Kostenfunktion.
 	
 \begin{comment}
@@ -857,8 +867,8 @@ Da dies bisher die beste Methode ist, das Problem an dieser Stelle zu lösen,  u
 \begin{comment}
 \section{Resource Sharing}
 \label{sec:resource_sh}
-In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dies noch nicht implementiert wurde, wird in Kapitel \ref{sec:analyse} nicht weiter darauf eingegangen.\\
-Es folgt die allgemeine Definition des Problems und daraufhin eine Heuristik, welche sich dieses Problem zunutze macht.\\
+In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt.
+Es folgt die allgemeine Definition des Problems und daraufhin eine Heuristik, welche sich den Resource Sharing Algorithmus zunutze macht.\\
 
 Es handelt sich um das Resource Sharing Problem.\\
 Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$, von denen jeder eine Aufgabe erledigen möchte.  Jeder Kunde $c \in \mathcal{C}$ besitzt ein Spektrum an Vorgehensweisen $\mathcal{B}_c$ um seine Aufgabe zu erledigen. Hierbei ist $\mathcal{B}_c$ (Block genannt) eine konvexe Menge. Jede Vorgehensweise benötigt Ressourcen für ihre Umsetzung. \\
@@ -918,22 +928,22 @@ continues \TM ? oder erst nach dem algo darauf eingehen direkt mit einer roundin
 
 
 \section{Resource Sharing}\label{sec:resource_sh}
-In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt. Da dieser noch nicht implementiert wurde, wird dieser Ansatz in Kapitel \ref{sec:analyse} nicht berücksichtigt.\\
-Es folgt die allgemeine Definition des Resource Sharing Problems und darauf basierend eine Heuristik, welche sich dieses Problem zunutze macht.\\
+In diesem Kapitel wird ein weiterer Ansatz für eine Heuristik vorgestellt.\\
+Es folgt die allgemeine Definition des Resource Sharing Problems und darauf basierend eine Heuristik, welche sich den Resource Sharing Algorithmus zunutze macht.\\
 
 \subsection{Definition und Lösungsansatz des Resource Sharing Problems}
 
-Eine Instanz des Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$ und einer konvexen Menge $\mathcal{B}_c$ für jeden Kunden $c\in \mathcal{C}$. Diese wird auch Block genannt. Des Weiteren sei $\mathcal{R}$ eine endliche Menge von Ressourcen. Gegeben seien des Weiteren Funktionen $g_c : \mathcal{B}_ c \rightarrow \mathbb{R}^{\mathcal{R}_+}$, welche für jeden Kunden und jedes Element des entsprechenden Blocks einen Ressourcenverbrauch angeben.
+Eine Instanz des Resource Sharing Problems besteht aus einer endlichen Menge von Kunden $\mathcal{C}$ und einer konvexen Menge $\mathcal{B}_c$ für jeden Kunden $c\in \mathcal{C}$. Diese wird auch Block genannt. Des Weiteren sei $\mathcal{R}$ eine endliche Menge von Ressourcen. Gegeben seien des Weiteren Funktionen $g_c : \mathcal{B}_ c \rightarrow \mathbb{R}^{\mathcal{R}_+}$, welche für jeden Kunden und jedes Element des entsprechenden Blocks einen Ressourcenverbrauch angeben.
 
 Ziel des Resource Sharing ist es, jedem Kunden $c \in \mathcal{C}$ ein Element $b_c \in \mathcal{B}_c$ zuzuordnen, sodass 
 \[ \lambda^* := \inf \{ \max\limits_{r \in \mathcal{R}} \sum\limits_{c \in \mathcal{C}}  (g_c(b_c))_r | b_c \in \mathcal{B}_c \forall c \in \mathcal{C} \} \]
-möglichst nah erreicht wird. Mit anderen Worten ist es das Ziel den maximalen Ressourcenverbrauch zu minimieren. 
+approximativ erreicht wird. Mit anderen Worten ist es das Ziel den maximalen Ressourcenverbrauch zu minimieren. 
 
 \subsubsection{Lösungsansatz}
 \label{subsec:rs_loesungsansatz}
-Der in \cite{Vygen2011} ausführlich beschriebene Lösungsansatz für das Resource Sharing iteriert über die Kundenmenge und errechnet in jeder Iteration mit einem Orakel und Preisen $\omega _r$ für alle Ressourcen $r \in \mathcal{R}$ ein Block Element für jeden Kunden, sodass der durch die Preise gewichtete maximale Ressourcenverbrauch minimiert wird.\\
+Der in \cite{Vygen2011} ausführlich beschriebene Lösungsansatz für das Resource Sharing Problem iteriert über die Kundenmenge und errechnet in jeder Iteration mit einem Orakel und Preisen $\omega _r$ für alle Ressourcen $r \in \mathcal{R}$ ein Block Element für jeden Kunden.\\
 Das Orakel $f_c : \mathbb{R}^\mathcal{R}_+ \rightarrow \mathcal{B}_c$, auch Blocklöser genannt, wird als gegeben betrachtet und errechnet für gegebene Preise $\omega$ für jedes Element $c \in C$ ein $b_c \in \mathcal{B}_c$ sodass gilt: $ \omega ^T g_c(b_c) \leq \sigma \inf \{ \omega ^T g_c(b) | b \in \mathcal{B}_c \}$ mit einem Approximationsfaktor $\sigma \geq 1$.\\
-Nachdem der Blocklöser aufgerufen wurde, wird geprüft ob verknüpfte Ergebnisse der bisherigen Iterationen eine zulässige Lösung der Resource Sharing Instanz liefert. Ist dies nicht der Fall so werden die Preise angepasst die nächste Iteration mit den neuen Preisen gestartet. Sei $y_r$ die Summe des Ressourcenverbrauchs der Ressource $r$ der vorangegangenen Iterationen. Die Preise werden am Anfang einer Iteration durch $\omega _r \rightarrow \omega _r \cdot e^{\gamma \cdot y_r}$ aktualisiert. Hierbei ist $\gamma > 0 $ beliebig, hat jedoch Einfluss auf die Güte der Lösung des Algorithmus.\\
+Nachdem der Blocklöser aufgerufen wurde, wird geprüft ob verknüpfte Ergebnisse der bisherigen Iterationen eine zulässige Lösung der Resource Sharing Instanz liefert. Ist dies nicht der Fall so werden die Preise angepasst und die nächste Iteration mit den neuen Preisen gestartet. Sei $y_r$ die Summe des Ressourcenverbrauchs der Ressource $r$ der vorangegangenen Iterationen. Die Preise werden kontinuierlich durch $\omega _r \rightarrow \omega _r \cdot e^{\gamma \cdot y_r}$ aktualisiert. Hierbei ist $\gamma > 0 $ beliebig, hat jedoch Einfluss auf die Güte der Lösung des Algorithmus.\\
 
 Ist der Algorithmus fertig so liegt das Ergebnis für jeden Kunden in Form einer Konvexkombination von Elementen des zugehörigen Blocks vor. Da jeder Block konvex ist repräsentiert diese Kombination wieder ein Element des Blocks. \\
 Angenommen ein Block ist nicht konvex, so muss eine Lösung des Resource Sharing noch zu einem geeigneten Element des zugehörigen Blocks gerundet werden.\\
@@ -945,10 +955,11 @@ Der folgende Algorithmus wurde angelehnt an \cite{Daboul2018} entwickelt.\\
 Das \TM Problem wird wie folgt durch eine Instanz des Resource Sharing modelliert.\\
 Die \TM Instanz bestehe aus einem Circuit $G$ ohne teilweise überflüssige Subcircuits und gegebenen $RAT$'s an den Outputs von $G$. \\
 Gesucht sei ein zu $G$ äquivalenter Graph $G*$, dessen Outputsignale vor der entsprechenden $RAT$ ankommen und $Power(G*) \leq B$. Sei $B$ vorerst gegeben. \\
-Sei $T_G$ der Timing Graph von $G$. \textcolor{red}{muss ich den erklären?}Dieser modelliert alle Delays der Knoten und Kanten von $G$. Ein Beispiel eines solchen Graphen befindet sich in Abbildung \textcolor{red}{??}.\\
+Sei $T_G$ der Timing Graph von $G$. Dieser modelliert alle Delays der Knoten und Kanten von $G$. 
+Dieser entsteht aus $G$ indem alle Gate Knoten $g$von $G$ durch $fanin(gate(g)) +1$ Knoten ersetzt werden. Jede der Input Kanten von $g$ wird durch einen Knoten unterteilt.  Alle Delay Werte von $G$ lassen sich nun auf $T$ modellieren, indem für jede Kante aus $G$ der entsprechenden Kante in $T$ das Delay dieser Kante zugewiesen wird. Für jeden Gate Knoten $g$ aus $G$ werden den entsprechenden Kanten das pinabhängige Delay zugeordnet. Ein Beispiel eines solchen Graphen befindet sich in Abbildung \textcolor{red}{??}.\\
 Sei nun $\mathcal{C} := \{G\} $, $\mathcal{B}_G$ die Menge der nicht dominierten Circuit Kandidaten auf $G$ und $\mathcal{P}_G$ die Menge der inklusionsmaximalen Wege im Timing Graphen von $G$. Die Signale der Outputs eines Graphen kommen genau dann vor der $RAT$ an, wenn  alle $P \in \mathcal{P}$  vor der $RAT$ des zu $P$ gehörenden Outputs ankommen.\\
 Somit lässt sich wie folgt festlegen: $\mathcal{R} = \{Power\} \cup \mathcal{P_G}$. \\
-Das Orakel in jeder Iteration wird durch eine noch zu beschreibende \TM Heuristik ersetzt. \\
+Das Orakel in jeder Iteration wird durch eine noch zu beschreibende \TM Heuristik realisiert. \\
 Das Ziel dieses Orakels ist, den gewichteten Ressourcenverbrauch
 \begin{equation}\label{eq:ressourcen_verbrauch_1}
 \omega _{Power} \frac{Power(G)}{B} + \sum\limits_{P \in \mathcal{P}} \omega _P \frac{\sum_{e \in E(P)}Delay_e(G)}{RAT_P}
@@ -958,7 +969,7 @@ Das Ziel dieses Orakels ist, den gewichteten Ressourcenverbrauch
 Durch diese Modellierung des Resource Sharing ergeben sich die folgenden Probleme, welche in den folgenden Unterkapiteln gelöst werden: \\
 \begin{itemize}
 	\item $|\mathcal{P}|$ ist nur exponentiell beschränkt. Daraus folgt, dass die explizite Speicherung jedes Ressource Preises zu einem nicht polynomiellen Algorithmus führen würde. 
-	\item Die \TM Heuristik liefert einen zu $G$ äquivalenten Circuit $G'$. Im Allgemeinen gilt jedoch $\mathcal{P}_G \neq \mathcal{P}_{G'}$. Somit lässt sich keine Ressourcenverbräuche von $G'$ auf den Ressourcen vor dem \TM angeben.
+	\item Die \TM Heuristik liefert einen zu $G$ äquivalenten Circuit $G'$. Im Allgemeinen gilt jedoch $\mathcal{P}_G \neq \mathcal{P}_{G'}$. Somit lassen sich keine Ressourcenverbräuche von $G'$ auf den Ressourcen vor dem \TM angeben.
 	\item Der Block $\mathcal{B}_G$ ist nicht konvex, wodurch noch eine geeignete Routine zur Rundung anzugeben ist.
 \end{itemize}
 
@@ -966,7 +977,7 @@ Durch diese Modellierung des Resource Sharing ergeben sich die folgenden Problem
 Die Menge $\mathcal{P}_G$ für einen Circuit $G$ ist nur exponentiell beschränkt. Dadurch ist es nicht praktikabel, Preise für jede Pfad Ressource zu speichern. Es ist jedoch möglich, die Preise aller Pfade durch Gewichte auf den Kanten von $T_G$ zu repräsentieren. \\
 Seien $(\omega _P)_{P \in \mathcal{P}_G}$ Preise für die Pfad-Ressourcen von $G$. Setze $\omega _e := \sum\limits_{P \in \mathcal{P} : e \in P} \omega _P$.  Die Minimierung von (\ref{eq:ressourcen_verbrauch_1}) durch das Orakel ist nun äquivalent der Minimierung von 
 \begin{equation}\label{eq:ressourcen_verbrauch_2}
-\omega _{Power} \frac{Power(G)}{B} + \sum\limits_{e \in E(T_G)} \frac{Delay_e(G)}{RAT_P}.
+\omega _{Power} \frac{Power(G)}{B} + \sum\limits_{e \in E(T_G)} \omega_e \frac{Delay_e(G)}{RAT_P}.
 \end{equation}
 Des Weiteren gilt für $(\omega_e)_{e \in T_G}$ die Flusserhaltung $\sum_{e \in  \delta^- (v)} \omega_e = \sum_{e \in  \delta^+ (v)} \omega_e $.\\
 
@@ -981,9 +992,9 @@ Der Algorithmus Edge Weights aktualisiert die Kantenpreise bei gegebenen Ressour
 \subsubsection{Ressourcenproblem}
 Das \TM Orakel  gibt einen optimierten zu $G$ äquivalenten Circuit $G'$ zurück. Dieser besitzt jedoch neue Pfade und somit eine andere Ressourcenmenge als $G$. 
 Dieses lässt sich durch eine Funktion lösen, welche die Ressourcenverbräuche $(y_e)_{e\in E(T_G)}$ auf Grundlage von $G'$ aktualisiert. Anschließend lassen sich die Kantenpreise mit Hilfe des Algorithmus aus Kapitel \ref{subsubsec:kantenpreise} aktualisieren und die nächste Iteration des Resource Sharing kann gestartet werden. \\
-Es gilt nun die Ressourcenverbräuche entsprechend anzupassen. Dies erfolgt durch Algorithmus: 
+Es gilt nun die Ressourcenverbräuche entsprechend anzupassen. Dies erfolgt folgendermaßen: 
 
-Addiere zu allen Kanten, welche in $G'$  noch existieren, den entsprechenden Ressourcenverbrauch. Wenn über eine Kante gematcht wurde, so wird das Delay aller Komponenten des Matches durch die Kanten im neuen Gate ersetzt. Dementsprechend bleibt der Ressourcenverbrauch von verschwundenen Kanten im Timing Graphen von $G$ unverändert.  Das Delay der eingehenden Kanten entspricht automatisch dem der längeren Kante zum neuen Gate. Das Delay neu hinzugekommener Inverter an Inputs werden auf das Delay der darüberliegenden Kante des Gates addiert. Die Vorgehensweise dieses Algorithmus wird durch Abbildung \textcolor{red}{??} veranschaulicht. \\
+Addiere zu allen Kanten, welche in $G'$  noch existieren, den entsprechenden Ressourcenverbrauch. Wenn über eine Kante gematcht wurde, so wird das Delay aller Komponenten des Matches durch das Delay der Kanten im neuen Gate ersetzt. Dementsprechend bleibt der Ressourcenverbrauch von verschwundenen Kanten im Timing Graphen von $G$ unverändert.  Das Delay der eingehenden Kanten entspricht automatisch dem der längeren Kante zum neuen Gate. Das Delay neu hinzugekommener Inverter an Inputs werden auf das Delay der darüberliegenden Kante des Gates addiert. Die Vorgehensweise dieses Algorithmus wird durch Abbildung \textcolor{red}{??} veranschaulicht. \\
 
 Wie bereits in Kapitel \ref{subsubsec:klonen} erläutert, ist für die in dieser Arbeit verwendeten \TM Algorithmen, das Klonen von Gates nicht erlaubt. Lockert man diese Vorgabe, so bleibt es offen zu zeigen, wie Ressourcenverbräuche von neu enstandenen Gates und Kanten in die Aktualisierung der Verbräuche von $G$ eingebracht werden. \\
 
@@ -1007,7 +1018,7 @@ Es bleibt offen zu zeigen, wie Preise von $G'$ ohne diese Einschränkung in poly
 Das Orakel ist ein \TM Algorithmus mit den folgenden Besonderheiten: \\
 
 Zugrunde gelegt wird die \TM Heuristik aus Kapitel \ref{subsec:heuristik} mit dem Premapping durch Schätzen und erweitert für Circuits mit mehreren Outputs. \\
-Damit dieser Algorithmus, eine bezüglich der Kantenpreise optimierte Lösung berechnen kann, werden diese wiefolgt in dem Algorithmus integriert. \\
+Damit dieser Algorithmus, eine bezüglich der Kantenpreise optimierte Lösung berechnen kann, werden diese wie folgt in dem Algorithmus integriert. \\
 Das Delay einer Kante von $G$ wird multipliziert mit dem entsprechenden Preis dieser Kante. Dies gilt ebenfalls für das pinabhängige Delay eines Gates. Das Delay jedes Inputpins eines Gates in $G$ zu seinem Output lässt sich ebenfalls eindeutig einer Kante aus $T_G$ zurordnen. Mit dessen Preis wird auch dieses Delay multipliziert. Des Weiteren werden die Powerwerte der Gates mit $\omega_{Power}$ multipliziert. Da $\omega_e >0$ für jede Kante gilt, führt dies zu positiven Delay-Werten. \\
 Durch diese Änderungen minimiert das Orakel heuristisch die Kostenfunktion (\ref{eq:ressourcen_verbrauch_2}).
 
@@ -1031,7 +1042,7 @@ Im Folgenden wird ein Resource Sharing Algorithmus zur Lösung des Technology Ma
         $(\omega_e)_{e \in E(T_G)} \gets Edge\_Weights(\gamma, (y_e)_{e \in E(T_G)})$\;
         $k[i] \gets TM\_Oracle(\omega)$\;
         $\xi \gets \min \{ \frac{B}{Power(k[i])}, \frac{RAT_P}{Delay(P)} \forall P \in \mathcal{P}_{k[i}] \}$\;
-        \If{$\xi \leq 1$}{\Return $k[i]$}
+        \If{$\xi \geq 1$}{\Return $k[i]$}
         $(y_e)_{e \in E(T_G)} \gets Edge\_Resources(k[i], (y_e)_{e \in E(T_G)}, \xi)$\;
         $\phi[i] \gets \xi, \quad \Xi \gets \Xi + \xi$
      }
@@ -1043,12 +1054,14 @@ Wenn der Algorithmus nicht in Schritt 9 endet, so nehme man den Kandidaten in $k
 \subsubsection{Abschließende Bemerkungen}
 Im bisherigen Verlauf dieses Kapitels wurde $B$ als gegeben vorausgesetzt. Es lässt sich jedoch $B$ durch eine binäre Suche und einem Aufruf des Resource Sharing Algorithmus für jede Iteration der Suche ersetzen. Dies ergibt eine, wenn möglich $RAT$-einhaltende, Lösung mit möglichst kleinem Power-Verbrauch. \\
 Des Weiteren lässt sich auch mit einem durch \TM umgebauten Circuit in der nächsten Iteration des Resource Sharing weiterrechnen, jedoch müssen dann die Preise und Ressourcen entsprechend angepasst werden. Dies ist für den gesamten Circuit nicht sinnvoll, da sonst alle Preise evtl. ihre Gültigkeit verlieren. Sehr kritische Subcircuits lassen sich jedoch  mit entsprechenden Veränderungen an Ressourcen und Preisen austauschen. Diese kritischen Bereiche lassen sich auch mit Hilfe des Preprocessings verändern und in der nächsten Iteration separat bearbeiten. Die Kantenpreise können, aufgrund der Flusserhaltung, leicht an den neuen Graphen übertragen werden, jedoch ist zu diesem Zeitpunkt noch offen, wie die Summe der Ressourcenverbräuche aufgeteilt auf die Kanten in die neue Umgebung transformiert werden müssen. Für Graphen mit polynomiell beschränkter Pfadmenge, beispielsweise Graphen mit konstant vielen Highfanoutknoten, lässt sich dies jedoch auch über die Pfadwerte direkt in polynomieller Zeit ändern. \\
-Die Definition der Ressourcen und Kunden wurde so allgemein gehalten, dass in einer Iteration des Resource Sharing Algorithmus das \TM sehr einfach durch einen andere die Logik optimierende Routine ausgetauscht werden kann. Abhängig von den aktuellen Preisen und den bisher errechneten Kandidaten, ist es möglich zum Beispiel das \TM Orakel mit  dem  in \cite{Daboul2018} beschriebenen  Gate Sizing Algorithmus zu ersetzen.  Dadurch ist eine deutlich höhere Flexibilität bei der Logik-Optimierung eines Ciruits. \\
+Die Definition der Ressourcen und Kunden wurde so allgemein gehalten, dass in einer Iteration des Resource Sharing Algorithmus das \TM sehr einfach durch einen andere die Logik optimierende Routine ausgetauscht werden kann. Abhängig von den aktuellen Preisen und den bisher errechneten Kandidaten, ist es möglich zum Beispiel das \TM Orakel mit  dem  in \cite{Daboul2018} beschriebenen  Gate Sizing Algorithmus zu ersetzen.  Dadurch ist eine deutlich höhere Flexibilität bei der Logik-Optimierung eines Ciruits möglich. \\
 Ob der Resource Sharing Algorithmus für das \TM polynomiell implementierbar ist hängt nur von dem gewählten \TM Algorithmus ab, denn alle anderen Schritte sind wie bereits in Kapitel \ref{subsec:rs_loesungsansatz} beschrieben, polynomiell implementierbar. 
 
 \section{Qualitäts- und Laufzeit-Analyse}
 \label{sec:analyse}
-In diesem Kapitel werden die vorgestellten Heuristiken bezüglich Laufzeit und Güte analysiert. Vor dieser Analyse ist es jedoch Notwendig ein paar Angaben zur Struktur realer Instanzen zu machen, um die Ergebnisse der Algorithmen besser einordnen zu können.
+In diesem Kapitel werden die vorgestellten Heuristiken bezüglich Laufzeit und Güte analysiert. Vor dieser Analyse ist es jedoch Notwendig ein paar Angaben zur Struktur realer Instanzen zu machen, um die Ergebnisse der Algorithmen besser einordnen zu können.\\
+
+Die im folgenden behandelten Chips liegen mir, aufgrund einer Kooperation zwischen IBM und dem Forschungsinstitut für Diskrete Mathematik in Bonn, vor. Auch die in dieser Arbeit vorgestellten Algorithmen wurden im Rahmen dieses Projektes implementiert. Die Instanzen dieser Chips werden als reale Instanzen bezeichnet.
 
  \subsection{Struktur realer Instanzen}
 \label{subsec:struktur_realer_instanzen} 

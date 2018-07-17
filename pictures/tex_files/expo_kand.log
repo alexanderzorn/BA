@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  4 JUL 2018 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  17 JUL 2018 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1762,10 +1762,10 @@ Package rerunfilecheck Info: File `expo_kand.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 51226 strings out of 493089
- 1227383 string characters out of 6134843
- 1514702 words of memory out of 5000000
- 53815 multiletter control sequences out of 15000+600000
+ 51224 strings out of 493089
+ 1227307 string characters out of 6134843
+ 1513702 words of memory out of 5000000
+ 53813 multiletter control sequences out of 15000+600000
  41022 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,8n,100p,10397b,766s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1776,7 +1776,7 @@ ist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /lm/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on expo_kand.pdf (1 page, 61556 bytes).
+Output written on expo_kand.pdf (1 page, 58623 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
