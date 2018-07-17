@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  15 JUL 2018 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  17 JUL 2018 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1775,7 +1775,7 @@ Package rerunfilecheck Info: File `new_library.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  51293 strings out of 493089
- 1229549 string characters out of 6134843
+ 1229547 string characters out of 6134843
  1533431 words of memory out of 5000000
  53882 multiletter control sequences out of 15000+600000
  46922 words of font info for 62 fonts, out of 8000000 for 9000
@@ -1790,7 +1790,7 @@ c/lm/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr12.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/lo
 cal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/lm/lmr9.pfb>
-Output written on new_library.pdf (1 page, 113683 bytes).
+Output written on new_library.pdf (1 page, 113692 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  36 compressed objects within 1 object stream
