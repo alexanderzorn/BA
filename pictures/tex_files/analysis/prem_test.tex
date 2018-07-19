@@ -1,0 +1,23 @@
+\documentclass[tightpage]{standalone}
+
+\usepackage{pgfplots}
+ 
+\begin{document}
+\centering
+	\begin{tikzpicture}[every mark/.append style={mark size=1pt, mark=o}]
+		\begin{axis}[ymin=-35,xmode=log, xlabel= Gr\"o{\ss}e, ylabel= Prozentuale Verbesserung]%, legend style={at={(0.8,0.7)}}]
+		
+			\pgfplotstableread{prem_test_1}
+			\datatable
+			\addplot table[y index = 1, only marks]from \datatable;
+		
+			\pgfplotstableread{prem_test_tmp}
+			\datatable
+			\addplot table[y index = 1, only marks]from \datatable;
+			
+			
+			%\addplot table[y index = 2]from \datatable;
+			\legend{\tiny triviales Premapping, \tiny  Premapping durch Sch\"atzen}
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

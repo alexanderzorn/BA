@@ -1,0 +1,27 @@
+\documentclass[tightpage]{standalone}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{varwidth}
+\begin{document}
+%\begin{tikzpicture}
+\begin{varwidth}{\linewidth}
+\begin{table}[]
+\centering
+\label{my-label}
+\begin{tabular}{|ccc|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{$|V(C)|$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}\textbf{\#Instanzen}} & \textbf{\%} \\ \hline
+\textgreater{}10                                                & 693                                                               & $63\%$      \\
+\textgreater{}100                                               & 385                                                               & $32\%$      \\
+\textgreater{}1000                                              & 189                                                               & $17\%$      \\
+\textgreater{}10000                                             & 19                                                                & $1,7\%$     \\
+\textgreater{}20000                                             & 12                                                                & $1\%$       \\
+\textgreater{}30000                                             & 9                                                                 & $0,8\%$     \\
+\textgreater{}40000                                             & 4                                                                 & $0,04\%$    \\ \hline
+\end{tabular}
+\end{table}
+\end{varwidth}
+%\end{tikzpicture}
+\end{document}
+
+ 3!!    0.85146641438 56.9536423841 16.367076632 15.3263954588 6.62251655629 3.8789025544

@@ -1090,34 +1090,46 @@ Die Werte von Area, SNS, WS und Energieverbrauch eines Circuits liegen nicht unb
 
 Der Unterschied zwischen dem Verbrauch eines Gates mit dem geringsten zu dem Gate mit dem höchsten Ressourcenverbrauch liegt bei maximal Faktor 10.
 
+\begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/tex_files/analysis/tradeoff_curve}
+		\caption{Einfluss von $\lambda$ auf SNS und Area}
+		\label{bild:tradeoff_test}
+\end{wrapfigure}
 
 Der Unterschied des Verbrauchs einer Ressource von dem Gate welches den geringsten Verbrauch in Anspruch nimmt zu dem mit dem gr\"o{\ss}ten Verbrauch liegt in der Regel bei maximal einem Faktor 10. Der Ressourcenverbrauch eines Gates wird nun durch dividieren durch den Verbrauch eines sparsamen Gates normalisiert; dann liegen alle Ressourcenverbräuche  in derselben Gr\"o{\ss}enordnung. \\
-Im Folgenden wird ausgehend von der \TM Heuristik ohne Präprozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Power oder Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$ bzw. $\lambda SNS(C) + (1-\lambda)Power(C)$\\
-Abbildung \ref{bild:area_slack_tradeoff} veranschaulicht die durchschnittliche prozentuale Verbesserung der Kosten abhängig von $\lambda$.\\
-	\begin{figure}[h]
-\centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{pictures/tex_files/analysis/tradeoff_curve}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{pictures/tex_files/analysis/tradeoff_curve_vt}
-\end{subfigure}
-\caption{Einfluss von $\lambda$ auf SNS Area und Power}
-\label{bild:area_slack_tradeoff}
-\end{figure}
+Im Folgenden wird ausgehend von der \TM Heuristik ohne Präprozessing, und mit dem Premapping durch Sch\"atzen der Einfluss des Tradeoffparameters $\lambda$, abhängig von einer Optimierung nach Area,  auf die Änderung der Kosten untersucht.  Die Kostenfunktion ist hierbei $\lambda SNS(C) + (1-\lambda)Area(C)$\\
+Abbildung \ref{bild:tradeoff_test} veranschaulicht die durchschnittliche prozentuale Verbesserung der Kosten abhängig von $\lambda$.\\
+
 
 Hier ist nur eine schwache Abh\"angigkeit bez\"uglich des Tradeoffparameters zu beobachten. Dies liegt daran, dass im Schnitt f\"ur jeden dritten Knoten ein Kandidat gesch\"atzt wird. Des Weiteren liegen $SNS$ und $Area$ oft in derselben Gr\"o\ss enordnung, wodurch ein schnellerer Kandidat mit nahezu den gleichen Kosten gesch\"atzt wird, wie ein kleinerer und somit unabhängig des $\lambda$, sehr kosten\"ahnliche Kandidaten gew\"ahlt werden; wodurch sich die Kosten des \"aquivalenten Circuits sich in Abh\"angigkeit des $\lambda$ nur gering ver\"andern.\\
-Unabh\"angig von $\lambda$ zeigt die Abbildung jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$, $Area$ und besonders $Power$.\\
-In folgenden Tests wird $\lambda = $ \textcolor{red}{?} gesetzt, da dies in den getesteten Instanzen die gr\"o\ss te Verbessung im Schnitt gebracht hat.\\
+Unabh\"angig von $\lambda$ zeigt die Abbildung \ref{bild:tradeoff_test} jedoch auch ein enormes Verbesserungspotenzial des Circuits in $SNS$ und besonders $Area$.\\
+In folgenden Tests wird aus diesem Grund mit konstantem $\lambda = \frac{1}{2}$ gerechnet.\\
 
-Offenbar bringen \textcolor{red}{0,lala  0,trlala} die besten Verbesserungen. Im Folgenden sei $\lambda$ durch diese Werte vorgegeben. 
-
-\textcolor{red}{genauer daruauf eingehen warum das lambda egal ist und auf Lukas schonere Bilder verweisen\\}
+Die Verbessernugen im vorgestellten FPTAS sind sehr stark durch $\lambda$ beeinflusst. Eine ausf\"uhrliche Analyse diese Algorithmus findet sich in \cite{Elbert}.
 
 
 \subsubsection{Premapping}
+Im Folgenden wird das triviale Premapping mit dem Premapping durch Sch\"atzem miteinander verlgichen. Dies geschieht in Abh\"angigkeit der Gr\"o{\ss}e der behandelten Instanzen. \\
+\begin{figure}[h]
+		\centering
+		\includegraphics[width = 9cm]{pictures/tex_files/analysis/prem_test}
+		\caption{Kostenverbesserung abh\"angig der Anzahl von Knoten der Instanzen}
+		\label{bild:prem_test}
+\end{figure}
+
+Abbildung \ref{bild:prem_test} bildet jeden mit der Heuristik gel\"osten Circuit $C$ bez\"uglich der Anzahl ihrer Knoten und der prozentualen Ver\"anderung von den Kosten von $C$ ($\lambda \cdot SNS(C) + (1-\lambda) \cdot Area(C)$. Jede Instanz wird einmal mit Hilfe des trivialen Premappings(blau) und einmal mit dem Premapping durch Sch\"atzen (rot) gel\"ost.\\
+Hierbei f\"allt auf, dass sich die Ergebnisse der beiden Premapping Methoden kaum unterscheiden, jedoch wurden mit dem Premapping durch Sch\"atzen deutlich weniger Instanzen gel\"ost deren Kosten nach dem \TM h\"oher sind als vorher. \\
+
+\begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/tex_files/analysis/premapping_table}
+		\caption{Verteilung der Kostenverbesserungen}
+		\label{bild:premapping_table}
+\end{wrapfigure}
+
+Im Durchschnitt wurden die Kosten der Instanzen durch das triviale Premapping (triv. Prem.) um $6,74$\% und durch das Premapping mit Sch\"atzen (PdS) durch um $6,46$\% verbessert. Aufgeteilt auf Area und SNS ergibt sich eine durchschnittliche Verbesserung von $8,83$\% und $2,75 $\% mit dem trivialen Premapping sowie mit dem Premapping durch Sch\"atzen wurden Verbesserungen von $10,42$\% und $2,16$\% erziehlt.\\
+Abbildung \ref{bild:premapping_table} gibt einen \"Uberblick \"uber die Verteilung dieser Verbesserungen. Hierbei wird aufgezeigt, wie gro{\ss} der Anteil der Instanzen ist, welche eines entsprechende Verbesserung der Kosten erzielen(erste Spalte).\\
+
+Aus diesen Gr\"unden ist das Premapping durch Sch\"atzen dem trivialen Premapping vorzuziehen. In den folgenden Tests wird somit das Premapping durch Sch\"atzen als Premapping Methode genutzt.
 
 \subsubsection{Preprozessing}
 \textcolor{red}{inklusive der graphen größe vergleiche}

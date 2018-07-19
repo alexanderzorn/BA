@@ -47,17 +47,17 @@
 \contentsline {subsection}{\numberline {6.2}Analyse der Ergebnisse}{43}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}Tradeoffparameter}{43}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2}Premapping}{44}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{44}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Vergleich von Power und Area}{44}{subsubsection.6.2.4}
-\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{44}{subsubsection.6.2.5}
-\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{44}{subsubsection.6.2.6}
-\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{44}{subsubsection.6.2.7}
-\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{44}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{45}{subsubsection.6.3.1}
-\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{45}{subsubsection.6.3.2}
-\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{45}{subsubsection.6.3.3}
-\contentsline {subsection}{\numberline {6.4}Vergleich von G\IeC {\"u}te und Laufzeit}{45}{subsection.6.4}
-\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{45}{subsubsection.6.4.1}
-\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{45}{subsubsection.6.4.2}
-\contentsline {section}{\numberline {7}Fazit und Ausblick}{45}{section.7}
-\contentsline {section}{\numberline {8}{Literaturverzeichnis}}{46}{section.7}
+\contentsline {subsubsection}{\numberline {6.2.3}Preprozessing}{45}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Vergleich von Power und Area}{45}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}G\IeC {\"u}tevergleich kleiner "optimal " gel instanzen}{45}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Verhalten weiterer Kosten}{45}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Zusammenfassung?}{45}{subsubsection.6.2.7}
+\contentsline {subsection}{\numberline {6.3}Laufzeitanalyse}{45}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Globale Laufzeitanalyse}{46}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Lokale Laufzeitanalyse}{46}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Laufzeitverlgeich kleiner "optimal " gel instanzen}{46}{subsubsection.6.3.3}
+\contentsline {subsection}{\numberline {6.4}Vergleich von G\IeC {\"u}te und Laufzeit}{46}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Kleine Instanzen}{46}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}Allgemein}{46}{subsubsection.6.4.2}
+\contentsline {section}{\numberline {7}Fazit und Ausblick}{46}{section.7}
+\contentsline {section}{\numberline {8}{Literaturverzeichnis}}{47}{section.7}

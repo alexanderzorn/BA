@@ -1,0 +1,20 @@
+\documentclass[tightpage]{standalone}
+
+\usepackage{pgfplots}
+ 
+\begin{document}
+\centering
+	\begin{tikzpicture}
+		\begin{axis}[ymin=-35,xmode=log, xlabel= $\lambda$, ylabel= Prozentuale Verbesserung, legend style={at={(0.8,0.7)}}]
+			\pgfplotstableread{prem_test_tmp}
+			\datatable
+			\addplot table[y index = 1, only marks]from \datatable;
+			
+			\pgfplotstableread{prem_test}
+			\datatable
+			\addplot table[y index = 1, only marks]from \datatable;
+			%\addplot table[y index = 2]from \datatable;
+			\legend{Area, SNS}
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

@@ -5,7 +5,7 @@
 \begin{document}
 \centering
 	\begin{tikzpicture}
-		\begin{axis}[ymin=0, xlabel= $\lambda$, ylabel= Prozentuale Verbesserung, legend style={at={(0.8,0.7)}}]
+		\begin{axis}[ymin=-1, xlabel= $\lambda$, ylabel= Prozentuale Verbesserung, legend style={at={(0.8,0.7)}}]
 			\pgfplotstableread{tradeoff_area_slack_analysis}
 			\datatable
 			\addplot table[y index = 1]from \datatable;
