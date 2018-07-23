@@ -1,0 +1,24 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{../../textheader}
+\begin{document}
+\begin{tikzpicture}
+
+\node (o) at (0,-0.2)[right]{0};
+\node  at (6, -0.2)[left]{1};
+\draw[-,thick] (0,0) -- (0,0){};
+\draw[-,thick] (0,0) -- (6,0);
+\draw[-,dotted](0,0) --(0,3);
+\draw[-,dotted](6,0)--(6,-3);
+
+\node at (6,-3)[left]{$-\mu_{max}$};
+\node at (0,3)[right]{$\mu_{max}$};
+
+\node at (1,2){$f$};
+\draw[-,color=blue](0,3)--(2,0);
+\draw[-,color=blue](2,0)--(6,-3);
+
+\node at (2,0.2)[right]{$krit_{av}$};
+
+\end{tikzpicture}
+\end{document}

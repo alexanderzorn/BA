@@ -1,0 +1,125 @@
+\documentclass[tikz]{standalone}
+\input{image_header}
+\input{gate_header}
+\usepackage{rotating}
+\begin{document}
+\begin{tikzpicture}
+
+
+\begin{scope}[yscale=-1,xscale=1]
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=in, rotate=90, thick, opacity=0.3] at (5,2) (j10){};
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=nn, rotate=90, thick, opacity=0.3] at (5.5,0) (j11){};
+
+\node (i11) at (4.9,3){};
+\node (i13) at (5.1,3){};
+\node (i15) at (5.6,3){};
+\draw[-,thick,blue](4.9,2.35)--(5,1.6);
+\draw[-,thick,blue](5.1,2.35)--(5,1.6);
+
+\draw[-,thick,blue](4.9,2.35)--(4.9,2.5);
+\draw[-,thick,blue](5.4,0.35)--(5.5,-.4);
+\draw[-,thick,blue](5.6,.35)--(5.5,-.4);
+
+\draw[-, thick,blue] (i13) -- (j10.input 2);
+\draw[-, thick,blue] (i11) -- (j10.input 1);
+
+\draw[-, thick,blue] (j10.output) -- (j11.input 1);
+\draw[-, thick,blue] (i15) -- (j11.input 2);
+\draw[-,thick,blue](5.5,-.4)--(5.5,-.7);
+
+%\node [red] at (5.4,.5){.};
+\node [red] at (5.4,.35){.};
+
+\node [red] at (5.5,-.4){.};
+\node [red] at (5.6,.35){.};
+\node [red] at (4.9,2.35){.};
+\node [red] at (4.9,2.5){.};
+
+\node [red] at (5,1.6){.};
+\node [red] at (4.9,2.87){.};
+\node [red] at (5.1,2.87){.};
+\node [red] at (5.6,2.87){.};
+\node [red] at (5.5,-.7){.};
+
+\node [red] at(5.1,2.35){.};
+
+
+
+
+
+
+
+
+\draw[->, thick](6,1)--(7,1);
+
+
+
+\node[fill=red, outer sep=0pt, and gate US, draw, logic gate inputs=inn, rotate=90, thick, opacity=0.3] at (7.5,0) (j11){};
+
+\node (i11) at (7.8,3){};
+\node (i13) at (7.2,3){};
+\node (i15) at (7.5,3){};
+
+\draw[-,thick,blue](7.3,.45)--(7.5,-.54);
+\draw[-,thick,blue](7.5,0.5)--(7.5,-.54);
+\draw[-,thick,blue](7.7,.5)--(7.5,-.54);
+
+\draw[-,thick,blue](7.3,.45)--(7.3,.65);
+
+
+\draw[-,thick,blue](7.5,-.75)--(7.5,-.54);
+
+\draw[-, thick,blue] (i13) -- (j11.input 1);
+\draw[-, thick,blue] (i15) -- (j11.input 2);
+\draw[-, thick,blue] (i11) -- (j11.input 3);
+\draw[-,thick,blue](5.5,-.4)--(5.5,-.7);
+
+\node [red] at (7.5,-.75){.};
+\node [red] at (7.5,-.54){.};
+
+
+\node [red] at (7.3,.45){.};
+\node [red] at (7.3,.65){.};
+
+\node [red] at (7.7,.45){.};
+\node [red] at (7.5,0.45){.};
+
+
+\node [red] at (7.205,2.87){.};
+\node [red] at (7.5,2.87){.};
+\node [red] at (7.795,2.87){.};
+
+
+\end{scope}
+
+\node at (4.7,-2.7){\tiny $y_1$};
+\node at (5.25,-2.7){\tiny $y_2$};
+\node at (5.75,-2.7){\tiny $y_3$};
+\node at (5.35,.55){\tiny $y_4$};
+
+
+\node at (7.1,-2.7){\tiny $d_1$};
+\node at (7.4,-2.7){\tiny $d_2$};
+\node at (7.67,-2.7){\tiny $d_3$};
+
+\node at (7.1,-.55){\tiny $d_4$};
+
+\node at (7.25,-.15){\tiny $d_5$};
+\node at (7.42,-.38){\scalebox{.5}{$d_6$}};
+\node at (7.77,-.15){\tiny $d_7$};
+
+\node at (7.39,.65){\tiny $d_8$};
+
+
+
+\node at (6.2,-3.5){\tiny $y_1 \gets y_1 + \frac{\xi \cdot (d_1 +d_4+d_5)}{RAT}$};
+\node at (6,-4){\tiny $y_2 \gets y_2 + \frac{\xi \cdot (d_2 +d_6)}{RAT}$};
+\node at (6,-4.5){\tiny $y_3 \gets y_3 + \frac{\xi \cdot (d_3 +d_7)}{RAT}$};
+\node at (5.73,-5){\tiny $y_4 \gets y_4 + \frac{\xi \cdot d_8}{RAT}$};
+
+
+
+
+\end{tikzpicture}
+\end{document}

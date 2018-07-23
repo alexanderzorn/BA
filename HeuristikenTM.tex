@@ -735,7 +735,7 @@ Im Folgenden werden drei verschiedene Routinen vorgestellt und auf deren Eigensc
 Diese Methode des Premappings wurde bereits in Kapitel \ref{subsec:heuristik} angewandt. Hierbei wird für jeden Knoten folgender Kandidat ausgewählt: \[ guess \gets \argmin\limits_{\text{Kandidat }k\text{ auf }v}\{ \lambda AT(k) + (1-\lambda) area(k)  \} \]
 Diese Methode lässt sich jedoch noch wie nachfolgend beschrieben verbessern.\\
 
-Im Gegensatz zu dem Kern-Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Dies beweist Abbildung \textcolor{red}{??}. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen Lösung. Die Analyse, wie weit eine solche Lösung von der optimalen Lösung entfernt ist, wird in Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen} dargestellt.
+Im Gegensatz zu dem Kern-Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} kann auch mit $\lambda \in \{ 0 , 1\}$ keine optimale Lösung garantiert werden. Jedoch befindet sich die dadurch gefundene Lösung nahe an der optimalen Lösung. Die Analyse, wie weit eine solche Lösung von der optimalen Lösung entfernt ist, wird in Kapitel \ref{subsubsec:guetevgl_kleiner_opt_instanzen} dargestellt.
  
 \subsubsection{Premapping durch Schätzen}
 \label{subsec:premapping_duch_schaetzen}
@@ -811,8 +811,12 @@ Sei $krit_{av} \in \mathbb{R}$ das arithmetische Mittel aller errechneter Kritik
 Sei $f$ wie folgt definiert:
 \[f(x) := \begin{cases} \frac{\mu_{max}}{krit_{av}-1}\cdot x + \mu_{max}(\frac{1}{1-krit_{av}}-1) \text{ wenn } x \geq krit_{av}
  \\ \frac{-\mu_{max}}{1-krit_{av}}\cdot x + \mu_{max}(\frac{1}{1+krit_{av}}-1)  \text{ wenn }x < krit_{av}\end{cases}\]
-Somit ist $f$ aus zwei linearen Funktionen aufgebaut und lässt sich dadurch in konstanter Laufzeit errechnen. Abbildung \textcolor{red}{??} visualisiert $f$.\\
-
+Somit ist $f$ aus zwei linearen Funktionen aufgebaut und lässt sich dadurch in konstanter Laufzeit errechnen. Abbildung \ref{bild:erw_prem} visualisiert $f$.\\
+\begin{wrapfigure}{r}{6cm}
+		\includegraphics[width = 6cm]{pictures/compiled/erw_prem}
+		\caption{Die $\mu$ berechnende Funktion $f$}
+		\label{bild:erw_prem}
+\end{wrapfigure}
 Das erweiterte Premapping durch Schätzen ist in der Lage die Lösungen, welche mit dem Premapping durch Schätzen errechnet wurden, zu verbessern, jedoch geschieht dies nicht regelmäßig. Des Weiteren verursacht der Dijkstra Algorithmus einen nicht zu vernachlässigen Anstieg der Laufzeit. \\
 Somit bleibt es offen $f, \mu_{max}$ und $krit_{av}$ so zu wählen, dass eine regelmäßige Verbesserung eintritt. Des Weiteren würde ein Dijkstra Aufruf für jeden Knoten oder eine Beachtung von allen nahezu längsten Wegen eine größere Fülle an Informationen liefern. Da es jedoch nur exponentiell beschränkt viele Wege in $C$ gibt, führt dies zu deutlichen Laufzeiteinbußen. \\
 
@@ -954,7 +958,14 @@ Das \TM Problem wird wie folgt durch eine Instanz des Resource Sharing modellier
 Die \TM Instanz bestehe aus einem Circuit $G$ ohne teilweise überflüssige Subcircuits und gegebenen $RAT$'s an den Outputs von $G$. \\
 Gesucht sei ein zu $G$ äquivalenter Graph $G*$, dessen Outputsignale vor der entsprechenden $RAT$ ankommen und $Power(G*) \leq B$. Sei $B$ vorerst gegeben. \\
 Sei $T_G$ der Timing Graph von $G$. Dieser modelliert alle Delays der Knoten und Kanten von $G$. 
-Dieser entsteht aus $G$ indem alle Gate-Knoten $g \in V(G)$ durch $fanin(gate(g)) +1$ Knoten ersetzt werden. Jede der Input-Kanten von $g$ wird durch einen Knoten unterteilt.  Alle Delay-Werte von $G$ lassen sich nun auf $T$ modellieren, indem für jede Kante aus $G$ der entsprechenden Kante in $T$ das Delay dieser Kante zugewiesen wird. Für jeden Gate-Knoten $g$ aus $G$ werden den entsprechenden Kanten das pinabhängige Delay zugeordnet. Ein Beispiel eines solchen Graphen befindet sich in Abbildung \textcolor{red}{??}.\\
+Dieser entsteht aus $G$ indem alle Gate-Knoten $g \in V(G)$ durch $fanin(gate(g)) +1$ Knoten ersetzt werden. Jede der Input-Kanten von $g$ wird durch einen Knoten unterteilt.  Alle Delay-Werte von $G$ lassen sich nun auf $T$ modellieren, 
+   \begin{wrapfigure}{r}{2.4cm}
+		\includegraphics[width = 2.4cm]{pictures/compiled/timing_graph}
+		\caption{Beispiel eines Timing Graphen}
+		\label{bild:timing_graph}
+	\end{wrapfigure}
+indem für jede Kante aus $G$ der entsprechenden Kante in $T$ das Delay dieser Kante zugewiesen wird. 
+Für jeden Gate-Knoten $g$ aus $G$ werden den entsprechenden Kanten das pinabhängige Delay zugeordnet. Ein Beispiel eines solchen Graphen befindet sich in Abbildung \ref{bild:timing_graph}\\
 Sei nun $\mathcal{C} := \{G\} $, $\mathcal{B}_G$ die Menge der nicht dominierten Circuit Kandidaten auf $G$ und $\mathcal{P}_G$ die Menge der inklusionsmaximalen Wege im Timing Graphen von $G$. Die Signale der Outputs eines Graphen kommen genau dann vor der $RAT$ an, wenn  alle $P \in \mathcal{P}$  vor der $RAT$ des zu $P$ gehörenden Outputs ankommen.\\
 Somit lässt sich wie folgt festlegen: $\mathcal{R} = \{Power\} \cup \mathcal{P_G}$. \\
 Das Orakel in jeder Iteration wird durch eine noch zu beschreibende \TM Heuristik realisiert. \\
@@ -989,10 +1000,22 @@ Der Algorithmus Edge Weights aktualisiert die Kantenpreise bei gegebenen Ressour
 
 \subsubsection{Ressourcenproblem}
 Das \TM Orakel  gibt einen optimierten zu $G$ äquivalenten Circuit $G'$ zurück. Dieser besitzt jedoch neue Pfade und somit eine andere Ressourcenmenge als $G$. 
-Dieses lässt sich durch eine Funktion lösen, welche die Ressourcenverbräuche $(y_e)_{e\in E(T_G)}$ auf Grundlage von $G'$ aktualisiert. Anschließend lassen sich die Kantenpreise mithilfe des Algorithmus aus Kapitel \ref{subsubsec:kantenpreise} aktualisieren und die nächste Iteration des Resource Sharing kann gestartet werden. \\
-Es gilt nun die Ressourcenverbräuche entsprechend anzupassen. Dies erfolgt folgendermaßen: 
+Pfade aus $G'$ lassen sich jedoch denen aus $G$ zuordnen. Dadurch können die gegebenen Ressourcenverbräuche $(y_e)_{e \in E(T_G)}$ wie folgt aktualisiert werden:
+Da jeder Pfad durch ein Match, durch genau eine der eingehenden Kanten des Matches läuft und der Weg eines Pfades durch das Match eindeutig ist, sobald diese Kante bekannt ist, lässt sich der Ressourcenverbrauch des gesamten Weges durch das Match für alle Pfade dieser eingehenden Kante auf eben dieser modellieren. Die eingehenden Kanten eines Matches in $G'$ lassen sich eindeutig Kanten in $G$ zuordnen. \\
 
-Addiere zu allen Kanten, welche in $G'$  noch existieren, den entsprechenden Ressourcenverbrauch. Wenn über eine Kante gematcht wurde, so wird das Delay aller Komponenten des Matches durch das Delay der Kanten im neuen Gate ersetzt. Dementsprechend bleibt der Ressourcenverbrauch von verschwundenen Kanten im Timing Graphen von $G$ unverändert.  Das Delay der eingehenden Kanten entspricht automatisch dem der längeren Kante zum neuen Gate. Das Delay neu hinzugekommener Inverter an Inputs werden auf das Delay der darüberliegenden Kante des Gates addiert. Die Vorgehensweise dieses Algorithmus wird durch Abbildung \textcolor{red}{??} veranschaulicht. \\
+Abbildung \ref{bild:RS_new_y} veranschaulicht diese Vorgehensweise. Hierbei entspricht der linke Graph $G$ mit Ressourcenverbräuchen $y_1 ... y_4$ ausgewählter Kanten . Die Ressourcenverbräuche der restlichen Kanten ändern sich durch das dargestellte Match nicht. Der rechte Graph entspricht dem äquivalenten Graph und jeder der Kanten aus $G'$ ist das entsprechende Delay aus $d_1... d_8$ zugeordnet.\\
+Jeder der angegebenen Ressourcenverbräuche $y$ wird nun anhand der Summe der Delay-Werte des zu  $y$ korrespondierenden Weges durch das Match aktualisiert. 
+Für den Fall, dass mehrere ausgehende eines Knoten zu einer zusammengefasst wurden ( Bsp,: Mux-Match), so werden beide durch die Summe der Delays, dividiert durch die Anzahl der zusammengefassten Kanten, aktualisiert.
+
+
+\begin{figure}[h]
+\begin{center}
+ \includegraphics[height = 350pt]{./pictures/compiled/RS_new_y}
+ \caption{Beispiel einer Aktualisierung von Ressourcenverbräuchen}
+ \label{bild:RS_new_y}
+\end{center}
+\end{figure}
+
 
 Wie bereits in Kapitel \ref{subsubsec:klonen} erläutert, ist für die in dieser Arbeit verwendeten \TM Algorithmen das Klonen von Gates nicht erlaubt. Lockert man diese Vorgabe, bleibt es offen zu zeigen, wie Ressourcenverbräuche von neu enstandenen Gates und Kanten in die Aktualisierung der Verbräuche von $G$ eingebracht werden. \\
 
