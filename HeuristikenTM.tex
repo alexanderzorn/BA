@@ -34,6 +34,8 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 
 
 \begin{document}
+%\raggedright
+
 \setlength{\parindent}{0pt} %kein Einrücken zu Beginn eines Absatzes
 %Beweis:
 \renewcommand{\proofname}{Beweis:}
@@ -144,10 +146,11 @@ Des Weiteren ist für die Inputs des Circuits eine Arrivaltime (AT) gegeben die 
 \label{def:area_delay}
 Sei $C$ ein Circuit und $K$ ein Circuit-Kandidat auf $C$, dann gilt: \\
 \begin{itemize}
-\item $area(K) = \sum_{g \in gates(C)} (area_g + \sum_{i \in inputs(g)} \mathbb{1}_{inv_g(i)} area_{inv})$ 
+\item $area(K) = \sum_{g \in gates(K)} (area_g + \sum_{i \in inputs(g)} \mathbb{1}_{inv_g(i)} area_{inv})$ 
 \item $AT(K) = $\\$  \max\limits_{k \in can(K)} \{\max\limits_{i \in inputs(k)} \{   d_{gate(k)} + \mathbb{1}_{inv_g(i)} d_{inv} + AT(inp\_can(k,i)) + d_{w(k,i)} \} \}$ 
 \end{itemize}
 Wobei $can(K)$ die Menge der Kandidaten von $K$ ist, $area_{inv}$ die Größe eines Inverters und $inputs(k)$ die Input-Knoten des Output-Knoten des Kandidaten $k$ sind. Des Weiteren ist $d_inv$ das Delay eines Inverters und $d_{w(k,i)} $ das Delay der Kante zwischen den Knoten $k$ und $i$. Hierbei gibt $inp\_can(k,i)$ den Kandidaten des $i$'ten Inputs von $k$ zurück. 
+Die $gates(K)$ entsprechen allen durch den Kandidaten $K$ festgelegten Gate-Knoten. 
 
 \end{definition}
 
@@ -166,7 +169,7 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
  \DontPrintSemicolon
  \caption{(einfaches) Technology Mapping}
  \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$ kreisfrei mit finalem Output $o$, Library $L$}
+ \KwIn{Circuit $C$ kreisfrei mit Output $o$, Library $L$}
 
  bester\_kandidat[] $\gets \emptyset$\;
  bester\_inv\_kandidat[]$ \gets \emptyset$\;
@@ -186,6 +189,7 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
 		\caption{Ein Circuit, dessen boolesche Funktion $f = 0 $ ist}
 		\label{bild:compl_redundant}
 \end{wrapfigure}
+Dieser Algorithmus stammt aus \cite{Elbert} und wurde 1987 in \cite{DAGON} entwickelt .\\
 Ein \TM (TM) Algorithmus liefert in der Regel nicht die bestmögliche Implementierung der $C$ zugrunde liegenden logischen Funktion. Dies veranschaulicht Abbildung \ref{bild:compl_redundant}. In diesem Beispiel ist die zugrunde liegende Funktion konstant und somit könnte man auf alle Gates verzichten. Dies ist jedoch mit den bisher eingeführten Möglichkeiten des Technology Mappings nicht möglich. \\
 
 \begin{cor}
@@ -242,7 +246,7 @@ Die Kosten eines Kandidaten $k$ sind somit nicht $\lambda AT(k) +(1-\lambda )are
 Es gibt jedoch eine Klasse von Kandidaten, welche nicht gespeichert werden muss. Hierzu die folgende Definition:
 
 \begin{definition}{(dominierte Kandidaten)}\\
-	Seien $k_1, k_2$ Kandidaten desselben Knotens. Dann wird $k_1$ von $k_2$ dominiert wenn mindestens eine der folgenden Bedingungen erfüllt ist:
+	Seien $k_1, k_2$ Kandidaten desselben Knotens. Dann wird $k_2$ von $k_1$ dominiert wenn mindestens eine der folgenden Bedingungen erfüllt ist:
 	\begin{itemize}
 	\item $AT(k_1) < AT(k_2) \text { und  }area(k_1) \leq area(k_2)$
 	\item $	AT(k_1) \leq AT(k_2) \text{ und } area(k_1) < area(k_2)$	
@@ -1016,7 +1020,7 @@ Für den Fall, dass mehrere ausgehende eines Knoten zu einer zusammengefasst wur
 \end{center}
 \end{figure}
 
-
+Diese Routine wird im Folgenden Edge Resources genannt.\\
 Wie bereits in Kapitel \ref{subsubsec:klonen} erläutert, ist für die in dieser Arbeit verwendeten \TM Algorithmen das Klonen von Gates nicht erlaubt. Lockert man diese Vorgabe, bleibt es offen zu zeigen, wie Ressourcenverbräuche von neu enstandenen Gates und Kanten in die Aktualisierung der Verbräuche von $G$ eingebracht werden. \\
 
 

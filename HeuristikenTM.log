@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  23 JUL 2018 07:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  23 JUL 2018 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1688,40 +1688,40 @@ Package caption Info: End \AtBeginDocument code.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.12} (current compat level: 1.8).
 
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 40.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 42.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 40.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 42.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 40.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 42.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 40.
+(Font)              <10.95> on input line 42.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 40.
+(Font)              <8> on input line 42.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 40.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 40.
+(Font)              <6> on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 42.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 40.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 42.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -1738,11 +1738,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 \newpage
+l.46 \newpage
               [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 47--50
+Underfull \hbox (badness 10000) in paragraph at lines 49--52
 
  []
 
@@ -1750,19 +1750,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--50
 File: pictures/compiled/einfBsp.pdf Graphic file (type pdf)
 
 <use pictures/compiled/einfBsp.pdf>
-Package pdftex.def Info: pictures/compiled/einfBsp.pdf used on input line 54.
+Package pdftex.def Info: pictures/compiled/einfBsp.pdf used on input line 56.
 (pdftex.def)             Requested size: 168.75504pt x 120.47679pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 55.
+(Font)              <5> on input line 57.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 57.
 
-Underfull \hbox (badness 1681) in paragraph at lines 58--63
+Underfull \hbox (badness 1681) in paragraph at lines 60--65
 \OT1/lmr/m/n/10.95 OAI ...), l[]asst sich ei-ne lo-gi-sche
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--63
+Underfull \hbox (badness 10000) in paragraph at lines 60--65
 
  []
 
@@ -1770,9 +1770,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.63 
+l.65 
       [2 <./pictures/compiled/einfBsp.pdf>]
-LaTeX Font Info:    Try loading font information for U+bbold on input line 74.
+LaTeX Font Info:    Try loading font information for U+bbold on input line 76.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd)
 <./pictures/compiled/new_library.pdf, id=187, 303.30214pt x 173.84749pt>
@@ -1780,38 +1780,39 @@ File: ./pictures/compiled/new_library.pdf Graphic file (type pdf)
 
 <use ./pictures/compiled/new_library.pdf>
 Package pdftex.def Info: ./pictures/compiled/new_library.pdf used on input line
- 84.
+ 86.
 (pdftex.def)             Requested size: 348.93356pt x 200.0pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--92
+Underfull \hbox (badness 10000) in paragraph at lines 91--94
 
  []
 
 [3]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 99.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 101.
+
  (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 99.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 101.
  [4 <./pictures/compiled/new_library.pdf>] [5]
 <./pictures/compiled/grundl_def_veransch.pdf, id=252, 245.1007pt x 182.14749pt>
 File: ./pictures/compiled/grundl_def_veransch.pdf Graphic file (type pdf)
 <use ./pictures/compiled/grundl_def_veransch.pdf>
 Package pdftex.def Info: ./pictures/compiled/grundl_def_veransch.pdf used on in
-put line 132.
+put line 134.
 (pdftex.def)             Requested size: 250.0pt x 185.79074pt.
  [6 <./pictures/compiled/grundl_def_veransch.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 143--146
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
 
  []
 
 
-Overfull \hbox (0.15132pt too wide) in paragraph at lines 148--149
+Overfull \hbox (0.15132pt too wide) in paragraph at lines 150--151
 []\OMS/lmsy/m/n/10.95 f[]f\OML/lmm/m/it/10.95 d[] \OT1/lmr/m/n/10.95 + \U/bbold
 /m/n/10.95 1[]\OML/lmm/m/it/10.95 d[] \OT1/lmr/m/n/10.95 + \OML/lmm/m/it/10.95 
 AT\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 inp[]can\OT1/lmr/m/n/10.95 (\OML/lmm/
@@ -1824,275 +1825,275 @@ File: pictures/compiled/compl_redundant.pdf Graphic file (type pdf)
 
 <use pictures/compiled/compl_redundant.pdf>
 Package pdftex.def Info: pictures/compiled/compl_redundant.pdf used on input li
-ne 185.
+ne 188.
 (pdftex.def)             Requested size: 79.6678pt x 124.28966pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--188
+Underfull \hbox (badness 10000) in paragraph at lines 186--191
 
  []
 
 [7]
-Underfull \hbox (badness 2343) in paragraph at lines 188--190
-[]\OT1/lmr/m/n/10.95 Ein Tech-no-lo-gy Map-ping (TM) Al-go-rith-mus lie-fert
+Underfull \hbox (badness 2343) in paragraph at lines 191--194
+\OT1/lmr/m/n/10.95 Ein Tech-no-lo-gy Map-ping (TM) Al-go-rith-mus lie-fert
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 188--190
+Underfull \hbox (badness 3514) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 in der Re-gel nicht die bestm[]ogliche Im-ple-men-tie-
  []
 
 
-Underfull \hbox (badness 6316) in paragraph at lines 188--190
+Underfull \hbox (badness 6316) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 rung der $\OML/lmm/m/it/10.95 C$ \OT1/lmr/m/n/10.95 zu-grun-
 de lie-gen-den lo-gi-schen Funk-
  []
 
 
-Underfull \hbox (badness 7433) in paragraph at lines 188--190
+Underfull \hbox (badness 7433) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 ti-on. Dies ver-an-schau-licht Ab-bil-dung []4[]. In die-
  []
 
 
-Underfull \hbox (badness 5756) in paragraph at lines 188--190
+Underfull \hbox (badness 5756) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 sem Bei-spiel ist die zu-grun-de lie-gen-de Funk-ti-on
  []
 
 
-Underfull \hbox (badness 5105) in paragraph at lines 188--190
+Underfull \hbox (badness 5105) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 kon-stant und so-mit k[]onnte man auf al-le Ga-tes
  []
 
 
-Underfull \hbox (badness 6316) in paragraph at lines 188--190
+Underfull \hbox (badness 6316) in paragraph at lines 191--194
 \OT1/lmr/m/n/10.95 ver-zich-ten. Dies ist je-doch mit den bis-her ein-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
+Underfull \hbox (badness 10000) in paragraph at lines 191--194
 
  []
 
 [8 <./pictures/compiled/compl_redundant.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
 
  []
 
-<pictures/compiled/tradeoff_kurve.pdf, id=324, 171.51678pt x 171.51678pt>
+<pictures/compiled/tradeoff_kurve.pdf, id=326, 171.51678pt x 171.51678pt>
 File: pictures/compiled/tradeoff_kurve.pdf Graphic file (type pdf)
 
 <use pictures/compiled/tradeoff_kurve.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve.pdf used on input lin
-e 253.
+e 257.
 (pdftex.def)             Requested size: 170.71652pt x 170.7155pt.
 
-Underfull \hbox (badness 4341) in paragraph at lines 257--261
+Underfull \hbox (badness 4341) in paragraph at lines 261--265
 \OT1/lmr/m/n/10.95 dominierte Kan-di-da-ten. An-ge-nom-
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 257--261
+Underfull \hbox (badness 1968) in paragraph at lines 261--265
 \OT1/lmr/m/n/10.95 Daraus folgt, dass nur die nicht-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--261
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
 
  []
 
 [10 <./pictures/compiled/tradeoff_kurve.pdf>]
-<pictures/compiled/ohne_highfanout_heu.pdf, id=338, 330.58005pt x 214.10188pt>
+<pictures/compiled/ohne_highfanout_heu.pdf, id=340, 330.58005pt x 214.10188pt>
 File: pictures/compiled/ohne_highfanout_heu.pdf Graphic file (type pdf)
 
 <use pictures/compiled/ohne_highfanout_heu.pdf>
 Package pdftex.def Info: pictures/compiled/ohne_highfanout_heu.pdf used on inpu
-t line 270.
+t line 274.
 (pdftex.def)             Requested size: 170.71652pt x 110.5626pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--273
+Underfull \hbox (badness 10000) in paragraph at lines 272--277
 \OT1/lmr/m/n/10.95 sehr h[]aufig vor; ca. $30%$ der Kno-ten sind High-fa-nout-k
 no-ten.
  []
 
 
-Underfull \hbox (badness 2903) in paragraph at lines 273--275
+Underfull \hbox (badness 2903) in paragraph at lines 277--279
 \OT1/lmr/m/n/10.95 gen von der An-zahl der High-fa-
  []
 
 
-Underfull \hbox (badness 5217) in paragraph at lines 273--275
+Underfull \hbox (badness 5217) in paragraph at lines 277--279
 \OT1/lmr/m/n/10.95 nout-kno-ten auf die Lauf-zeit des
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 273--275
+Underfull \hbox (badness 3158) in paragraph at lines 277--279
 \OT1/lmr/m/n/10.95 Al-go-rith-mus be-fin-det sich Ka-pi-tel
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--275
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
 
  []
 
 
 Package wrapfig Warning: Collision between wrapping environments on input line 
-277.
+281.
 
-<pictures/compiled/expo_kand.pdf, id=342, 239.75471pt x 219.50507pt>
+<pictures/compiled/expo_kand.pdf, id=344, 239.75471pt x 219.50507pt>
 File: pictures/compiled/expo_kand.pdf Graphic file (type pdf)
 
 <use pictures/compiled/expo_kand.pdf>
-Package pdftex.def Info: pictures/compiled/expo_kand.pdf used on input line 279
+Package pdftex.def Info: pictures/compiled/expo_kand.pdf used on input line 283
 .
 (pdftex.def)             Requested size: 199.16928pt x 182.34991pt.
 
-Underfull \hbox (badness 4846) in paragraph at lines 276--282
+Underfull \hbox (badness 4846) in paragraph at lines 280--286
 []\OT1/lmr/m/n/10.95 Es ist m[]oglich einen Cir-cuit in
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 276--282
+Underfull \hbox (badness 1259) in paragraph at lines 280--286
 \OT1/lmr/m/n/10.95 klei-ne-re Sub-cir-cuits zu un-ter-tei-len,
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 276--282
+Underfull \hbox (badness 2582) in paragraph at lines 280--286
 \OT1/lmr/m/n/10.95 die sol-che High-fa-nout-kno-ten nicht
  []
 
 
-Underfull \hbox (badness 2435) in paragraph at lines 276--282
+Underfull \hbox (badness 2435) in paragraph at lines 280--286
 \OT1/lmr/m/n/10.95 bein-hal-ten. Die-se Sub-cir-cuits wer-
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 276--282
+Underfull \hbox (badness 1817) in paragraph at lines 280--286
 \OT1/lmr/m/n/10.95 den ein-zeln mit dem Al-go-rith-mus
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 276--282
+Underfull \hbox (badness 1077) in paragraph at lines 280--286
 \OT1/lmr/m/n/10.95 hin zu ei-nem C []aquivalenten Cir-
  []
 
 
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 28
-2.
+6.
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 287--288
+Underfull \hbox (badness 1360) in paragraph at lines 291--292
 \OT1/lmr/m/n/10.95 High-fa-nout-kno-ten be-steht die
  []
 
 
-Underfull \hbox (badness 6876) in paragraph at lines 287--288
+Underfull \hbox (badness 6876) in paragraph at lines 291--292
 \OT1/lmr/m/n/10.95 gr[]o^^Yte Her-aus-for-de-rung dar-
  []
 
 
-Underfull \hbox (badness 1728) in paragraph at lines 287--288
+Underfull \hbox (badness 1728) in paragraph at lines 291--292
 \OT1/lmr/m/n/10.95 in, dass bei der Kon-struk-ti-
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 287--288
+Underfull \hbox (badness 2189) in paragraph at lines 291--292
 \OT1/lmr/m/n/10.95 on des []aquivalenten Cir-cuits
  []
 
 
-Underfull \hbox (badness 2285) in paragraph at lines 287--288
+Underfull \hbox (badness 2285) in paragraph at lines 291--292
 \OT1/lmr/m/n/10.95 einen Kno-ten $\OML/lmm/m/it/10.95 w$\OT1/lmr/m/n/10.95 , di
 e Input-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
 [11 <./pictures/compiled/ohne_highfanout_heu.pdf> <./pictures/compiled/expo_kan
 d.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 289--291
+Underfull \hbox (badness 10000) in paragraph at lines 293--295
 
  []
 
-<pictures/compiled/cone.pdf, id=371, 137.03696pt x 216.05116pt>
+<pictures/compiled/cone.pdf, id=373, 137.03696pt x 216.05116pt>
 File: pictures/compiled/cone.pdf Graphic file (type pdf)
 
 <use pictures/compiled/cone.pdf>
-Package pdftex.def Info: pictures/compiled/cone.pdf used on input line 307.
+Package pdftex.def Info: pictures/compiled/cone.pdf used on input line 311.
 (pdftex.def)             Requested size: 126.33061pt x 199.16928pt.
  [12 <./pictures/compiled/cone.pdf>] [13]
-[14] <pictures/compiled/zu_lange_kante.pdf, id=394, 91.53197pt x 160.93022pt>
+[14] <pictures/compiled/zu_lange_kante.pdf, id=396, 91.53197pt x 160.93022pt>
 File: pictures/compiled/zu_lange_kante.pdf Graphic file (type pdf)
 
 <use pictures/compiled/zu_lange_kante.pdf>
 Package pdftex.def Info: pictures/compiled/zu_lange_kante.pdf used on input lin
-e 329.
+e 333.
 (pdftex.def)             Requested size: 129.46928pt x 227.62204pt.
 
-Underfull \hbox (badness 1152) in paragraph at lines 330--330
+Underfull \hbox (badness 1152) in paragraph at lines 334--334
 []\OT1/lmr/m/n/8 Abbildung 9: |Vi-sua-li-sie-rung ei-nes Mat-ches
  []
 
 
-Underfull \hbox (badness 5175) in paragraph at lines 333--338
+Underfull \hbox (badness 5175) in paragraph at lines 337--342
 []\OT1/lmr/m/n/10.95 Abbildung []9[] ver-an-schau-licht ei-ne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--338
+Underfull \hbox (badness 10000) in paragraph at lines 337--342
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
 
  []
 
 [15 <./pictures/compiled/zu_lange_kante.pdf>]
-<pictures/compiled/partly_redundant.pdf, id=405, 85.8417pt x 92.94624pt>
+<pictures/compiled/partly_redundant.pdf, id=407, 85.8417pt x 92.94624pt>
 File: pictures/compiled/partly_redundant.pdf Graphic file (type pdf)
 
 <use pictures/compiled/partly_redundant.pdf>
 Package pdftex.def Info: pictures/compiled/partly_redundant.pdf used on input l
-ine 354.
+ine 358.
 (pdftex.def)             Requested size: 131.40154pt x 142.26378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--357
+Underfull \hbox (badness 10000) in paragraph at lines 356--361
 
  []
 
 
-Overfull \hbox (16.13155pt too wide) in paragraph at lines 365--367
+Overfull \hbox (16.13155pt too wide) in paragraph at lines 369--371
 \OT1/lmr/m/n/10.95 In Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten ste
 igt die An-zahl der m[]oglichen
  []
 
 [16 <./pictures/compiled/partly_redundant.pdf>]
-<pictures/compiled/mux_match.pdf, id=418, 94.66768pt x 66.90495pt>
+<pictures/compiled/mux_match.pdf, id=420, 94.66768pt x 66.90495pt>
 File: pictures/compiled/mux_match.pdf Graphic file (type pdf)
 
 <use pictures/compiled/mux_match.pdf>
-Package pdftex.def Info: pictures/compiled/mux_match.pdf used on input line 382
+Package pdftex.def Info: pictures/compiled/mux_match.pdf used on input line 386
 .
 (pdftex.def)             Requested size: 170.71652pt x 120.66463pt.
  [17 <./pictures/compiled/mux_match.pdf>]
-Overfull \hbox (39.01782pt too wide) in paragraph at lines 391--392
+Overfull \hbox (39.01782pt too wide) in paragraph at lines 395--396
 \OML/lmm/m/it/10.95 C\OT1/lmr/m/n/10.95 [\OML/lmm/m/it/10.95 cone\OT1/lmr/m/n/1
 0.95 (\OML/lmm/m/it/10.95 v\OT1/lmr/m/n/10.95 )]$ \OT1/lmr/m/it/10.95 kei-ne Hi
 gh-fa-nout-kno-ten enth[]alt, ist durch $\OML/lmm/m/it/10.95 m[]\OT1/lmr/m/n/10
@@ -2100,19 +2101,19 @@ gh-fa-nout-kno-ten enth[]alt, ist durch $\OML/lmm/m/it/10.95 m[]\OT1/lmr/m/n/10
  []
 
 
-Overfull \hbox (12.47574pt too wide) detected at line 395
+Overfull \hbox (12.47574pt too wide) detected at line 399
 \OMS/lmsy/m/n/10.95 j\OML/lmm/m/it/10.95 X[]\OMS/lmsy/m/n/10.95 j \OT1/lmr/m/n/
 10.95 = [] [] \OMS/lmsy/m/n/10.95 ^^T [] [] ^^T \OML/lmm/m/it/10.95 m[]fanin[]
  []
 
 [18]
-Overfull \hbox (24.87253pt too wide) in paragraph at lines 421--422
+Overfull \hbox (24.87253pt too wide) in paragraph at lines 425--426
 []\OT1/lmr/m/n/10.95 Bei Cir-cuits mit be-lie-big vie-len High-fa-nout-kno-ten,
  aber be-schr[]anktem $\OML/lmm/m/it/10.95 fanout[]$\OT1/lmr/m/n/10.95 ,
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 438--441
+Underfull \hbox (badness 10000) in paragraph at lines 442--445
 
  []
 
@@ -2120,73 +2121,73 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.445  \caption{Untere Schranke Arrivaltime}
+l.449  \caption{Untere Schranke Arrivaltime}
                                              [20]
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--479
+Underfull \hbox (badness 10000) in paragraph at lines 480--483
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 480--481
-
- []
-
-[21]
 Underfull \hbox (badness 10000) in paragraph at lines 484--485
 
  []
 
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
 
-<pictures/compiled/tradeoff_kurve_buckets.pdf, id=489, 171.51678pt x 171.51678p
+ []
+
+
+<pictures/compiled/tradeoff_kurve_buckets.pdf, id=491, 171.51678pt x 171.51678p
 t>
 File: pictures/compiled/tradeoff_kurve_buckets.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_buckets.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_buckets.pdf used on i
-nput line 491.
+nput line 495.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
 
-<pictures/compiled/tradeoff_kurve_filtered.pdf, id=490, 171.51678pt x 171.51678
+<pictures/compiled/tradeoff_kurve_filtered.pdf, id=492, 171.51678pt x 171.51678
 pt>
 File: pictures/compiled/tradeoff_kurve_filtered.pdf Graphic file (type pdf)
  <use pictures/compiled/tradeoff_kurve_filtered.pdf>
 Package pdftex.def Info: pictures/compiled/tradeoff_kurve_filtered.pdf used on 
-input line 495.
+input line 499.
 (pdftex.def)             Requested size: 125.99945pt x 125.99919pt.
  [22 <./pictures/compiled/tradeoff_kurve_buckets.pdf> <./pictures/compiled/trad
 eoff_kurve_filtered.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 525--527
+Underfull \hbox (badness 10000) in paragraph at lines 529--531
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 532--536
+Underfull \hbox (badness 10000) in paragraph at lines 536--540
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 548--549
 
  []
 
 
-Overfull \hbox (1.6017pt too wide) in paragraph at lines 546--548
+Overfull \hbox (1.6017pt too wide) in paragraph at lines 550--552
 \OT1/lmr/m/n/10.95 Klas-sen von In-put $\OML/lmm/m/it/10.95 i$ \OT1/lmr/m/n/10.
 95 des Mat-ches. Je-des Ele-ment aus der Men-ge der m[]oglichen
  []
 
 [24]
-Underfull \hbox (badness 1173) in paragraph at lines 555--555
+Underfull \hbox (badness 1173) in paragraph at lines 559--559
 []|\OT1/lmr/m/n/10.95 Finde einen Circuit-Kandidaten $\OML/lmm/m/it/10.95 K$ \O
 T1/lmr/m/n/10.95 auf $\OML/lmm/m/it/10.95 C$\OT1/lmr/m/n/10.95 , mit Kos-ten
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--557
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
 
  []
 
@@ -2194,20 +2195,20 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.561 ...FPTAS f\"ur das TM mit Konvexkombination}
+l.565 ...FPTAS f\"ur das TM mit Konvexkombination}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 592--593
+Underfull \hbox (badness 10000) in paragraph at lines 596--597
 
  []
 
 
-Overfull \hbox (6.91837pt too wide) in paragraph at lines 594--596
+Overfull \hbox (6.91837pt too wide) in paragraph at lines 598--600
 \OT1/lmr/m/n/10.95 F[]ur je-den Kno-ten wer-den zu-erst al-le, kei-ne kon-stan-
 ten Kan-ten []uberdeckenden,
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 610--614
+Underfull \hbox (badness 10000) in paragraph at lines 614--618
 
  []
 
@@ -2215,85 +2216,85 @@ Underfull \hbox (badness 10000) in paragraph at lines 610--614
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.618 ...istik f\"ur das TM mit Konvexkombination}
+l.622 ...istik f\"ur das TM mit Konvexkombination}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 659--660
+Underfull \hbox (badness 10000) in paragraph at lines 663--664
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--665
+Underfull \hbox (badness 10000) in paragraph at lines 665--669
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 674--675
+Underfull \hbox (badness 10000) in paragraph at lines 678--679
 
  []
 
 
-Overfull \hbox (9.22911pt too wide) in paragraph at lines 676--677
+Overfull \hbox (9.22911pt too wide) in paragraph at lines 680--681
 []\OT1/lmr/m/n/10.95 Da Si-gna-le von Output-Knoten mit Fa-nout in $\OML/lmm/m/
 it/10.95 C$ \OT1/lmr/m/n/10.95 aus der Co-ne dar[]uberliegender
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 679--682
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 697--700
+Underfull \hbox (badness 10000) in paragraph at lines 701--704
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--702
+Underfull \hbox (badness 10000) in paragraph at lines 705--706
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 707--708
+Underfull \hbox (badness 10000) in paragraph at lines 711--712
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 709--715
+Underfull \hbox (badness 10000) in paragraph at lines 713--719
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--719
+Underfull \hbox (badness 10000) in paragraph at lines 720--723
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--726
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--730
+Underfull \hbox (badness 10000) in paragraph at lines 731--734
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 735--737
+Underfull \hbox (badness 10000) in paragraph at lines 739--741
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--745
+Underfull \hbox (badness 10000) in paragraph at lines 746--749
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 746--747
+Underfull \hbox (badness 10000) in paragraph at lines 750--751
 
  []
 
@@ -2301,116 +2302,116 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.751  \caption{Premapping durch Schätzen}
+l.755  \caption{Premapping durch Schätzen}
                                            
-Underfull \hbox (badness 10000) in paragraph at lines 783--784
+Underfull \hbox (badness 10000) in paragraph at lines 787--788
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 791--793
+Underfull \hbox (badness 10000) in paragraph at lines 795--797
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 794--797
+Underfull \hbox (badness 10000) in paragraph at lines 798--801
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 798--799
+Underfull \hbox (badness 10000) in paragraph at lines 802--803
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 801--803
+Underfull \hbox (badness 10000) in paragraph at lines 805--807
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 807--810
+Underfull \hbox (badness 10000) in paragraph at lines 811--814
 
  []
 
-<pictures/compiled/erw_prem.pdf, id=661, 171.51678pt x 184.3959pt>
+<pictures/compiled/erw_prem.pdf, id=663, 171.51678pt x 184.3959pt>
 File: pictures/compiled/erw_prem.pdf Graphic file (type pdf)
 
 <use pictures/compiled/erw_prem.pdf>
-Package pdftex.def Info: pictures/compiled/erw_prem.pdf used on input line 816.
+Package pdftex.def Info: pictures/compiled/erw_prem.pdf used on input line 820.
 
 (pdftex.def)             Requested size: 170.71652pt x 183.53445pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 813--819
+Underfull \hbox (badness 10000) in paragraph at lines 817--823
 
  []
 
 
-Underfull \hbox (badness 3482) in paragraph at lines 819--822
+Underfull \hbox (badness 3482) in paragraph at lines 823--826
 []\OT1/lmr/m/n/10.95 Das er-wei-ter-te Pre-map-ping durch
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 819--822
+Underfull \hbox (badness 1270) in paragraph at lines 823--826
 \OT1/lmr/m/n/10.95 Somit bleibt es of-fen $\OML/lmm/m/it/10.95 f; ^^V[]$ \OT1/l
 mr/m/n/10.95 und
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--822
+Underfull \hbox (badness 10000) in paragraph at lines 823--826
 
  []
 
 [34 <./pictures/compiled/erw_prem.pdf>]
-Overfull \hbox (2.90025pt too wide) in paragraph at lines 835--837
+Overfull \hbox (2.90025pt too wide) in paragraph at lines 839--841
 \OT1/lmr/m/n/10.95 Das Tech-no-lo-gy Map-ping ar-bei-tet im Chip-Design auf In-
 stan-zen rea-ler Chips.
  []
 
 [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 933--935
+Underfull \hbox (badness 10000) in paragraph at lines 937--939
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 946--949
+Underfull \hbox (badness 10000) in paragraph at lines 950--953
 
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 950--952
+Underfull \hbox (badness 10000) in paragraph at lines 954--956
 
  []
 
-<pictures/compiled/timing_graph.pdf, id=710, 31.8259pt x 112.4692pt>
+<pictures/compiled/timing_graph.pdf, id=712, 31.8259pt x 112.4692pt>
 File: pictures/compiled/timing_graph.pdf Graphic file (type pdf)
 
 <use pictures/compiled/timing_graph.pdf>
 Package pdftex.def Info: pictures/compiled/timing_graph.pdf used on input line 
-963.
+967.
 (pdftex.def)             Requested size: 68.28644pt x 241.35785pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 964--964
+Underfull \hbox (badness 10000) in paragraph at lines 968--968
 []\OT1/lmr/m/n/8 Abbildung 14:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 964--964
+Underfull \hbox (badness 10000) in paragraph at lines 968--968
 |\OT1/lmr/m/n/8 Bei-spiel ei-nes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 956--966
+Underfull \hbox (badness 10000) in paragraph at lines 960--970
 \OT1/lmr/m/n/10.95 auf $\OML/lmm/m/it/10.95 T$ \OT1/lmr/m/n/10.95 mo-del-lie-re
 n,
  []
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 978--979
+Underfull \hbox (badness 10000) in paragraph at lines 982--983
 
  []
 
 
-Overfull \hbox (5.55655pt too wide) in paragraph at lines 986--988
+Overfull \hbox (5.55655pt too wide) in paragraph at lines 990--992
 \OT1/lmr/m/n/10.95 Seien $(\OML/lmm/m/it/10.95 ![]\OT1/lmr/m/n/10.95 )[]$ Prei-
 se f[]ur die Pfad-Ressourcen von $\OML/lmm/m/it/10.95 G$\OT1/lmr/m/n/10.95 . Se
 t-ze $\OML/lmm/m/it/10.95 ![] \OT1/lmr/m/n/10.95 := [] \OML/lmm/m/it/10.95 ![]$
@@ -2418,50 +2419,50 @@ t-ze $\OML/lmm/m/it/10.95 ![] \OT1/lmr/m/n/10.95 := [] \OML/lmm/m/it/10.95 ![]$
  []
 
 [39 <./pictures/compiled/timing_graph.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 990--992
+Underfull \hbox (badness 10000) in paragraph at lines 994--996
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 995--998
+Underfull \hbox (badness 10000) in paragraph at lines 999--1002
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 999--1000
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1004
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1005
+Underfull \hbox (badness 10000) in paragraph at lines 1006--1009
 
  []
 
-[40] <./pictures/compiled/RS_new_y.pdf, id=742, 101.59456pt x 175.55487pt>
+[40] <./pictures/compiled/RS_new_y.pdf, id=744, 101.59456pt x 175.55487pt>
 File: ./pictures/compiled/RS_new_y.pdf Graphic file (type pdf)
 
 <use ./pictures/compiled/RS_new_y.pdf>
 Package pdftex.def Info: ./pictures/compiled/RS_new_y.pdf used on input line 10
-13.
+17.
 (pdftex.def)             Requested size: 202.57317pt x 350.0pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1021
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1025
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1039--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1044
 
  []
 
 [41 <./pictures/compiled/RS_new_y.pdf>]
-Overfull \hbox (0.83215pt too wide) in paragraph at lines 1041--1045
+Overfull \hbox (0.83215pt too wide) in paragraph at lines 1045--1049
 \OT1/lmr/m/n/10.95 Damit die-ser Al-go-rith-mus ei-ne bez[]uglich der Kan-ten-p
 rei-se op-ti-mier-te L[]osung
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1048--1049
+Underfull \hbox (badness 10000) in paragraph at lines 1052--1053
 
  []
 
@@ -2469,146 +2470,146 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1053 ...esource Sharing Algorithmus für das TM}
+l.1057 ...esource Sharing Algorithmus für das TM}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 1071--1072
+Underfull \hbox (badness 10000) in paragraph at lines 1075--1076
 
  []
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1083--1084
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
 
  []
 
 [43]
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1093
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1097
 
  []
 
 
-<pictures/compiled/instance_sizes_distribution_table.pdf, id=803, 155.84724pt x
+<pictures/compiled/instance_sizes_distribution_table.pdf, id=805, 155.84724pt x
  97.20013pt>
 File: pictures/compiled/instance_sizes_distribution_table.pdf Graphic file (typ
 e pdf)
  <use pictures/compiled/instance_sizes_distribution_table.pdf>
 Package pdftex.def Info: pictures/compiled/instance_sizes_distribution_table.pd
-f used on input line 1096.
+f used on input line 1100.
 (pdftex.def)             Requested size: 170.71652pt x 106.47551pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1094--1099
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1103
 
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 1099--1103
+Underfull \hbox (badness 1776) in paragraph at lines 1103--1107
 \OT1/lmr/m/n/10.95 liegt bei $15\OML/lmm/m/it/10.95 ; \OT1/lmr/m/n/10.95 26%$. 
 Von al-len Out-
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 1099--1103
+Underfull \hbox (badness 1189) in paragraph at lines 1103--1107
 \OT1/lmr/m/n/10.95 einen Kan-di-da-ten be-schr[]ankt []oben
  []
 
 [44 <./pictures/compiled/instance_sizes_distribution_table.pdf>]
-<pictures/tex_files/analysis/tradeoff_curve.pdf, id=831, 237.97708pt x 191.0096
+<pictures/tex_files/analysis/tradeoff_curve.pdf, id=833, 237.97708pt x 191.0096
 1pt>
 File: pictures/tex_files/analysis/tradeoff_curve.pdf Graphic file (type pdf)
  <use pictures/tex_files/analysis/tradeoff_curve.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/tradeoff_curve.pdf used on
- input line 1115.
+ input line 1119.
 (pdftex.def)             Requested size: 170.71652pt x 137.0255pt.
 
-Underfull \hbox (badness 5403) in paragraph at lines 1119--1122
+Underfull \hbox (badness 5403) in paragraph at lines 1123--1126
 \OT1/lmr/m/n/10.95 tes nor-ma-li-siert; dann lie-gen al-
  []
 
 
-Underfull \hbox (badness 1360) in paragraph at lines 1119--1122
+Underfull \hbox (badness 1360) in paragraph at lines 1123--1126
 \OT1/lmr/m/n/10.95 der Tech-no-lo-gy Map-ping Heu-ris-tik
  []
 
 
-Underfull \hbox (badness 2556) in paragraph at lines 1119--1122
+Underfull \hbox (badness 2556) in paragraph at lines 1123--1126
 \OT1/lmr/m/n/10.95 oh-ne Pre-pro-ces-sing und mit Pre-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1122
+Underfull \hbox (badness 10000) in paragraph at lines 1123--1126
 
  []
 
 [45 <./pictures/tex_files/analysis/tradeoff_curve.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1124--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1128--1131
 
  []
 
 
-<pictures/tex_files/analysis/prem_test.pdf, id=848, 237.97708pt x 191.01262pt>
+<pictures/tex_files/analysis/prem_test.pdf, id=850, 237.97708pt x 191.01262pt>
 File: pictures/tex_files/analysis/prem_test.pdf Graphic file (type pdf)
 
 <use pictures/tex_files/analysis/prem_test.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/prem_test.pdf used on inpu
-t line 1135.
+t line 1139.
 (pdftex.def)             Requested size: 256.0748pt x 205.54439pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1140--1142
+Underfull \hbox (badness 10000) in paragraph at lines 1144--1146
 
  []
 
 [46 <./pictures/tex_files/analysis/prem_test.pdf>]
-<pictures/tex_files/analysis/premapping_table.pdf, id=873, 158.51219pt x 85.200
+<pictures/tex_files/analysis/premapping_table.pdf, id=875, 158.51219pt x 85.200
 32pt>
 File: pictures/tex_files/analysis/premapping_table.pdf Graphic file (type pdf)
  <use pictures/tex_files/analysis/premapping_table.pdf>
 Package pdftex.def Info: pictures/tex_files/analysis/premapping_table.pdf used 
-on input line 1145.
+on input line 1149.
 (pdftex.def)             Requested size: 170.71652pt x 91.76663pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1143--1148
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1152
 
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 1150--1152
+Underfull \hbox (badness 1173) in paragraph at lines 1154--1156
 []\OT1/lmr/m/n/10.95 uber die Ver-tei-lung die-ser Ver-bes-
  []
 
 
-Underfull \hbox (badness 2671) in paragraph at lines 1150--1152
+Underfull \hbox (badness 2671) in paragraph at lines 1154--1156
 \OT1/lmr/m/n/10.95 se-run-gen. Hier-bei wird auf-ge-zeigt,
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 1150--1152
+Underfull \hbox (badness 1248) in paragraph at lines 1154--1156
 \OT1/lmr/m/n/10.95 spre-chend der in der ers-ten Spal-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1150--1152
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1156
 
  []
 
 [47 <./pictures/tex_files/analysis/premapping_table.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+Underfull \hbox (badness 10000) in paragraph at lines 1185--1186
 
  []
 
 [48] (./HeuristikenTM.bbl [49]) [50]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1207.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1207.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1211.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1211.
  (./HeuristikenTM.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1207.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1207.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1211.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1211.
 
 Package rerunfilecheck Info: File `HeuristikenTM.out' has not changed.
 (rerunfilecheck)             Checksum: 29628FE2D30320568D3804B54EC4F086;1942.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1207.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1211.
  ) 
 Here is how much of TeX's memory you used:
  43516 strings out of 493089
  1022680 string characters out of 6134843
- 1466093 words of memory out of 5000000
+ 1466094 words of memory out of 5000000
  45814 multiletter control sequences out of 15000+600000
  60037 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2645,10 +2646,10 @@ texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2015/texmf-dist
 e1/public/lm/lmsy5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/l
 m/lmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb
 >
-Output written on HeuristikenTM.pdf (52 pages, 732514 bytes).
+Output written on HeuristikenTM.pdf (52 pages, 732671 bytes).
 PDF statistics:
- 1039 PDF objects out of 1200 (max. 8388607)
- 925 compressed objects within 10 object streams
+ 1041 PDF objects out of 1200 (max. 8388607)
+ 927 compressed objects within 10 object streams
  265 named destinations out of 1000 (max. 500000)
  337 words of extra memory for PDF output out of 10000 (max. 10000000)
 
