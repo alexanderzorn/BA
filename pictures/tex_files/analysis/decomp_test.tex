@@ -5,19 +5,19 @@
 \begin{document}
 \centering
 	\begin{tikzpicture}[every mark/.append style={mark size=1pt, mark=o}]
-		\begin{axis}[ymin=-35,xmode=log,ylabel style={align=center}, xlabel= Anzahl Knoten, ylabel= {Prozentuale Verbesserung \\ der Kosten}]%, legend style={at={(0.8,0.7)}}]
+		\begin{axis}[ymin=-35,xmode=log, xlabel= Gr\"o{\ss}e, ylabel= Prozentuale Verbesserung]%, legend style={at={(0.8,0.7)}}]
 		
-			\pgfplotstableread{prem_test_1}
+			\pgfplotstableread{decomp_test_analysis_with}
 			\datatable
 			\addplot table[y index = 1, only marks]from \datatable;
 		
-			\pgfplotstableread{prem_test_tmp}
+			\pgfplotstableread{decomp_test_analysis_without}
 			\datatable
 			\addplot table[y index = 1, only marks]from \datatable;
 			
 			
 			%\addplot table[y index = 2]from \datatable;
-			\legend{\tiny triviales Premapping, \tiny  Premapping durch Sch\"atzen}
+			\legend{\tiny mit, \tiny  ohne}
 		\end{axis}
 	\end{tikzpicture}
 \end{document}

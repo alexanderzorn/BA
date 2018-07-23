@@ -4,7 +4,7 @@
 \BOOKMARK [2][-]{subsection.2.2}{Kern-Algorithmus}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Entwicklung von FPTAS und Heuristik}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{Highfanoutknoten}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Multifanoutknoten}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{Zu lange Kanten}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.5}{Match-Probleme}{section.3}% 10
@@ -13,7 +13,7 @@
 \BOOKMARK [2][-]{subsection.3.8}{Heuristik}{section.3}% 13
 \BOOKMARK [1][-]{section.4}{Erweiterungen der Heuristik}{}% 14
 \BOOKMARK [2][-]{subsection.4.1}{DAGs mit mehreren Outputs}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Premapping von Highfanoutknoten}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Premapping von Multifanoutknoten}{section.4}% 16
 \BOOKMARK [2][-]{subsection.4.3}{Preprocessing}{section.4}% 17
 \BOOKMARK [2][-]{subsection.4.4}{Weitere Optimierungskriterien}{section.4}% 18
 \BOOKMARK [1][-]{section.5}{Resource Sharing}{}% 19
