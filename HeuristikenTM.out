@@ -1,28 +1,29 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
-\BOOKMARK [1][-]{section.2}{Terminologie und Kern-Algorithmus}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Grundlegende Definitionen}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Kern-Algorithmus}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Entwicklung von FPTAS und Heuristik}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Tradeoffprobleme}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.2}{Multifanoutknoten}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.3}{Zu lange Kanten}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.4}{Teilweise \374berfl\374ssige Subcircuits}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.5}{Match-Probleme}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.6}{Kandidaten-Probleme}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.7}{FPTAS}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.8}{Heuristik}{section.3}% 13
-\BOOKMARK [1][-]{section.4}{Erweiterungen der Heuristik}{}% 14
-\BOOKMARK [2][-]{subsection.4.1}{DAGs mit mehreren Outputs}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{Premapping von Multifanoutknoten}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.3}{Preprocessing}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.4}{Weitere Optimierungskriterien}{section.4}% 18
-\BOOKMARK [1][-]{section.5}{Resource Sharing}{}% 19
-\BOOKMARK [2][-]{subsection.5.1}{Definition und L\366sungsansatz des Resource Sharing Problems}{section.5}% 20
-\BOOKMARK [2][-]{subsection.5.2}{Resource Sharing und Technology Mapping }{section.5}% 21
-\BOOKMARK [1][-]{section.6}{Qualit\344ts- und Laufzeit-Analyse}{}% 22
-\BOOKMARK [2][-]{subsection.6.1}{Struktur realer Instanzen}{section.6}% 23
-\BOOKMARK [2][-]{subsection.6.2}{Analyse der Ergebnisse}{section.6}% 24
-\BOOKMARK [2][-]{subsection.6.3}{Laufzeitanalyse}{section.6}% 25
-\BOOKMARK [2][-]{subsection.6.4}{Vergleich von G\374te und Laufzeit}{section.6}% 26
-\BOOKMARK [1][-]{section.7}{Fazit und Ausblick}{}% 27
-\BOOKMARK [1][-]{section.7}{Literaturverzeichnis}{}% 28
+\BOOKMARK [1][-]{section.2}{geleistete Vorarbeit}{}% 2
+\BOOKMARK [1][-]{section.3}{Terminologie und Kern-Algorithmus}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Grundlegende Definitionen}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Kern-Algorithmus}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Entwicklung von FPTAS und Heuristik}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Tradeoffprobleme}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Multifanoutknoten}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Zu lange Kanten}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.4}{Teilweise \374berfl\374ssige Subcircuits}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.5}{Match-Probleme}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.6}{Kandidaten-Probleme}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.7}{FPTAS}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.8}{Heuristik}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Erweiterungen der Heuristik}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{DAGs mit mehreren Outputs}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Premapping von Multifanoutknoten}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.3}{Preprocessing}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.4}{Weitere Optimierungskriterien}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Resource Sharing}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Definition und L\366sungsansatz des Resource Sharing Problems}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{Resource Sharing und Technology Mapping }{section.6}% 22
+\BOOKMARK [1][-]{section.7}{Qualit\344ts- und Laufzeit-Analyse}{}% 23
+\BOOKMARK [2][-]{subsection.7.1}{Struktur realer Instanzen}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.2}{Analyse der Ergebnisse}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.3}{Laufzeitanalyse}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.4}{Gesamtbetrachtung eines Chips}{section.7}% 27
+\BOOKMARK [1][-]{section.8}{Fazit und Ausblick}{}% 28
+\BOOKMARK [1][-]{section.8}{Literaturverzeichnis}{}% 29

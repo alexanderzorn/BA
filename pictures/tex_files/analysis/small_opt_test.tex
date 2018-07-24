@@ -4,20 +4,20 @@
  
 \begin{document}
 \centering
-	\begin{tikzpicture}[every mark/.append style={mark size=1pt, mark=o}]
-		\begin{axis}[ymin=-100,xmode=log, xlabel= Anzahl Knoten, ylabel= Prozentuale Verbesserung]%, legend style={at={(0.8,0.7)}}]
+	\begin{tikzpicture}[every mark/.append style={mark size=.5pt, mark=o, opacity=0.7}]
+		\begin{axis}[ymin=0, xlabel=\small Anzahl Knoten, ylabel= \small Prozentuale Verbesserung, legend style={at={(0.8,0.7)}}]
 		
-			\pgfplotstableread{decomp_test_analysis_with}
+			\pgfplotstableread{small_test_opt}
 			\datatable
 			\addplot table[y index = 1, only marks]from \datatable;
 		
-			\pgfplotstableread{decomp_test_analysis_without}
+			\pgfplotstableread{small_test_non_opt}
 			\datatable
 			\addplot table[y index = 1, only marks]from \datatable;
 			
 			
 			%\addplot table[y index = 2]from \datatable;
-			\legend{\tiny mit, \tiny  ohne}
+			\legend{\tiny opt, \tiny  nonopt}
 		\end{axis}
 	\end{tikzpicture}
 \end{document}
