@@ -3,47 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: HeuristikenTM.aux
 The style file: alpha.bst
 Database file #1: HeuristikenTM.bib.bib
-Warning--I didn't find a database entry for ""
 Warning--empty journal in BooleanMatching
-You've used 15 entries,
+You've used 16 entries,
             2543 wiz_defined-function locations,
-            644 strings with 6679 characters,
-and the built_in function-call counts, 5004 in all, are:
-= -- 485
-> -- 243
+            649 strings with 6800 characters,
+and the built_in function-call counts, 5357 in all, are:
+= -- 517
+> -- 262
 < -- 9
-+ -- 81
-- -- 80
-* -- 319
-:= -- 875
-add.period$ -- 45
-call.type$ -- 15
-change.case$ -- 90
-chr.to.int$ -- 15
-cite$ -- 16
-duplicate$ -- 221
-empty$ -- 343
-format.name$ -- 102
-if$ -- 989
++ -- 87
+- -- 86
+* -- 339
+:= -- 933
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 96
+chr.to.int$ -- 16
+cite$ -- 17
+duplicate$ -- 238
+empty$ -- 374
+format.name$ -- 109
+if$ -- 1063
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 15
-newline$ -- 79
-num.names$ -- 45
-pop$ -- 84
+missing$ -- 16
+newline$ -- 84
+num.names$ -- 48
+pop$ -- 93
 preamble$ -- 1
-purify$ -- 105
+purify$ -- 112
 quote$ -- 0
-skip$ -- 187
+skip$ -- 200
 stack$ -- 0
-substring$ -- 150
-swap$ -- 25
+substring$ -- 157
+swap$ -- 27
 text.length$ -- 9
 text.prefix$ -- 8
 top$ -- 0
-type$ -- 120
+type$ -- 128
 warning$ -- 1
-while$ -- 41
-width$ -- 18
-write$ -- 187
-(There were 2 warnings)
+while$ -- 44
+width$ -- 19
+write$ -- 199
+(There was 1 warning)

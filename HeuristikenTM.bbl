@@ -31,6 +31,12 @@ N.~H{\"a}hnle.
 \newblock {\em Technical report no. 1511115, Research Institute for Discrete
   Mathematics, University of Bonn}, 2015.
 
+\bibitem[HH15]{GateSizing}
+S.~Held and J.~Hu.
+\newblock Gate {S}izing.
+\newblock In {\em Electronic {D}esign {A}utomation for {I}ntegrated {C}ircuits
+  {H}andbook}, 2015.
+
 \bibitem[Keu87]{DAGON}
 K.~Keutzer.
 \newblock D{AGON}: {T}echnology {B}inding and {L}ocal {O}ptimization by {DAG}
