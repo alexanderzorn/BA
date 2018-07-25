@@ -1,0 +1,15 @@
+\documentclass[tightpage]{standalone}
+
+\usepackage{pgfplots}
+ 
+\begin{document}
+\centering
+	\begin{tikzpicture}[every mark/.append style={mark size=1pt, mark=o}]
+		\begin{axis}[restrict x to domain=1:100000, xlabel= Anzahl Knoten, ylabel= Laufzeit in Sekunden]%, legend style={at={(0.8,0.7)}}]
+		
+			\pgfplotstableread{time_test_data}
+			\datatable
+			\addplot table[y index = 1, only marks]from \datatable;
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

@@ -8,6 +8,16 @@
 \usepackage{graphicx}
 \newcommand{\TM}{Technology  Mapping }
 \DeclareMathOperator*{\argmin}{arg\,min}
+%\usepackage{showframe}
+%\usepackage{geometry}
+%\geometry{
+%  left=4.5cm,
+%  right=4.5cm,
+%  top=5cm,
+%  bottom=4.5cm,
+%  bindingoffset=5mm
+%}
+
 
 %Namen des Verfassers der Arbeit
 \author{Alexander Zorn}
@@ -35,7 +45,6 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 
 \begin{document}
 %\raggedright
-
 \setlength{\parindent}{0pt} %kein Einrücken zu Beginn eines Absatzes
 %Beweis:
 \renewcommand{\proofname}{Beweis:}
@@ -63,14 +72,20 @@ Die Größe der Menge aller möglichen Baupläne (später Circuits) für eine lo
 Ziel des Technology Mappings ist es für eine gegebene logische Funktion eine Realisierung zu finden, welche eine Kostenfunktion, bestehend aus den physikalischen Eigenschaften, optimiert. Die Wahl der Lösung hat direkte Auswirkungen auf die  Schnelligkeit, die Größe und den Stromverbrauch des fertigen Chips. Hierbei geht das \TM von einer bereits realisierten logischen Funktion aus und baut diese zu einer möglichst kostengünstigen Variante um. \\
 Der optimale mögliche Umbau lässt sich bei kleinen oder eingeschränkten gegebenen Bauplänen noch in kurzer Zeit finden. Die Lösung dieses Problems für allgemeine Baupläne und Kostenfunktionen ist jedoch ein NP-vollständiges Problem. Aus diesem Grund entwickelt die vorliegende Arbeit eine Heuristik, welche für sehr große Baupläne, bestehend aus mehreren 10.000 Bauteilen, in möglichst kurzer Zeit einen kostenoptimierten Umbau approximiert.\\
 
-Aufbauend auf den Arbeiten von Keutzer \cite{DAGON} und  Elbert \cite{Elbert} wird ausgehend von einem Kern-Algorithmus auf eingeschränkten Instanzen in Kapitel \ref{sec:terminologie&grundl} ein polynomielles Approximationsschema für einen beliebigen Approximationsfaktor $\epsilon > 0$ und daraus eine Heuristik in Kapitel \ref{sec:allg_algorithmus} entwickelt. Anschließend wird diese Heuristik  in Kapitel \ref{sec:erw_der_heuristik} an möglichst allgemeine Instanzen und weitere reale Gegenbenheiten angepasst. Mithilfe des Resource Sharing Algorithmus wird in Kapitel \ref{sec:resource_sh} die entwickelte Heuristik Teil einer allgemeinen Logik-Optimierung von Circuits. Abschließend wird in Kapitel \ref{sec:analyse} die Implementierung der vorgestellten Heuristik ausführlich analysiert.
+Aufbauend auf den Arbeiten von Keutzer \cite{DAGON} und  Elbert \cite{Elbert} wird ausgehend von einem Kern-Algorithmus auf eingeschränkten Instanzen in Kapitel \ref{sec:terminologie&grundl} ein polynomielles Approximationsschema für einen beliebigen Approximationsfaktor $\epsilon > 0$ und daraus eine Heuristik in Kapitel \ref{sec:allg_algorithmus} entwickelt. Anschließend wird diese Heuristik  in Kapitel \ref{sec:erw_der_heuristik} an möglichst allgemeine Instanzen und weitere reale Gegenbenheiten angepasst. Mithilfe des Resource Sharing Algorithmus wird in Kapitel \ref{sec:resource_sh} die entwickelte Heuristik Teil einer allgemeinen Logik-Optimierung von Circuits. Abschließend wird in Kapitel \ref{sec:analyse} die Implementierung der vorgestellten Heuristik ausführlich analysiert.\\
 
-\section{geleistete Vorarbeit}
+Ich m\"ochte mich an dieser Stelle ganz herzlich bei Prof. Dr. Dr. h.c. Bernhard Korte, Professor Dr. Stephan Held, Professor Dr. Jens Vygen und Professor Dr. Stefan Hougardy f\"ur die hilfsbereite und \textcolor{red}{hervorragende} Unterst\"utzung bei dieser Arbeit im Forschungsinstitut f\"ur Diskrete Mathematik in Bonn bedanken.\\
+Dieser Dank richtet ebenfalls an alle Mitarbeiter des Instituts welche f\"ur fachliche Fragen und zahlreiche Korrekturlesungen mir jederzeit zur Seite standen.\\
+Besonder hervorheben m\"ochte ich hierbei Professor Dr. Stephan Held und Frau Hermann f\"ur unerm\"udliche Hilfe bei der Problembeseitigung im Zuge der Implementierung der vorzustellenden Heuristik.
+\section{geleistete Vorarbeit / Kontext bisheriger Arbeiten}
 Ausgehend von den Arbeiten von Keutzer \cite{DAGON} entwickelte Tran in \cite{Tran} einen grundlegenden \TM Algorithmus f\"ur Area oder Delay optimales \TM auf B\"aumen.\\
 Elbert konstruierte daraufhin 2017 in \cite{Elbert} ein FPTAS f\"ur das \TM unter Arrivaltimeschranke oder Konvexkombination mit konstant vielen Multifanoutknoten und einem Output. Des Weiteren wurde Matche durch Finden von geeigneten Subcircuits gesucht.\\
 Dieses FPTAS ist f\"ur Circuits mit einer Gr\"o{\ss}e bis zu wenigen hundert Knoten der geeignete schnelle Algorithmus zur Optimierung mittels \TM.\\
+In \cite{Elbert} wurde ebenfalls eine Heuristik auf Basis des FPTAS entwickelt. 
 
-Die vorliegende Arbeit 
+Die vorliegende Arbeit erweitert diese Heuristik auf mehrere Outputs, pinabhängiges Delay und beweist die polynomialit\"at des FPTAS auf Basis beliebiger Circuits.\textcolor{red}{verst\"andlich?}\\ Des Weiteren wurde die Match Suche verallgemeinert, um mit einer nahezu beliebigen Library arbeiten zu k\"onnen.\\
+
+In \cite{Daboul2018} wird ein Algorithmus zur L\"osung des Gate Sizing Problems mittels dem Resource Sharing Problem entwickelt. Das Schema dieses Algorithmus wird in dieser Arbeit auf einen Algorithmus zur L\"osung des \TM Problems mithilfe des Resource Sharing \"ubertragen.
 
 \section{Terminologie und Kern-Algorithmus}
 \label{sec:terminologie&grundl}
@@ -169,7 +184,6 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
   Instanz:  & Circuit $C$ ohne Multifanoutknoten, mit eindeutigem Output $o$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
   Aufgabe: &  Finde einen Kandidaten $K$ auf $o$, welcher die Arrivaltime/Area minimiert.
 \end{problem}
-
 \begin{algorithm}[H]
  \LinesNumbered
  \DontPrintSemicolon
@@ -190,7 +204,8 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
  }
  Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
 \end{algorithm}\ \\
-Dieser Algorithmus stammt aus \cite{Elbert} und wurde 1987 in \cite{DAGON} entwickelt .\\
+
+Dieser Algorithmus stammt aus \cite{Elbert} und wurde 1987 in \cite{DAGON} entwickelt.\\
 Ein \TM (TM) Algorithmus liefert in der Regel nicht die bestmögliche Realisierung der $C$ zugrunde liegenden logischen Funktion.\\
 
 Dies veranschaulicht Abbildung \ref{bild:compl_redundant} welche die Realisierung einer konstanten Funktion darstellt die keine Gates benötigt, was jedoch mit den bisher eingeführten  Möglichkeiten des Technology Mappings nicht realisierbar ist.
@@ -327,17 +342,18 @@ Zur Speicherung der Kandidaten wird für jede Klasse eines Knotens eine Tradeoff
 \subsubsection{Klonen}\label{subsubsec:klonen}
 Die Input-Kandidaten eines Kandidaten müssen aus nachfolgend dargestelltem Grund an deren offenen Knoten übereinstimmen:\\
 Angenommen dies wäre nicht der Fall dann würden offene Knoten evtl. mehrere Male mit verschiedenen Kandidaten gebaut. Dieser Vorgang wird auch Klonen genannt. Dies kann von Vorteil sein, wenn zum Beispiel ein offener Knoten Teil eines sowohl sehr Delay- als auch sehr Area-kritischen Gebietes ist. Dann würde einmal ein schneller und einmal ein sehr kleiner Kandidat realisiert. Dies führt in der Regel jedoch zu einem deutlich erhöhten Platzverbrauch und es werden mehr Kanten gebraucht, was höhere Routing Kosten mit sich bringt, welche im \TM jedoch nicht berücksichtigt werden. Um einen übermäßigen Anstieg nicht beachteter Kosten zu verhindern, ist das Klonen in den vorgestellten Algorithmen nicht erlaubt und wird durch die Klassen verhindert. \\
+\subsection{Zu lange Kanten}
 \label{subsec:zu_lange_kanten}
  \begin{wrapfigure}{r}{4.4cm}
 		\includegraphics[height = 7.6cm]{pictures/compiled/zu_lange_kante}
 		\caption{Visualisierung eines Matches über eine lange Kante}
 		\label{bild:zu_lange_kanten}
 \end{wrapfigure}
-\subsection{Zu lange Kanten}
 Abbildung \ref{bild:zu_lange_kanten} veranschaulicht eine häufig auftretende Situation. Es handelt sich um das Matchen über eine auf dem Chip sehr lange Kante. Dadurch verbessert sich evtl. die Größe des Circuits, jedoch sind nach dem Match nun zwei sehr lange Kanten auf dem Chip vorhanden, was einen großen Routing-Aufwand und weitere Kosten mit sich bringt und somit eine zu vermeidende Situation ist. 
 Diese Kanten bezeichnet man als konstant.\\
 Bei der Bildung eines Matches wird darauf geachtet über keine konstante Kante zu matchen.\\
-Durch das Hinzufügen der zu langen Kanten zu den konstanten Kanten kann keine optimale Lösung mehr im Kern-Algorithmus garantiert werden, denn es ist möglich, aber unwahrscheinlich, dass die zusätzlichen Routing-Kosten vernachlässigbar sind und ein Match über diese Kante für eine optimale Lösung notwendig ist. 
+Durch das Hinzufügen der zu langen Kanten zu den konstanten Kanten kann keine optimale Lösung mehr im Kern-Algorithmus garantiert werden, denn es ist möglich, aber unwahrscheinlich, dass die zusätzlichen Routing-Kosten vernachlässigbar sind und ein Match über diese Kante für eine optimale Lösung notwendig ist. \\
+Alternativ lie{\ss}e sich auch die Netzl\"ange eines Chips den Optimierungskriterien des \TM hinzuf\"ugen um diese zus\"atzlichen Kosten automatisch zu verhindern. Es bleibt jedoch offen dies zu implementieren.
 
  \subsection{Teilweise überflüssige Subcircuits}
  \label{subsec:teilweise_ueberfkl_subcircuits}
@@ -391,11 +407,11 @@ Anhand eines Schnitts kann nicht eindeutig hergeleitet werden, ob mehrere Kanten
 In einem Graphen ohne Multifanoutknoten gilt somit: \\
 Die Menge der Matche von $v$ ist somit gerade die Menge aller maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inklusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph die logische Funktion eines Gates der Library realisieren.
 \begin{cor}\label{cor:anz_matche_einfach}
-Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Multifanoutknoten enthält, ist durch $m_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
+Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Multifanoutknoten enthält, ist durch\\ $m_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
 \end{cor}
 \begin{proof}
 Sei  $X_v:= \{ E \subseteq E(C[cone(v)]) | |E|\leq fanin_{max}  \}$. Die Menge der maximal $fanin_{max}$ großen $v$-Schnitte ist in $C[cone(v)]$ durch $ |X_v|$ beschränkt. Es gilt hierbei:
-\[ |X_v| = \sum\limits_{i \leq fanin_{max}} \binom{m_v}{i} \leq  \sum\limits_{i \leq fanin_{max}}\frac{m_v!}{i!(m_v-fanin_{max})!} \leq m_v^{fanin_{max}} fanin_{max} \]
+\[ |X_v| =\sum\limits_{i \leq fanin_{max}} \binom{m_v}{i} \leq  \sum\limits_{i \leq fanin_{max}}\dfrac{m_v^{\underline{fanin_{max}}}}{i!} \leq m_v^{fanin_{max}} fanin_{max} \]
 Für jeden Schnitt gibt es zwei verschiedene mögliche Output-Invertierungen und maximal  $2^{fanin_{max}}$ viele Möglichkeiten die Inputs zu invertieren. Jedes mögliche Match ist nun durch ein Element aus $X_v$ und eine Wahl von Invertierungen eindeutig charakterisiert.
 \end{proof}
 Für allgemeinere Circuits lässt sich folgende Schranke angeben: 
@@ -440,47 +456,10 @@ Die Anzahl der Kandidaten an einem Knoten ist im Allgemeinen nicht polynomiell b
 \label{subsubsec:schrankenalgo}
 Zur Vorbereitung auf das Filtern mit Buckets wird folgender Algorithmus eingeführt.\\
 Für die Bearbeitung einer Tradeoffkurve ist es notwendig Schranken angeben zu können, zwischen welchen sich alle Werte der Kurve befinden, damit sich nach dem Filtern in Kapitel \ref{subsubsec:filtern} die Anzahl der noch vorhandenen Kandidaten abschätzen lässt. \\
-Durch den vorhandenen Tradeoff befindet sich die $AT$ eines Circuits $C$ zwischen der schnellsten und der kleinsten Implementierung von $C$. Dementsprechend befindet sich $Area$ von $C$ zwischen der kleinsten und schnellsten Lösung. Folgender Algorithmus, der in \cite{Elbert} entwickelt wurde, nähert die entsprechenden Circuit-Kandidaten an.\\
-
-\begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{Untere Schranke Arrivaltime}
- \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$, Library $L$}
-
- schnellster\_kandidat[] $\gets \emptyset$\;
- schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
- {
-   berechne\_alle\_(invertierten)\_Matche($v$)\;
-   \ForEach{ Match $m$ auf $v$ }
-   {
-      $k,k_{inv} \gets $berechne\_schnellsten\_(inv)\_Kandidaten($m$,$v$)\;
-      Update\_schnellster\_(inv)\_kandidat($k,k_{inv}$)\;
-   }
-   \If{ $v$ ist Multifanoutknoten }
-   {
-      
-      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
-      {
-	l\"osche schnellster\_inv\_kandidat[v]\;
-      }
-      \Else
-      {
-	l\"osche schnellster\_kandidat[v]\;
-      }
-   }
- }
- Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
- \Return $C'$\;
-\end{algorithm}\ \\
-
-Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
- Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
-Im Gegensatz zu dem Kern-Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit invertiertem Output von $i$ evtl. in Schritt 10  oder 12 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern-Algorithmus liegt darin, dass dort für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Multifanoutknoten ist, würde dies zu einem Verlust der Polynomialität führen.\\
-
-Unter welchen Bedingungen sich dieser Algorithmus polynomiell implementieren lässt, wird in Kapitel \ref{subsec:heuristik} weiter ausgeführt. Dort wird dieser Algorithmus mit der Laufzeit der Heuristik ohne diese Routine beschrieben. Da jedoch nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.
+Durch den vorhandenen Tradeoff befindet sich die $AT$ eines $C$ äquivalenten Circuits zwischen der der schnellsten und der der kleinsten Implementierung von $C$. Dementsprechend befindet sich $Area$ von $C$ zwischen der der kleinsten und der der schnellsten Lösung. \\
+Eine untere Schranke lässt sich dadurch finden, indem man an jedem Knoten die schnellste nicht invertierte und die invertierte Kombination aus Match und Inputkandidaten wählt. Hierbei wird nicht darauf geachtet, dass sich die Kandidaten der Inputs in der gleichen Klasse befinden. Dies führt wahrscheinlich nicht zu einem äquivalenten Circuit, jedoch bildet die $AT$ des Outputs eine untere Schranke für die $AT$ eines äquivalenten Circuits. An jedem Knoten werden so genau zwei Kombinationen an Match und Input-Kandidaten gespeichert, was den darüberliegenden Knoten ermöglicht die Inputs frei invertieren zu können und keine Delay-Einbußen bezüglich nicht vorhandener invertierter Kandidaten akzeptiert werden müssen. \\
+Dieser Algorithmus kann, wenn an jedem Knoten die jeweils kleinste Kombination gewählt wird,  auch eine obere Schranke für die $AT$ einer Lösung angeben. \\
+Die Laufzeit dieses Algorithmus ist für beschränkten $fanin_{max}, fanout_{max}$ polynomiell, da an jedem Knoten nur zwei Kombinationen gespeichert werden und maximal $\mathcal{M}$ Matche existieren und jedes dieser Matche legt die Input-Kandidaten implizit fest.  Dieser Algorithmus wird im folgenden Untere Schranke Arrivaltime (Area) genannt.
 
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}
@@ -510,14 +489,14 @@ Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve nachd
 Des Weiteren sei $\mathcal{K}$ die maximale Anzahl von Klassen eines Knotens.
 \end{definition}
 \begin{cor}\label{cor:anzahl_klassen}
-Für Circuits $C$ mit konstanter Anzahl $k$ an Multifanoutknoten sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
+Für Circuits $C$ mit Library $L$, konstanter Anzahl $k$ an Multifanoutknoten und $\max_{g_1,g_2 \in L} \{ \max \{\frac{Area(g_1)}{Area(g_2)},\frac{Delay(g_1)}{Delay(g_2)}\}\} $ ist beschränkt durch eine konstante $c$, sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
 \end{cor}
 \begin{proof}
 $\mathcal{B}$ ist beschränkt durch die Größe des größtmöglichen äquivalenten Circuit $C_A$ von $C$ geteilt durch $\delta_{area}$. Sei $X^+$ eine mit dem Algorithmus: Untere Schranke Arrivaltime errechnete obere Schranke für die Größe von $C$. Daraus folgt $\mathcal{B} \in \mathcal{O}(X^+ \cdot \frac{2n(1-\lambda)}{X^- \epsilon})$. $\mathcal{B} $ ist somit polynomiell in $\frac{X^+ n}{X^- \epsilon}$. 
 
 
 
-Da die Größe $area_{max}$ (Delay) des größten (langsamsten) Gates der in Abbildung \ref{bild:new_library} beschriebenen Library weniger als einen Faktor 10 größer (langsamer), als die entsprechenden Werte des kleinsten (schnellsten) Gates dieser Library, ist folgt, dass $\frac{X^+ n}{X^- \epsilon}$ polynomiell beschränkt ist.  Der größtmögliche zu $C$ äquivalente Circuit ist nämlich nicht größer als $|V(C)|(fanin_{max}+1)area_{max} + |O|area_{max}$. Die Größe jedes Gates mit möglichen Invertern an seinen Inputs in $C$ ist durch $(fanin_{max}+1)area_{max}$ beschränkt und die Anzahl der an den Outputs $O$ liegenden Inverter durch $|O|$.\\
+Da die Größe $area_{max}$ (Delay) des größten (langsamsten) Gates der Library weniger als einen Faktor $c$ größer (langsamer), als die entsprechenden Werte des kleinsten (schnellsten) Gates dieser Library, ist folgt, dass $\frac{X^+ n}{X^- \epsilon}$ polynomiell beschränkt ist (Dies ist ebenfalls der Fall für die in Abbildung \ref{bild:new_library} beschriebene Library).  Der größtmögliche zu $C$ äquivalente Circuit ist nämlich nicht größer als $|V(C)|(fanin_{max}+1)area_{max} + |O|area_{max}$. Die Größe jedes Gates mit möglichen Invertern an seinen Inputs in $C$ ist durch $(fanin_{max}+1)area_{max}$ beschränkt und die Anzahl der an den Outputs $O$ liegenden Inverter durch $|O|$.\\
 Für eine allgemeine Library findet sich in \cite{Elbert} eine Lösung zur Erhaltung der Polynomialität.\\
 Sei $v \in V(C)$ und $\mathcal{K}_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Multifanoutknoten mit $i$ weiteren Multifanoutknoten in seiner Cone. 
 $\mathcal{K}_v$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglichen Kombinationen von Kandidaten aller möglicher Klassen der Multifanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$; da $v$ maximal $k$ Multifanoutknoten in seiner Cone hat, welche jeweils maximal $k-1$ Multifanoutknoten in ihrer Cone haben. Deshalb gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$.\\
@@ -655,7 +634,7 @@ Ist an jedem Multifanoutknoten ein Kandidat gewählt, lässt sich der noch bestm
       }
     }
   }    
-    filter\_mit\_Buckets(g.tradeoff\_curves, 0)\;    
+    filtern\_mit\_Buckets(g.tradeoff\_curves, 0)\;    
   }
   $C' \gets $ circuit(bester\_kandidat($o, \lambda$))\;
   \Return entferne\_buffer($C'$)\;
@@ -744,17 +723,59 @@ Im Gegensatz zu dem Kern-Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} k
 \label{subsec:premapping_duch_schaetzen}
 Beim Premapping durch Schätzen wird eine Vermutung für die Kosten des Kandidaten eines jeden Multifanoutknoten in einer optimalen Lösung des Technology Mappings aufgestellt. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
 Die im Folgenden vorgestellte Routine wurde durch \cite{Elbert} für einen Output entwickelt und wird hier auf SNS erweitert.\\
-Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Der Algorithmus aus Kapitel \ref{subsubsec:schrankenalgo} wird für die Schrankenberechnung benutzt.\\
+Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen äquivalenten Circuit errechnen.\\
 
- Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
+Folgender Algorithmus, der in \cite{Elbert} entwickelt wurde, nähert die entsprechenden Circuit-Kandidaten an:\\
+
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{Heuristische untere Schranke Arrivaltime}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit $C$, Library $L$}
+
+ schnellster\_kandidat[] $\gets \emptyset$\;
+ schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne\_alle\_(invertierten)\_Matche($v$)\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      $k,k_{inv} \gets $berechne\_schnellsten\_(inv)\_Kandidaten($m$,$v$)\;
+      Update\_schnellster\_(inv)\_kandidat($k,k_{inv}$)\;
+   }
+   \If{ $v$ ist Multifanoutknoten }
+   {
+      
+      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
+      {
+	l\"osche schnellster\_inv\_kandidat[v]\;
+      }
+      \Else
+      {
+	l\"osche schnellster\_kandidat[v]\;
+      }
+   }
+ }
+ Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
+ \Return $C'$\;
+\end{algorithm}\ \\
+
+Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
+ Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet, indem an jedem Knoten der kleinste Kandidat, anstelle des schnellsten, gespeichert wird. Der entsprechende Algorithmus wird Heuristische untere Schranke Area genannt. \\
+Im Gegensatz zu dem Kern-Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit invertiertem Output von $i$ evtl. in Schritt 10  oder 12 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern-Algorithmus liegt darin, dass dort für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Multifanoutknoten ist, würde dies zu einem Verlust der Polynomialität führen.\\
+Im Gegensatz zu dem ALgorithmus aus Kapitel \ref{subsubsec:schrankenalgo}, mit welchen die Errechnung einer unteren und oberen Schranke f\"ur die $AT$ und $Area$ m\"oglich ist, gibt dieser Algorithmus einen \"aquivalenten Circuit zur\"uck.\\
+Die Laufzeit dieses Algorithmus liegt in der Laufzeit der Heuristik aus Kapitel \ref{subsec:heuristik}. Da bei der zweimaligen Ausf\"uhrung dieser Routine nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.
+
+Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
  
 \begin{algorithm}[H]
  \LinesNumbered
  \DontPrintSemicolon
  \caption{Premapping durch Schätzen}
  \SetKwInOut{Task}{Task}
- $C'_{AT} \gets $Untere\_Schranke\_Arrivaltime(C)\;
-$C'_{Area} \gets$ Untere\_Schranke\_Area($C$)\; 
+ $C'_{AT} \gets $Heuristische\_untere\_Schranke\_Arrivaltime(C)\;
+$C'_{Area} \gets$ Heuristische\_untere\_Schranke\_Area($C$)\; 
 \ForEach{Output $o$}
 {
 	$\alpha[o] \gets \lambda \cdot AT_{C'_{AT}}(o) + (1-\lambda)\cdot AT_{C'_{Area}}(o)$ //Finale AT Sch\"atzung \;
@@ -1032,7 +1053,10 @@ Sei $H_C$ die Menge Multifanouknoten, welche keine Inputs sind, eines Circuits $
  Die Inputs eines Circuits machen durchschnittlich $16,73\%$ an der Gesamtzahl der Knoten aus. Daraus folgt, dass etwa jeder achte Knoten nur einen Kandidaten tr\"agt. Dies ist bei der Interpretation der folgenden Analysen zu beachten.\\
  Abbildung \ref{bild:sizes_table} zeigt die Verteilung der getesteten Instanzen hinsichtlich der Größe  ihrer Knotenmenge.
  
+\begin{comment}
 \textcolor{red}{ Kandidaten menge kann hier noch hin also menge der Kandidaten abh von Knotenmenge bzw anzahl multifanoutknoten  und abh von den oben genannten zusatzfeatures (zb pinabh. delay, Library )  \\  und dass vielleicht die varianz (anhand eines bildes beweisen?) des hoghfanout anteil ziemlich klein ist und somit Knotenmenge und multifanoutmenge ansich ausreichend aussagekräftig sind} 
+\end{comment}
+ 
  
  \subsection{Analyse der Ergebnisse}
  \label{subsec:analyse_der_ergebnisse}
@@ -1108,22 +1132,45 @@ Es f\"allt auf, dass die Verbesserungen der optimal gel\"osten Instanzen und der
 \end{figure}
 
 
- 
+ \newpage
  \subsection{Laufzeitanalyse}
- \label{subsec:laufzeitanalyse}
-Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Multifanoutknoten abhängt. Andere Faktoren wie das Aufteilen von Gates, die Größe der Library oder die Wahl der Premapping subroutine spielen ebenfalls eine wichtige Rolle. Dies verdeutlicht die Übersicht \textcolor{red}{??}.\\
- Bezüglich der Größe der Library lassen sich die Chips, mit Ausnahme weniger Unterschiede in zwei Gruppen einteilen. Die markierte Teilmenge der Abbildung \textcolor{red}{??} entspricht der Menge der (so genannten) komplexen Gates. Ein Chip lässt sich in der Praxis, abhängig davon, ob er die komplexen Gates grundsätzlich erlaubt, einer der beiden Gruppen zuordnen. Diese Unterscheidung findet sich ebenfalls in Abbildung \textcolor{red}{??}.
+ \label{subsec:laufzeitanalyse} 
+   \begin{wrapfigure}{r}{6.9cm}
+		\includegraphics[width=1\linewidth]{pictures/tex_files/analysis/local_time_test}
+		\caption{\"Ubersicht \"uber die Laufzeit der Heuristik auf allen Instanzen mit maximal 5000 Knoten}
+		\label{bild:local_time_test}
+	\end{wrapfigure}
 
-\subsection{Gesamtbetrachtung eines Chips}
+Aus der theoretischen Laufzeitschranke aus Kapitel \ref{subsec:heuristik} folgt, dass die Laufzeit maßgeblich von der Menge der Multifanoutknoten abhängt und bei beliebig vielen Multifanoutknoten nicht polynomiell beschr\"ankt ist. \\
+Die vorangegangenen Testkapitel haben folgendes Ergebnis hervorgebracht: Die \TM Heuristik mit dem Premapping durch Sch\"atzen und ohne Preprocessing f\"uhren auf den getesteten Instanzen zu den besten Ergebnissen. \\
+Die Abbildungen \ref{bild:local_time_test} und \ref{bild:global_time_test} gebeen einen \"Uberblick \"uber die Laufzeit der Heuristik mit gerade genannten Einstellungen in Abh\"angigkeit von der Anzahl der Knoten der Instanzen. 
+Hierbei gibt Abbildung \ref{bild:global_time_test} einen \"Uberblick \"uber alle Instanzen und somit eine globale Laufzeitanalyse und Abbildung \ref{bild:local_time_test} betrachtet alle Instanzen mit maximal 5000 Knoten.\\
+Auf beiden Abbildungen l\"asst sich der exponentielle Anstieg der Laufzeit erkennen.
+\begin{figure}[h]
+		\centering
+		\includegraphics[width = 10cm]{pictures/tex_files/analysis/time_test}
+		\caption{\"Ubersicht \"uber die Laufzeit der Heuristik auf allen Instanzen}
+		\label{bild:global_time_test}
+\end{figure}
+\subsection{Einzelbetrachtung von zwei Chips}
+In diesem Kapitel werden zwei Chips gesondert analysiert. Hierbei handelt es sich einmal um den \textcolor{red}{blaChip} und einmal um den \textcolor{red}{blablaChip}. Der \textcolor{red}{blaChip}ist ein aktueller 7nm (Nanometer) Chip und dieser besitzt die volle in Abbildung \ref{bild:new_library} angegebene Library. \\ 
+\textcolor{red}{blablaChip} hingegen besitzt eine kleinere Library ohne \textcolor{red}{kurz beschreiben was fehlt}. Abbildung \textcolor{red}{soundso} gibt allgemeine Informationen zu beiden Chips an und Abbildung \textcolor{red}{sowieso} listet die f\"ur das \TM wichtigen Eigenschaften des Chips vor und nach der Bearbeitung mit der im vorangegangenen Kapitel beschriebenen Heuristik auf. 
+F\"ur die in dieser Abbildung aufgezeigten Verbesserungen durch die Heuristik, ben\"otigte diese auf dem Chip \textcolor{red}{Chip1} eine Laufzeit von 4,0 Sekunden und auf dem \textcolor{red}{Chip2} wurden 4,6 Sekunden ben\"otigt.\\
 
+\textcolor{red}{auf verschiedene libs eingehen}
 \section{Fazit und Ausblick}
 \label{sec:fazit_und_ausblick}
-	
+Das Ziel dieser Arbeit war es den von \cite{Elbert} entwickelten Ansatz einer Heuristik auf meherere Outputs und eine beliebige Library zu erweitern und zu implementieren und einen Ansatz f\'ur das \TM mit Resource Sharing zu entwickeln. \\
+Dies wurde mit folgendem Ergebnis erledigt: Der Heuristik ist es m\"oglich in kurzer Zeit auf mehreren 10.000 Gates gro{\ss}en in vielen F\"allen eine Verbesserung zu erzielen. Hierbei wurden die besten Ergebnisse mit dem Premapping durch Sch\"atzen und ohne das Preprocessing erreicht und festgestellt, dass der Tradeoffparameter keinen gro{\ss}en Einflu{\ss} die G\"ute dieser Ergebnisse hat. \\
+Des Weiteren wurde Ansatz zur L\"osung des \TM mithilfe des Resource Sharing Algorithmus entwickelt. F\"ur diesen Ansatz steht die Implementierung jedoch noch aus. \\
+
+Zuk\"unftig gilt es den Ansatz mithilfe des Resource Sharing zu implementieren und zu testen. Des Weiteren m\"usste gezeigt werden wie das \TM im Resource Sharing mit anderen die Logik optimieren Routinenen (z.B. Gate Sizing) kombiniert werden kann um m\"oglichst kosteneffieziente L\"osungen zu garantieren.\\
+Des Weiteren k\"onnten weitere Optimierungskriterien, wie die Netzl\"ange oder die Power, zus\"atzlich mit in die Kostenfunktion des \TM eingebracht werden um \"uberm\"a{\ss}igen Verbrauch von im \TM nicht beachteten Ressourcen zu verhindern.
 
 \newpage
-\addcontentsline{toc}{section}{\protect\numberline{8}{Literaturverzeichnis}}
+\addcontentsline{toc}{section}{\protect\numberline{9}{Literaturverzeichnis}}
 \nocite{*}
-\renewcommand{\refname}{8 \,\, Literaturverzeichnis}
+\renewcommand{\refname}{9 \,\, Literaturverzeichnis}
 { \footnotesize
 \bibliography{HeuristikenTM.bib}
 \bibliographystyle{alpha}

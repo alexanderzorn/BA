@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.4)  25 JUL 2018 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.4)  25 JUL 2018 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**decomp_test.tex
-(./decomp_test.tex
+**time_test.tex
+(./time_test.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/lfs/vlsi/tools/texlive/2016/texmf-dist/tex/latex/standalone/standalone.cls
@@ -517,8 +517,8 @@ File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 LaTeX Warning: Unused global option(s):
     [tightpage].
 
-(./decomp_test.aux)
-\openout1 = `decomp_test.aux'.
+(./time_test.aux)
+\openout1 = `time_test.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -591,30 +591,29 @@ ick labels; missing features). Consider writing \pgfplotsset{compat=1.14} into
 your preamble.
  on input line 5.
 
-PGFPlots: reading {decomp_test_analysis_with}
-PGFPlots: reading {decomp_test_analysis_without}
+PGFPlots: reading {time_test_data}
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 21.
+(Font)              <7> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 21.
+(Font)              <5> on input line 13.
 [1
 
 {/lfs/vlsi/tools/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./decomp_test.aux) ) 
+(./time_test.aux) ) 
 Here is how much of TeX's memory you used:
- 21835 strings out of 493013
- 580879 string characters out of 6127362
- 1468936 words of memory out of 5000000
- 25033 multiletter control sequences out of 15000+600000
+ 21816 strings out of 493013
+ 580506 string characters out of 6127362
+ 1088537 words of memory out of 5000000
+ 25015 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,18n,103p,707b,2156s stack positions out of 5000i,500n,10000p,200000b,80000s
-</lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr5.pfb></lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/
+ 62i,10n,103p,705b,1822s stack positions out of 5000i,500n,10000p,200000b,80000s
+</lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmr7.pfb></lfs/vlsi/tools/texlive/2016/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb>
-Output written on decomp_test.pdf (1 page, 110667 bytes).
+Output written on time_test.pdf (1 page, 81135 bytes).
 PDF statistics:
  27 PDF objects out of 1000 (max. 8388607)
  19 compressed objects within 1 object stream
