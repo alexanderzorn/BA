@@ -35,7 +35,6 @@ Prof. Dr. Dr. h.c. Bernhard Korte}
 
 \begin{document}
 %\raggedright
-
 \setlength{\parindent}{0pt} %kein Einrücken zu Beginn eines Absatzes
 %Beweis:
 \renewcommand{\proofname}{Beweis:}
@@ -172,7 +171,6 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
   Instanz:  & Circuit $C$ ohne Multifanoutknoten, mit eindeutigem Output $o$, Library $L$ mit beschr\"anktem $fanin_{max}$\\
   Aufgabe: &  Finde einen Kandidaten $K$ auf $o$, welcher die Arrivaltime/Area minimiert.
 \end{problem}
-
 \begin{algorithm}[H]
  \LinesNumbered
  \DontPrintSemicolon
@@ -193,7 +191,8 @@ Es folgt ein grundlegender Algorithmus der auf nachfolgend dargestellten eingesc
  }
  Implementiere $C$ entsprechend bester\_kandidat[$o$]\;
 \end{algorithm}\ \\
-Dieser Algorithmus stammt aus \cite{Elbert} und wurde 1987 in \cite{DAGON} entwickelt .\\
+
+Dieser Algorithmus stammt aus \cite{Elbert} und wurde 1987 in \cite{DAGON} entwickelt.\\
 Ein \TM (TM) Algorithmus liefert in der Regel nicht die bestmögliche Realisierung der $C$ zugrunde liegenden logischen Funktion.\\
 
 Dies veranschaulicht Abbildung \ref{bild:compl_redundant} welche die Realisierung einer konstanten Funktion darstellt die keine Gates benötigt, was jedoch mit den bisher eingeführten  Möglichkeiten des Technology Mappings nicht realisierbar ist.
@@ -443,47 +442,10 @@ Die Anzahl der Kandidaten an einem Knoten ist im Allgemeinen nicht polynomiell b
 \label{subsubsec:schrankenalgo}
 Zur Vorbereitung auf das Filtern mit Buckets wird folgender Algorithmus eingeführt.\\
 Für die Bearbeitung einer Tradeoffkurve ist es notwendig Schranken angeben zu können, zwischen welchen sich alle Werte der Kurve befinden, damit sich nach dem Filtern in Kapitel \ref{subsubsec:filtern} die Anzahl der noch vorhandenen Kandidaten abschätzen lässt. \\
-Durch den vorhandenen Tradeoff befindet sich die $AT$ eines Circuits $C$ zwischen der schnellsten und der kleinsten Implementierung von $C$. Dementsprechend befindet sich $Area$ von $C$ zwischen der kleinsten und schnellsten Lösung. Folgender Algorithmus, der in \cite{Elbert} entwickelt wurde, nähert die entsprechenden Circuit-Kandidaten an.\\
-
-\begin{algorithm}[H]
- \LinesNumbered
- \DontPrintSemicolon
- \caption{Untere Schranke Arrivaltime}
- \SetKwInOut{Task}{Task}
- \KwIn{Circuit $C$, Library $L$}
-
- schnellster\_kandidat[] $\gets \emptyset$\;
- schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
- \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
- {
-   berechne\_alle\_(invertierten)\_Matche($v$)\;
-   \ForEach{ Match $m$ auf $v$ }
-   {
-      $k,k_{inv} \gets $berechne\_schnellsten\_(inv)\_Kandidaten($m$,$v$)\;
-      Update\_schnellster\_(inv)\_kandidat($k,k_{inv}$)\;
-   }
-   \If{ $v$ ist Multifanoutknoten }
-   {
-      
-      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
-      {
-	l\"osche schnellster\_inv\_kandidat[v]\;
-      }
-      \Else
-      {
-	l\"osche schnellster\_kandidat[v]\;
-      }
-   }
- }
- Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
- \Return $C'$\;
-\end{algorithm}\ \\
-
-Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
- Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
-Im Gegensatz zu dem Kern-Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit invertiertem Output von $i$ evtl. in Schritt 10  oder 12 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern-Algorithmus liegt darin, dass dort für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Multifanoutknoten ist, würde dies zu einem Verlust der Polynomialität führen.\\
-
-Unter welchen Bedingungen sich dieser Algorithmus polynomiell implementieren lässt, wird in Kapitel \ref{subsec:heuristik} weiter ausgeführt. Dort wird dieser Algorithmus mit der Laufzeit der Heuristik ohne diese Routine beschrieben. Da jedoch nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.
+Durch den vorhandenen Tradeoff befindet sich die $AT$ eines $C$ äquivalenten Circuits zwischen der der schnellsten und der der kleinsten Implementierung von $C$. Dementsprechend befindet sich $Area$ von $C$ zwischen der der kleinsten und der der schnellsten Lösung. \\
+Eine untere Schranke lässt sich dadurch finden, indem man an jedem Knoten die schnellste nicht invertierte und die invertierte Kombination aus Match und Inputkandidaten wählt. Hierbei wird nicht darauf geachtet, dass sich die Kandidaten der Inputs in der gleichen Klasse befinden. Dies führt wahrscheinlich nicht zu einem äquivalenten Circuit, jedoch bildet die $AT$ des Outputs eine untere Schranke für die $AT$ eines äquivalenten Circuits. An jedem Knoten werden so genau zwei Kombinationen an Match und Input-Kandidaten gespeichert, was den darüberliegenden Knoten ermöglicht die Inputs frei invertieren zu können und keine Delay-Einbußen bezüglich nicht vorhandener invertierter Kandidaten akzeptiert werden müssen. \\
+Dieser Algorithmus kann, wenn an jedem Knoten die jeweils kleinste Kombination gewählt wird,  auch eine obere Schranke für die $AT$ einer Lösung angeben. \\
+Die Laufzeit dieses Algorithmus ist für beschränkten $fanin_{max}, fanout_{max}$ polynomiell, da an jedem Knoten nur zwei Kombinationen gespeichert werden und maximal $\mathcal{M}$ Matche existieren und jedes dieser Matche legt die Input-Kandidaten implizit fest.  Dieser Algorithmus wird im folgenden Untere Schranke Arrivaltime (Area) genannt.
 
 \subsubsection{Filtern mit Buckets}
 \label{subsubsec:filtern}
@@ -513,14 +475,14 @@ Sei $\mathcal{B}$ die maximale Anzahl an Kandidaten in einer Tradeoffkurve nachd
 Des Weiteren sei $\mathcal{K}$ die maximale Anzahl von Klassen eines Knotens.
 \end{definition}
 \begin{cor}\label{cor:anzahl_klassen}
-Für Circuits $C$ mit konstanter Anzahl $k$ an Multifanoutknoten sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
+Für Circuits $C$ mit Library $L$, konstanter Anzahl $k$ an Multifanoutknoten und $\max_{g_1,g_2 \in L} \{ \max \{\frac{Area(g_1)}{Area(g_2)},\frac{Delay(g_1)}{Delay(g_2)}\}\} $ ist beschränkt durch eine konstante $c$, sind $\mathcal{B}$ und $\mathcal{K}$ polynomiell beschränkt.
 \end{cor}
 \begin{proof}
 $\mathcal{B}$ ist beschränkt durch die Größe des größtmöglichen äquivalenten Circuit $C_A$ von $C$ geteilt durch $\delta_{area}$. Sei $X^+$ eine mit dem Algorithmus: Untere Schranke Arrivaltime errechnete obere Schranke für die Größe von $C$. Daraus folgt $\mathcal{B} \in \mathcal{O}(X^+ \cdot \frac{2n(1-\lambda)}{X^- \epsilon})$. $\mathcal{B} $ ist somit polynomiell in $\frac{X^+ n}{X^- \epsilon}$. 
 
 
 
-Da die Größe $area_{max}$ (Delay) des größten (langsamsten) Gates der in Abbildung \ref{bild:new_library} beschriebenen Library weniger als einen Faktor 10 größer (langsamer), als die entsprechenden Werte des kleinsten (schnellsten) Gates dieser Library, ist folgt, dass $\frac{X^+ n}{X^- \epsilon}$ polynomiell beschränkt ist.  Der größtmögliche zu $C$ äquivalente Circuit ist nämlich nicht größer als $|V(C)|(fanin_{max}+1)area_{max} + |O|area_{max}$. Die Größe jedes Gates mit möglichen Invertern an seinen Inputs in $C$ ist durch $(fanin_{max}+1)area_{max}$ beschränkt und die Anzahl der an den Outputs $O$ liegenden Inverter durch $|O|$.\\
+Da die Größe $area_{max}$ (Delay) des größten (langsamsten) Gates der Library weniger als einen Faktor $c$ größer (langsamer), als die entsprechenden Werte des kleinsten (schnellsten) Gates dieser Library, ist folgt, dass $\frac{X^+ n}{X^- \epsilon}$ polynomiell beschränkt ist (Dies ist ebenfalls der Fall für die in Abbildung \ref{bild:new_library} beschriebene Library).  Der größtmögliche zu $C$ äquivalente Circuit ist nämlich nicht größer als $|V(C)|(fanin_{max}+1)area_{max} + |O|area_{max}$. Die Größe jedes Gates mit möglichen Invertern an seinen Inputs in $C$ ist durch $(fanin_{max}+1)area_{max}$ beschränkt und die Anzahl der an den Outputs $O$ liegenden Inverter durch $|O|$.\\
 Für eine allgemeine Library findet sich in \cite{Elbert} eine Lösung zur Erhaltung der Polynomialität.\\
 Sei $v \in V(C)$ und $\mathcal{K}_v$ die Anzahl Klassen von $v$. Sei des Weiteren $K_{h,i}$ die maximale Anzahl Klassen eines Multifanoutknoten mit $i$ weiteren Multifanoutknoten in seiner Cone. 
 $\mathcal{K}_v$ an einem Knoten $v$ ist beschränkt durch die Anzahl aller möglichen Kombinationen von Kandidaten aller möglicher Klassen der Multifanoutknoten in $cone(v)$. Daraus folgt $\mathcal{K}_v \leq (\mathcal{BK}_{h,k-1})^k$; da $v$ maximal $k$ Multifanoutknoten in seiner Cone hat, welche jeweils maximal $k-1$ Multifanoutknoten in ihrer Cone haben. Deshalb gilt $\mathcal{K}_{h,k} \leq (\mathcal{BK}_{h,k-1})^k$.\\
@@ -658,7 +620,7 @@ Ist an jedem Multifanoutknoten ein Kandidat gewählt, lässt sich der noch bestm
       }
     }
   }    
-    filter\_mit\_Buckets(g.tradeoff\_curves, 0)\;    
+    filtern\_mit\_Buckets(g.tradeoff\_curves, 0)\;    
   }
   $C' \gets $ circuit(bester\_kandidat($o, \lambda$))\;
   \Return entferne\_buffer($C'$)\;
@@ -747,7 +709,59 @@ Im Gegensatz zu dem Kern-Algorithmus aus Kapitel \ref{subsec:kern_algorithmus} k
 \label{subsec:premapping_duch_schaetzen}
 Beim Premapping durch Schätzen wird eine Vermutung für die Kosten des Kandidaten eines jeden Multifanoutknoten in einer optimalen Lösung des Technology Mappings aufgestellt. Ausgewählt wird dann der Kandidat, welcher die geringste Differenz zu den vermuteten Kosten besitzt.\\
 Die im Folgenden vorgestellte Routine wurde durch \cite{Elbert} für einen Output entwickelt und wird hier auf SNS erweitert.\\
-Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen Circuit errechnen. Der Algorithmus aus Kapitel \ref{subsubsec:schrankenalgo} wird für die Schrankenberechnung benutzt.\\
+Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst schnellen und einmal einen möglichst kleinen äquivalenten Circuit errechnen.
+Folgender Algorithmus wird für Errechnung dieser heuristische Schranken verwendet:
+
+\textcolor{red}{hier der schranken algo hin}
+
+
+\begin{comment}
+Folgender Algorithmus, der in \cite{Elbert} entwickelt wurde, nähert die entsprechenden Circuit-Kandidaten an.\\
+
+\begin{algorithm}[H]
+ \LinesNumbered
+ \DontPrintSemicolon
+ \caption{Untere Schranke Arrivaltime}
+ \SetKwInOut{Task}{Task}
+ \KwIn{Circuit $C$, Library $L$}
+
+ schnellster\_kandidat[] $\gets \emptyset$\;
+ schnellster\_inv\_kandidat[]$ \gets \emptyset$\;
+ \ForEach{Knoten $v \in V(G)$ in topologischer Reihenfolge}
+ {
+   berechne\_alle\_(invertierten)\_Matche($v$)\;
+   \ForEach{ Match $m$ auf $v$ }
+   {
+      $k,k_{inv} \gets $berechne\_schnellsten\_(inv)\_Kandidaten($m$,$v$)\;
+      Update\_schnellster\_(inv)\_kandidat($k,k_{inv}$)\;
+   }
+   \If{ $v$ ist Multifanoutknoten }
+   {
+      
+      \If{ schnellster\_kandidat[v].AT $<$ schnellster\_inv\_kandidat[v].AT }
+      {
+	l\"osche schnellster\_inv\_kandidat[v]\;
+      }
+      \Else
+      {
+	l\"osche schnellster\_kandidat[v]\;
+      }
+   }
+ }
+ Baue $C'$ entsprechend schnellster\_kandidat[$o$]\;
+ \Return $C'$\;
+\end{algorithm}\ \\
+
+Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jeden Knoten nur einen Kandidaten. Dadurch ist es nicht notwendig mehr als $|V(C)|$ Kandidaten zu speichern. \\
+ Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet. \\
+Im Gegensatz zu dem Kern-Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit invertiertem Output von $i$ evtl. in Schritt 10  oder 12 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern-Algorithmus liegt darin, dass dort für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Multifanoutknoten ist, würde dies zu einem Verlust der Polynomialität führen.\\
+
+Unter welchen Bedingungen sich dieser Algorithmus polynomiell implementieren lässt, wird in Kapitel \ref{subsec:heuristik} weiter ausgeführt. Dort wird dieser Algorithmus mit der Laufzeit der Heuristik ohne diese Routine beschrieben. Da jedoch nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.
+\end{comment}
+
+
+
+\textcolor{red}{hier end schranen algo}
 
  Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
  
@@ -756,8 +770,8 @@ Die Schätzung erfolgt durch zwei \TM Läufe, welche einmal einen möglichst sch
  \DontPrintSemicolon
  \caption{Premapping durch Schätzen}
  \SetKwInOut{Task}{Task}
- $C'_{AT} \gets $Untere\_Schranke\_Arrivaltime(C)\;
-$C'_{Area} \gets$ Untere\_Schranke\_Area($C$)\; 
+ $C'_{AT} \gets $Heuristische\_untere\_Schranke\_Arrivaltime(C)\;
+$C'_{Area} \gets$ Heuristische\_untere\_Schranke\_Area($C$)\; 
 \ForEach{Output $o$}
 {
 	$\alpha[o] \gets \lambda \cdot AT_{C'_{AT}}(o) + (1-\lambda)\cdot AT_{C'_{Area}}(o)$ //Finale AT Sch\"atzung \;

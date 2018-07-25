@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  25 MAY 2018 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  25 JUL 2018 07:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -42,6 +42,7 @@ l.4 \usepackage{
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
+\c@algorithm=\count79
 ! Undefined control sequence.
 l.8 \theoremstyle
                  {plain}
@@ -68,7 +69,7 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
-\c@theorem=\count79
+\c@theorem=\count80
 
 ! LaTeX Error: No counter 'section' defined.
 
@@ -153,11 +154,11 @@ between \documentclass and \begin{document}.
 
  
 Here is how much of TeX's memory you used:
- 25 strings out of 493089
- 303 string characters out of 6134843
+ 31 strings out of 493089
+ 370 string characters out of 6134843
  53199 words of memory out of 5000000
- 3610 multiletter control sequences out of 15000+600000
+ 3616 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 8i,0n,13p,75b,16s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 9i,0n,14p,75b,16s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

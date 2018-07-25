@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  15 JUL 2018 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.1)  25 JUL 2018 07:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -38,7 +38,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.3 \usepackage[titlenotnumbered, vlined, ruled]{
-                                                 algorithm2e}
+                                                 algpseudocode}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
@@ -532,20 +532,8 @@ l.44 \usepackage{
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-
-! LaTeX Error: \proofname undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.48 \renewcommand{\proofname}
-                              {Beweis:}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
 ! Undefined control sequence.
-l.52 \newcolumntype
+l.48 \newcolumntype
                    {d}[1]{D{.}{\cdot}{#1} }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -560,7 +548,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.52 \newcolumntype{d
+l.48 \newcolumntype{d
                      }[1]{D{.}{\cdot}{#1} }
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -574,17 +562,17 @@ Missing character: There is no . in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.52 \newcolumntype{d}[1]{D{.}{\cdot
+l.48 \newcolumntype{d}[1]{D{.}{\cdot
                                     }{#1} }
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 52.
+(Font)              <7> on input line 48.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 52.
+(Font)              <5> on input line 48.
 ! Extra }, or forgotten $.
-l.52 \newcolumntype{d}[1]{D{.}{\cdot}
+l.48 \newcolumntype{d}[1]{D{.}{\cdot}
                                      {#1} }
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -593,7 +581,7 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 ! You can't use `macro parameter character #' in math mode.
-l.52 \newcolumntype{d}[1]{D{.}{\cdot}{#
+l.48 \newcolumntype{d}[1]{D{.}{\cdot}{#
                                        1} }
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -601,7 +589,7 @@ If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 ! Extra }, or forgotten $.
-l.52 \newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+l.48 \newcolumntype{d}[1]{D{.}{\cdot}{#1} }
                                            
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -612,18 +600,18 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.53 
+l.49 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (27.7778pt too wide) in paragraph at lines 52--53
+Overfull \hbox (27.7778pt too wide) in paragraph at lines 48--49
 []$\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 1$ 
  []
 
 ! Undefined control sequence.
-l.54 \usetikzlibrary
+l.50 \usetikzlibrary
                     {shapes}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -638,7 +626,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.54 \usetikzlibrary{s
+l.50 \usetikzlibrary{s
                       hapes}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -650,7 +638,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 ! Undefined control sequence.
-l.55 \usetikzlibrary
+l.51 \usetikzlibrary
                     {matrix, arrows,fit,shapes.gates.logic.US,shapes.gates.l...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -763,12 +751,12 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no g in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 54--56
+Overfull \hbox (20.0pt too wide) in paragraph at lines 50--52
 []
  []
 
 ! Undefined control sequence.
-l.60 \DeclarePairedDelimiter
+l.56 \DeclarePairedDelimiter
                             \abs{\lvert}{\rvert}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -777,7 +765,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.60 \DeclarePairedDelimiter\abs
+l.56 \DeclarePairedDelimiter\abs
                                 {\lvert}{\rvert}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -786,7 +774,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.60 \DeclarePairedDelimiter\abs{\lvert
+l.56 \DeclarePairedDelimiter\abs{\lvert
                                        }{\rvert}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -795,7 +783,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.60 \DeclarePairedDelimiter\abs{\lvert}{\rvert
+l.56 \DeclarePairedDelimiter\abs{\lvert}{\rvert
                                                }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -804,7 +792,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.74 \pgfplotsset
+l.70 \pgfplotsset
                  {compat=1.8}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -819,7 +807,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.74 \pgfplotsset{c
+l.70 \pgfplotsset{c
                    ompat=1.8}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -835,12 +823,12 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 8 in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 74--75
+Overfull \hbox (20.0pt too wide) in paragraph at lines 70--71
 [] 
  []
 
 ! Undefined control sequence.
-l.79 \definecolor
+l.75 \definecolor
                  {darkblue}{RGB}{10, 0, 128}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -855,7 +843,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.79 \definecolor{d
+l.75 \definecolor{d
                    arkblue}{RGB}{10, 0, 128}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -880,7 +868,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 8 in font nullfont!
 ! Undefined control sequence.
-l.80 \definecolor
+l.76 \definecolor
                  {grey}{RGB}{128, 128, 128}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -907,7 +895,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 8 in font nullfont!
 ! Undefined control sequence.
-l.81 \definecolor
+l.77 \definecolor
                  {darkred}{RGB}{180, 0, 0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -933,7 +921,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.82 \definecolor
+l.78 \definecolor
                  {darkgreen}{RGB}{0, 100, 0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -961,7 +949,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.83 \definecolor
+l.79 \definecolor
                  {lightgrey}{RGB}{210,210,210}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -993,12 +981,12 @@ Missing character: There is no 2 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 79--88
+Overfull \hbox (20.0pt too wide) in paragraph at lines 75--84
 []
  []
 
 ! Undefined control sequence.
-l.89 \definecolor
+l.85 \definecolor
                  {darkRed}{rgb}{0.6,0,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1013,7 +1001,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 \definecolor{d
+l.85 \definecolor{d
                    arkRed}{rgb}{0.6,0,0}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1036,7 +1024,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.90 \definecolor
+l.86 \definecolor
                  {lightRed}{rgb}{1,0.75,0.75}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1067,7 +1055,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 7 in font nullfont!
 Missing character: There is no 5 in font nullfont!
 ! Undefined control sequence.
-l.91 \definecolor
+l.87 \definecolor
                  {darkGreen}{rgb}{0,0.5,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1095,7 +1083,7 @@ Missing character: There is no 5 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.92 \definecolor
+l.88 \definecolor
                  {PineGreen}{rgb}{0.01,0.5,0.45}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1129,7 +1117,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 4 in font nullfont!
 Missing character: There is no 5 in font nullfont!
 ! Undefined control sequence.
-l.93 \definecolor
+l.89 \definecolor
                  {darkBlue}{rgb}{0, 0, 0.75}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1157,7 +1145,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 7 in font nullfont!
 Missing character: There is no 5 in font nullfont!
 ! Undefined control sequence.
-l.94 \definecolor
+l.90 \definecolor
                  {CornflowerBlue}{rgb}{0.15,0,0.7}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1193,7 +1181,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 7 in font nullfont!
 ! Undefined control sequence.
-l.95 \definecolor
+l.91 \definecolor
                  {lightBlue}{rgb}{0.75,0.75,1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1225,7 +1213,7 @@ Missing character: There is no 5 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 1 in font nullfont!
 ! Undefined control sequence.
-l.96 \definecolor
+l.92 \definecolor
                  {grey}{rgb}{0.5,0.5,0.5}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1252,7 +1240,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 5 in font nullfont!
 ! Undefined control sequence.
-l.97 \definecolor
+l.93 \definecolor
                  {black}{rgb}{0,0,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1274,7 +1262,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.98 \definecolor
+l.94 \definecolor
                  {red}{rgb}{1,0,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1294,7 +1282,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.99 \definecolor
+l.95 \definecolor
                  {green}{rgb}{0, 0.8, 0.3}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1320,8 +1308,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 3 in font nullfont!
 ! Undefined control sequence.
-l.100 \definecolor
-                  {blue}{RGB}{10, 0, 128}
+l.96 \definecolor
+                 {blue}{RGB}{10, 0, 128}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1344,8 +1332,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 8 in font nullfont!
 ! Undefined control sequence.
-l.101 \definecolor
-                  {yellow}{rgb}{1,1,0}
+l.97 \definecolor
+                 {yellow}{rgb}{1,1,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1367,8 +1355,8 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.102 \definecolor
-                  {middle}{rgb}{.875,.875,.5}
+l.98 \definecolor
+                 {middle}{rgb}{.875,.875,.5}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1397,8 +1385,8 @@ Missing character: There is no , in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 5 in font nullfont!
 ! Undefined control sequence.
-l.103 \definecolor
-                  {orange}{rgb}{1,0.6,0}
+l.99 \definecolor
+                 {orange}{rgb}{1,0.6,0}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1422,7 +1410,7 @@ Missing character: There is no 6 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 ! Undefined control sequence.
-l.104 \definecolor
+l.100 \definecolor
                   {cyan}{rgb}{0,0.7,1}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1445,7 +1433,7 @@ Missing character: There is no 7 in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no 1 in font nullfont!
 ! Undefined control sequence.
-l.105 \definecolor
+l.101 \definecolor
                   {purple}{rgb}{0.5,0,0.8}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1472,12 +1460,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 8 in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 89--106
+Overfull \hbox (20.0pt too wide) in paragraph at lines 85--102
 []
  []
 
 ! Undefined control sequence.
-l.108 \SetCommentSty
+l.104 \SetCommentSty
                     {mycommfont}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1492,7 +1480,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.108 \SetCommentSty{m
+l.104 \SetCommentSty{m
                       ycommfont}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1508,7 +1496,7 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no t in font nullfont!
 ! Undefined control sequence.
-l.109 \SetArgSty
+l.105 \SetArgSty
                 {textup}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1529,13 +1517,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.111 \renewcommand{\thealgocf}
+l.107 \renewcommand{\thealgocf}
                                {}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 108--114
+Overfull \hbox (20.0pt too wide) in paragraph at lines 104--110
 []
  []
 
@@ -1547,10 +1535,10 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 108--114
 
  
 Here is how much of TeX's memory you used:
- 69 strings out of 493089
- 572 string characters out of 6134843
+ 67 strings out of 493089
+ 551 string characters out of 6134843
  53199 words of memory out of 5000000
- 3654 multiletter control sequences out of 15000+600000
+ 3652 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  18i,2n,12p,151b,74s stack positions out of 5000i,500n,10000p,200000b,80000s
