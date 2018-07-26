@@ -59,15 +59,6 @@
   year           = 2015
 }
 
-@Article{HeldPrefixAdders,
-  Author         = {S. Held and S. Spirkl},
-  Title          = {Fast {P}refix {A}dders for {N}on-{U}niform {I}nput {A}rrival {T}imes},
-  journal        = {Algorithmica},
-  year           = 2017
-}
-
-S. Held and S. Spirkl: Fast Prefix Adders for Non-Uniform Input Arrival Times, University of Bonn, 2014
-
 
 
 @InProceedings{DAGON,
