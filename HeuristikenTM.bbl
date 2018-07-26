@@ -37,6 +37,11 @@ S.~Held and J.~Hu.
 \newblock In {\em Electronic {D}esign {A}utomation for {I}ntegrated {C}ircuits
   {H}andbook}, 2015.
 
+\bibitem[HS17]{HeldPrefixAdders}
+S.~Held and S.~Spirkl.
+\newblock Fast {P}refix {A}dders for {N}on-{U}niform {I}nput {A}rrival {T}imes.
+\newblock {\em Algorithmica}, 2017.
+
 \bibitem[Keu87]{DAGON}
 K.~Keutzer.
 \newblock D{AGON}: {T}echnology {B}inding and {L}ocal {O}ptimization by {DAG}
