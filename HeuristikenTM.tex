@@ -413,7 +413,7 @@ Anhand eines Schnitts kann nicht eindeutig hergeleitet werden, ob mehrere Kanten
 In einem Graphen ohne Multifanoutknoten gilt somit: \\
 Die Menge der Matche von $v$ ist somit gerade die Menge aller maximal $fanin_{max}$ großen $v$-Schnitte in $\bar{C}_v$, inklusive aller möglicher Inputinvertierungen und Outputinvertierungen, die als Subgraph die logische Funktion eines Gates der Library realisieren.
 \begin{cor}\label{cor:anz_matche_einfach}
-Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Multifanoutknoten enthält ist durch $m_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
+Sei $C$ ein Circuit ohne teilweise überflüssige Subcircuits. Die Anzahl der Matche eines Knotens $v\in V(C)$ mit $m_v := |E(C[cone(v)]|$, wobei $C[cone(v)]$ keine Multifanoutknoten enthält ist durch  \\$m_v^{fanin_{max}} 2^{fanin_{max}+1} fanin_{max}$ beschränkt.
 \end{cor}
 \begin{proof}
 Sei  $X_v:= \{ E \subseteq E(C[cone(v)]) | |E|\leq fanin_{max}  \}$. Die Menge der maximal $fanin_{max}$ großen $v$-Schnitte ist in $C[cone(v)]$ durch $ |X_v|$ beschränkt. Es gilt hierbei:

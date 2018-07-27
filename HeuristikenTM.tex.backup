@@ -698,7 +698,7 @@ Die Heuristik wurde im Zuge dieser Arbeit für Instanzen mehrerer Outputs und di
 \subsubsection{Implementierung mehrerer Outputs}
 \label{subsec:mehrere_outputs}
 Wie in der Einleitung beschrieben, ist es das Ziel dieser Arbeit eine Heuristik für das \TM zu entwickeln, welche auf großen Teilen eines Chips lauffähig (bezüglich Laufzeit) ist. Da ein solcher Chip mehr als nur einen Output-Pin hat, lässt er sich in zusammenhängende Circuits unterteilen, welche mehr als einen Output-Knoten haben. Folgende Umbauten sind notwendig, um mit dem Kern-Algorithmus auch diese Instanzen zu verbessern.\\
-Als erstes fällt auf, dass sich, wenn der Algorithmus für jeden Knoten die Kandidatenmenge errechnet hat, nicht einfach der beste Kandidat für den Output aus seiner Tradeoff-Kurve auswählen lässt. Dieser besitzt bei mehreren Outputs nämlich in der Regel offene Knoten. 
+Sobald der Algorithmus für jeden Knoten die Kandidatenmenge errechnet hat, l\"asst sich nicht einfach der beste Kandidat für den Output aus seiner Tradeoff-Kurve auswählen. Dieser besitzt bei mehreren Outputs nämlich in der Regel offene Knoten. 
 Es wurde bereits dargestellt, wie man mehrere Kandidaten auswählt, sodass diese an allen offenen Knoten übereinstimmen. Somit lässt sich ein Circuit mit den Mitteln aus Kapitel \ref{subsubsec:verknuepfen_kandidaten} realisieren, welcher eine Kostenfunktion hinsichtlich Größe und WS optimiert. \\
 \newpage
 \begin{comment}
@@ -776,9 +776,10 @@ Dieser Algorithmus führt den Kern-Algorithmus  auf $C$ aus und behält für jed
  Die untere Schranke für Area wird mit einem entsprechenden Algorithmus berechnet, indem an jedem Knoten der kleinste Kandidat, anstelle des schnellsten, gespeichert wird. Der entsprechende Algorithmus wird Heuristische untere Schranke Area genannt. \\
 Im Gegensatz zu dem Kern-Algorithmus garantiert dieser keine optimale Lösung bezüglich Arrivaltime oder Area, da es möglich ist, dass für einen Knoten $v$ und einen seiner Inputs $i$ der schnellste bzw. kleinste Kandidat auf $v$ eine Invertierung an $i$ vorsieht. Da der beste Kandidat mit invertiertem Output von $i$ evtl. in Schritt 10  oder 12 gelöscht wurde, ist der optimale Kandidat für $v$ möglicherweise nicht mehr vorhanden. Der Unterschied zum Kern-Algorithmus liegt darin, dass dort für $i$ die besten Kandidaten beider Invertierungen gespeichert werden. Da $i$ hier jedoch evtl. ein Multifanoutknoten ist, würde dies zu einem Verlust der Polynomialität führen.\\
 Im Gegensatz zu dem Algorithmus aus Kapitel \ref{subsubsec:schrankenalgo}, mit welchen die Errechnung einer unteren und oberen Schranke f\"ur die $AT$ und $Area$ m\"oglich ist, gibt dieser Algorithmus einen \"aquivalenten Circuit zur\"uck.\\
-Die Laufzeit dieses Algorithmus liegt in der Laufzeit der Heuristik aus Kapitel \ref{subsec:heuristik}. Da bei der zweimaligen Ausf\"uhrung dieser Routine nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heuristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.
+Die Laufzeit dieses Algorithmus liegt in der Laufzeit der Heuristik aus Kapitel \ref{subsec:heuristik}. Da bei der zweimaligen Ausf\"uhrung dieser Routine nur maximal zwei Kandidaten an jedem Knoten gespeichert werden und alle Matche nur einmal gefunden werden müssen, wird die Laufzeit der Heuristik mit der Hinzunahme dieses Algorithmus nur geringfügig beeinflusst.\\
 
 Das Premapping durch Schätzen erfolgt nun durch folgenden Algorithmus:\\
+\newpage
  
 \begin{algorithm}[H]
  \LinesNumbered
