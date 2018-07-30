@@ -11,12 +11,18 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Eigenschaft}} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}\textbf{Chip1}} & \textbf{Chip2} \\ \hline
-SNS                                         				&5                                                                & 96\\
-Area 																	& $51,56$\%                                                               & $56,95\%$      \\
-WS                                      & $19,68$\%                                                               & $16,37\%$      \\
-Netzl\"ange															& $16,65$\%                                                               & $15,33\%$     \\
-$(20;30]$                                             & $4,92$\%                                                                & $6,62\%$       \\
-\textgreater $30$                                     & $4,07$\%                                                                & $3,88\%$     \\ \hline
+SNS vorher                                        				& $303,894$                                                                & $-0.06\%$\\
+SNS nachher                                        				& $216,442$                                                                & $-0.06\%$\\
+WS  vorher                                    					& $2,5\%$                                                                 & $0\%$      \\
+WS  nachher                                    					& $2,5\%$                                                                 & $0\%$      \\
+Area 																	& $-1,9\%$                                                                & $0,01\%\%$      \\
+Netzl\"ange															& $-11,3\%$                                                               & $-6,4\%$      \\ \hline
+SNS vorher                                        				& $303,894$                                                                & $-0.06\%$\\
+SNS nachher                                        				& $216,442$                                                                & $-0.06\%$\\
+WS  vorher                                    					& $2,5\%$                                                                 & $0\%$      \\
+WS  nachher                                    					& $2,5\%$                                                                 & $0\%$      \\
+Area 																	& $-1,9\%$                                                                & $0,01\%\%$      \\
+Netzl\"ange															& $-11,3\%$                                                               & $-6,4\%$      \\ \hline
 \end{tabular}
 \end{table}
 \end{varwidth}
